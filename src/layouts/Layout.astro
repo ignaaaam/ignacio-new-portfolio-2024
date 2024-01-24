@@ -1,11 +1,12 @@
 ---
-interface Props {
-	title: string;
-}
+import Header from '../components/Header.astro';
+import '@fontsource-variable/onest';
 
+interface Props {
+title: string;
+}
 const { title } = Astro.props;
 
-import Header from '../components/Header.astro';
 ---
 
 <!doctype html>
@@ -28,12 +29,13 @@ import Header from '../components/Header.astro';
 		color-scheme: light dark;
 	}
 	html {
-		font-family: system-ui, sans-serif;
+		font-family: 'Onest Variable', system-ui, sans-serif;
 	}
-
+	
 	body {
-		background: #000;
+		background: #050505;
 		display: flex;
 		justify-content: center;
+		min-height: 100vh;
 	}
 </style>
