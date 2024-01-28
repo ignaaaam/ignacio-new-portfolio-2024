@@ -1,14 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Badge from "../components/Badge.astro";
+import LinkedinIcon from "../components/icons/LinkedinIcon.astro";
+import GithubIcon from "../components/icons/GithubIcon.astro";
+import BehanceIcon from "../components/icons/BehanceIcon.astro";
+import SocialPill from "../components/SocialPill.astro";
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
     <section class="w-full mx-auto py-44">
-      <h1
-        class="text-white text-5xl font-bold flex justify-center flex-row gap-x-4 pb-10"
-      >
+      <h1 class="text-white text-5xl font-bold flex flex-row gap-x-4 pb-4">
         Hey, soy Ignacio
         <a
           href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223"
@@ -17,11 +19,37 @@ import Badge from "../components/Badge.astro";
           ><Badge>Disponible para trabajar</Badge></a
         >
       </h1>
+      <h2 class="text-2xl text-wrap">
+        <span>+3 años de experiencia.</span><span class="text-yellow-200">
+          Desarrollador Web Full Stack</span
+        >. <span class="text-red-200/90"> De Barcelona, España.</span>
+        <span class="opacity-75"
+          >Especializado en la creación de web apps y sitios web de alto
+          rendimiento.</span
+        >
+      </h2>
+      <br />
+      <h2 class="text-2xl text-wrap">
+        Experto en Desarrollo Web Back End con <span class="text-[#7477AC]"
+          >PHP</span
+        >, <span class="text-[#FF2819]">Laravel</span> y <span
+          class="bg-clip-text text-transparent bg-gradient-to-r from-[#005E8A] from-30% to-[#EBA921] to-50%"
+          >MYSQL</span
+        >, y Desarrollo Front End con <span class="text-[#3FB27F]">Vue.js</span>
+        y<span class="text-[#EFD81D]"> Javascript</span>.
+      </h2>
+
+      <nav class="flex gap-x-2 mt-8">
+          <SocialPill href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223">
+            <LinkedinIcon class="w-6 h-6" />
+            LinkedIn
+          </SocialPill>
+          <SocialPill href="https://www.github.com/ignaaaam">
+            <GithubIcon class="w-6 h-6" />
+            Github
+          </SocialPill>
+      </nav>
     </section>
-    <h2 class="text-xl opacity-80">
-      +15 años de experiencia. Desarrollador Web Full Stack. De Barcelona,
-      España 🇪🇸
-    </h2>
   </main>
 </Layout>
 
