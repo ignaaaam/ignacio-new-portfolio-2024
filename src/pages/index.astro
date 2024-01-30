@@ -3,11 +3,16 @@ import Layout from "../layouts/Layout.astro";
 import Badge from "../components/Badge.astro";
 import LinkedinIcon from "../components/icons/LinkedinIcon.astro";
 import GithubIcon from "../components/icons/GithubIcon.astro";
+import MailIcon from "../components/icons/MailIcon.astro";
 import BehanceIcon from "../components/icons/BehanceIcon.astro";
 import SocialPill from "../components/SocialPill.astro";
+import StackOverflowIcon from "../components/icons/StackOverflowIcon.astro";
+import LaracastsIcon from "../components/icons/LaracastsIcon.astro";
 ---
-
-<Layout title="Welcome to Astro.">
+<Layout 
+  title="Ignacio Amat Urbina - Desarrollador y Programador Web Full Stack | Especialista en PHP, Laravel, Livewire, Inertia, Vue, TailwindCSS"
+  description="Ignacio Amat Urbina, contrátame si necesitas un desarrollador Web Full Stack y experto en Back End y Front End. Especializado en PHP, Laravel (Livewire e Inertia), Javascript, Vue y TailwindCSS. Aprendiendo Astro para crear sitios web rápidos, optimizados y de alto rendimiento."
+  >
   <main>
     <section class="w-full mx-auto py-44">
       <h1 class="text-white text-5xl font-bold flex flex-row gap-x-4 pb-4">
@@ -16,6 +21,7 @@ import SocialPill from "../components/SocialPill.astro";
           href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223"
           target="_blank"
           rel="noopener"
+          class="flex justify-center items-center"
           ><Badge>Disponible para trabajar</Badge></a
         >
       </h1>
@@ -39,14 +45,30 @@ import SocialPill from "../components/SocialPill.astro";
         y<span class="text-[#EFD81D]"> Javascript</span>.
       </h2>
 
-      <nav class="flex gap-x-2 mt-8">
+      <nav class="flex flex-wrap gap-x-4 gap-y-4 mt-8">
           <SocialPill href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223">
-            <LinkedinIcon class="w-6 h-6" />
+            <LinkedinIcon class="size-6" />
             LinkedIn
           </SocialPill>
           <SocialPill href="https://www.github.com/ignaaaam">
-            <GithubIcon class="w-6 h-6" />
+            <GithubIcon class="size-6" />
             Github
+          </SocialPill>
+          <SocialPill href="https://www.behance.net/igna21df">
+            <BehanceIcon class="size-6" />
+            Behance
+          </SocialPill>
+          <SocialPill href="https://stackoverflow.com/users/18973790/ignacio?tab=profile">
+            <StackOverflowIcon class="size-6" />
+            StackOverflow
+          </SocialPill>
+          <SocialPill href="https://laracasts.com/@ignaaaam">
+            <LaracastsIcon class="size-6" />
+            Laracasts
+          </SocialPill>
+          <SocialPill href="https://www.github.com/ignaaaam">
+            <MailIcon class="size-6" />
+            ignasiamat10@gmail.com
           </SocialPill>
       </nav>
     </section>
