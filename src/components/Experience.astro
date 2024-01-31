@@ -1,0 +1,28 @@
+---
+import ExperienceItem from './ExperienceItem.astro'
+
+const EXPERIENCE = [
+    {
+        title: 'Desarrollador Web Full Stack',
+        company: 'MANIFIESTO',
+        location: 'Barcelona, Spain',
+        date: 'Aug 2022 - Actualidad',
+        description: 'Trabajando como Desarrollador Web Full Stack para empresas de alto nivel en España como Btravel, Playstation, Glovo, TikTok, LaCaixa, Sofinco, ElPozo, Bizum, TacoBell, Ginos, Citroen y más. Construyendo sitios web y aplicaciones web utilizando PHP, Laravel, Livewire, Inertia, Vue, MySQL y TailwindCSS, gestionando todos estos proyectos utilizando GIT, Laravel Forge y DigitalOcean.',
+        link: 'https://manifiesto.biz/',
+        // title: 'Full Stack Web Developer',
+        // company: 'MANIFIESTO',
+        // location: 'Barcelona, Spain',
+        // date: 'Aug 2022 - Present',
+        // description: 'Working as a Full Stack Web Developer for top high level companies from Spain such as Btravel, Playstation, Glovo, TikTok, LaCaixa, Sofinco, ElPozo, Bizum, TacoBell, Ginos, Citroen and more. Building websites & web apps using PHP, Laravel, Livewire, Inertia, Vue, MySQL & TailwindCSS, managing all this projects using GIT, Laravel Forge & DigitalOcean.',
+    }
+]
+---
+<ol class="relative border-s border-gray-200 dark:border-gray-700">
+    {
+        EXPERIENCE.map((experience) => (
+            <li class="mb-10 ms-4">
+                <ExperienceItem {...experience} />
+            </li>
+        ))
+    }
+</ol>
