@@ -1,43 +1,160 @@
 ---
+import NextJS from "./icons/NextJSIcon.astro";
+import Tailwind from "./icons/TailwindIcon.astro";
+import React from "./icons/ReactIcon.astro";
+import Astro from "./icons/AstroIcon.astro";
+import Github from "./icons/GithubIcon.astro";
+import Javascript from "./icons/JavascriptIcon.astro";
+import Php from "./icons/PHPIcon.astro";
+import Vue from "./icons/VueIcon.astro";
+import Wordpress from "./icons/WordpressIcon.astro";
+import ConnectButton from "./ConnectButton.astro";
+
+const TAGS = {
+  NEXT: {
+    name: "NextJS",
+    class: "bg-black text-white",
+    icon: NextJS,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: Tailwind,
+  },
+  REACT: {
+    name: "React",
+    class: "bg-white text-[#0ACCEF]",
+    icon: React,
+  },
+  ASTRO: {
+    name: "Astro",
+    class: "bg-black text-white",
+    icon: Astro,
+  },
+  GITHUB: {
+    name: "GitHub",
+    class: "bg-black text-white",
+    icon: Github,
+  },
+  JAVASCRIPT: {
+    name: "JavaScript",
+    class: "bg-yellow-100 text-black",
+    icon: Javascript,
+  },
+  PHP: {
+    name: "PHP",
+    class: "bg-blue-600 text-white",
+    icon: Php,
+  },
+  VUE: {
+    name: "Vue",
+    class: "bg-green-500 text-white",
+    icon: Vue,
+  },
+  WORDPRESS: {
+    name: "WordPress",
+    class: "bg-blue-300 text-white",
+    icon: Wordpress,
+  },
+};
+
 const PROJECTS = [
   {
-    title: 'Project 1',
-    description: 'This is a description of project 1',
-    link: 'https://www.google.com',
-    github: '#',
-    image: 'https://via.placeholder.com/150',
-    tags: ['tag1', 'tag2']
+    title: "Trycat Website (Wordle Game)",
+    description:
+      "Website made to master AlpineJS, it's a clone of the popular Wordle Game ",
+    link: "https://github.com/ignaaaam/WordleGame",
+    github: "https://github.com/ignaaaam/WordleGame",
+    image: "/img/optimized/showcase4.webp",
+    tags: [TAGS.PHP, TAGS.TAILWIND, TAGS.JAVASCRIPT],
   },
   {
-    title: 'Project 2',
-    description: 'This is a description of project 2',
-    link: 'https://www.google.com',
-    github: '#',
-    image: 'https://via.placeholder.com/150',
-    tags: ['tag1', 'tag2']
+    title: "Halloween Website",
+    description:
+      "Responsive website that simulates a halloween store, just frontend using HTML CSS and JavaScript, used some JS libraries and added some CSS animations.",
+    link: "https://spookywebsite.netlify.app/",
+    github: "https://github.com/ignaaaam/spookywebsite",
+    image: "/img/optimized/showcase0.webp",
+    tags: [TAGS.PHP, TAGS.TAILWIND, TAGS.JAVASCRIPT],
   },
   {
-    title: 'Project 3',
-    description: 'This is a description of project 3',
-    link: 'https://www.google.com',
-    github: '#',
-    image: 'https://via.placeholder.com/150',
-    tags: ['tag1', 'tag2']
-  }
-]
+    title: "Natours Website",
+    description:
+      "Website about Nature tours, made on a course while I was mastering HTML & CSS skills. It's a landing page that has clean UI all entirely made with pure HTML & CSS.",
+    link: "https://websiteproject-natours.netlify.app/",
+    github: "https://github.com/ignaaaam/natours-project",
+    image: "/img/optimized/showcase1.webp",
+    tags: [TAGS.PHP, TAGS.TAILWIND, TAGS.JAVASCRIPT],
+  },
+  {
+    title: "Omnifood Website",
+    description:
+      "Website about healthy food delivery made in my initial days of learning HTML & CSS while I was starting to learn basic technologies. ",
+    link: "https://omnifoodrestaurant.netlify.app/",
+    github: "https://github.com/ignaaaam/omnifood-project",
+    image: "/img/optimized/showcase2.webp",
+    tags: [TAGS.PHP, TAGS.TAILWIND, TAGS.JAVASCRIPT],
+  },
+];
 ---
 
 {
-  PROJECTS.map(({ title, description, tags, image }) => (
-    <article>
-      <h3>{title}</h3>
-      <p>{description}</p>
-      <ul>
-        {tags.map(tag => (
-          <li>{tag}</li>
+  PROJECTS.map(({ title, description, tags, image, link, github }) => (
+    <article class="my-4">
+      <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
+      <p class="text-lg mb-4 text-pretty">{description}</p>
+      <ul class="flex gap-x-2 flex-row mb-2">
+        {tags.map((tag) => (
+          <li>
+            <span
+              class={`flex gap-x-2 rounded-full text-sm ${tag.class} py-1 px-2 items-center`}
+            >
+              <tag.icon class="size-4" />
+              {tag.name}
+            </span>
+          </li>
         ))}
       </ul>
-      <img src={image} alt={`Captura de pantalla del proyecto ${image}`} />
-      </article>
-  )
-)
+      <img
+        class="rounded shadow-2xl shadow-white/10"
+        src={image}
+        alt={`Captura de pantalla del proyecto ${image}`}
+      />
+      <div class="mt-4 flex gap-x-4">
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-yellow-500/90 focus:z-10 focus:ring-2 focus:outline-none focus:ring-gray-200 focus:text-yellow-500/90 transition"
+        >
+          Ver Proyecto{" "}
+          <svg
+            class="w-3 h-3 ms-2 rtl:rotate-180"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 10"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9"
+            />
+          </svg>
+        </a>
+
+        <a href={github}
+          target="_blank"
+          rel="noopener" class="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+          <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+          <span class="gap-x-2 inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+            Github
+            <Github class="size-5" />
+          </span>
+        </a>
+      </div>
+    </article>
+  ))
+}

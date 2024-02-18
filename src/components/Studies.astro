@@ -1,0 +1,41 @@
+---
+import StudiesItem from "./StudiesItem.astro";
+
+const STUDIES = [
+  {
+    title: "Desarrollador De Aplicaciones Web",
+    institution: "Academia Nuria",
+    location: "Spain, Barcelona - Academia Nuria",
+    date: "2018 - 2022",
+    description:
+      "En el Grado Superior en Desarrollo de Aplicaciones Web aprendes una variedad de áreas fundamentales. Desde los lenguajes esenciales como HTML, JavaScript, PHP y Java, hasta la administración de bases de datos con MySQL y el diseño de esquemas relacionales. También explorarás patrones de diseño y seguridad informática para garantizar la robustez y protección de las aplicaciones web que desarrollas. Con este conocimiento integral, estarás preparado para liderar proyectos web con confianza y enfrentar desafíos técnicos y de seguridad con destreza.",
+    link: "https://www.escolesnuria.cat/es/formacion/ciclos-formativos-de-grado-superior/desarrollo-de-aplicaciones-web.html",
+  },
+  {
+    title: "Freelance Web Developer",
+    location: "Remote - Worldwide",
+    date: "2019 - 2020",
+    description:
+      "Tareas resueltas para personas o empresas específicas. Estas tareas implicaban corregir errores en un sitio web existente, solucionar código mal implementado y añadir nuevos sitios, diseños, secciones y reescribir código que podría haber sido mejorado.",
+  },
+  {
+    title: "Sistemas Microinformáticos y Redes",
+    institution: "Academia Nuria",
+    location: "Spain, Barcelona - Academia Nuria",
+    date: "2014 - 2016",
+    description:
+      "El Grado en Sistemas Microinformáticos y Redes te forma para ser un experto en tecnología digital. Aprenderás a montar, mantener y reparar equipos, gestionar redes y sistemas informáticos, y proteger la seguridad cibernética. Con cualificaciones reconocidas en todo el Estado y la Unión Europea, te prepara para el mundo laboral con seguimiento personalizado, orientación profesional y un cuerpo docente experimentado. Además, actualizamos constantemente nuestros módulos para estar al día con las tendencias tecnológicas y las demandas del mercado.",
+    link: "https://www.escolesnuria.cat/es/formacion/ciclos-formativos-de-grado-medio/sistemas-microinformaticos-y-redes.html",
+  },
+];
+---
+
+<ol class="relative border-s border-gray-200 ml-4">
+  {
+    STUDIES.map((study) => (
+      <li class="mb-10 ms-4">
+        <StudiesItem {...study} />
+      </li>
+    ))
+  }
+</ol>
