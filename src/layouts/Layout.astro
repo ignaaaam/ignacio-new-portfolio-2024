@@ -2,6 +2,7 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "@fontsource-variable/onest";
+import  SpeedInsights  from "@vercel/speed-insights/astro"
 
 interface Props {
   title: string;
@@ -22,6 +23,7 @@ const { title, description } = Astro.props;
       name="viewport"
       content="width=device-width"
     />
+    <SpeedInsights />
     <link
       rel="icon"
       type="image/svg+xml"
@@ -31,7 +33,44 @@ const { title, description } = Astro.props;
       name="generator"
       content={Astro.generator}
     />
+    <link rel="canonical" href="https://www.ignathedev.com">
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{title}</title>
+
+    <meta name="description" content="Passionate full-stack web developer & Laravel Expert based in Barcelona, offering web development and design services.">
+
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="https://www.ignathedev.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content="https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="ignathedev.com">
+  <meta property="twitter:url" content="https://www.ignathedev.com/">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content="https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg">
+
+  <!-- Meta Tags Generated via https://www.opengraph.xyz -->
+    <meta property="og:site_name" content="Ignacio Amat Urbina - Desarrollador Web Full Stack & Laravel Expert">
+
+    <!-- Locale -->
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Keywords -->
+    <meta property="og:keywords" content="Desarrollador Web Full Stack, Diseño Web, Desarrollo Web, Barcelona, España, Freelance, Laravel, Inertia, Vue 3, SEO, Innovación, Calidad, Desarrollador Mid, Desarrollador Junior">
+
+    <!-- Author -->
+    <meta property="og:author" content="Ignacio Amat Urbina">
+
+    <script type="application/ld+json">
+			{"name" : "ignathedev",
+			  "url" : "https://www.ignathedev.com", 
+			  "logo": "https://www.ignathedev.com/assets/img/profile_picture.jpg" }
+		</script>
   </head>
   <body>
     <div
