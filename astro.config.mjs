@@ -1,16 +1,29 @@
 import { defineConfig } from "astro/config";
-
+import vercel from '@astrojs/vercel/serverless';
+import partytown from '@astrojs/partytown';
+import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
+import vercelStatic from '@astrojs/vercel/static';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
+  output: 'static',
   integrations: [
-    tailwind()
+    tailwind(),
+    partytown({
+      config: {
+        config: { debug: false },
+        forward: ['dataLayer.push'],
+      },
+    }),
+    sitemap(),
   ],
-  adapter: vercel({
+  adapter: vercelStatic({
     webAnalytics: {
-      enabled: true,
+      enabled: true
     },
+    speedInsights: {
+      enabled: true
+    }
   }),
 });
