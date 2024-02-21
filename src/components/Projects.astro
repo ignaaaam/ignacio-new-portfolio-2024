@@ -8,7 +8,12 @@ import Javascript from "./icons/JavascriptIcon.astro";
 import Php from "./icons/PHPIcon.astro";
 import Vue from "./icons/VueIcon.astro";
 import Wordpress from "./icons/WordpressIcon.astro";
-import ConnectButton from "./ConnectButton.astro";
+import Html from "./icons/HTMLIcon.astro";
+import Alpine from "./icons/AlpineIcon.astro";
+import Laravel from "./icons/LaravelIcon.astro";
+import Css from "./icons/CSSIcon.astro";
+import SassIcon from "./icons/SassIcon.astro";
+
 
 const TAGS = {
   NEXT: {
@@ -56,6 +61,31 @@ const TAGS = {
     class: "bg-blue-300 text-white",
     icon: Wordpress,
   },
+  HTML: {
+    name: "HTML",
+    class: "bg-[#D5502B] text-white",
+    icon: Html,
+  },
+  ALPINE: {
+    name: "AlpineJS",
+    class: "bg-[#242934] text-white",
+    icon: Alpine,
+  },
+  LARAVEL: {
+    name: "Laravel",
+    class: "bg-[#171923] text-white",
+    icon: Laravel,
+  },
+  CSS: {
+    name: "CSS",
+    class: "bg-[#2965F1] text-white",
+    icon: Css,
+  },
+  SASS: {
+    name: "Sass",
+    class: "bg-[#70254b] text-white",
+    icon: SassIcon,
+  },
 };
 
 const PROJECTS = [
@@ -66,7 +96,7 @@ const PROJECTS = [
     link: "https://github.com/ignaaaam/WordleGame",
     github: "https://github.com/ignaaaam/WordleGame",
     image: "/img/optimized/showcase4.webp",
-    tags: [TAGS.PHP, TAGS.TAILWIND, TAGS.JAVASCRIPT],
+    tags: [TAGS.PHP, TAGS.LARAVEL, TAGS.TAILWIND, TAGS.ALPINE],
   },
   {
     title: "Halloween Website",
@@ -75,7 +105,7 @@ const PROJECTS = [
     link: "https://spookywebsite.netlify.app/",
     github: "https://github.com/ignaaaam/spookywebsite",
     image: "/img/optimized/showcase0.webp",
-    tags: [TAGS.PHP, TAGS.TAILWIND, TAGS.JAVASCRIPT],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT],
   },
   {
     title: "Natours Website",
@@ -84,7 +114,7 @@ const PROJECTS = [
     link: "https://websiteproject-natours.netlify.app/",
     github: "https://github.com/ignaaaam/natours-project",
     image: "/img/optimized/showcase1.webp",
-    tags: [TAGS.PHP, TAGS.TAILWIND, TAGS.JAVASCRIPT],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.SASS, TAGS.JAVASCRIPT],
   },
   {
     title: "Omnifood Website",
@@ -93,17 +123,17 @@ const PROJECTS = [
     link: "https://omnifoodrestaurant.netlify.app/",
     github: "https://github.com/ignaaaam/omnifood-project",
     image: "/img/optimized/showcase2.webp",
-    tags: [TAGS.PHP, TAGS.TAILWIND, TAGS.JAVASCRIPT],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT],
   },
 ];
 ---
 
 {
   PROJECTS.map(({ title, description, tags, image, link, github }) => (
-    <article class="my-4">
+    <article class="mt-12 first-of-type:mt-8">
       <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
       <p class="text-lg mb-4 text-pretty">{description}</p>
-      <ul class="flex gap-x-2 flex-row mb-2">
+      <ul class="flex gap-x-2 flex-row mb-4">
         {tags.map((tag) => (
           <li>
             <span
@@ -120,7 +150,7 @@ const PROJECTS = [
         src={image}
         alt={`Captura de pantalla del proyecto ${image}`}
       />
-      <div class="mt-4 flex gap-x-4">
+      <div class="mt-8 flex gap-x-4">
         <a
           href={link}
           target="_blank"
