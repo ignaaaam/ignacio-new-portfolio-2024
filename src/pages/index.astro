@@ -10,20 +10,25 @@ import BehanceIcon from "../components/icons/BehanceIcon.astro";
 import SocialPill from "../components/SocialPill.astro";
 import StackOverflowIcon from "../components/icons/StackOverflowIcon.astro";
 import LaracastsIcon from "../components/icons/LaracastsIcon.astro";
-
-import Experience from "../components/Experience.astro";
-import Studies from "../components/Studies.astro";
-import Projects from "../components/Projects.astro";
 import CodeIcon from "../components/icons/CodeIcon.astro";
 import LearningIcon from "../components/icons/LearningIcon.astro";
+import CertificationIcon from "../components/icons/CertificationIcon.astro";
+
+import Experience from "../components/Experience.astro";
+import Certification from "../components/Certification.astro";
+import Studies from "../components/Studies.astro";
+import Projects from "../components/Projects.astro";
 ---
-<Layout 
+
+<Layout
   title="Ignacio Amat Urbina - Desarrollador y Programador Web Full Stack | Especialista en PHP, Laravel, Livewire, Inertia, Vue, TailwindCSS"
   description="Ignacio Amat Urbina, contrátame si necesitas un desarrollador Web Full Stack y experto en Back End y Front End. Especializado en PHP, Laravel (Livewire e Inertia), Javascript, Vue y TailwindCSS. Aprendiendo Astro para crear sitios web rápidos, optimizados y de alto rendimiento."
-  >
+>
   <main class="px-4">
     <SectionContainer class="py-28 pb-30 lg:py-52">
-      <h1 class="text-3xl md:text-4xl font-extrabold leading-none text-center mb-4 text-white lg:text-5xl flex gap-x-4 pb-6 lg:pb-10">
+      <h1
+        class="text-3xl md:text-4xl font-extrabold leading-none text-center mb-4 text-white lg:text-5xl flex gap-x-4 pb-6 lg:pb-10"
+      >
         Hey, soy Ignacio
         <a
           href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223"
@@ -54,51 +59,65 @@ import LearningIcon from "../components/icons/LearningIcon.astro";
       </h2>
 
       <nav class="flex flex-wrap gap-x-4 gap-y-4 mt-8">
-          <SocialPill href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223">
-            <LinkedinIcon class="size-4 md:size-6" />
-            LinkedIn
-          </SocialPill>
-          <SocialPill href="https://www.github.com/ignaaaam">
-            <GithubIcon class="size-4 md:size-6" />
-            Github
-          </SocialPill>
-          <SocialPill href="https://www.behance.net/igna21df">
-            <BehanceIcon class="size-4 md:size-6" />
-            Behance
-          </SocialPill>
-          <SocialPill href="https://stackoverflow.com/users/18973790/ignacio?tab=profile">
-            <StackOverflowIcon class="size-4 md:size-6" />
-            StackOverflow
-          </SocialPill>
-          <SocialPill href="https://laracasts.com/@ignaaaam">
-            <LaracastsIcon class="size-4 md:size-6" />
-            Laracasts
-          </SocialPill>
-          <SocialPill href="mailto:ignasiamat10@gmail.com">
-            <MailIcon class="size-4 md:size-6" />
-            ignasiamat10@gmail.com
-          </SocialPill>
+        <SocialPill
+          href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223"
+        >
+          <LinkedinIcon class="size-4 md:size-6" />
+          LinkedIn
+        </SocialPill>
+        <SocialPill href="https://www.github.com/ignaaaam">
+          <GithubIcon class="size-4 md:size-6" />
+          Github
+        </SocialPill>
+        <SocialPill href="https://www.behance.net/igna21df">
+          <BehanceIcon class="size-4 md:size-6" />
+          Behance
+        </SocialPill>
+        <SocialPill
+          href="https://stackoverflow.com/users/18973790/ignacio?tab=profile"
+        >
+          <StackOverflowIcon class="size-4 md:size-6" />
+          StackOverflow
+        </SocialPill>
+        <SocialPill href="https://laracasts.com/@ignaaaam">
+          <LaracastsIcon class="size-4 md:size-6" />
+          Laracasts
+        </SocialPill>
+        <SocialPill href="mailto:ignasiamat10@gmail.com">
+          <MailIcon class="size-4 md:size-6" />
+          ignasiamat10@gmail.com
+        </SocialPill>
       </nav>
     </SectionContainer>
 
     <SectionContainer id="experience">
       <h2 class="text-3xl font-bold mb-6 flex gap-x-3 items-center">
         <BriefCaseIcon class="size-8" />
-        Experiencia Laboral</h2>
+        Experiencia Laboral
+      </h2>
       <Experience />
     </SectionContainer>
 
     <SectionContainer id="academics">
       <h2 class="text-3xl font-bold mb-6 flex gap-x-3 items-center">
         <LearningIcon class="size-8" />
-        Experiencia Académica</h2>
+        Experiencia Académica
+      </h2>
       <Studies />
+    </SectionContainer>
+    <SectionContainer id="certifications">
+      <h2 class="text-3xl font-bold mb-6 flex gap-x-3 items-center">
+        <CertificationIcon class="size-8" />
+        Certificaciones
+      </h2>
+      <Certification />
     </SectionContainer>
 
     <SectionContainer id="projects">
       <h2 class="text-3xl font-bold mb-6 flex gap-x-3 items-center">
         <CodeIcon class="size-8" />
-        Proyectos</h2>
+        Proyectos
+      </h2>
       <Projects />
     </SectionContainer>
   </main>
