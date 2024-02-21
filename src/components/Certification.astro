@@ -1,0 +1,75 @@
+---
+import CertificationItem from './CertificationItem.astro'
+
+const CERTIFICATION = [
+{
+    title: "What's new in Laravel 9 & Eloquent Relationships",
+    institution: "Laracasts",
+    date: "2022 - 2022",
+    link: "https://laracasts.com/series/whats-new-in-laravel-9"
+  },
+  {
+    title: "LARAVEL 8 FROM SCRATCH",
+    institution: "Laracasts",
+    date: "2022 - 2022",
+    link: "https://laracasts.com/series/laravel-8-from-scratch",
+  },
+  {
+    title: "CSS Grid - From fundamentals to real-world projects",
+    institution: "Wes Bos",
+    date: "2022 - 2022",
+    link: "https://cssgrid.io/",
+  },
+  {
+    title: "What The Flexbox?!",
+    institution: "Wes Bos",
+    date: "2022 - 2022",
+    link: "https://flexbox.io/",
+  },
+  {
+    title: "The Complete JavaScript Course 2021: From Zero to Expert!",
+    institution: "Udemy - Jonas Schmedtmann",
+    date: "2021 - 2022",
+    link: "https://www.udemy.com/course/the-complete-javascript-course/?couponCode=LETSLEARNNOWPP",
+  },
+  {
+    title: "C1B3RWALL CYBERSECURITY COURSE",
+    institution: "Course from Police of Spain & some different institutions",
+    date: "2020 - 2020",
+    link: "http://c1b3rwall.policia.es",
+  },
+  {
+    title: "INTELCON 2020 CYBERSECURITY",
+    institution: "GINSEG",
+    date: "2020 - 2020",
+    link: "https://intelcon.ginseg.com/2020/",
+  },
+  {
+    title: "LARAVEL 6 FROM SCRATCH",
+    institution: "LARACASTS",
+    date: "2020 - 2020",
+    link: "https://laracasts.com/series/laravel-6-from-scratch"
+  },
+  {
+    title: "Advanced CSS and Sass: Flexbox, Grid, Animations and More!",
+    institution: "Udemy - Jonas Schmedtmann",
+    date: "2019 - 2019",
+    link:"https://www.udemy.com/course/advanced-css-and-sass/?couponCode=LETSLEARNNOWPP",
+  },
+  {
+    title: "Build Responsive Real-World Websites with HTML and CSS",
+    institution: "Udemy - Jonas Schmedtmann",
+    date: "2018 - 2018",
+    link:"https://www.udemy.com/course/design-and-develop-a-killer-website-with-html5-and-css3/?couponCode=LETSLEARNNOWPP",
+  },
+];
+---
+<ol class="relative border-s border-gray-200 ml-4">
+    {
+        CERTIFICATION.map((certification) => (
+            <li class="mb-10 ms-4">
+                <CertificationItem {...certification} />
+            </li>
+        ))
+    }
+</ol>
