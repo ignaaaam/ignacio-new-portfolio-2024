@@ -2,12 +2,10 @@
 interface Props {
   title: string;
   institution: string;
-  description: string;
-  location: string;
   date: string;
   link?: string;
 }
-const { title, institution, date, description, link } = Astro.props;
+const { title, institution, date, link } = Astro.props;
 ---
 
 <div
@@ -22,7 +20,6 @@ const { title, institution, date, description, link } = Astro.props;
   {institution}
 </span>
 <p class="mb-4 text-base font-normal text-gray-200 text-pretty">
-  {description}
 </p>
 {
   link && (
