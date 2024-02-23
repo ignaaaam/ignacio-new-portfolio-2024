@@ -3,6 +3,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "@fontsource-variable/onest";
 import  SpeedInsights  from "@vercel/speed-insights/astro"
+import {Meteors} from "../components/Meteors.tsx";
 
 interface Props {
   title: string;
@@ -76,7 +77,8 @@ const { title, description } = Astro.props;
     <div
       class="absolute top-0 z-[-2] h-[100%] w-[100%] bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
     >
-    </div>
+      <!-- <Meteors /> -->
+  </div>
     <Header />
     <slot />
     <Footer />
