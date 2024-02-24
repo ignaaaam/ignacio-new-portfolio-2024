@@ -1,19 +1,27 @@
 ---
 import Header from "../components/Header.astro";
+import HeaderEnglish from "../pages/en/Header.astro";
+
 import Footer from "../components/Footer.astro";
 import "@fontsource-variable/onest";
 import  SpeedInsights  from "@vercel/speed-insights/astro"
 import {Meteors} from "../components/Meteors.tsx";
+import { ViewTransitions } from 'astro:transitions';
+import { getLangFromUrl, useTranslations  } from '../i18n/utils';
 
 interface Props {
   title: string;
   description: string;
 }
 const { title, description } = Astro.props;
+
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -37,8 +45,11 @@ const { title, description } = Astro.props;
     <link rel="canonical" href="https://www.ignathedev.com">
     <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{title}</title>
+    <!-- <ViewTransitions /> -->
 
     <meta name="description" content="Passionate full-stack web developer & Laravel Expert based in Barcelona, offering web development and design services.">
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
+
 
   <!-- Facebook Meta Tags -->
   <meta property="og:url" content="https://www.ignathedev.com/">
@@ -62,11 +73,11 @@ const { title, description } = Astro.props;
     <meta property="og:locale" content="es_ES">
 
     <!-- Keywords -->
-    <meta property="og:keywords" content="Desarrollador Web Full Stack, Diseño Web, Desarrollo Web, Barcelona, España, Freelance, Laravel, Inertia, Vue 3, SEO, Innovación, Calidad, Desarrollador Mid, Desarrollador Junior">
+    <meta name="keywords" content={t('keywords')}>
 
     <!-- Author -->
     <meta property="og:author" content="Ignacio Amat Urbina">
-
+    
     <script type="application/ld+json">
 			{"name" : "ignathedev",
 			  "url" : "https://www.ignathedev.com", 
@@ -79,7 +90,11 @@ const { title, description } = Astro.props;
     >
       <!-- <Meteors /> -->
   </div>
-    <Header />
+    {lang === 'es' ? (
+      <Header />
+    ) : (
+      <HeaderEnglish />
+    )}
     <slot />
     <Footer />
   </body>
