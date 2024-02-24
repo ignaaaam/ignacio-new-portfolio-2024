@@ -9,6 +9,13 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
+  i18n: {
+    defaultLocale: "es",
+    locales: ["en", "es"],
+    routing: {
+        prefixDefaultLocale: false
+    }
+  }
   output: "static",
   integrations: [
     tailwind(),
