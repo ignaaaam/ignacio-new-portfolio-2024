@@ -15,7 +15,7 @@ export default defineConfig({
     routing: {
         prefixDefaultLocale: false
     }
-  }
+  },
   output: "static",
   integrations: [
     tailwind(),
