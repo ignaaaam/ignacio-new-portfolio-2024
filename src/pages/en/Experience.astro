@@ -1,0 +1,39 @@
+---
+import ExperienceItem from './ExperienceItem.astro'
+
+const EXPERIENCE = [
+    {
+        title: 'Full Stack Web Developer',
+        company: 'MANIFIESTO',
+        location: 'Barcelona, Spain',
+        date: 'Aug 2022 - Present',
+        description: 'Working as a Full Stack Web Developer for high-level companies in Spain such as Btravel, Playstation, Glovo, TikTok, LaCaixa, Sofinco, ElPozo, Bizum, TacoBell, Ginos, Citroen, and more. Building websites and web applications & internal tools using PHP, Laravel, Livewire, Inertia, Vue, MySQL, and TailwindCSS, managing all these projects using GIT, Laravel Forge, and DigitalOcean.',
+        link: 'https://manifiesto.biz/',
+    },
+    {
+        title: 'Full Stack Web Developer at VILAX Marketing Agency',
+        company: 'VILAX',
+        location: 'Viladecans, Spain',
+        date: '2021 - 2022',
+        description: 'Managed multiple websites and hosting for companies, mainly using Wordpress + Elementor + Woocommerce and developed/modified some plugins to interact with the core files of Wordpress and Woocommerce. Also performed small tasks on all those websites, such as changing hosting, setting up new Wordpress installations, SSL configurations, and troubleshooting all kinds of issues related to those technologies.',
+        link: 'https://www.vilax.es/',
+    },
+    {
+        title: 'Freelance Web Developer',
+        company: 'Upwork',
+        location: 'Worldwide',
+        date: '2019 - 2020',
+        description: 'Solved tasks for individuals or companies, these tasks involved fixing bugs on an existing website, fixing poorly implemented code, and adding new sites, designs, sections, and rewriting code that could have been improved.',
+        link: 'https://www.upwork.com/',
+    },
+];
+---
+<ol class="relative border-s border-gray-200 ml-4">
+    {
+        EXPERIENCE.map((experience) => (
+            <li class="mb-10 ms-4">
+                <ExperienceItem {...experience} />
+            </li>
+        ))
+    }
+</ol>

@@ -1,0 +1,180 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Badge from "../../components/Badge.astro";
+import SectionContainer from "../../components/SectionContainer.astro";
+
+import LinkedinIcon from "../../components/icons/LinkedinIcon.astro";
+import GithubIcon from "../../components/icons/GithubIcon.astro";
+import BriefCaseIcon from "../../components/icons/BriefCaseIcon.astro";
+import MailIcon from "../../components/icons/MailIcon.astro";
+import BehanceIcon from "../../components/icons/BehanceIcon.astro";
+import SocialPill from "../../components/SocialPill.astro";
+import StackOverflowIcon from "../../components/icons/StackOverflowIcon.astro";
+import LaracastsIcon from "../../components/icons/LaracastsIcon.astro";
+import CodeIcon from "../../components/icons/CodeIcon.astro";
+import LearningIcon from "../../components/icons/LearningIcon.astro";
+import CertificationIcon from "../../components/icons/CertificationIcon.astro";
+
+import Experience from "./Experience.astro";
+import Certification from "./Certification.astro";
+import Studies from "./Studies.astro";
+import Projects from "./Projects.astro";
+---
+
+<Layout
+  title="Ignacio Amat Urbina - Full Stack Web Developer and Programmer | Specialist in PHP, Laravel, Livewire, Inertia, Vue, TailwindCSS"
+  description="Ignacio Amat Urbina, hire me if you need a Full Stack Web Developer and expert in Back End and Front End. Specialized in PHP, Laravel (Livewire and Inertia), Javascript, Vue and TailwindCSS. Learning Astro to create fast, optimized, and high-performance websites."
+>
+  <main class="px-4">
+    <SectionContainer class="py-28 pb-30 lg:py-52">
+      <h1
+        class="text-3xl md:text-4xl font-extrabold leading-none text-center mb-4 text-white lg:text-5xl flex gap-x-4 pb-6 lg:pb-10"
+      >
+      Hey, I'm Ignacio
+        <a
+          href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223"
+          target="_blank"
+          rel="noopener"
+          class="flex justify-center items-center"
+          ><Badge>Hired</Badge></a
+        >
+      </h1>
+      <h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
+        <span>+3 years of experience.</span><span class="text-yellow-200">
+          Full Stack Web Developer</span
+        >. <span class="text-red-200/90"> From Barcelona, Spain.</span>
+        <span class="opacity-75"
+          >Specialized in creating high-performance web apps and websites.</span
+        >
+      </h2>
+      <br />
+      <h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
+        Expert in Back End Web Development with <span class="text-[#7477AC]"
+          >PHP</span
+        >, <span class="text-[#FF2819]">Laravel</span>, and <span
+          class="bg-clip-text text-transparent bg-gradient-to-r from-[#005E8A] from-30% to-[#EBA921] to-50%"
+          >MYSQL</span
+        >, and Front End Development with <span class="text-[#3FB27F]">Vue.js</span>
+        and<span class="text-[#EFD81D]"> Javascript</span>.
+      </h2>
+
+      <nav class="flex flex-wrap gap-x-4 gap-y-4 mt-8">
+        <SocialPill
+          href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223"
+        >
+          <LinkedinIcon class="size-4 md:size-6" />
+          LinkedIn
+        </SocialPill>
+        <SocialPill href="https://www.github.com/ignaaaam">
+          <GithubIcon class="size-4 md:size-6" />
+          Github
+        </SocialPill>
+        <SocialPill href="https://www.behance.net/igna21df">
+          <BehanceIcon class="size-4 md:size-6" />
+          Behance
+        </SocialPill>
+        <SocialPill
+          href="https://stackoverflow.com/users/18973790/ignacio?tab=profile"
+        >
+          <StackOverflowIcon class="size-4 md:size-6" />
+          StackOverflow
+        </SocialPill>
+        <SocialPill href="https://laracasts.com/@ignaaaam">
+          <LaracastsIcon class="size-4 md:size-6" />
+          Laracasts
+        </SocialPill>
+        <SocialPill href="mailto:ignasiamat10@gmail.com">
+          <MailIcon class="size-4 md:size-6" />
+          ignasiamat10@gmail.com
+        </SocialPill>
+      </nav>
+    </SectionContainer>
+
+    <SectionContainer id="experience">
+      <h2 class="text-3xl font-bold mb-6 flex gap-x-3 items-center">
+        <BriefCaseIcon class="size-8" />
+        Work Experience
+      </h2>
+      <Experience />
+    </SectionContainer>
+
+    <SectionContainer id="academics">
+      <h2 class="text-3xl font-bold mb-6 flex gap-x-3 items-center">
+        <LearningIcon class="size-8" />
+        Academic Experience
+      </h2>
+      <Studies />
+    </SectionContainer>
+    <SectionContainer id="certifications">
+      <h2 class="text-3xl font-bold mb-6 flex gap-x-3 items-center">
+        <CertificationIcon class="size-8" />
+        Certifications
+      </h2>
+      <Certification />
+    </SectionContainer>
+
+    <SectionContainer id="projects">
+      <h2 class="text-3xl font-bold mb-6 flex gap-x-3 items-center">
+        <CodeIcon class="size-8" />
+        Projects
+      </h2>
+      <Projects />
+    </SectionContainer>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+    color: white;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+  .astro-a {
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    transform: translatex(-50%);
+    width: 220px;
+    height: auto;
+    z-index: -1;
+  }
+
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+  .instructions {
+    margin-bottom: 2rem;
+    border: 1px solid rgba(var(--accent-light), 25%);
+    background: linear-gradient(
+      rgba(var(--accent-dark), 66%),
+      rgba(var(--accent-dark), 33%)
+    );
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+  .instructions code {
+    font-size: 0.8em;
+    font-weight: bold;
+    background: rgba(var(--accent-light), 12%);
+    color: rgb(var(--accent-light));
+    border-radius: 4px;
+    padding: 0.3em 0.4em;
+  }
+  .instructions strong {
+    color: rgb(var(--accent-light));
+  }
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 2rem;
+    padding: 0;
+  }
+</style>
