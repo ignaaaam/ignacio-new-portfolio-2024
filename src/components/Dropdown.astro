@@ -1,0 +1,74 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+import SpanishFlag from "../components/icons/SpanishFlag.astro";
+import EnglishFlag from "../components/icons/EnglishFlag.astro";
+import { ViewTransitions } from 'astro:transitions';
+
+---
+
+<div
+  class="mt-4 md:mt-0 flex items-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse"
+>
+  {
+    lang === "es" ? (
+      <button data-astro-reload
+      type="button" data-dropdown-toggle="language-dropdown-menu"
+        class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-white dark:text-black rounded-lg cursor-pointer hover:bg-slate-500 dark:hover:bg-gray-700 dark:hover:text-black"
+      >
+        <SpanishFlag />
+        Spanish (ES)
+      </button>
+    ) : (
+      <a data-astro-reload
+        data-dropdown-toggle="language-dropdown-menu"
+        class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-white dark:text-black rounded-lg cursor-pointer hover:bg-slate-500 dark:hover:bg-gray-700 dark:hover:text-black"
+        role="menuitem"
+      >
+        <div class="inline-flex items-center">
+          <EnglishFlag />
+          English (US)
+        </div>
+      </a>
+    )
+  }
+
+  <div
+    class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700"
+    id="language-dropdown-menu"
+  >
+    <ul
+      class="py-2 font-medium"
+      role="none"
+    >
+      <li>
+        {
+          lang === "es" ? (
+            <a data-astro-reload
+              href="/en"
+              class="block px-4 py-2 text-sm text-black hover:bg-gray-100 dark:text-black dark:hover:bg-gray-600 dark:hover:text-black"
+              role="menuitem"
+            >
+              <div class="inline-flex items-center">
+                <EnglishFlag />
+                English (US)
+              </div>
+            </a>
+          ) : (
+            <a data-astro-reload
+              href="/"
+              class="block px-4 py-2 text-sm text-black hover:bg-gray-100 dark:text-black dark:hover:bg-gray-600 dark:hover:text-black"
+              role="menuitem"
+            >
+              <div class="inline-flex items-center">
+                <SpanishFlag />
+                Spanish (ES)
+              </div>
+            </a>
+          )
+        }
+      </li>
+    </ul>
+  </div>
+</div>
