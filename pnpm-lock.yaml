@@ -26,6 +26,9 @@ dependencies:
   '@fontsource-variable/onest':
     specifier: ^5.0.2
     version: 5.0.2
+  '@fontsource-variable/overpass':
+    specifier: ^5.0.17
+    version: 5.0.17
   '@fontsource/onest':
     specifier: ^5.0.2
     version: 5.0.2
@@ -50,6 +53,9 @@ dependencies:
   flowbite:
     specifier: ^2.3.0
     version: 2.3.0
+  gsap:
+    specifier: ^3.12.5
+    version: 3.12.5
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -738,6 +744,10 @@ packages:
 
   /@fontsource-variable/onest@5.0.2:
     resolution: {integrity: sha512-XsH6q+/OyO0Oba4OB/NkiQu3ON93U2Kx+1YxKpNZMuS+a+WvxipwhO8Und2CC0mLI33xOZzTWUk4wtnsUJzjCQ==}
+    dev: false
+
+  /@fontsource-variable/overpass@5.0.17:
+    resolution: {integrity: sha512-NzrUBQPBlVpfTpMqBIYsrxIKer+ADtC07e9NyxnSgBsgV1eZwaih9cRGnuOa4H/B00kM0bBj1kN1M6XEiVeFuA==}
     dev: false
 
   /@fontsource/onest@5.0.2:
@@ -2215,6 +2225,10 @@ packages:
       kind-of: 6.0.3
       section-matter: 1.0.0
       strip-bom-string: 1.0.0
+    dev: false
+
+  /gsap@3.12.5:
+    resolution: {integrity: sha512-srBfnk4n+Oe/ZnMIOXt3gT605BX9x5+rh/prT2F1SsNJsU1XuMiP0E2aptW481OnonOGACZWBqseH5Z7csHxhQ==}
     dev: false
 
   /has-flag@3.0.0:

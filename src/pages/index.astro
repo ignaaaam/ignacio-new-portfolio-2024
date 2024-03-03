@@ -14,12 +14,14 @@ import CodeIcon from "../components/icons/CodeIcon.astro";
 import LearningIcon from "../components/icons/LearningIcon.astro";
 import CertificationIcon from "../components/icons/CertificationIcon.astro";
 
+import MouseScroll from "../components/MouseScroll.astro";
+import Arrow from "../components/Arrow.astro";
+
 import Experience from "../components/Experience.astro";
 import Certification from "../components/Certification.astro";
 import Studies from "../components/Studies.astro";
 import Projects from "../components/Projects.astro";
-import { fade } from 'astro:transitions';
-
+import { fade } from "astro:transitions";
 ---
 
 <Layout
@@ -59,7 +61,6 @@ import { fade } from 'astro:transitions';
         >, y Desarrollo Front End con <span class="text-[#3FB27F]">Vue.js</span>
         y<span class="text-[#EFD81D]"> Javascript</span>.
       </h2>
-
       <nav class="flex flex-wrap gap-x-4 gap-y-4 mt-8">
         <SocialPill
           href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223"
@@ -90,7 +91,31 @@ import { fade } from 'astro:transitions';
           ignasiamat10@gmail.com
         </SocialPill>
       </nav>
+      <div>
+        <Arrow class="size-16 relative lg:left-[56%] rotate-[-90deg] left-[65%] top-[10px] md:left-[32%] md:top-[-10px]" /> 
+        <span class="uppercase font-bold text-sm relative lg:left-[66%] lg:bottom-[25px] left-[80%] bottom-[-10px] md:left-[42%] md:top-[-45px]">Contact me!</span>
+      </div>
+      <MouseScroll />
     </SectionContainer>
+
+    <!-- <SectionContainer class="pb-40">
+      <h1
+        id="landingPageTitle"
+        class="text-6xl md:text-4xl font-extrabold py-4 text-center mb-12 lg:text-[6rem] lg:pb-10"
+      >
+        ¿Buscas una landing page?
+      </h1>
+      <!-- Explica que últimamente he estado aprendiendo el framework Astro y eso me permite crear landing pages con buen rendimiento,más rápido que usando Wordpress y con mejor optimizacion -->
+      <!-- <h2 class="w-full text-xl lg:text-2xl text-wrap max-w-[1600px]">
+        Últimamente he estado aprendiendo el framework <a
+          target="_blank"
+          rel="noopener"
+          href="https://astro.build/"
+          ><span class="underline text-[#40224E]">Astro</span></a
+        > y eso me permite crear landing pages con buen rendimiento, más rápido que
+        usando Wordpress y con mejor optimización.
+      </h2>
+    </SectionContainer> -->
 
     <SectionContainer id="experience">
       <h2 class="text-3xl font-bold mb-6 flex gap-x-3 items-center">
@@ -129,8 +154,8 @@ import { fade } from 'astro:transitions';
   main {
     margin: auto;
     padding: 1rem;
-    width: 800px;
-    max-width: calc(100% - 2rem);
+    width: 1200px;
+    max-width: calc(100% - 1rem);
     color: white;
     font-size: 20px;
     line-height: 1.6;
@@ -178,5 +203,17 @@ import { fade } from 'astro:transitions';
     grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
     gap: 2rem;
     padding: 0;
+  }
+
+  #landingPageTitle {
+    background: linear-gradient(
+      90deg,
+      rgba(36, 5, 3, 0.705) 0%,
+      rgba(255, 40, 25, 0.829) 50%,
+      rgba(36, 5, 3, 0.705) 100%
+    );
+    line-height: normal;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 </style>
