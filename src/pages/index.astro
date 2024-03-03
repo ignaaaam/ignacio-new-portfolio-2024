@@ -29,16 +29,16 @@ import { fade } from "astro:transitions";
   description="Ignacio Amat Urbina, contrátame si necesitas un desarrollador Web Full Stack y experto en Back End y Front End. Especializado en PHP, Laravel (Livewire e Inertia), Javascript, Vue y TailwindCSS. Aprendiendo Astro para crear sitios web rápidos, optimizados y de alto rendimiento."
 >
   <main class="px-4">
-    <SectionContainer class="py-28 pb-30 lg:py-52">
+    <SectionContainer class="py-8 md:py-28 pb-30 lg:py-52">
       <h1
-        class="text-3xl md:text-4xl font-extrabold leading-none text-center mb-4 text-white lg:text-5xl flex gap-x-4 pb-6 lg:pb-10"
+        class="flex pb-6 mb-4 text-3xl font-extrabold leading-none text-center text-white md:text-4xl lg:text-5xl gap-x-4 lg:pb-10"
       >
         Hey, soy Ignacio
         <a
           href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223"
           target="_blank"
           rel="noopener"
-          class="flex justify-center items-center"
+          class="flex items-center justify-center"
           ><Badge>Hired</Badge></a
         >
       </h1>
@@ -61,7 +61,7 @@ import { fade } from "astro:transitions";
         >, y Desarrollo Front End con <span class="text-[#3FB27F]">Vue.js</span>
         y<span class="text-[#EFD81D]"> Javascript</span>.
       </h2>
-      <nav class="flex flex-wrap gap-x-4 gap-y-4 mt-8">
+      <nav class="flex flex-wrap mt-8 gap-x-4 gap-y-4">
         <SocialPill
           href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223"
         >
@@ -91,11 +91,23 @@ import { fade } from "astro:transitions";
           ignasiamat10@gmail.com
         </SocialPill>
       </nav>
-      <div>
-        <Arrow class="size-16 relative lg:left-[56%] rotate-[-90deg] left-[65%] top-[10px] md:left-[32%] md:top-[-10px]" /> 
-        <span class="uppercase font-bold text-sm relative lg:left-[66%] lg:bottom-[25px] left-[80%] bottom-[-10px] md:left-[42%] md:top-[-45px]">Contact me!</span>
+      <div class="fixed right-40 md:static md:bottom-auto md:right-auto"></div>
+        <Arrow
+          class="size-12 md:size-16 md:rotate-[-94deg] relative lg:left-[56%] rotate-[-120deg] left-[60%] -top-[1.6rem] md:left-[58%] md:top-[-10px]"
+        />
+        <a href="mailto:ignasiamat10@gmail.com"
+          class="border bg-white text-black p-2 rounded-full uppercase font-bold text-xs relative lg:left-[66%] lg:bottom-[25px] left-[76%] top-[-2.2rem] md:left-[66%] md:top-[-0.3rem] shadow-md shadow-white/20"
+          >Contact me!</a
+        >
       </div>
-      <MouseScroll />
+      <!-- <Arrow
+          class="size-16 relative lg:left-[56%] rotate-[-90deg] left-[65%] top-[10px] md:left-[32%] md:top-[-10px]"
+        />
+        <span
+          class="uppercase font-bold text-sm relative lg:left-[66%] lg:bottom-[25px] left-[80%] bottom-[-10px] md:left-[42%] md:top-[-45px]"
+          >Contact me!</span
+        > -->
+      <!-- <MouseScroll /> -->
     </SectionContainer>
 
     <!-- <SectionContainer class="pb-40">
@@ -106,7 +118,7 @@ import { fade } from "astro:transitions";
         ¿Buscas una landing page?
       </h1>
       <!-- Explica que últimamente he estado aprendiendo el framework Astro y eso me permite crear landing pages con buen rendimiento,más rápido que usando Wordpress y con mejor optimizacion -->
-      <!-- <h2 class="w-full text-xl lg:text-2xl text-wrap max-w-[1600px]">
+    <!-- <h2 class="w-full text-xl lg:text-2xl text-wrap max-w-[1600px]">
         Últimamente he estado aprendiendo el framework <a
           target="_blank"
           rel="noopener"
@@ -118,7 +130,7 @@ import { fade } from "astro:transitions";
     </SectionContainer> -->
 
     <SectionContainer id="experience">
-      <h2 class="text-3xl font-bold mb-6 flex gap-x-3 items-center">
+      <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
         <BriefCaseIcon class="size-8" />
         Experiencia Laboral
       </h2>
@@ -126,14 +138,14 @@ import { fade } from "astro:transitions";
     </SectionContainer>
 
     <SectionContainer id="academics">
-      <h2 class="text-3xl font-bold mb-6 flex gap-x-3 items-center">
+      <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
         <LearningIcon class="size-8" />
         Experiencia Académica
       </h2>
       <Studies />
     </SectionContainer>
     <SectionContainer id="certifications">
-      <h2 class="text-3xl font-bold mb-6 flex gap-x-3 items-center">
+      <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
         <CertificationIcon class="size-8" />
         Certificaciones
       </h2>
@@ -141,7 +153,7 @@ import { fade } from "astro:transitions";
     </SectionContainer>
 
     <SectionContainer id="projects">
-      <h2 class="text-3xl font-bold mb-6 flex gap-x-3 items-center">
+      <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
         <CodeIcon class="size-8" />
         Proyectos
       </h2>
