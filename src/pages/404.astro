@@ -1,0 +1,23 @@
+---
+import Header from "../components/Header.astro"
+import Footer from "../components/Footer.astro"
+import Layout from "../layouts/Layout.astro"
+
+import { getLangFromUrl, useTranslations  } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+<Layout
+  title="Ignacio Amat Urbina - Desarrollador y Programador Web Full Stack | Especialista en PHP, Laravel, Livewire, Inertia, Vue, TailwindCSS"
+  description="Ignacio Amat Urbina, contrátame si necesitas un desarrollador Web Full Stack y experto en Back End y Front End. Especializado en PHP, Laravel (Livewire e Inertia), Javascript, Vue y TailwindCSS. Aprendiendo Astro para crear sitios web rápidos, optimizados y de alto rendimiento."
+>
+
+<main class="flex flex-col items-center justify-center min-h-screen text-center">
+  <h1 class="text-[90px] font-bold text-white">404</h1>
+<p class="mt-3 text-lg text-white">{t('404-content')}</p>
+  <a class="inline-flex items-center mt-8 px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-yellow-500/90 focus:z-10 focus:ring-2 focus:outline-none focus:ring-gray-200 focus:text-yellow-500/90 transition" href="/">
+    {t('404-button')}
+  </a>
+</main>
+</Layout>
