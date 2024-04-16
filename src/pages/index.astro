@@ -13,6 +13,8 @@ import LaracastsIcon from "../components/icons/LaracastsIcon.astro";
 import CodeIcon from "../components/icons/CodeIcon.astro";
 import LearningIcon from "../components/icons/LearningIcon.astro";
 import CertificationIcon from "../components/icons/CertificationIcon.astro";
+import Github from "../components/icons/GithubIcon.astro";
+
 
 import MouseScroll from "../components/MouseScroll.astro";
 import Arrow from "../components/Arrow.astro";
@@ -92,25 +94,26 @@ import { fade } from "astro:transitions";
         </SocialPill>
       </nav>
       <div class="fixed right-40 md:static md:bottom-auto md:right-auto"></div>
-        <Arrow
-          class="size-12 md:size-16 md:rotate-[-94deg] relative lg:left-[56%] rotate-[-120deg] left-[60%] -top-[1.6rem] md:left-[58%] md:top-[-10px]"
-        />
-        <a href="mailto:ignasiamat10@gmail.com"
-          class="border bg-white text-black p-2 rounded-full uppercase font-bold text-xs relative lg:left-[66%] lg:bottom-[25px] left-[76%] top-[-2.2rem] md:left-[66%] md:top-[-0.3rem] shadow-md shadow-white/20"
-          >Contact me!</a
-        >
-      </div>
-      <!-- <Arrow
+      <Arrow
+        class="size-12 md:size-16 md:rotate-[-94deg] relative lg:left-[56%] rotate-[-120deg] left-[60%] -top-[1.6rem] md:left-[58%] md:top-[-10px]"
+      />
+      <a
+        href="mailto:ignasiamat10@gmail.com"
+        class="border bg-white text-black p-2 rounded-full uppercase font-bold text-xs relative lg:left-[66%] lg:bottom-[25px] left-[76%] top-[-2.2rem] md:left-[66%] md:top-[-0.3rem] shadow-md shadow-white/20"
+        >Contact me!</a
+      >
+    </SectionContainer>
+    <!-- <Arrow
           class="size-16 relative lg:left-[56%] rotate-[-90deg] left-[65%] top-[10px] md:left-[32%] md:top-[-10px]"
         />
         <span
           class="uppercase font-bold text-sm relative lg:left-[66%] lg:bottom-[25px] left-[80%] bottom-[-10px] md:left-[42%] md:top-[-45px]"
           >Contact me!</span
         > -->
-      <!-- <MouseScroll /> -->
-    </SectionContainer>
+    <!-- <MouseScroll /> -->
+  </main>
 
-    <!-- <SectionContainer class="pb-40">
+  <!-- <SectionContainer class="pb-40">
       <h1
         id="landingPageTitle"
         class="text-6xl md:text-4xl font-extrabold py-4 text-center mb-12 lg:text-[6rem] lg:pb-10"
@@ -118,7 +121,7 @@ import { fade } from "astro:transitions";
         ¿Buscas una landing page?
       </h1>
       <!-- Explica que últimamente he estado aprendiendo el framework Astro y eso me permite crear landing pages con buen rendimiento,más rápido que usando Wordpress y con mejor optimizacion -->
-    <!-- <h2 class="w-full text-xl lg:text-2xl text-wrap max-w-[1600px]">
+  <!-- <h2 class="w-full text-xl lg:text-2xl text-wrap max-w-[1600px]">
         Últimamente he estado aprendiendo el framework <a
           target="_blank"
           rel="noopener"
@@ -129,37 +132,36 @@ import { fade } from "astro:transitions";
       </h2>
     </SectionContainer> -->
 
-    <SectionContainer id="experience">
-      <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
-        <BriefCaseIcon class="size-8" />
-        Experiencia Laboral
-      </h2>
-      <Experience />
-    </SectionContainer>
+  <SectionContainer id="experience">
+    <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
+      <BriefCaseIcon class="size-8" />
+      Experiencia Laboral
+    </h2>
+    <Experience />
+  </SectionContainer>
 
-    <SectionContainer id="academics">
-      <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
-        <LearningIcon class="size-8" />
-        Experiencia Académica
-      </h2>
-      <Studies />
-    </SectionContainer>
-    <SectionContainer id="certifications">
-      <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
-        <CertificationIcon class="size-8" />
-        Certificaciones
-      </h2>
-      <Certification />
-    </SectionContainer>
+  <SectionContainer id="academics">
+    <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
+      <LearningIcon class="size-8" />
+      Experiencia Académica
+    </h2>
+    <Studies />
+  </SectionContainer>
+  <SectionContainer id="certifications">
+    <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
+      <CertificationIcon class="size-8" />
+      Certificaciones
+    </h2>
+    <Certification />
+  </SectionContainer>
 
-    <SectionContainer id="projects">
-      <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
-        <CodeIcon class="size-8" />
-        Proyectos
-      </h2>
-      <Projects />
-    </SectionContainer>
-  </main>
+  <SectionContainer id="projects">
+    <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
+      <CodeIcon class="size-8" />
+      Proyectos
+    </h2>
+    <Projects />
+  </SectionContainer>
 </Layout>
 
 <style>

@@ -14,7 +14,6 @@ import Laravel from "./icons/LaravelIcon.astro";
 import Css from "./icons/CSSIcon.astro";
 import SassIcon from "./icons/SassIcon.astro";
 
-
 const TAGS = {
   NEXT: {
     name: "NextJS",
@@ -101,7 +100,7 @@ const PROJECTS = [
   {
     title: "Halloween Website",
     description:
-    "Sitio web responsivo que simula una tienda de halloween, solo frontend usando HTML CSS y JavaScript, se usaron algunas librerías de JS y se agregaron algunas animaciones de CSS.",
+      "Sitio web responsivo que simula una tienda de halloween, solo frontend usando HTML CSS y JavaScript, se usaron algunas librerías de JS y se agregaron algunas animaciones de CSS.",
     link: "https://spookywebsite.netlify.app/",
     github: "https://github.com/ignaaaam/spookywebsite",
     image: "/img/optimized/showcase0.webp",
@@ -110,7 +109,7 @@ const PROJECTS = [
   {
     title: "Natours Website",
     description:
-    "Sitio web sobre tours de la naturaleza, hecho en un curso mientras estaba perfeccionando mis habilidades de HTML y CSS. Es una página de aterrizaje que tiene una interfaz de usuario limpia hecha completamente con HTML y CSS puro.",
+      "Sitio web sobre tours de la naturaleza, hecho en un curso mientras estaba perfeccionando mis habilidades de HTML y CSS. Es una página de aterrizaje que tiene una interfaz de usuario limpia hecha completamente con HTML y CSS puro.",
     link: "https://websiteproject-natours.netlify.app/",
     github: "https://github.com/ignaaaam/natours-project",
     image: "/img/optimized/showcase1.webp",
@@ -119,7 +118,7 @@ const PROJECTS = [
   {
     title: "Omnifood Website",
     description:
-    "Sitio web sobre entrega de comida saludable hecho en mis días iniciales de aprendizaje de HTML y CSS mientras estaba comenzando a aprender tecnologías básicas. ",
+      "Sitio web sobre entrega de comida saludable hecho en mis días iniciales de aprendizaje de HTML y CSS mientras estaba comenzando a aprender tecnologías básicas. ",
     link: "https://omnifoodrestaurant.netlify.app/",
     github: "https://github.com/ignaaaam/omnifood-project",
     image: "/img/optimized/showcase2.webp",
@@ -175,9 +174,12 @@ const PROJECTS = [
           </svg>
         </a>
 
-        <a href={github}
+        <a
+          href={github}
           target="_blank"
-          rel="noopener" class="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+          rel="noopener"
+          class="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+        >
           <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
           <span class="gap-x-2 inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
             Github
@@ -185,6 +187,21 @@ const PROJECTS = [
           </span>
         </a>
       </div>
+      <p class="text-sm mt-12 mb-4 text-pretty">
+        Si quieres ver otros proyectos y lenguajes que estoy aprendiendo como Livewire, AlpineJS, Vue y demás no dudes en visitar mi perfil de Github
+      </p>
+      <a
+        href="https://github.com/ignaaaam"
+        target="_blank"
+        rel="noopener"
+        class="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+      >
+        <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)] hover:bg-slate-300" />
+        <span class="w-[230px] gap-x-2 inline-flex h-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+          Github
+          <Github class="size-5" />
+        </span>
+      </a>
     </article>
   ))
 }
