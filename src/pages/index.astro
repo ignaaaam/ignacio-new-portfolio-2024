@@ -15,7 +15,6 @@ import LearningIcon from "../components/icons/LearningIcon.astro";
 import CertificationIcon from "../components/icons/CertificationIcon.astro";
 import Github from "../components/icons/GithubIcon.astro";
 
-
 import MouseScroll from "../components/MouseScroll.astro";
 import Arrow from "../components/Arrow.astro";
 
@@ -95,13 +94,14 @@ import { fade } from "astro:transitions";
       </nav>
       <div class="fixed right-40 md:static md:bottom-auto md:right-auto"></div>
       <Arrow
-        class="size-12 md:size-16 md:rotate-[-94deg] relative lg:left-[56%] rotate-[-120deg] left-[60%] -top-[1.6rem] md:left-[58%] md:top-[-10px]"
+        class="size-12 md:size-16 md:rotate-[-94deg] relative lg:left-[56%] rotate-[-110deg] left-[64%] -top-[0.5rem] md:left-[58%] md:top-[-10px]"
       />
       <a
         href="mailto:ignasiamat10@gmail.com"
-        class="border bg-white text-black p-2 rounded-full uppercase font-bold text-xs relative lg:left-[66%] lg:bottom-[25px] left-[76%] top-[-2.2rem] md:left-[66%] md:top-[-0.3rem] shadow-md shadow-white/20"
-        >Contact me!</a
+        class="blob-white border border-black bg-white text-black p-2.5 rounded-full uppercase font-bold text-xs relative lg:left-[66%] lg:bottom-[25px] left-[60%] top-[-0.2rem] md:left-[66%] md:top-[-0.3rem] shadow-md shadow-white/20 transition-transform duration-300 ease-in-out transform hover:scale-105"
       >
+      <span>Contact me to build!</span>
+      </a>
     </SectionContainer>
     <!-- <Arrow
           class="size-16 relative lg:left-[56%] rotate-[-90deg] left-[65%] top-[10px] md:left-[32%] md:top-[-10px]"
@@ -230,4 +230,28 @@ import { fade } from "astro:transitions";
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  @keyframes pulse-white {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+	}
+	
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+	}
+	
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+	}
+}
+
+.blob-white {
+	background: white;
+	box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
+	animation: pulse-white 2s infinite;
+}
+
 </style>
