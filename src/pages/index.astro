@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Badge from "../components/Badge.astro";
 import SectionContainer from "../components/SectionContainer.astro";
+import FullSectionContainer from "../components/FullSectionContainer.astro";
 import LinkedinIcon from "../components/icons/LinkedinIcon.astro";
 import GithubIcon from "../components/icons/GithubIcon.astro";
 import BriefCaseIcon from "../components/icons/BriefCaseIcon.astro";
@@ -44,7 +45,9 @@ import { fade } from "astro:transitions";
         >
       </h1>
       <h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
-        <span>+3 años de experiencia.</span><span class="font-bold text-yellow-200">
+        <span>+3 años de experiencia.</span><span
+          class="font-bold text-yellow-200"
+        >
           Desarrollador Web Full Stack</span
         >. <span class="text-red-200/90 font-bol"> De Barcelona, España.</span>
         <span class="opacity-75"
@@ -54,12 +57,11 @@ import { fade } from "astro:transitions";
       </h2>
       <br />
       <h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
-        Experto en Desarrollo Web Back End con <span class="font-bold text-[#7477AC]"
-          >PHP</span
+        Experto en Desarrollo Web Back End con <span
+          class="font-bold text-[#7477AC]">PHP</span
         >, <span class="font-bold text-[#FF2819]">Laravel</span> y <span
-          class="font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#005E8A] from-30% to-[#EBA921] to-50%"
-          >MYSQL</span
-        >, y Desarrollo Front End con <span class="font-bold text-[#3FB27F]">Vue.js</span>
+          class="font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#005E8A] from-30% to-[#EBA921] to-50%">MYSQL</span>, y Desarrollo Front End con <span class="font-bold text-[#3FB27F]"
+          >Vue.js</span>
         y<span class="font-bold text-[#EFD81D]"> Javascript</span>.
       </h2>
       <nav class="flex flex-wrap mt-8 gap-x-4 gap-y-4">
@@ -98,70 +100,72 @@ import { fade } from "astro:transitions";
       />
       <a
         href="mailto:ignasiamat10@gmail.com"
-        class="blob-white border border-black bg-white text-black p-2.5 rounded-full uppercase font-bold text-xs relative lg:left-[66%] lg:bottom-[25px] left-[55%] top-[-0.2rem] md:left-[66%] md:top-[-0.3rem] shadow-md shadow-white/20 transition-transform duration-300 ease-in-out transform hover:scale-105"
+        class="blob-white border border-black bg-white text-black p-2.5 rounded-full uppercase font-bold text-xs relative lg:left-[66%] lg:bottom-[25px] left-[50%] top-[-0.2rem] md:left-[66%] md:top-[-0.3rem] shadow-md shadow-white/20 transition-transform duration-300 ease-in-out transform hover:scale-105"
       >
-      <span>Contact me to build!</span>
+        <span>Contáctame para empezar</span>
       </a>
     </SectionContainer>
-    <!-- <Arrow
-          class="size-16 relative lg:left-[56%] rotate-[-90deg] left-[65%] top-[10px] md:left-[32%] md:top-[-10px]"
-        />
-        <span
-          class="uppercase font-bold text-sm relative lg:left-[66%] lg:bottom-[25px] left-[80%] bottom-[-10px] md:left-[42%] md:top-[-45px]"
-          >Contact me!</span
-        > -->
-    <!-- <MouseScroll /> -->
-  </main>
 
-  <!-- <SectionContainer class="pb-40">
-      <h1
-        id="landingPageTitle"
-        class="text-6xl md:text-4xl font-extrabold py-4 text-center mb-12 lg:text-[6rem] lg:pb-10"
-      >
-        ¿Buscas una landing page?
-      </h1>
-      <!-- Explica que últimamente he estado aprendiendo el framework Astro y eso me permite crear landing pages con buen rendimiento,más rápido que usando Wordpress y con mejor optimizacion -->
-  <!-- <h2 class="w-full text-xl lg:text-2xl text-wrap max-w-[1600px]">
-        Últimamente he estado aprendiendo el framework <a
-          target="_blank"
-          rel="noopener"
-          href="https://astro.build/"
-          ><span class="underline text-[#40224E]">Astro</span></a
-        > y eso me permite crear landing pages con buen rendimiento, más rápido que
-        usando Wordpress y con mejor optimización.
+    <FullSectionContainer
+      id="landingPage"
+      class="relative text-center text-pretty"
+    >
+      <h2 class="text-brush mb-6 text-6xl font-bold gap-x-3">
+        ¿Buscas crear tu página web?
       </h2>
-    </SectionContainer> -->
+      <h3 class="font-bold text-4xl text-yellow-200 py-4">
+        ¿Quieres crear tu Landing Page?
+      </h3>
+      <h4 class="text-red-200/90 font-bold py-2 text-pretty">¿No sabes por dónde empezar?</h4>
+      <span class="opacity-75">
+        ¡No busques más! Estoy aquí para ayudarte a crear tu Landing Page de
+        manera rápida, optimizada y efectiva. Con mi experiencia en desarrollo
+        web Full Stack y mis conocimientos en <a class="text-[#AD45EE] hover:font-bold underline transition-all" href="https://astro.build/">Astro,</a> <a class="text-[#21759B] hover:font-bold underline transition-all" href="https://wordpress.com/">Wordpress</a> y más, puedo
+        crear un sitio web que se adapte perfectamente a tus necesidades y
+        objetivos. ¡Contáctame ahora y comencemos a construir tu Landing Page de
+        ensueño!
+      </span>
+      <br />
+      <div class="mt-10">
+        <a
+          href="mailto:ignasiamat10@gmail.com"
+          class=" blob-white border border-black bg-white text-black p-5 rounded-full uppercase font-black text-base shadow-md shadow-white/20 transition-transform duration-300 ease-in-out transform hover:scale-105"
+        >
+          <span>Contáctame y empezamos!</span>
+        </a>
+      </div>
+    </FullSectionContainer>
+    <SectionContainer id="experience">
+      <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
+        <BriefCaseIcon class="size-8" />
+        Experiencia Laboral
+      </h2>
+      <Experience />
+    </SectionContainer>
 
-  <SectionContainer id="experience">
-    <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
-      <BriefCaseIcon class="size-8" />
-      Experiencia Laboral
-    </h2>
-    <Experience />
-  </SectionContainer>
+    <SectionContainer id="academics">
+      <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
+        <LearningIcon class="size-8" />
+        Experiencia Académica
+      </h2>
+      <Studies />
+    </SectionContainer>
+    <SectionContainer id="certifications">
+      <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
+        <CertificationIcon class="size-8" />
+        Certificaciones
+      </h2>
+      <Certification />
+    </SectionContainer>
 
-  <SectionContainer id="academics">
-    <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
-      <LearningIcon class="size-8" />
-      Experiencia Académica
-    </h2>
-    <Studies />
-  </SectionContainer>
-  <SectionContainer id="certifications">
-    <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
-      <CertificationIcon class="size-8" />
-      Certificaciones
-    </h2>
-    <Certification />
-  </SectionContainer>
-
-  <SectionContainer id="projects">
-    <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
-      <CodeIcon class="size-8" />
-      Proyectos
-    </h2>
-    <Projects />
-  </SectionContainer>
+    <SectionContainer id="projects">
+      <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
+        <CodeIcon class="size-8" />
+        Proyectos
+      </h2>
+      <Projects />
+    </SectionContainer>
+  </main>
 </Layout>
 
 <style>
@@ -232,26 +236,33 @@ import { fade } from "astro:transitions";
   }
 
   @keyframes pulse-white {
-	0% {
-		transform: scale(0.95);
-		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
-	}
-	
-	70% {
-		transform: scale(1);
-		box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
-	}
-	
-	100% {
-		transform: scale(0.95);
-		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-	}
-}
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
 
-.blob-white {
-	background: white;
-	box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
-	animation: pulse-white 2s infinite;
-}
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
 
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+  }
+
+  .blob-white {
+    background: white;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
+    animation: pulse-white 2s infinite;
+  }
+
+  .text-brush {
+    background-image: linear-gradient(180deg,#fff06b,#fff06b);
+    background-repeat: no-repeat;
+    background-position: 10px bottom;
+    background-size: 100% 10px;
+    text-decoration: none;
+  }
 </style>

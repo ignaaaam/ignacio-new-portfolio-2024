@@ -15,6 +15,10 @@ import CodeIcon from "../../components/icons/CodeIcon.astro";
 import LearningIcon from "../../components/icons/LearningIcon.astro";
 import CertificationIcon from "../../components/icons/CertificationIcon.astro";
 
+import Arrow from "../../components/Arrow.astro";
+
+import FullSectionContainer from "../../components/FullSectionContainer.astro";
+
 import Experience from "./Experience.astro";
 import Certification from "./Certification.astro";
 import Studies from "./Studies.astro";
@@ -30,7 +34,7 @@ import Projects from "./Projects.astro";
       <h1
         class="text-3xl md:text-4xl font-extrabold leading-none text-center mb-4 text-white lg:text-5xl flex gap-x-4 pb-6 lg:pb-10"
       >
-      Hey, I'm Ignacio
+        Hey, I'm Ignacio
         <a
           href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223"
           target="_blank"
@@ -54,7 +58,9 @@ import Projects from "./Projects.astro";
         >, <span class="text-[#FF2819]">Laravel</span>, and <span
           class="bg-clip-text text-transparent bg-gradient-to-r from-[#005E8A] from-30% to-[#EBA921] to-50%"
           >MYSQL</span
-        >, and Front End Development with <span class="text-[#3FB27F]">Vue.js</span>
+        >, and Front End Development with <span class="text-[#3FB27F]"
+          >Vue.js</span
+        >
         and<span class="text-[#EFD81D]"> Javascript</span>.
       </h2>
 
@@ -88,7 +94,43 @@ import Projects from "./Projects.astro";
           ignasiamat10@gmail.com
         </SocialPill>
       </nav>
+
+      <div class="fixed right-40 md:static md:bottom-auto md:right-auto"></div>
+      <Arrow
+        class="size-12 md:size-16 md:rotate-[-94deg] relative lg:left-[56%] rotate-[-110deg] left-[59%] -top-[0.5rem] md:left-[58%] md:top-[-10px]"
+      />
+      <a
+        href="mailto:ignasiamat10@gmail.com"
+        class="blob-white border border-black bg-white text-black p-2.5 rounded-full uppercase font-bold text-xs relative lg:left-[66%] lg:bottom-[25px] left-[50%] top-[-0.2rem] md:left-[66%] md:top-[-0.3rem] shadow-md shadow-white/20 transition-transform duration-300 ease-in-out transform hover:scale-105"
+      >
+        <span>Contact me to start!</span>
+      </a>
     </SectionContainer>
+
+    <FullSectionContainer
+      id="landingPage"
+      class="relative text-center text-pretty"
+    >
+      <h2 class="text-brush mb-6 text-6xl font-bold gap-x-3">
+        Are you looking to create your website?
+      </h2>
+      <h3 class="font-bold text-4xl text-yellow-200 py-4">
+        Do you want to create your Landing Page?
+      </h3>
+      <h4 class="text-red-200/90 font-bold py-2 text-pretty">Not sure where to start?</h4>
+      <span class="opacity-75">
+        Look no further! I'm here to help you create your Landing Page quickly, optimized, and effectively. With my experience in Full Stack web development and my knowledge in <a class="text-[#AD45EE] hover:font-bold underline transition-all" href="https://astro.build/">Astro,</a> <a class="text-[#21759B] hover:font-bold underline transition-all" href="https://wordpress.com/">Wordpress,</a> and more, I can build a website that perfectly fits your needs and goals. Contact me now and let's start building your dream Landing Page!
+      </span>
+      <br />
+      <div class="mt-10">
+        <a
+          href="mailto:ignasiamat10@gmail.com"
+          class=" blob-white border border-black bg-white text-black p-5 rounded-full uppercase font-black text-base shadow-md shadow-white/20 transition-transform duration-300 ease-in-out transform hover:scale-105"
+        >
+          <span>Contact me and let's get started!</span>
+        </a>
+      </div>
+    </FullSectionContainer>
 
     <SectionContainer id="experience">
       <h2 class="text-3xl font-bold mb-6 flex gap-x-3 items-center">
@@ -176,5 +218,36 @@ import Projects from "./Projects.astro";
     grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
     gap: 2rem;
     padding: 0;
+  }
+
+  @keyframes pulse-white {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+  }
+
+  .blob-white {
+    background: white;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
+    animation: pulse-white 2s infinite;
+  }
+
+  .text-brush {
+    background-image: linear-gradient(180deg,#fff06b,#fff06b);
+    background-repeat: no-repeat;
+    background-position: 10px bottom;
+    background-size: 100% 10px;
+    text-decoration: none;
   }
 </style>
