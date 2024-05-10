@@ -131,9 +131,9 @@ const PROJECTS = [
 {
   PROJECTS.map(({ title, description, tags, image, link, github }) => (
     <article class="mt-12 first-of-type:mt-8">
-      <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
-      <p class="text-lg mb-4 text-pretty">{description}</p>
-      <ul class="flex gap-x-2 flex-row mb-4">
+      <h3 class="mb-2 text-2xl font-semibold text-yellow-200">{title}</h3>
+      <p class="mb-4 text-lg text-pretty">{description}</p>
+      <ul class="flex flex-row mb-4 gap-x-2">
         {tags.map((tag) => (
           <li>
             <span
@@ -150,12 +150,12 @@ const PROJECTS = [
         src={image}
         alt={`Captura de pantalla del proyecto ${image}`}
       />
-      <div class="mt-8 flex gap-x-4">
+      <div class="flex mt-8 gap-x-4">
         <a
           href={link}
           target="_blank"
           rel="noopener"
-          class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-yellow-500/90 focus:z-10 focus:ring-2 focus:outline-none focus:ring-gray-200 focus:text-yellow-500/90 transition"
+          class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 transition bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-yellow-500/90 focus:z-10 focus:ring-2 focus:outline-none focus:ring-gray-200 focus:text-yellow-500/90"
         >
           View Project{" "}
           <svg
@@ -179,7 +179,7 @@ const PROJECTS = [
           target="_blank"
           rel="noopener" class="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
           <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-          <span class="gap-x-2 inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+          <span class="inline-flex items-center justify-center w-full h-full px-3 py-1 text-sm font-medium text-white rounded-full cursor-pointer gap-x-2 bg-slate-950 backdrop-blur-3xl">
             Github
             <Github class="size-5" />
           </span>

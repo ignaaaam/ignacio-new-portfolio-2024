@@ -9,13 +9,13 @@ import { ViewTransitions } from 'astro:transitions';
 ---
 
 <div
-  class="mt-4 md:mt-0 flex items-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse"
+  class="flex items-center mt-4 space-x-1 md:mt-0 md:order-2 md:space-x-0 rtl:space-x-reverse"
 >
   {
     lang === "es" ? (
       <button data-astro-reload
       type="button" data-dropdown-toggle="language-dropdown-menu"
-        class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-white dark:text-black rounded-lg cursor-pointer hover:bg-slate-500 dark:hover:bg-gray-700 dark:hover:text-black"
+        class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg cursor-pointer dark:text-black hover:bg-slate-500 dark:hover:bg-gray-700 dark:hover:text-black"
       >
         <SpanishFlag />
         Spanish (ES)
@@ -23,7 +23,7 @@ import { ViewTransitions } from 'astro:transitions';
     ) : (
       <a data-astro-reload
         data-dropdown-toggle="language-dropdown-menu"
-        class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-white dark:text-black rounded-lg cursor-pointer hover:bg-slate-500 dark:hover:bg-gray-700 dark:hover:text-black"
+        class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg cursor-pointer dark:text-black hover:bg-slate-500 dark:hover:bg-gray-700 dark:hover:text-black"
         role="menuitem"
       >
         <div class="inline-flex items-center">
