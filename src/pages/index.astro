@@ -60,8 +60,11 @@ import { fade } from "astro:transitions";
         Experto en Desarrollo Web Back End con <span
           class="font-bold text-[#7477AC]">PHP</span
         >, <span class="font-bold text-[#FF2819]">Laravel</span> y <span
-          class="font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#005E8A] from-30% to-[#EBA921] to-50%">MYSQL</span>, y Desarrollo Front End con <span class="font-bold text-[#3FB27F]"
-          >Vue.js</span>
+          class="font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#005E8A] from-30% to-[#EBA921] to-50%"
+          >MYSQL</span
+        >, y Desarrollo Front End con <span class="font-bold text-[#3FB27F]"
+          >Vue.js</span
+        >
         y<span class="font-bold text-[#EFD81D]"> Javascript</span>.
       </h2>
       <nav class="flex flex-wrap mt-8 gap-x-4 gap-y-4">
@@ -100,7 +103,7 @@ import { fade } from "astro:transitions";
       />
       <a
         href="mailto:ignasiamat10@gmail.com"
-        class="blob-white border border-black bg-white text-black p-2.5 rounded-full uppercase font-bold text-xs relative lg:left-[66%] lg:bottom-[25px] left-[50%] top-[-0.2rem] md:left-[66%] md:top-[-0.3rem] shadow-md shadow-white/20 transition-transform duration-300 ease-in-out transform hover:scale-105"
+        class="blob-white border border-black bg-white text-black p-2.5 rounded-full uppercase font-bold text-xs relative lg:left-[66%] lg:bottom-[25px] left-[45%] top-[-0.2rem] md:left-[66%] md:top-[-0.3rem] shadow-md shadow-white/20 transition-transform duration-300 ease-in-out transform hover:scale-105"
       >
         <span>Contáctame para empezar</span>
       </a>
@@ -108,7 +111,7 @@ import { fade } from "astro:transitions";
 
     <FullSectionContainer
       id="landingPage"
-      class="relative text-center text-pretty"
+      class="relative text-center text-pretty my-20"
     >
       <h2 class="text-brush mb-6 text-6xl font-bold gap-x-3">
         ¿Buscas crear tu página web?
@@ -116,20 +119,56 @@ import { fade } from "astro:transitions";
       <h3 class="font-bold text-4xl text-yellow-200 py-4">
         ¿Quieres crear tu Landing Page?
       </h3>
-      <h4 class="text-red-200/90 font-bold py-2 text-pretty">¿No sabes por dónde empezar?</h4>
+      <h4 class="text-red-200/90 font-bold py-2 text-pretty">
+        ¿No sabes por dónde empezar?
+      </h4>
       <span class="opacity-75">
         ¡No busques más! Estoy aquí para ayudarte a crear tu Landing Page de
         manera rápida, optimizada y efectiva. Con mi experiencia en desarrollo
-        web Full Stack y mis conocimientos en <a class="text-[#AD45EE] hover:font-bold underline transition-all" href="https://astro.build/">Astro,</a> <a class="text-[#21759B] hover:font-bold underline transition-all" href="https://wordpress.com/">Wordpress</a> y más, puedo
-        crear un sitio web que se adapte perfectamente a tus necesidades y
-        objetivos. ¡Contáctame ahora y comencemos a construir tu Landing Page de
+        web Full Stack y mis conocimientos en <a
+          class="text-[#AD45EE] hover:font-bold underline transition-all"
+          href="https://astro.build/"
+          >Astro,</a
+        >
+        <a
+          class="text-[#21759B] hover:font-bold underline transition-all"
+          href="https://wordpress.com/"
+          >Wordpress</a
+        > y más, puedo crear un sitio web que se adapte perfectamente a tus necesidades
+        y objetivos. ¡Contáctame ahora y comencemos a construir tu Landing Page de
         ensueño!
       </span>
       <br />
-      <div class="mt-10">
+      <div class="mt-10 flex flex-col items-center justify-center gap-y-8">
+        <!-- <a
+          href="mailto:ignasiamat10@gmail.com"
+          class="block border border-white text-white p-5 rounded-full uppercase font-bold text-base shadow-md shadow-white/20 transition-transform duration-300 ease-in-out transform hover:scale-105"
+        >
+          <div class="flex items-center gap-x-2 hover:group">
+            <span class="hover:animate-pulse">Saber más</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-right group-hover:translate-x-1 transition-transform duration-200 ease-in-out"
+              ><path
+                stroke="none"
+                d="M0 0h24v24H0z"
+                fill="none"
+              ></path><path d="M5 12l14 0"></path><path d="M13 18l6 -6"
+              ></path><path d="M13 6l6 6"></path></svg
+            >
+          </div>
+        </a> -->
         <a
           href="mailto:ignasiamat10@gmail.com"
-          class=" blob-white border border-black bg-white text-black p-5 rounded-full uppercase font-black text-base shadow-md shadow-white/20 transition-transform duration-300 ease-in-out transform hover:scale-105"
+          class="block blob-white border border-black bg-white text-black p-5 rounded-full uppercase font-black text-base shadow-md shadow-white/20 transition-transform duration-300 ease-in-out transform hover:scale-105"
         >
           <span>Contáctame y empezamos!</span>
         </a>
@@ -259,7 +298,7 @@ import { fade } from "astro:transitions";
   }
 
   .text-brush {
-    background-image: linear-gradient(180deg,#fff06b,#fff06b);
+    background-image: linear-gradient(180deg, #fff06b, #fff06b);
     background-repeat: no-repeat;
     background-position: 10px bottom;
     background-size: 100% 10px;
