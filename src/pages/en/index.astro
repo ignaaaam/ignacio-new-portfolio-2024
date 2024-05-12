@@ -44,24 +44,24 @@ import Projects from "./Projects.astro";
         >
       </h1>
       <h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
-        <span>+3 years of experience.</span><span class="text-yellow-200">
+        <span>+3 years of experience.</span><span class="font-bold text-yellow-200">
           Full Stack Web Developer</span
-        >. <span class="text-red-200/90"> From Barcelona, Spain.</span>
+        >. <span class="text-red-200/90 font-bold"> From Barcelona, Spain.</span>
         <span class="opacity-75"
           >Specialized in creating high-performance web apps and websites.</span
         >
       </h2>
       <br />
       <h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
-        Expert in Back End Web Development with <span class="text-[#7477AC]"
+        Expert in Back End Web Development with <span class="font-bold text-[#7477AC]"
           >PHP</span
         >, <span class="text-[#FF2819]">Laravel</span>, and <span
-          class="bg-clip-text text-transparent bg-gradient-to-r from-[#005E8A] from-30% to-[#EBA921] to-50%"
+          class="font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#005E8A] from-30% to-[#EBA921] to-50%"
           >MYSQL</span
-        >, and Front End Development with <span class="text-[#3FB27F]"
+        >, and Front End Development with <span class="font-bold text-[#3FB27F]"
           >Vue.js</span
         >
-        and<span class="text-[#EFD81D]"> Javascript</span>.
+        and<span class="font-bold text-[#EFD81D]"> Javascript</span>.
       </h2>
 
       <nav class="flex flex-wrap mt-8 gap-x-4 gap-y-4">
@@ -117,9 +117,23 @@ import Projects from "./Projects.astro";
       <h3 class="py-4 text-4xl font-bold text-yellow-200">
         Do you want to create your Landing Page?
       </h3>
-      <h4 class="py-2 font-bold text-red-200/90 text-pretty">Not sure where to start?</h4>
+      <h4 class="py-2 font-bold text-red-200/90 text-pretty">
+        Not sure where to start?
+      </h4>
       <span class="opacity-75">
-        Look no further! I'm here to help you create your Landing Page quickly, optimized, and effectively. With my experience in Full Stack web development and my knowledge in <a class="text-[#AD45EE] hover:font-bold underline transition-all" href="https://astro.build/">Astro,</a> <a class="text-[#21759B] hover:font-bold underline transition-all" href="https://wordpress.com/">Wordpress,</a> and more, I can build a website that perfectly fits your needs and goals. Contact me now and let's start building your dream Landing Page!
+        Look no further! I'm here to help you create your Landing Page quickly,
+        optimized, and effectively. With my experience in Full Stack web
+        development and my knowledge in <a
+          class="text-[#AD45EE] hover:font-bold underline transition-all"
+          href="https://astro.build/"
+          >Astro,</a
+        >
+        <a
+          class="text-[#21759B] hover:font-bold underline transition-all"
+          href="https://wordpress.com/"
+          >Wordpress,</a
+        > and more, I can build a website that perfectly fits your needs and goals.
+        Contact me now and let's start building your dream Landing Page!
       </span>
       <br />
       <div class="flex flex-col items-center justify-center mt-10 gap-y-8">
@@ -151,7 +165,7 @@ import Projects from "./Projects.astro";
         </a> -->
         <a
           href="mailto:ignasiamat10@gmail.com"
-          class="p-5 text-base font-black text-black uppercase transition-transform duration-300 ease-in-out transform bg-white border border-black rounded-full shadow-md  blob-white shadow-white/20 hover:scale-105"
+          class="p-5 text-base font-black text-black uppercase transition-transform duration-300 ease-in-out transform bg-white border border-black rounded-full shadow-md blob-white shadow-white/20 hover:scale-105"
         >
           <span>Contact me and let's get started!</span>
         </a>
@@ -192,6 +206,10 @@ import Projects from "./Projects.astro";
 </Layout>
 
 <style>
+  html {
+    font-family: "Onest Variable", system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
   main {
     margin: auto;
     padding: 1rem;
@@ -270,7 +288,7 @@ import Projects from "./Projects.astro";
   }
 
   .text-brush {
-    background-image: linear-gradient(180deg,#fff06b,#fff06b);
+    background-image: linear-gradient(180deg, #fff06b, #fff06b);
     background-repeat: no-repeat;
     background-position: 10px bottom;
     background-size: 100% 10px;
