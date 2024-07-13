@@ -22,5 +22,11 @@ import { ViewTransitions } from 'astro:transitions';
     <a class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4" href="#projects">Proyectos</a>
     <a class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4" href="#contact">Contacto</a>
   </nav>
-  <Dropdown data-astro-reload />
+  <div class="flex items-center justify-end gap-x-20">
+    <Dropdown class="flex order-1" />
+    <a
+    class="bg-white text-black transition rounded-lg hover:text-white hover:bg-[rgba(120,119,198,0.5)] px-2 py-1 lg:py-2 lg:px-4 order-2"
+    href="/blog"
+    rel="noopener noreferrer" >Blog</a>
+  </div>
 </header>

@@ -1,0 +1,114 @@
+---
+const { frontmatter } = Astro.props;
+import Layout from "../layouts/Layout.astro";
+import { Picture } from "astro:assets";
+---
+
+<Layout
+  title="Ignacio Amat Urbina - Desarrollador y Programador Web Full Stack | Especialista en PHP, Laravel, Livewire, Inertia, Vue, TailwindCSS"
+  description="Ignacio Amat Urbina, contrátame si necesitas un desarrollador Web Full Stack y experto en Back End y Front End. Especializado en PHP, Laravel (Livewire e Inertia), Javascript, Vue y TailwindCSS. Aprendiendo Astro para crear sitios web rápidos, optimizados y de alto rendimiento."
+>
+  <main class="flex flex-col items-center min-h-screen">
+    <!--
+// v0 by Vercel.
+// https://v0.dev/t/fUIoAq9FjJn
+-->
+
+    <article class="prose prose-gray max-w-3xl mx-auto dark:prose-invert py-12">
+      <div class="space-y-4 not-prose">
+        <h1 class="text-5xl font-extrabold tracking-tight">
+          {frontmatter.title}
+        </h1>
+        <div class="flex items-center gap-4 text-muted-foreground">
+          <div class="flex items-center gap-2">
+            <span
+              class="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8 border"
+            >
+              <img
+                class="aspect-square h-full w-full"
+                src="/img/profile_picture.jpg"
+              />
+            </span>
+            <span class="font-medium">{frontmatter.author}</span>
+          </div>
+          <span>•</span>
+          <time datetime="2023-07-13">{frontmatter.pubDate}</time>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          {
+            frontmatter.tags.map((tag) => (
+              <div
+                class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground"
+                data-v0-t="badge"
+              >
+                {tag}
+              </div>
+            ))
+          }
+        </div>
+        <img
+          src={frontmatter.image.url}
+          alt="Featured Image"
+          width="1250"
+          height="600"
+          class="aspect-video overflow-hidden rounded-lg object-cover"
+        />
+        <h2 class="text-center text-sm opacity-50 pb-8">
+          {frontmatter.image.alt}
+        </h2>
+
+        <slot />
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  article {
+    text-wrap: pretty;
+  }
+
+  article h3 {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-top: 1.5em;
+  }
+
+  article p {
+    margin: 10px 0;
+  }
+
+  article ul,
+  article ol {
+    list-style-type: circle;
+    margin: 10px 0 10px 20px;
+  }
+
+  article li h4 {
+    /* add soft light font */
+    font-weight: lighter;
+    font-style: italic;
+  }
+
+  article blockquote {
+    border-left: 4px solid #ddd;
+    padding-left: 15px;
+    color: #666;
+    margin: 20px 0;
+    font-style: italic;
+  }
+
+  article code {
+    background-color: #f5f5f5;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: "Courier New", Courier, monospace;
+  }
+
+  article pre {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+</style>
