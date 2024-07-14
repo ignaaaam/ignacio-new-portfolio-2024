@@ -54,28 +54,28 @@ Gracias a todos y a los nuevos visitantes, espero que disfruten las noticias y l
         text-wrap: pretty;
     }
     
-    h3 {
+    article h3 {
     font-weight: bold;
       font-size: 1.5em;
       margin-top: 1.5em;
     }
 
-p {
+article p {
     margin: 10px 0;
 }
 
-ul, ol {
+article ul, article ol {
     list-style-type: circle;
     margin: 10px 0 10px 20px;
 }
 
-li > h4 {
+article li h4 {
     /* add soft light font */
     font-weight: lighter;
     font-style: italic;
 }
 
-blockquote {
+article blockquote {
     border-left: 4px solid #ddd;
     padding-left: 15px;
     color: #666;
@@ -83,14 +83,14 @@ blockquote {
     font-style: italic;
 }
 
-code {
+article code {
     background-color: #f5f5f5;
     padding: 2px 4px;
     border-radius: 4px;
     font-family: 'Courier New', Courier, monospace;
 }
 
-pre {
+article pre {
     background-color: #f5f5f5;
     padding: 10px;
     border-radius: 4px;
