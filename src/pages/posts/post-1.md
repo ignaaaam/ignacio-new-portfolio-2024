@@ -96,4 +96,17 @@ article pre {
     border-radius: 4px;
     overflow-x: auto;
 }
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    article {
+        padding: 40px;
+    }
+}
+
+@media (max-width: 600px) { 
+    article {
+      padding: 30px;
+    }
+
+ }
 </style>

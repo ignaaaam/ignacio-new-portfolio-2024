@@ -9,8 +9,8 @@ import { Picture } from 'astro:assets';
   description="Ignacio Amat Urbina, contrátame si necesitas un desarrollador Web Full Stack y experto en Back End y Front End. Especializado en PHP, Laravel (Livewire e Inertia), Javascript, Vue y TailwindCSS. Aprendiendo Astro para crear sitios web rápidos, optimizados y de alto rendimiento."
 >
   <main class="flex flex-col items-center min-h-screen">
-      <h1 class="flex text-5xl font-bold mb-4 self-start p-12 ml-36">Latest News</h1>
-    <ul class="grid grid-cols-1 md:grid-cols-3 items-center gap-8">
+      <h1 class="flex text-5xl font-bold mb-4 lg:self-start p-12 self-center lg:ml-36">Latest News</h1>
+    <ul class="grid grid-cols-1 md:grid-cols-3 items-center gap-8 md:p-12">
         {allPosts.map((post) => <li>
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <a href={post.url} class="rounded-lg overflow-hidden block">
