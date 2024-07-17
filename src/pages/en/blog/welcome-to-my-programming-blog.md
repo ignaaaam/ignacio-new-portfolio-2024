@@ -1,6 +1,7 @@
 ---
 layout: ../../../layouts/MarkdownPostLayout.astro
 title: Welcome to my programming blog!
+slug: "welcome-to-my-programming-blog"
 author: Ignacio Amat
 description: "Dive into the world of programming and discover the latest advancements in back-end, front-end, and full-stack development."
 image:

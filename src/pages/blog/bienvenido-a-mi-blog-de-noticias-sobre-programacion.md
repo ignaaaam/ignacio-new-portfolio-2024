@@ -1,6 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Bienvenido a mi blog de noticias sobre programación!
+slug: "bienvenido-a-mi-blog-de-noticias-sobre-programacion"
 author: Ignacio Amat
 description: "¡Esta es mi primera noticia de mi blog, bienvenidos front ends, back ends y full stacks!"
 image:
@@ -17,11 +18,11 @@ Bienvenidos lectores a su nuevo blog enfocado en programación y tecnología. Es
 ### Tendencias en el Desarrollo Back-End
 
 - Explorando los últimos avances en PHP y el framework Laravel
-  - #### PHP 8.0 y más allá: Nuevas características y mejoras
-  - #### Laravel 8: Actualizaciones y mejoras emocionantes
+  - #### PHP 8.2 y más allá: Nuevas características y mejoras
+  - #### Laravel 11: Actualizaciones y mejoras emocionantes
   - #### Nuevos frameworks y herramientas de PHP emergentes
-- Computación sin servidor y su impacto en el desarrollo back-end
-- Avances en el diseño e integración de API
+- Serverless apps y su impacto en el desarrollo back-end
+- Avances en el diseño e integración de APIs
 
 ### Tendencias en el Desarrollo Front-End
 
@@ -35,8 +36,9 @@ Bienvenidos lectores a su nuevo blog enfocado en programación y tecnología. Es
 ### Tendencias en el Desarrollo Full-Stack
 
 - La creciente demanda de desarrolladores full-stack
+- Astro, el nuevo framework de la web
 - Cerrando la brecha entre el front-end y el back-end
-- Aprovechando el poder de JavaScript en toda la pila
+- Aprovechando el poder de JavaScript
 
 ### Noticias de Diseño y Tecnología
 

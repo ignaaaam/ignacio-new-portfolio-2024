@@ -1,6 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "Desarrollador Web Full Stack disponible para proyectos remotos"
+slug: "desarrollador-web-full-stack-disponible-para-proyectos-remotos"
 author: Ignacio Amat
 description: "Contrata a Ignacio Amat, un desarrollador web full stack experimentado de Barcelona, especializado en PHP, Laravel, stack TALL, stack VILT, JavaScript, Vue.js y TailwindCSS. Disponible para nuevos clientes en todo el mundo."
 image:
@@ -19,10 +20,10 @@ tags: ["full stack web developer", "remote web developer", "PHP developer", "Lar
 Mi mayor habilidad es en desarrollo back end, específicamente con PHP y el framework Laravel. Puedo ayudarte a construir aplicaciones robustas, escalables y eficientes desde cero o mejorar tus aplicaciones Laravel existentes. Ya sea un sitio web simple o una aplicación web compleja, tengo la experiencia para ofrecer soluciones de alta calidad.
 
 ### Desarrollo Front End
-En el front end, soy competente en JavaScript y Vue.js, y utilizo TailwindCSS para crear interfaces de usuario hermosas y responsivas. También tengo experiencia con el stack TALL (Tailwind, AlpineJS, Laravel, Livewire) y el stack VILT (Vue, Inertia, Laravel, Tailwind), lo que me permite desarrollar aplicaciones web modernas, dinámicas e interactivas.
+En el front end, soy competente en JavaScript y Vue.js, y utilizo TailwindCSS para crear interfaces de usuario adaptables y responisve adaptables a todo tipo de páginas web y web apps. También tengo experiencia con el stack TALL (Tailwind, AlpineJS, Laravel, Livewire) y el stack VILT (Vue, Inertia, Laravel, Tailwind), lo que me permite desarrollar aplicaciones web modernas, dinámicas e interactivas.
 
 ### Desarrollo Web Rápido y Eficiente
-Para un desarrollo web rápido, optimizado y eficiente, aprovecho el framework Astro para crear sitios web y páginas de aterrizaje de alto rendimiento. Además, si prefieres una solución basada en CMS, puedo construir y personalizar sitios web utilizando WordPress.
+Para un desarrollo web rápido, optimizado y eficiente, aprovecho el framework Astro para crear sitios web y landings de alto rendimiento. Además, si prefieres una solución basada en CMS, puedo construir y personalizar sitios web utilizando WordPress.
 
 ## Servicios Ofrecidos
 

@@ -1,6 +1,7 @@
 ---
 layout: ../../../layouts/MarkdownPostLayout.astro
 title: Full Stack Web Developer Available for Remote Projects
+slug: "full-stack-web-developer-available-for-remote-projects"
 author: Ignacio Amat
 description: "Hire Ignacio Amat, an experienced full stack web developer from Barcelona, specializing in PHP, Laravel, TALL stack, VILT stack, JavaScript, Vue.js, and TailwindCSS. Available for new clients worldwide."
 image:
