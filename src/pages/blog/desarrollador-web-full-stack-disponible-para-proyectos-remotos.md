@@ -49,8 +49,7 @@ Espero colaborar con nuevos clientes y ayudarte a alcanzar tus objetivos de desa
 
 Gracias por considerarme para tus necesidades de desarrollo web. ¡Estoy emocionado por la posibilidad de trabajar juntos y crear algo increíble!
 
-Saludos cordiales,  
-Ignacio Amat
+Saludos! 🙌✌️
 
 ---
 
