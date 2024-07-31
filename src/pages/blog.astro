@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 const lang = getLangFromUrl(Astro.url);
 import { fade } from "astro:transitions";
 import { Image } from "astro:assets";
-import { db, eq, Posts, Tags, Images, PostImages, PostTags } from 'astro:db';
+import { db, eq, Posts, Tags, Images, PostImages, PostTags, asc, desc } from 'astro:db';
 
 const posts = await db.select({
   posts: Posts,
@@ -16,7 +16,7 @@ const posts = await db.select({
   .leftJoin(Tags, eq(PostTags.tagId, Tags.id))
   .leftJoin(PostImages, eq(PostImages.postId, Posts.id))
   .leftJoin(Images, eq(PostImages.imageId, Images.id))
-  .where(eq(Posts.locale, lang))
+  .orderBy(desc(Posts.publish_date))
   .all();
 
   const postsMap = new Map();
