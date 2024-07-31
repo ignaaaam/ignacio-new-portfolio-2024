@@ -27,8 +27,8 @@ const posts = await db.select({
   if (!postsMap.has(post.posts.id)) {
     postsMap.set(post.posts.id, {
       id: post.posts.id,
-      slug: `/blog/en/${post.posts.slug}`,
-      url: `/blog/en/${post.posts.slug}`,
+      slug: `/en/blog/${post.posts.slug}`,
+      url: `/en/blog/${post.posts.slug}`,
       frontmatter: {
         title: post.posts.title,
         description: post.posts.description,
