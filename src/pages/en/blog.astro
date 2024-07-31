@@ -46,8 +46,6 @@ const posts = await db.select({
 });
 
 const postsArray = Array.from(postsMap.values());
-// console.log(getLangFromUrl(Astro.url));
-console.log(postsArray);
 ---
 
 <Layout
@@ -59,8 +57,7 @@ console.log(postsArray);
       <ul class="grid grid-cols-1 md:grid-cols-3 items-center gap-8 p-6 md:p-12">
         {
          postsArray.map((post) => (
-         <div key={post.id}
-             class="max-w-sm pb-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+         <div class="max-w-sm pb-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
              <a href={post.slug} class="rounded-lg overflow-hidden block">
                  <img class="rounded-t-lg transition-transform hover:scale-125 ease-in duration-150" width={400}
                      height=400 src={post.image.url} alt={post.image.alt} />
