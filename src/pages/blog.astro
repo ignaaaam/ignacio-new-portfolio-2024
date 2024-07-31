@@ -16,6 +16,7 @@ const posts = await db.select({
   .leftJoin(Tags, eq(PostTags.tagId, Tags.id))
   .leftJoin(PostImages, eq(PostImages.postId, Posts.id))
   .leftJoin(Images, eq(PostImages.imageId, Images.id))
+  .where(eq(Posts.locale, lang))
   .orderBy(desc(Posts.publish_date))
   .all();
 
