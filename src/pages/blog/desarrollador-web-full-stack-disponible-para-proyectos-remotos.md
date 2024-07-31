@@ -7,7 +7,7 @@ description: "Contrata a Ignacio Amat, un desarrollador web full stack experimen
 image:
     url: "/img/optimized/remote-work.webp"
     alt: "El setup de desarrollo web con una laptop, monitor, teclado y ratón en un escritorio limpio y organizado."
-pubDate: "Julio 17, 2024"
+pubDate: "17/07/2024"
 tags: ["full stack web developer", "remote web developer", "PHP developer", "Laravel developer", "web development services", "TailwindCSS"]
 ---
 # Abierto a Nuevos Clientes en Todo el Mundo: Desarrollador Web Full Stack Experimentado
@@ -50,7 +50,6 @@ Espero colaborar con nuevos clientes y ayudarte a alcanzar tus objetivos de desa
 Gracias por considerarme para tus necesidades de desarrollo web. ¡Estoy emocionado por la posibilidad de trabajar juntos y crear algo increíble!
 
 Saludos! 🙌✌️
-
 ---
 
 <style>

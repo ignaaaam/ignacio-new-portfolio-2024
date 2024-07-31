@@ -4,8 +4,9 @@ import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import vercelStatic from "@astrojs/vercel/static";
-
 import react from "@astrojs/react";
+
+import db from "@astrojs/db";
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,29 +14,24 @@ export default defineConfig({
     defaultLocale: "es",
     locales: ["en", "es"],
     routing: {
-        prefixDefaultLocale: false
+      prefixDefaultLocale: false
     }
   },
   output: "static",
-  integrations: [
-    tailwind(),
-    partytown({
+  integrations: [tailwind(), partytown({
+    config: {
       config: {
-        config: {
-          debug: false,
-        },
-        forward: ["dataLayer.push"],
+        debug: false
       },
-    }),
-    sitemap(),
-    react(),
-  ],
+      forward: ["dataLayer.push"]
+    }
+  }), sitemap(), react(), db()],
   adapter: vercelStatic({
     webAnalytics: {
-      enabled: true,
+      enabled: true
     },
     speedInsights: {
-      enabled: true,
-    },
-  }),
+      enabled: true
+    }
+  })
 });

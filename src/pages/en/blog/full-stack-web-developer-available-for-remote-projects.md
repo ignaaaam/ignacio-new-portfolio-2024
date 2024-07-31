@@ -7,7 +7,7 @@ description: "Hire Ignacio Amat, an experienced full stack web developer from Ba
 image:
     url: "/img/optimized/remote-work.webp"
     alt: "Web Development setup featuring a laptop, monitor, keyboard, and mouse on a clean, organized desk."
-pubDate: "July 17, 2024"
+pubDate: "17/07/2024"
 tags: ["full stack web developer", "remote web developer", "PHP developer", "Laravel developer", "web development services", "Laravel app upgrades", "hire web developer", "Barcelona web developer", "TailwindCSS"]
 ---
 # Open for New Clients Worldwide: Experienced Full Stack Web Developer

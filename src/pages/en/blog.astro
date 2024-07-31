@@ -1,7 +1,53 @@
 ---
+import { getLangFromUrl } from "../../i18n/utils.ts";
 import Layout from "../../layouts/Layout.astro";
-const allPosts = await Astro.glob('./blog/*.md');
-import { Image } from 'astro:assets';
+
+const lang = getLangFromUrl(Astro.url);
+import { fade } from "astro:transitions";
+import { Image } from "astro:assets";
+import { db, eq, Posts, Tags, Images, PostImages, PostTags } from 'astro:db';
+
+const posts = await db.select({
+  posts: Posts,
+  tags: Tags,
+  images: Images,
+})
+  .from(Posts)
+  .leftJoin(PostTags, eq(PostTags.postId, Posts.id))
+  .leftJoin(Tags, eq(PostTags.tagId, Tags.id))
+  .leftJoin(PostImages, eq(PostImages.postId, Posts.id))
+  .leftJoin(Images, eq(PostImages.imageId, Images.id))
+  .where(eq(Posts.locale, lang))
+  .all();
+
+  const postsMap = new Map();
+
+  posts.forEach((post) => {
+  if (!postsMap.has(post.posts.id)) {
+    postsMap.set(post.posts.id, {
+      id: post.posts.id,
+      slug: `/blog/${post.posts.slug}`,
+      url: `/blog/${post.posts.slug}`,
+      frontmatter: {
+        title: post.posts.title,
+        description: post.posts.description,
+      },
+      tags: [],
+      image: {
+        url: post.images.url,
+        alt: post.images.alt,
+      },
+    });
+  }
+  const postEntry = postsMap.get(post.posts.id);
+  if (post.tags.name) {
+    postEntry.tags.push(post.tags.name);
+  }
+});
+
+const postsArray = Array.from(postsMap.values());
+// console.log(getLangFromUrl(Astro.url));
+console.log(postsArray);
 ---
 
 <Layout
@@ -10,30 +56,45 @@ import { Image } from 'astro:assets';
 >
   <main class="flex flex-col items-center min-h-screen">
       <h1 class="flex text-5xl font-bold mb-4 lg:self-start p-12 self-center lg:ml-36">Latest News</h1>
-    <ul class="grid grid-cols-1 md:grid-cols-3 items-center gap-8 md:p-12">
-        {allPosts.map((post) => <li>
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-    <a href={post.url} class="rounded-lg overflow-hidden block">
-        <Image class="rounded-t-lg transition-transform hover:scale-125 ease-in duration-150" width={400} height={400} src={post.frontmatter.image.url} alt={post.frontmatter.image.alt} />
-    </a>
-    {/* add tag pills */}
-    <div class="flex flex-wrap justify-center gap-2 py-3">
-        {post.frontmatter.tags.map((tag) => <span class="px-2 py-1 text-sm font-medium text-white bg-blue-700 rounded-full dark:bg-blue-600">{tag}</span>)}
-    </div>
-    <div class="p-4">
-        <a href={post.url}>
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{post.frontmatter.title}</h5>
-        </a>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-3">{post.frontmatter.description}</p>
-        <a href={post.url} class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition">
-            Read more
-             <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-            </svg>
-        </a>
-    </div>
-</div>
-</li>)}
+      <ul class="grid grid-cols-1 md:grid-cols-3 items-center gap-8 p-6 md:p-12">
+        {
+         postsArray.map((post) => (
+         <div key={post.id}
+             class="max-w-sm pb-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+             <a href={post.slug} class="rounded-lg overflow-hidden block">
+                 <img class="rounded-t-lg transition-transform hover:scale-125 ease-in duration-150" width={400}
+                     height=400 src={post.image.url} alt={post.image.alt} />
+             </a>
+             {/* add tag pills */}
+             <div class="flex flex-wrap justify-center gap-2 py-3">
+                 {post.tags.map((tag) => (
+                 <span class="px-2 py-1 text-sm font-medium text-white bg-blue-700 rounded-full dark:bg-blue-600">
+                     {tag}
+                 </span>
+                 ))}
+             </div>
+             <div class="p-4">
+                 <a href={post.url}>
+                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                         {post.frontmatter.title}
+                     </h5>
+                 </a>
+                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-2">
+                     {post.frontmatter.description}
+                 </p>
+                 <a href={post.url}
+                     class="mt-4 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition">
+                     Leer más
+                     <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
+                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                             d="M1 5h12m0 0L9 1m4 4L9 9" />
+                     </svg>
+                 </a>
+             </div>
+         </div>
+         ))
+        }
     </ul>
   </main>
 </Layout>
