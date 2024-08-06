@@ -7,7 +7,7 @@ description: "An analysis of the massive CrowdStrike global outage, its impact, 
 image:
     url: "/img/optimized/crowdstrike-outage-compress.webp"
     alt: "A blue screen of death (BSOD) on a computer monitor."
-publish_date: "2024-08-06"
+pubDate: "2024-08-06"
 tags: ["CrowdStrike", "cybersecurity", "software update", "global outage", "IT management"]
 ---
 # Understanding the CrowdStrike Global Outage: What Went Wrong?
