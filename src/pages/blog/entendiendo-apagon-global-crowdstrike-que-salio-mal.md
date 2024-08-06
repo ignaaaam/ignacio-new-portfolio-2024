@@ -7,7 +7,7 @@ description: "Un análisis del apagón global masivo de CrowdStrike, su impacto 
 image:
     url: "/img/optimized/crowdstrike-outage-compress.webp"
     alt: "Una pantalla azul de la muerte (BSOD) en un monitor de computadora."
-pubDate: "2024-08-06"
+pubDate: "06/08/2024"
 tags: ["CrowdStrike", "ciberseguridad", "actualización de software", "apagón global", "gestión de TI"]
 ---
 # Entendiendo el Apagón Global de CrowdStrike: ¿Qué Salió Mal?
