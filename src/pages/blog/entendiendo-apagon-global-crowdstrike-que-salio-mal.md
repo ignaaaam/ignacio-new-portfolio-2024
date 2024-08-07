@@ -38,4 +38,91 @@ El apagón de CrowdStrike destaca varios puntos clave para los administradores d
 
 A medida que las amenazas de ciberseguridad continúan evolucionando, también deben hacerlo las estrategias para protegerse contra ellas. Si bien ningún sistema puede ser completamente inmune a los problemas, las pruebas robustas y la preparación pueden reducir significativamente el impacto de problemas imprevistos.
 
-Para obtener más información detallada y actualizaciones sobre el apagón de CrowdStrike, puedes leer el artículo completo en [Computer Weekly](https://www.computerweekly.com/news/365536915/CrowdStrike-outage-explained-What-happened-and-what-can-we-learn) y [Sophos News](https://news.sophos.com/en-us/2024/07/20/crowdstrike-global-outage-sophos-guidance).
+<style>
+    article {
+        text-wrap: pretty;
+    }
+    
+    article h3 {
+    font-weight: bold;
+      font-size: 1.5em;
+      margin-top: 1.5em;
+    }
+
+article p {
+    margin: 10px 0;
+}
+
+article ul, article ol {
+    list-style-type: circle;
+    margin: 10px 0 10px 20px;
+}
+
+article li h4 {
+    /* add soft light font */
+    font-weight: lighter;
+    font-style: italic;
+}
+
+article blockquote {
+    border-left: 4px solid #ddd;
+    padding-left: 15px;
+    color: #666;
+    margin: 20px 0;
+    font-style: italic;
+}
+
+article p a {
+      cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem; /* py-2 px-4 */
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500; /* font-medium */
+  color: #1f2937; /* text-gray-900 */
+  background-color: #ffffff; /* bg-white */
+  border: 1px solid #e5e7eb; /* border border-gray-200 */
+  border-radius: 0.5rem; /* rounded-lg */
+  transition: all 0.2s ease-in-out; /* transition */
+}
+
+article p a:hover {
+    background-color: #f3f4f6; /* hover:bg-gray-100 */
+  color: rgba(234, 179, 8, 0.9); /* hover:text-yellow-500/90 */
+}
+
+article p a:focus {
+    z-index: 10; /* focus:z-10 */
+  outline: none; /* focus:outline-none */
+  border-color: #e5e7eb; /* focus:ring-gray-200 */
+  box-shadow: 0 0 0 2px #e5e7eb; /* focus:ring-2 */
+  color: rgba(234, 179, 8, 0.9); /* focus:text-yellow-500/90 */
+}
+
+article code {
+    background-color: #f5f5f5;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+article pre {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    article {
+        padding: 40px;
+    }
+}
+
+@media (max-width: 600px) { 
+    article {
+      padding: 30px;
+    }
+
+ }
+</style>
