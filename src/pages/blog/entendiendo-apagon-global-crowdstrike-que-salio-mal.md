@@ -39,6 +39,18 @@ El apagón de CrowdStrike destaca varios puntos clave para los administradores d
 A medida que las amenazas de ciberseguridad continúan evolucionando, también deben hacerlo las estrategias para protegerse contra ellas. Si bien ningún sistema puede ser completamente inmune a los problemas, las pruebas robustas y la preparación pueden reducir significativamente el impacto de problemas imprevistos.
 
 <style>
+    article p + h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 1.5em;
+  }
+
+  article h2 + h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 1.5em;
+  }
+
     article {
         text-wrap: pretty;
     }
