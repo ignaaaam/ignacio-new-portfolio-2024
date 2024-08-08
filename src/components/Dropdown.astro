@@ -6,6 +6,12 @@ import SpanishFlag from "../components/icons/SpanishFlag.astro";
 import EnglishFlag from "../components/icons/EnglishFlag.astro";
 import { ViewTransitions } from 'astro:transitions';
 
+// Determine the current pathname without the language prefix
+const currentPathname = Astro.url.pathname.replace(/^\/(en|es)?/, '');
+
+// Build href values
+const hrefEn = '/en/' + currentPathname;
+const hrefEs = '/' + currentPathname;
 ---
 
 <div
@@ -46,7 +52,7 @@ import { ViewTransitions } from 'astro:transitions';
         {
           lang === "es" ? (
             <a data-astro-reload
-              href="/en"
+              href={hrefEn}
               class="block px-4 py-2 text-sm text-black hover:bg-gray-100 dark:text-black dark:hover:bg-gray-600 dark:hover:text-black"
               role="menuitem"
             >
@@ -57,7 +63,7 @@ import { ViewTransitions } from 'astro:transitions';
             </a>
           ) : (
             <a data-astro-reload
-              href="/"
+              href={hrefEs}
               class="block px-4 py-2 text-sm text-black hover:bg-gray-100 dark:text-black dark:hover:bg-gray-600 dark:hover:text-black"
               role="menuitem"
             >
