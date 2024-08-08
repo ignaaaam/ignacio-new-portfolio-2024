@@ -7,7 +7,7 @@ description: "¡Esta es mi primera noticia de mi blog, bienvenidos front ends, b
 image:
     url: "https://docs.astro.build/default-og-image.png"
     alt: "La palabra astro alrededor de planetas, la primera imagen usada en el blog"
-publish_dateº: "13/07/2024"
+publish_date: "13/07/2024"
 tags: ["madewithastro", "blog", "programming", "frontend", "backend", "fullstack"]
 ---
 
