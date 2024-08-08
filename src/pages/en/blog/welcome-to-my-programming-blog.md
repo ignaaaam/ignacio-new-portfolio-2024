@@ -7,7 +7,7 @@ description: "Dive into the world of programming and discover the latest advance
 image:
   url: "https://docs.astro.build/default-og-image.png"
   alt: "The word astro around planets, the first image used in the blog"
-pubDate: "13/07/2024"
+publish_date: "13/07/2024"
 tags:
   ["madewithastro", "blog", "programming", "frontend", "backend", "fullstack"]
 ---
