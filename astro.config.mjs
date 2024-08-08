@@ -3,7 +3,7 @@ import vercel from "@astrojs/vercel/serverless";
 import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import vercelStatic from "@astrojs/vercel/static";
+// import vercelStatic from "@astrojs/vercel/static";
 import react from "@astrojs/react";
 import db from "@astrojs/db";
 
@@ -18,7 +18,7 @@ export default defineConfig({
       prefixDefaultLocale: false
     }
   },
-  output: "static",
+  output: "hybrid",
   integrations: [tailwind(), partytown({
     config: {
       config: {
@@ -27,7 +27,7 @@ export default defineConfig({
       forward: ["dataLayer.push"]
     }
   }), sitemap(), react(), db(), webVitals()],
-  adapter: vercelStatic({
+  adapter: vercel({
     webAnalytics: {
       enabled: true
     },
