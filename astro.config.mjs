@@ -5,8 +5,9 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import vercelStatic from "@astrojs/vercel/static";
 import react from "@astrojs/react";
-
 import db from "@astrojs/db";
+
+import webVitals from "@astrojs/web-vitals";
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,7 +26,7 @@ export default defineConfig({
       },
       forward: ["dataLayer.push"]
     }
-  }), sitemap(), react(), db()],
+  }), sitemap(), react(), db(), webVitals()],
   adapter: vercelStatic({
     webAnalytics: {
       enabled: true

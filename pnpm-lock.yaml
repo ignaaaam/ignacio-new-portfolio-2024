@@ -29,6 +29,9 @@ importers:
       '@astrojs/vercel':
         specifier: ^7.7.2
         version: 7.7.2(astro@4.12.1(typescript@5.5.3))(react@18.3.1)
+      '@astrojs/web-vitals':
+        specifier: ^1.0.0
+        version: 1.0.0(@astrojs/db@0.12.0(@types/react@18.3.3)(react@18.3.1))
       '@fontsource-variable/onest':
         specifier: ^5.0.4
         version: 5.0.4
@@ -161,6 +164,11 @@ packages:
     resolution: {integrity: sha512-mwnXz4OHE+X20kyQfrxAoLCe+uIhZ1w+G7fJnERSua9/DgX+j0Gvfku3D33bNyxaIwLQB5BOGAu2eZoi+gna4Q==}
     peerDependencies:
       astro: ^4.2.0
+
+  '@astrojs/web-vitals@1.0.0':
+    resolution: {integrity: sha512-aTWcd9FOFa3k8gfWequ+BPiWb/7W1tjQnyy27JmxvEZwyFkSM1ZGznhAr6jm6/XWO9azoUWglEE7uYs1pZszFg==}
+    peerDependencies:
+      '@astrojs/db': ^0.12.0
 
   '@babel/code-frame@7.24.7':
     resolution: {integrity: sha512-BcYH1CVJBO9tvyIZ2jVeXgSIMvGZ2FDRvDdOIVQyuklNKSsx+eppDEBq/g47Ayw+RqNFE+URvOShmf+f/qwAlA==}
@@ -2673,6 +2681,9 @@ packages:
   web-vitals@3.5.2:
     resolution: {integrity: sha512-c0rhqNcHXRkY/ogGDJQxZ9Im9D19hDihbzSQJrsioex+KnFgmMzBiy57Z1EjkhX/+OjyBpclDCzz2ITtjokFmg==}
 
+  web-vitals@4.2.3:
+    resolution: {integrity: sha512-/CFAm1mNxSmOj6i0Co+iGFJ58OS4NRGVP+AWS/l509uIK5a1bSoIVaHz/ZumpHTfHSZBpgrJ+wjfpAOrTHok5Q==}
+
   webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
 
@@ -2954,6 +2965,11 @@ snapshots:
       - next
       - react
       - supports-color
+
+  '@astrojs/web-vitals@1.0.0(@astrojs/db@0.12.0(@types/react@18.3.3)(react@18.3.1))':
+    dependencies:
+      '@astrojs/db': 0.12.0(@types/react@18.3.3)(react@18.3.1)
+      web-vitals: 4.2.3
 
   '@babel/code-frame@7.24.7':
     dependencies:
@@ -5644,6 +5660,8 @@ snapshots:
   web-streams-polyfill@3.3.3: {}
 
   web-vitals@3.5.2: {}
+
+  web-vitals@4.2.3: {}
 
   webidl-conversions@3.0.1: {}
 
