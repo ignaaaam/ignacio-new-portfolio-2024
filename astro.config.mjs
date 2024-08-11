@@ -11,6 +11,7 @@ import webVitals from "@astrojs/web-vitals";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://ignathedev.com',
   i18n: {
     defaultLocale: "es",
     locales: ["en", "es"],
