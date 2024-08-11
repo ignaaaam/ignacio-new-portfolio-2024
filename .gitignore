@@ -20,4 +20,7 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# Ignore .npmrc if environment-specific
+.npmrc
+
 .vercel
