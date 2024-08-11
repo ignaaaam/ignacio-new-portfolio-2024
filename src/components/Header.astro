@@ -1,32 +1,89 @@
 ---
 import Dropdown from "./Dropdown.astro";
-import { ViewTransitions } from 'astro:transitions';
+import { ViewTransitions } from "astro:transitions";
+const pathname = Astro.url.pathname;
 ---
 
 <header
-  class="flex flex-wrap items-center justify-center w-full py-5 mx-auto lg:gap-x-10 md:gap-x-4 lg:justify-center lg:px-4 lg:gap-y-4 md:gap-y-4 "
+  class={`flex flex-wrap items-center w-full py-5 mx-auto lg:gap-x-10 md:gap-x-4 lg:px-4 lg:gap-y-4 md:gap-y-4 ${pathname !== "/" ? "justify-between" : "justify-center"}`}
 >
-  <img
-    class="flex self-center mb-4 rounded-full size-12 md:mb-0"
-    src="/img/profile_picture.jpg"
-    alt="ignathedev photo"
-  />
-  <nav
-    class="flex flex-row flex-wrap items-center justify-center gap-4 xl:gap-y-0 opacity-80"
+  <div
+    class={`flex items-center lg:gap-x-4 ${pathname !== "/" ? "order-1" : ""}`}
   >
-    <a class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4" href="/">Inicio</a>
-    <a class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4" href="#about">Sobre mí</a>
-    <a class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4" href="#landingPage">Crea tu página web</a>
-    <a class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4" href="#experience">Experiencia</a>
-    <a class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4" href="#certifications">Certificaciones</a>
-    <a class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4" href="#projects">Proyectos</a>
-    <a class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4" href="#contact">Contacto</a>
-  </nav>
-  <div class="flex items-center justify-center gap-x-2 mt-4 lg:mt-0">
+    <img
+      class="flex self-center mb-4 rounded-full size-12 md:mb-0"
+      src="/img/profile_picture.jpg"
+      alt="ignathedev photo"
+    />
+    <nav
+      class="flex flex-row flex-wrap items-center justify-center gap-4 xl:gap-y-0 opacity-80"
+    >
+      {
+        pathname !== "/" ? (
+          <a
+            class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4"
+            href="/"
+          >
+            Inicio
+          </a>
+        ) : (
+          <>
+            <a
+              class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4"
+              href="/"
+            >
+              Inicio
+            </a>
+            <a
+              class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4"
+              href="#about"
+            >
+              Sobre mí
+            </a>
+            <a
+              class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4"
+              href="#landingPage"
+            >
+              Crea tu página web
+            </a>
+            <a
+              class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4"
+              href="#experience"
+            >
+              Experiencia
+            </a>
+            <a
+              class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4"
+              href="#certifications"
+            >
+              Certificaciones
+            </a>
+            <a
+              class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4"
+              href="#projects"
+            >
+              Proyectos
+            </a>
+            <a
+              class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4"
+              href="#landingPage"
+            >
+              Contacto
+            </a>
+          </>
+        )
+      }
+    </nav>
+  </div>
+  <div
+    class={`flex items-center justify-center gap-x-2 mt-4 lg:mt-0 ${pathname !== "/" ? "order-2" : ""}`}
+  >
     <Dropdown class="flex order-1" />
     <a
-    class="bg-white text-black transition rounded-lg hover:text-white hover:bg-[rgba(120,119,198,0.5)] px-4 py-2 lg:py-2 lg:px-4 order-2 text-sm lg:text-base"
-    href="/blog"
-    rel="noopener noreferrer" >Blog</a>
+      class="bg-white text-black transition rounded-lg hover:text-white hover:bg-[rgba(120,119,198,0.5)] px-4 py-2 lg:py-2 lg:px-4 order-2 text-sm lg:text-base"
+      href="/blog"
+      rel="noopener noreferrer"
+      >Blog</a
+    >
   </div>
 </header>

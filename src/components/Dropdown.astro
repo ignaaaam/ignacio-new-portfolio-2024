@@ -2,6 +2,8 @@
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
+const currentPath = Astro.url.pathname;
+
 import SpanishFlag from "../components/icons/SpanishFlag.astro";
 import EnglishFlag from "../components/icons/EnglishFlag.astro";
 import { ViewTransitions } from 'astro:transitions';
