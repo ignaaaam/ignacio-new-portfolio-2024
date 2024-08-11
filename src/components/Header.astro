@@ -27,6 +27,7 @@ const pathname = Astro.url.pathname;
             Inicio
           </a>
         ) : (
+        <>
             <a
               class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4"
               href="/"
@@ -69,6 +70,7 @@ const pathname = Astro.url.pathname;
             >
               Contacto
             </a>
+        </>
         )}
     </nav>
   </div>
