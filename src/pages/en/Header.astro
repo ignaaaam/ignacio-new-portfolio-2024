@@ -4,28 +4,29 @@ const pathname = Astro.url.pathname;
 ---
 
 <header
-  class={`flex flex-wrap items-center w-full py-5 mx-auto lg:gap-x-10 md:gap-x-4 lg:px-4 lg:gap-y-4 md:gap-y-4 ${pathname !== "/en" ? "justify-between" : "justify-center"}`}
+class={`flex flex-wrap items-center w-full py-5 mx-auto lg:gap-x-10 md:gap-x-4 px-4 lg:gap-y-4 md:gap-y-4 ${pathname !== "/en" ? "justify-between" : "justify-center"}`}
 >
   <div
-    class={`flex flex-col lg:flex-row items-center lg:gap-x-4 ${pathname !== "/en" ? "order-1" : ""}`}
+  class={`flex items-center lg:flex-row gap-x-4 ${pathname !== "/en" ? "order-1 flex-row lg:flex-row" : "flex-col"}`}
   >
     <img
-      class="flex self-center mb-4 rounded-full size-12 md:mb-0"
+      class="flex self-center rounded-full size-8 md:size-12"
       src="/img/profile_picture.jpg"
       alt="ignathedev photo"
     />
     <nav
-      class="flex flex-row flex-wrap items-center justify-center gap-4 xl:gap-y-0 opacity-80"
+    class={`flex flex-row text-sm lg:text-base flex-wrap items-center justify-center gap-4 xl:gap-y-0 opacity-80 mt-4 lg:mt-0 ${pathname !== "/en" ? "mt-0" : "mt-4"}`}
     >
       {
-        pathname !== "/en" ? 
+        pathname !== "/en" ? (
           <a
             class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4"
             href="/en"
           >
             Home
           </a>
-         : 
+        ) : (
+          <>
             <a
               class="bg-transparent transition rounded-lg hover:bg-[rgba(120,119,198,0.3)] px-2 py-1 lg:py-2 lg:px-4"
               href="/en"
@@ -68,13 +69,15 @@ const pathname = Astro.url.pathname;
             >
               Contact
             </a>
+          </>
+        )
       }
     </nav>
   </div>
   <div
-    class={`flex items-center justify-center gap-x-2 mt-4 lg:mt-0 ${pathname !== "/en" ? "order-2" : ""}`}
+    class={`flex items-center justify-center gap-x-2 lg:mt-0 mt-4 ${pathname !== "/en" ? "mt-4 order-2 flex-row lg:flex-row" : "mt-4"}`}
   >
-    <Dropdown />
+    <Dropdown class="flex order-1" />
     <a
       class="bg-white text-black transition rounded-lg hover:text-white hover:bg-[rgba(120,119,198,0.5)] px-4 py-2 lg:py-2 lg:px-4 order-2 text-sm lg:text-base"
       href="/en/blog"
