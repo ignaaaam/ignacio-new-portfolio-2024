@@ -15,7 +15,7 @@ const pathname = Astro.url.pathname;
       alt="ignathedev photo"
     />
     <nav
-      class={`flex flex-row text-sm lg:text-base flex-wrap items-center justify-center gap-4 xl:gap-y-0 opacity-80 mt-4 lg:mt-0 ${pathname !== "/" ? "mt-0" : "mt-4"}`}
+      class={`flex flex-row text-sm lg:text-base flex-wrap items-center justify-center gap-4 xl:gap-y-0 opacity-80 lg:mt-0 ${pathname !== "/" ? "mt-0" : "mt-4"}`}
     >
       {
         pathname !== "/" ? 
@@ -72,7 +72,7 @@ const pathname = Astro.url.pathname;
     </nav>
   </div>
   <div
-    class={`flex items-center justify-center gap-x-2 lg:mt-0 mt-4 ${pathname !== "/" ? "mt-0 order-2 flex-row lg:flex-row" : "mt-4"}`}
+    class={`flex items-center justify-center gap-x-2 lg:mt-0 ${pathname !== "/" ? "mt-0 order-2 flex-row lg:flex-row" : "mt-4"}`}
   >
     <Dropdown class="flex order-1" />
     <a
