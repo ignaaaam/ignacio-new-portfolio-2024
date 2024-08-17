@@ -57,6 +57,26 @@ With these steps, you'll be ready to leverage everything FilamentPHP has to offe
 FilamentPHP is a powerful tool for PHP developers looking for efficiency and flexibility in their projects. If you're a developer already working with Laravel or looking for a faster way to build backend applications, FilamentPHP is definitely an option you should consider.
 
 <style>
+    article p + h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 1.5em;
+  }
+
+  article h2 + h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 1.5em;
+  }
+
+  article img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        object-fit: fill;
+    }
+
     article {
         text-wrap: pretty;
     }
@@ -65,14 +85,6 @@ FilamentPHP is a powerful tool for PHP developers looking for efficiency and fle
     font-weight: bold;
       font-size: 1.5em;
       margin-top: 1.5em;
-    }
-
-    article img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-        object-fit: fill;
     }
 
 article p {
@@ -122,33 +134,5 @@ article p a:focus {
   outline: none; /* focus:outline-none */
   border-color: #e5e7eb; /* focus:ring-gray-200 */
   box-shadow: 0 0 0 2px #e5e7eb; /* focus:ring-2 */
-  color: rgba(234, 179, 8, 0.9); /* focus:text-yellow-500/90 */
+  color:
 }
-
-article code {
-    background-color: #f5f5f5;
-    padding: 2px 4px;
-    border-radius: 4px;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-article pre {
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-radius: 4px;
-    overflow-x: auto;
-}
-
-@media (min-width: 601px) and (max-width: 1024px) {
-    article {
-        padding: 40px;
-    }
-}
-
-@media (max-width: 600px) { 
-    article {
-      padding: 30px;
-    }
-
- }
-</style>
