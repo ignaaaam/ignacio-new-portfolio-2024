@@ -20,7 +20,7 @@ images: Images,
 .leftJoin(PostImages, eq(PostImages.postId, Posts.id))
 .leftJoin(Images, eq(PostImages.imageId, Images.id))
 .where(eq(Posts.locale, lang))
-.orderBy(asc(Posts.publish_date))
+.orderBy(desc(Posts.publish_date))
 .all();
 
 const postsMap = new Map();
