@@ -67,6 +67,13 @@ FilamentPHP is a powerful tool for PHP developers looking for efficiency and fle
       margin-top: 1.5em;
     }
 
+    article img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
 article p {
     margin: 10px 0;
 }
