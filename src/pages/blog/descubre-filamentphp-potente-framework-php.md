@@ -74,6 +74,7 @@ FilamentPHP es una herramienta poderosa para desarrolladores de PHP que buscan e
         height: auto;
         display: block;
         margin: 0 auto;
+        object-fit: fill;
     }
 
     article {
