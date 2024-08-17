@@ -58,12 +58,11 @@ const postsArray = Array.from(postsMap.values());
         <h1 class="flex text-4xl font-bold lg:self-start py-8 self-center lg:ml-36">
             Últimas Noticias
         </h1>
-        <ul class="grid grid-cols-1 md:grid-cols-2 items-center gap-8 p-6 md:p-12">
+        <ul class="grid grid-cols-1 md:grid-cols-3 items-center gap-8 p-6 md:p-12">
             {
              postsArray.map((post) => {
                const displayedTags = post.tags.slice(0, 5);
                const moreTagsCount = post.tags.length - 5;
-
              return (
              <div class="max-w-sm pb-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                  <a href={post.slug} class="rounded-lg overflow-hidden block">
@@ -71,13 +70,22 @@ const postsArray = Array.from(postsMap.values());
                          height=400 src={post.image.url} alt={post.image.alt} />
                  </a>
                  {/* add tag pills */}
-                 <div class="flex flex-wrap justify-center gap-2 py-3">
-                     {post.tags.map((tag) => (
-                     <span class="px-2 py-1 text-xs lg:text-sm font-medium text-white bg-blue-700 rounded-full dark:bg-blue-600">
-                       {tag}
-                     </span>
-                     ))}
-                 </div>
+                 <div class="tags-wrapper">
+                    <div class="flex flex-wrap justify-center gap-2 py-3">
+                        {post.tags.slice(0, 5).map((tag) => (
+                        <span
+                            class="px-2 py-1 text-xs lg:text-sm font-medium text-white bg-blue-700 rounded-full dark:bg-blue-600">
+                            {tag}
+                        </span>
+                        ))}
+                        {moreTagsCount > 0 && (
+                        <span
+                            class="px-2 py-1 text-xs lg:text-sm font-medium text-white bg-blue-500 rounded-full dark:bg-blue-500">
+                            +{moreTagsCount} more
+                        </span>
+                        )}
+                    </div>
+                </div>
                  <div class="p-4">
                      <a href={post.url}>
                          <h5 class="mb-2 text-2xl md:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
