@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
+layout: ../../../layouts/MarkdownPostLayout.astro
 title: "What's Coming in PHP 8.4: New Features and Improvements"
 slug: "php-8-4-new-features-improvements"
 author: "Ignacio Amat"
