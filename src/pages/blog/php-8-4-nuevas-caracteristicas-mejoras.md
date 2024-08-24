@@ -134,7 +134,6 @@ code {
 }
 
 article code {
-    background-color: #f5f5f5;
     padding: 2px 4px;
     border-radius: 4px;
     font-family: 'Courier New', Courier, monospace;
