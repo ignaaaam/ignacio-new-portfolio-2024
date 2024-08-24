@@ -126,6 +126,13 @@ article p a:focus {
   color: rgba(234, 179, 8, 0.9); /* focus:text-yellow-500/90 */
 }
 
+code {
+    background-color: #7477AC;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
 article code {
     background-color: #f5f5f5;
     padding: 2px 4px;

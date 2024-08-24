@@ -98,6 +98,13 @@ article blockquote {
     font-style: italic;
 }
 
+code {
+    background-color: #7477AC;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
 article p a {
       cursor: pointer;
   display: inline-flex;
