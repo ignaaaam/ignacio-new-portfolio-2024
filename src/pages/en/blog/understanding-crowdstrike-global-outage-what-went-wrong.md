@@ -62,9 +62,10 @@ As cybersecurity threats continue to evolve, so must the strategies to protect a
       margin-top: 1.5em;
     }
 
-article p {
+  article p {
     margin: 10px 0;
-}
+    line-height: 1.7;
+  }
 
 article ul, article ol {
     list-style-type: circle;

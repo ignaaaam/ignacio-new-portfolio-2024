@@ -87,9 +87,10 @@ FilamentPHP is a powerful tool for PHP developers looking for efficiency and fle
       margin-top: 1.5em;
     }
 
-article p {
+  article p {
     margin: 10px 0;
-}
+    line-height: 1.7;
+  }
 
 article ul, article ol {
     list-style-type: circle;

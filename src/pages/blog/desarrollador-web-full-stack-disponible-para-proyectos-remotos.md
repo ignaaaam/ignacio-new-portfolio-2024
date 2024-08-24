@@ -63,10 +63,6 @@ Saludos! 🙌✌️
       margin-top: 1.5em;
     }
 
-article p {
-    margin: 10px 0;
-}
-
 article ul, article ol {
     list-style-type: circle;
     margin: 10px 0 10px 20px;

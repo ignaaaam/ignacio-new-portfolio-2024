@@ -64,6 +64,7 @@ Gracias a todos y a los nuevos visitantes, espero que disfruten las noticias y l
 
 article p {
     margin: 10px 0;
+    line-height: 1.7;
 }
 
 article ul, article ol {
