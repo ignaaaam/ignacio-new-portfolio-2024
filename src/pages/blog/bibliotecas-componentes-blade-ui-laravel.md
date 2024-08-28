@@ -118,7 +118,7 @@ article p a {
   cursor: pointer;
   font-weight: bold; /* font-bold */
   text-decoration: underline; /* underline */
-  color: #1f2937; /* text-gray-900 */
+  color: #fafafa; /* text-gray-900 */
   background-color: transparent; /* Remove background color */
   border: none; /* Remove border */
   padding: 0; /* Remove padding */
@@ -126,7 +126,6 @@ article p a {
 }
 
 article p a:hover {
-    background-color: #f3f4f6; /* hover:bg-gray-100 */
   color: rgba(234, 179, 8, 0.9); /* hover:text-yellow-500/90 */
 }
 
