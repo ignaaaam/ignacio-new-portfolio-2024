@@ -92,7 +92,7 @@ Start exploring these libraries today and see how they can enhance your Laravel 
     
     article h3 {
     font-weight: bold;
-      font-size: 1.5em;
+      font-size: 1.2em;
       margin-top: 1.5em;
     }
 
