@@ -75,6 +75,12 @@ Las bibliotecas de componentes Blade UI en Laravel son herramientas esenciales p
     margin-top: 1.5em;
   }
 
+      article ul + h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 1.5em;
+  }
+
   article h2 + h1 {
     font-size: 2em;
     font-weight: bold;
