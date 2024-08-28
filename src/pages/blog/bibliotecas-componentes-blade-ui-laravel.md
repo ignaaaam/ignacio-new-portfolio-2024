@@ -19,25 +19,25 @@ En este artículo, exploraremos algunas de las mejores bibliotecas de componente
 
 ## 1. **Laravel Blade UI Kit**
 
-Laravel Blade UI Kit es una potente colección de componentes que simplifica el proceso de construcción de interfaces modernas y responsivas. Con componentes como formularios, modales, botones y más, puedes implementar rápidamente funciones complejas sin necesidad de HTML y CSS personalizados en exceso.
+[Laravel Blade UI Kit](https://github.com/blade-ui-kit/blade-ui-kit) es una potente colección de componentes que simplifica el proceso de construcción de interfaces modernas y responsivas. Con componentes como formularios, modales, botones y más, puedes implementar rápidamente funciones complejas sin necesidad de HTML y CSS personalizados en exceso.
 
 ### Características Clave:
 - **Componentes preconstruidos**: Componentes fácilmente personalizables para patrones comunes de UI.
 - **Accesibilidad**: Los componentes están diseñados teniendo en cuenta la accesibilidad, asegurando que sean utilizables por todos.
 - **Diseño responsive**: Los componentes están diseñados para ser completamente responsivos desde el primer momento.
 
-## 2. **Blade UI Components de Spatie**
+## 2. **Preline UI**
 
-La biblioteca Blade UI Components de Spatie ofrece un conjunto completo de componentes reutilizables que pueden ahorrarte tiempo y esfuerzo. Desde alertas y avatares hasta iconos y formularios, esta biblioteca proporciona una amplia gama de componentes para satisfacer tus necesidades.
+[Preline UI](https://preline.co/) es una biblioteca de componentes front-end que se centra en la creación de interfaces de usuario elegantes y funcionales con un enfoque minimalista. Ofrece una amplia gama de componentes, desde botones y menús hasta modales y formularios, que pueden integrarse fácilmente en tus plantillas Blade.
 
 ### Características Clave:
-- **Diseño consistente**: Los componentes siguen un lenguaje de diseño unificado, haciendo que tu UI luzca cohesiva.
-- **Facilidad de uso**: Integrar componentes en tus plantillas Blade es sencillo e intuitivo.
-- **Personalización**: Cada componente puede personalizarse fácilmente para ajustarse a las necesidades específicas de tu proyecto.
+- **Interfaz moderna**: Componentes diseñados con un enfoque moderno y minimalista.
+- **Fácil integración**: Los componentes se pueden integrar fácilmente en cualquier proyecto Laravel.
+- **Personalización flexible**: Cada componente es altamente personalizable, lo que permite adaptarlo a las necesidades específicas de tu proyecto.
 
 ## 3. **Tallstack.dev**
 
-Tallstack.dev es una biblioteca de componentes Blade UI que se centra en la integración con Tailwind CSS. Si estás utilizando Tailwind en tus proyectos de Laravel, esta biblioteca ofrece componentes diseñados específicamente para trabajar a la perfección con el enfoque utility-first de Tailwind.
+[Tallstack.dev](https://tallstack.dev/) es una biblioteca de componentes Blade UI que se centra en la integración con Tailwind CSS. Si estás utilizando Tailwind en tus proyectos de Laravel, esta biblioteca ofrece componentes diseñados específicamente para trabajar a la perfección con el enfoque utility-first de Tailwind.
 
 ### Características Clave:
 - **Compatibilidad con Tailwind**: Todos los componentes están construidos para funcionar sin problemas con Tailwind CSS.
@@ -46,7 +46,7 @@ Tallstack.dev es una biblioteca de componentes Blade UI que se centra en la inte
 
 ## 4. **Blade Heroicons**
 
-Blade Heroicons es una biblioteca simple pero efectiva que proporciona Heroicons como componentes Blade. Esta biblioteca te permite incluir fácilmente iconos bellamente diseñados en tus vistas de Laravel sin tener que gestionar manualmente archivos SVG.
+[Blade Heroicons](https://github.com/blade-ui-kit/blade-heroicons) es una biblioteca simple pero efectiva que proporciona Heroicons como componentes Blade. Esta biblioteca te permite incluir fácilmente iconos bellamente diseñados en tus vistas de Laravel sin tener que gestionar manualmente archivos SVG.
 
 ### Características Clave:
 - **Variedad de iconos**: Incluye todos los Heroicons, tanto en estilos outline como solid.
@@ -55,7 +55,7 @@ Blade Heroicons es una biblioteca simple pero efectiva que proporciona Heroicons
 
 ## 5. **Blade UI Icons**
 
-Si necesitas una amplia selección de iconos más allá de Heroicons, Blade UI Icons de Blade UI Kit ofrece una extensa colección de varias bibliotecas de iconos populares. Esta biblioteca es ideal para desarrolladores que necesitan una rica variedad de iconos para sus proyectos.
+Si necesitas una amplia selección de iconos más allá de Heroicons, [Blade UI Icons](https://github.com/blade-ui-kit/blade-icons) de Blade UI Kit ofrece una extensa colección de varias bibliotecas de iconos populares. Esta biblioteca es ideal para desarrolladores que necesitan una rica variedad de iconos para sus proyectos.
 
 ### Características Clave:
 - **Múltiples conjuntos de iconos**: Acceso a iconos de bibliotecas populares como Feather, Font Awesome y Material Design.
