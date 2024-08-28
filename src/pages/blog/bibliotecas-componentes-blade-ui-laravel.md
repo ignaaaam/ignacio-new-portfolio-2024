@@ -115,16 +115,13 @@ article blockquote {
 }
 
 article p a {
-      cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  padding: 0.5rem 1rem; /* py-2 px-4 */
-  font-size: 0.875rem; /* text-sm */
-  font-weight: 500; /* font-medium */
+  cursor: pointer;
+  font-weight: bold; /* font-bold */
+  text-decoration: underline; /* underline */
   color: #1f2937; /* text-gray-900 */
-  background-color: #ffffff; /* bg-white */
-  border: 1px solid #e5e7eb; /* border border-gray-200 */
-  border-radius: 0.5rem; /* rounded-lg */
+  background-color: transparent; /* Remove background color */
+  border: none; /* Remove border */
+  padding: 0; /* Remove padding */
   transition: all 0.2s ease-in-out; /* transition */
 }
 
