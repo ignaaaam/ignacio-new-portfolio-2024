@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
+layout: ../../../layouts/MarkdownPostLayout.astro
 title: "Revolutionizing Web Development: Vercel's V0 AI Platform with Integrated Chat Feature"
 slug: "vercel-v0-ai-platform-chat-feature"
 author: "Your Name"
