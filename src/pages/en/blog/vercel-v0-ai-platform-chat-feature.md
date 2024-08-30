@@ -33,7 +33,7 @@ The newest addition to V0’s capabilities is an integrated chat feature, design
 - **Streamlined Workflow**: The chat functionality simplifies the development process by reducing the need for multiple iterations. Developers can ask the AI to make adjustments on the fly, ensuring that the final design meets all requirements before moving on to coding.
 - **Learning and Adaptation**: The AI in Vercel’s chat feature learns from the developer's preferences over time, making future interactions more efficient. It can suggest improvements based on previous conversations, further accelerating the design process.
 
-[![Chat V0](/public/img/optimized/v0-chat-feature.webp)](https://v0.dev/chat)
+[![Chat V0](/img/optimized/v0-chat-feature.webp)](https://v0.dev/chat)
 
 ## How V0 Transforms Web Development
 

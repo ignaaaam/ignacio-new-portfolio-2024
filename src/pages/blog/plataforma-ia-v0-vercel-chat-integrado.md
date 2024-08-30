@@ -28,7 +28,7 @@ En una era donde la creación rápida de prototipos y el desarrollo ágil son cr
 
 La adición más reciente a las capacidades de V0 es una función de chat integrada, diseñada para funcionar de manera similar a ChatGPT, pero específicamente adaptada para tareas de desarrollo web. Esta función permite a los desarrolladores interactuar con la IA en tiempo real, permitiendo un enfoque más dinámico y colaborativo para crear, redefinir y mejorar diseños.
 
-[![Chat V0](/public/img/optimized/v0-chat-feature.webp)](https://v0.dev/chat)
+[![Chat V0](/img/optimized/v0-chat-feature.webp)](https://v0.dev/chat)
 
 
 ### Cómo la Función de Chat Mejora V0:
