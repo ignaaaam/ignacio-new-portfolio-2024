@@ -24,3 +24,6 @@ pnpm-debug.log*
 .npmrc
 
 .vercel
+
+# Ignore psd files
+*.psd
