@@ -54,3 +54,106 @@ Laravel Cloud represents the next step in the evolution of the Laravel ecosystem
 As we approach the release of Laravel Cloud, it's clear that this platform will have a significant impact on the Laravel community and the broader web development landscape. With its focus on simplicity, automation, and scalability, Laravel Cloud is poised to become the go-to solution for developers looking to streamline their deployment processes and deliver robust, secure applications.
 
 Stay tuned for the official launch at the end of the year and be ready to take your Laravel projects to the next level.
+
+<style>
+    article p + h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 1.5em;
+  }
+
+      article ul + h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 1.5em;
+  }
+
+  article h2 + h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 1.5em;
+  }
+
+    article {
+        text-wrap: pretty;
+    }
+    
+    article h3 {
+    font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 1.5em;
+    }
+
+article p {
+    margin: 10px 0;
+}
+
+article ul, article ol {
+    list-style-type: circle;
+    margin: 10px 0 10px 20px;
+}
+
+article li h4 {
+    /* add soft light font */
+    font-weight: lighter;
+    font-style: italic;
+}
+
+article blockquote {
+    border-left: 4px solid #ddd;
+    padding-left: 15px;
+    color: #666;
+    margin: 20px 0;
+    font-style: italic;
+}
+
+article p a {
+  cursor: pointer;
+  font-weight: bold; /* font-bold */
+  text-decoration: underline; /* underline */
+  color: #fafafa; /* text-gray-900 */
+  background-color: transparent; /* Remove background color */
+  border: none; /* Remove border */
+  padding: 0; /* Remove padding */
+  transition: all 0.2s ease-in-out; /* transition */
+}
+
+article p a:hover {
+  color: rgba(234, 179, 8, 0.9); /* hover:text-yellow-500/90 */
+}
+
+article p a:focus {
+    z-index: 10; /* focus:z-10 */
+  outline: none; /* focus:outline-none */
+  border-color: #e5e7eb; /* focus:ring-gray-200 */
+  box-shadow: 0 0 0 2px #e5e7eb; /* focus:ring-2 */
+  color: rgba(234, 179, 8, 0.9); /* focus:text-yellow-500/90 */
+}
+
+article code {
+    background-color: #f5f5f5;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+article pre {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x auto;
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    article {
+        padding: 40px;
+    }
+}
+
+@media (max-width: 600px) { 
+    article {
+      padding: 30px;
+    }
+
+ }
+</style>

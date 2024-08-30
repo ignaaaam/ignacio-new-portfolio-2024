@@ -64,6 +64,12 @@ Start exploring V0 today and experience the future of web development firsthand.
     margin-top: 1.5em;
   }
 
+      article ul + h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 1.5em;
+  }
+
   article h2 + h1 {
     font-size: 2em;
     font-weight: bold;
@@ -73,16 +79,10 @@ Start exploring V0 today and experience the future of web development firsthand.
     article {
         text-wrap: pretty;
     }
-
-    article img {
-        max-width: 100%;
-        margin: 1.5em 0;
-        border-radius: 10px;
-    }
     
     article h3 {
     font-weight: bold;
-      font-size: 1.5em;
+      font-size: 1.2em;
       margin-top: 1.5em;
     }
 
@@ -110,21 +110,17 @@ article blockquote {
 }
 
 article p a {
-      cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  padding: 0.5rem 1rem; /* py-2 px-4 */
-  font-size: 0.875rem; /* text-sm */
-  font-weight: 500; /* font-medium */
-  color: #1f2937; /* text-gray-900 */
-  background-color: #ffffff; /* bg-white */
-  border: 1px solid #e5e7eb; /* border border-gray-200 */
-  border-radius: 0.5rem; /* rounded-lg */
+  cursor: pointer;
+  font-weight: bold; /* font-bold */
+  text-decoration: underline; /* underline */
+  color: #fafafa; /* text-gray-900 */
+  background-color: transparent; /* Remove background color */
+  border: none; /* Remove border */
+  padding: 0; /* Remove padding */
   transition: all 0.2s ease-in-out; /* transition */
 }
 
 article p a:hover {
-    background-color: #f3f4f6; /* hover:bg-gray-100 */
   color: rgba(234, 179, 8, 0.9); /* hover:text-yellow-500/90 */
 }
 
@@ -154,10 +150,6 @@ article pre {
     article {
         padding: 40px;
     }
-
-    article img {
-        max-width: 80%;
-    }
 }
 
 @media (max-width: 600px) { 
@@ -165,8 +157,5 @@ article pre {
       padding: 30px;
     }
 
-    article img {
-        max-width: 100%;
-    }
  }
 </style>

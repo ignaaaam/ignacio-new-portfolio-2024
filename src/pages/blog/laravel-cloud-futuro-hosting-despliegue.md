@@ -54,3 +54,106 @@ Laravel Cloud representa el siguiente paso en la evolución del ecosistema Larav
 A medida que nos acercamos al lanzamiento de Laravel Cloud, está claro que esta plataforma tendrá un impacto significativo en la comunidad de Laravel y en el panorama más amplio del desarrollo web. Con su enfoque en la simplicidad, la automatización y la escalabilidad, Laravel Cloud está preparada para convertirse en la solución preferida para los desarrolladores que buscan optimizar sus procesos de despliegue y ofrecer aplicaciones robustas y seguras.
 
 Mantente atento para el lanzamiento oficial a finales de este año y prepárate para llevar tus proyectos Laravel al siguiente nivel.
+
+<style>
+    article p + h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 1.5em;
+  }
+
+      article ul + h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 1.5em;
+  }
+
+  article h2 + h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 1.5em;
+  }
+
+    article {
+        text-wrap: pretty;
+    }
+    
+    article h3 {
+    font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 1.5em;
+    }
+
+article p {
+    margin: 10px 0;
+}
+
+article ul, article ol {
+    list-style-type: circle;
+    margin: 10px 0 10px 20px;
+}
+
+article li h4 {
+    /* add soft light font */
+    font-weight: lighter;
+    font-style: italic;
+}
+
+article blockquote {
+    border-left: 4px solid #ddd;
+    padding-left: 15px;
+    color: #666;
+    margin: 20px 0;
+    font-style: italic;
+}
+
+article p a {
+  cursor: pointer;
+  font-weight: bold; /* font-bold */
+  text-decoration: underline; /* underline */
+  color: #fafafa; /* text-gray-900 */
+  background-color: transparent; /* Remove background color */
+  border: none; /* Remove border */
+  padding: 0; /* Remove padding */
+  transition: all 0.2s ease-in-out; /* transition */
+}
+
+article p a:hover {
+  color: rgba(234, 179, 8, 0.9); /* hover:text-yellow-500/90 */
+}
+
+article p a:focus {
+    z-index: 10; /* focus:z-10 */
+  outline: none; /* focus:outline-none */
+  border-color: #e5e7eb; /* focus:ring-gray-200 */
+  box-shadow: 0 0 0 2px #e5e7eb; /* focus:ring-2 */
+  color: rgba(234, 179, 8, 0.9); /* focus:text-yellow-500/90 */
+}
+
+article code {
+    background-color: #f5f5f5;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+article pre {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x auto;
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    article {
+        padding: 40px;
+    }
+}
+
+@media (max-width: 600px) { 
+    article {
+      padding: 30px;
+    }
+
+ }
+</style>
