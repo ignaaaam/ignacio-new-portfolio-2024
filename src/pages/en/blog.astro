@@ -55,7 +55,14 @@ const postsArray = Array.from(postsMap.values());
     title="Ignacio Amat Urbina - Desarrollador y Programador Web Full Stack | Especialista en PHP, Laravel, Livewire, Inertia, Vue, TailwindCSS"
     description="Ignacio Amat Urbina, contrátame si necesitas un desarrollador Web Full Stack y experto en Back End y Front End. Especializado en PHP, Laravel (Livewire e Inertia), Javascript, Vue y TailwindCSS. Aprendiendo Astro para crear sitios web rápidos, optimizados y de alto rendimiento.">
     <main class="flex flex-col items-center min-h-screen">
-        <h1 class="flex text-5xl font-bold mb-4 lg:self-start p-12 self-center lg:ml-36">Latest News</h1>
+        <div class="self-start">
+            <h1 class="flex text-4xl font-bold lg:self-start py-8 self-center lg:ml-36">
+                Latest News
+            </h1>
+            <p class="lg:self-start self-center lg:ml-36">
+              Here you will find the latest news and updates on web development, programming, technology, and much more.
+            </p>
+          </div>
         <ul class="grid grid-cols-1 md:grid-cols-3 items-center gap-8 p-6 md:p-12">
             {
             postsArray.map((post) => {
