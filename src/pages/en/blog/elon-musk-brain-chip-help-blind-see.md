@@ -5,7 +5,7 @@ slug: "elon-musk-brain-chip-help-blind-see"
 author: "Ignacio Amat"  
 description: "Elon Musk's Neuralink has received approval to develop brain chips aimed at helping blind individuals regain sight. Learn more about the revolutionary technology and its implications for the future of healthcare."  
 image:  
-    url: "/img/optimized/elonmustk-neuralink.webp"  
+    url: "/img/optimized/elonmusk-neuralink.webp"  
     alt: "Representation of a brain chip, symbolizing Neuralink's vision to restore sight."  
 publish_date: "24/09/2024"
 tags: ["Elon Musk", "Neuralink", "Brain Chip", "Healthcare Technology", "Blindness"]  
