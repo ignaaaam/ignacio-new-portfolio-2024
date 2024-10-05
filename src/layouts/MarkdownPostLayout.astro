@@ -2,6 +2,7 @@
 const { frontmatter } = Astro.props;
 import Layout from "../layouts/Layout.astro";
 import { Picture } from "astro:assets";
+import { SocialShare } from "astro-social-share";
 
 const pathname = Astro.url.pathname;
 const buttonText = pathname.includes("/en")
@@ -39,57 +40,61 @@ const buttonText = pathname.includes("/en")
           <span>•</span>
           <time datetime="2023-07-13">{frontmatter.publish_date}</time>
         </div>
-        <div class="flex flex-wrap gap-2">
-          {
-            frontmatter.tags.map((tag) => (
-              <div
-                class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground"
-                data-v0-t="badge"
-              >
-                {tag}
-              </div>
-            ))
-          }
-        </div>
-        <img
-          src={frontmatter.image.url}
-          alt="Featured Image"
-          width="1250"
-          height="600"
-          class="aspect-video overflow-hidden rounded-lg object-fill"
-        />
-        <h2 class="text-center text-sm opacity-50 pb-8">
-          {frontmatter.image.alt}
-        </h2>
-
-        <slot />
-
-        <a
-          href="mailto:ignacioamat@ignathedev.com"
-          target="_blank"
-          rel="noopener"
-          class="cursor-pointer inline-flex gap-x-2 items-center px-4 py-2 text-sm font-medium text-gray-900 transition bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-yellow-500/90 focus:z-10 focus:ring-2 focus:outline-none focus:ring-gray-200 focus:text-yellow-500/90"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="icon icon-tabler icons-tabler-filled icon-tabler-mail"
-            ><path
-              stroke="none"
-              d="M0 0h24v24H0z"
-              fill="none"
-            ></path><path
-              d="M22 7.535v9.465a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-9.465l9.445 6.297l.116 .066a1 1 0 0 0 .878 0l.116 -.066l9.445 -6.297z"
-            ></path><path
-              d="M19 4c1.08 0 2.027 .57 2.555 1.427l-9.555 6.37l-9.555 -6.37a2.999 2.999 0 0 1 2.354 -1.42l.201 -.007h14z"
-            ></path></svg
-          >
-          {buttonText}
-        </a>
       </div>
+      <div class="flex flex-wrap gap-2 py-5">
+        {
+          frontmatter.tags.map((tag) => (
+            <div
+              class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground"
+              data-v0-t="badge"
+            >
+              {tag}
+            </div>
+          ))
+        }
+      </div>
+      <div>
+        <SocialShare
+          description={frontmatter.description}
+          title={frontmatter.title}
+        />
+      </div>
+      <img
+        src={frontmatter.image.url}
+        alt="Featured Image"
+        width="1250"
+        height="600"
+        class="aspect-video overflow-hidden rounded-lg object-fill mb-4"
+      />
+      <h2 class="text-center text-sm opacity-50 pb-8">
+        {frontmatter.image.alt}
+      </h2>
+      <slot />
+      <a
+        href="mailto:ignacioamat@ignathedev.com"
+        target="_blank"
+        rel="noopener"
+        class="cursor-pointer inline-flex gap-x-2 items-center px-4 py-2 text-sm font-medium text-gray-900 transition bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-yellow-500/90 focus:z-10 focus:ring-2 focus:outline-none focus:ring-gray-200 focus:text-yellow-500/90"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="icon icon-tabler icons-tabler-filled icon-tabler-mail"
+          ><path
+            stroke="none"
+            d="M0 0h24v24H0z"
+            fill="none"
+          ></path><path
+            d="M22 7.535v9.465a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-9.465l9.445 6.297l.116 .066a1 1 0 0 0 .878 0l.116 -.066l9.445 -6.297z"
+          ></path><path
+            d="M19 4c1.08 0 2.027 .57 2.555 1.427l-9.555 6.37l-9.555 -6.37a2.999 2.999 0 0 1 2.354 -1.42l.201 -.007h14z"
+          ></path></svg
+        >
+        {buttonText}
+      </a>
     </article>
   </main>
 </Layout>
