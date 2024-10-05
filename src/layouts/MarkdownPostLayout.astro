@@ -2,7 +2,23 @@
 const { frontmatter } = Astro.props;
 import Layout from "../layouts/Layout.astro";
 import { Picture } from "astro:assets";
-import { SocialShare } from "astro-social-share";
+
+import {
+  FacebookShareButton,
+  LinkedInShareButton,
+  RedditShareButton,
+  TwitterShareButton,
+  WhatsAppShareButton,
+  SocialShare,
+} from "astro-social-share";
+
+const BUTTONS = [
+  FacebookShareButton,
+  LinkedInShareButton,
+  RedditShareButton,
+  TwitterShareButton,
+  WhatsAppShareButton,
+];
 
 const pathname = Astro.url.pathname;
 const buttonText = pathname.includes("/en")
@@ -55,6 +71,7 @@ const buttonText = pathname.includes("/en")
       </div>
       <div>
         <SocialShare
+          buttons={BUTTONS}
           description={frontmatter.description}
           title={frontmatter.title}
         />
