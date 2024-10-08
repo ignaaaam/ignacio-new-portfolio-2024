@@ -12,6 +12,7 @@ import  SpeedInsights  from "@vercel/speed-insights/astro"
 import {Meteors} from "../components/Meteors.tsx";
 import { ViewTransitions } from 'astro:transitions';
 import { getLangFromUrl, useTranslations  } from '../i18n/utils';
+import { AstroSeo } from '@astrolib/seo';
 
 interface Props {
   title: string;
@@ -22,6 +23,9 @@ const { title, description } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const ogImage = "https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg";
+const url = "https://www.ignathedev.com/";
+const siteName = "Ignacio Amat Urbina - Desarrollador Web Full Stack & Laravel Expert";
 ---
 
 <!doctype html>
@@ -36,60 +40,68 @@ const t = useTranslations(lang);
 
   gtag('config', 'G-VZQ07QHFLN');
 </script>
-    <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content={description}
+    <!-- SEO Meta Tags with AstroSEO -->
+    <AstroSeo
+      title={title}
+      description={description}
+      canonical={url}
+      openGraph={{
+        url: url,
+        title: title,
+        description: description,
+        images: [
+          {
+            url: ogImage,
+            width: 1200,
+            height: 630,
+            alt: 'Profile picture of Ignacio Amat Urbina',
+            type: 'image/jpeg',
+          }
+        ],
+        site_name: siteName,
+        locale: lang === 'es' ? 'es_ES' : 'en_US',
+      }}
+      twitter={{
+        handle: '@ignathedev',
+        site: '@ignathedev',
+        cardType: 'summary_large_image',
+      }}
+      additionalMetaTags={[
+        { name: 'keywords', content: t('keywords') },
+        { name: 'author', content: 'Ignacio Amat Urbina' },
+      ]}
     />
-    <meta
-      name="viewport"
-      content="width=device-width"
-    />
-    <SpeedInsights />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="/favicon.ico"
-    />
-    <meta
-      name="generator"
-      content={Astro.generator}
-    />
-    <link rel="canonical" href="https://www.ignathedev.com">
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <title>{title}</title>
-    <!-- <ViewTransitions /> -->
 
-    <meta name="description" content="Passionate full-stack web developer & Laravel Expert based in Barcelona, offering web development and design services.">
+    <SpeedInsights />
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
 
 
   <!-- Facebook Meta Tags -->
-  <meta property="og:url" content="https://www.ignathedev.com/">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content={title}>
-  <meta property="og:description" content={description}>
-  <meta property="og:image" content="https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg">
+  <!-- <meta property="og:url" content="https://www.ignathedev.com/"> -->
+  <!-- <meta property="og:type" content="website"> -->
+  <!-- <meta property="og:title" content={title}> -->
+  <!-- <meta property="og:description" content={description}> -->
+  <!-- <meta property="og:image" content="https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg"> -->
 
   <!-- Twitter Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta property="twitter:domain" content="ignathedev.com">
-  <meta property="twitter:url" content="https://www.ignathedev.com/">
-  <meta name="twitter:title" content={title}>
-  <meta name="twitter:description" content={description}>
-  <meta name="twitter:image" content="https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg">
+  <!-- <meta name="twitter:card" content="summary_large_image"> -->
+  <!-- <meta property="twitter:domain" content="ignathedev.com"> -->
+  <!-- <meta property="twitter:url" content="https://www.ignathedev.com/"> -->
+  <!-- <meta name="twitter:title" content={title}> -->
+  <!-- <meta name="twitter:description" content={description}> -->
+  <!-- <meta name="twitter:image" content="https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg"> -->
 
   <!-- Meta Tags Generated via https://www.opengraph.xyz -->
-    <meta property="og:site_name" content="Ignacio Amat Urbina - Desarrollador Web Full Stack & Laravel Expert">
+    <!-- <meta property="og:site_name" content="Ignacio Amat Urbina - Desarrollador Web Full Stack & Laravel Expert"> -->
 
     <!-- Locale -->
-    <meta property="og:locale" content="es_ES">
+    <!-- <meta property="og:locale" content="es_ES"> -->
 
     <!-- Keywords -->
-    <meta name="keywords" content={t('keywords')}>
+    <!-- <meta name="keywords" content={t('keywords')}> -->
 
     <!-- Author -->
-    <meta property="og:author" content="Ignacio Amat Urbina">
+    <!-- <meta property="og:author" content="Ignacio Amat Urbina"> -->
     
     <script type="application/ld+json">
 			{"name" : "ignathedev",

@@ -32,6 +32,9 @@ importers:
       '@astrojs/web-vitals':
         specifier: ^3.0.0
         version: 3.0.0(@astrojs/db@0.14.1(@types/react@18.3.3)(react@18.3.1))
+      '@astrolib/seo':
+        specifier: 1.0.0-beta.8
+        version: 1.0.0-beta.8(astro@4.15.8(rollup@4.22.4)(typescript@5.5.3))
       '@fontsource-variable/onest':
         specifier: ^5.0.4
         version: 5.0.4
@@ -175,6 +178,11 @@ packages:
 
   '@astrojs/yaml2ts@0.2.1':
     resolution: {integrity: sha512-CBaNwDQJz20E5WxzQh4thLVfhB3JEEGz72wRA+oJp6fQR37QLAqXZJU0mHC+yqMOQ6oj0GfRPJrz6hjf+zm6zA==}
+
+  '@astrolib/seo@1.0.0-beta.8':
+    resolution: {integrity: sha512-SpNycspjcjnz6um4Vph0k+SAKgUib7/8qJRCaaahJD1UfLuXKK7E+bmKbnv8QPBTRPZkQW6zFVaZRl5VvnyDfg==}
+    peerDependencies:
+      astro: ^1.2.1 || ^2.0.0 || ^3.0.0-beta.0 || ^3.0.0 || ^4.0.0 || ^5.0.0-beta.0 || ^5.0.0
 
   '@babel/code-frame@7.24.7':
     resolution: {integrity: sha512-BcYH1CVJBO9tvyIZ2jVeXgSIMvGZ2FDRvDdOIVQyuklNKSsx+eppDEBq/g47Ayw+RqNFE+URvOShmf+f/qwAlA==}
@@ -3135,6 +3143,10 @@ snapshots:
   '@astrojs/yaml2ts@0.2.1':
     dependencies:
       yaml: 2.5.1
+
+  '@astrolib/seo@1.0.0-beta.8(astro@4.15.8(rollup@4.22.4)(typescript@5.5.3))':
+    dependencies:
+      astro: 4.15.8(rollup@4.22.4)(typescript@5.5.3)
 
   '@babel/code-frame@7.24.7':
     dependencies:
