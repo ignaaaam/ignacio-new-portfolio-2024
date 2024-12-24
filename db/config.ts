@@ -1,4 +1,4 @@
-import { db, eq, defineDb, defineTable, column } from 'astro:db';
+import { defineDb, defineTable, column } from 'astro:db';
 
 const Posts = defineTable({
     columns: {

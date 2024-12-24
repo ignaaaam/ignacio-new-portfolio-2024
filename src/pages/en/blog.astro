@@ -3,9 +3,7 @@ import { getLangFromUrl } from "../../i18n/utils.ts";
 import Layout from "../../layouts/Layout.astro";
 
 const lang = getLangFromUrl(Astro.url);
-import { fade } from "astro:transitions";
-import { Image } from "astro:assets";
-import { db, eq, Posts, Tags, Images, PostImages, PostTags, asc, desc } from 'astro:db';
+import { db, eq, Posts, Tags, Images, PostImages, PostTags, desc } from 'astro:db';
 
 export const prerender = false;
 
@@ -66,7 +64,6 @@ const postsArray = Array.from(postsMap.values());
         <ul class="grid grid-cols-1 md:grid-cols-3 items-center gap-8 p-6 md:p-12">
             {
             postsArray.map((post) => {
-            const displayedTags = post.tags.slice(0, 5);
             const moreTagsCount = post.tags.length - 5;
             return (
             <div
