@@ -13,29 +13,29 @@ import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://ignathedev.com',
+  site: "https://ignathedev.com",
   i18n: {
     defaultLocale: "es",
     locales: ["en", "es"],
     routing: {
-      prefixDefaultLocale: false
-    }
-  },
-  output: "hybrid",
-  integrations: [tailwind(), partytown({
-    config: {
-      config: {
-        debug: false
-      },
-      forward: ["dataLayer.push"]
-    }
-  }), sitemap(), react(), db(), webVitals()],
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true
+      prefixDefaultLocale: false,
     },
-    speedInsights: {
-      enabled: true
-    }
-  })
+  },
+  output: "server",
+  integrations: [
+    tailwind(),
+    partytown({
+      config: {
+        config: {
+          debug: false,
+        },
+        forward: ["dataLayer.push"],
+      },
+    }),
+    sitemap(),
+    react(),
+    db(),
+    webVitals(),
+  ],
+  adapter: cloudflare(),
 });
