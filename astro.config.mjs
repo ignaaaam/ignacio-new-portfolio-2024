@@ -20,7 +20,7 @@ export default defineConfig({
       prefixDefaultLocale: false
     }
   },
-  output: "hybrid",
+  output: "server",
   integrations: [tailwind(), partytown({
     config: {
       config: {
@@ -29,5 +29,5 @@ export default defineConfig({
       forward: ["dataLayer.push"]
     }
   }), sitemap(), react(), db(), webVitals()],
-  adapter: cloudflare()
+  adapter: cloudflare(),
 });
