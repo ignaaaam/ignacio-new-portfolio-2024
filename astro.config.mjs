@@ -21,7 +21,7 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
-  output: "server",
+  output: "hybrid",
   integrations: [
     tailwind(),
     partytown({
