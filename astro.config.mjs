@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
+import vercel from "@astrojs/vercel/serverless";
 import tailwind from "@astrojs/tailwind";
 // import vercelStatic from "@astrojs/vercel/static";
 import react from "@astrojs/react";
@@ -20,7 +21,7 @@ export default defineConfig({
       prefixDefaultLocale: false
     }
   },
-  output: "server",
+  output: "hybrid",
   integrations: [tailwind(), partytown({
     config: {
       config: {
@@ -29,5 +30,12 @@ export default defineConfig({
       forward: ["dataLayer.push"]
     }
   }), sitemap(), react(), db(), webVitals()],
-  adapter: cloudflare(),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true
+    },
+    speedInsights: {
+      enabled: true
+    }
+  })
 });
