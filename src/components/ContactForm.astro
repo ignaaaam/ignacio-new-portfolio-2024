@@ -14,7 +14,6 @@ const result = Astro.getActionResult(server.send);
       message={result.error ? 
         (result.error.message || 'Error sending message. Please try again.') : 
         'Message sent successfully! I will contact you soon.'}
-      client:load
     />
   )}
 
