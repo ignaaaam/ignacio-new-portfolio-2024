@@ -23,6 +23,7 @@ import Experience from "./Experience.astro";
 import Certification from "./Certification.astro";
 import Studies from "./Studies.astro";
 import Projects from "./Projects.astro";
+import ContactForm from "../../components/ContactForm.astro";
 ---
 
 <Layout
@@ -89,7 +90,7 @@ import Projects from "./Projects.astro";
           <LaracastsIcon class="size-4 md:size-6" />
           Laracasts
         </SocialPill>
-        <SocialPill href="mailto:ignacioamat@ignathedev.com">
+        <SocialPill href="#contact">
           <MailIcon class="size-4 md:size-6" />
           ignacioamat@ignathedev.com
         </SocialPill>
@@ -100,7 +101,7 @@ import Projects from "./Projects.astro";
         class="size-12 md:size-16 md:rotate-[-94deg] relative lg:left-[56%] rotate-[-110deg] left-[59%] -top-[0.5rem] md:left-[58%] md:top-[-10px]"
       />
       <a
-        href="mailto:ignacioamat@ignathedev.com"
+        href="#contact"
         class="blob-white border border-black bg-white text-black p-2.5 rounded-full uppercase font-bold text-xs relative lg:left-[66%] lg:bottom-[25px] left-[50%] top-[-0.2rem] md:left-[66%] md:top-[-0.3rem] shadow-md shadow-white/20 transition-transform duration-300 ease-in-out transform hover:scale-105"
       >
         <span>Contact me to start!</span>
@@ -133,38 +134,14 @@ import Projects from "./Projects.astro";
           href="https://wordpress.com/"
           >Wordpress,</a
         > and more, I can build a website that perfectly fits your needs and goals.
+
+        <ContactForm id="contact" />
         Contact me now and let's start building your dream Landing Page!
       </span>
       <br />
       <div class="flex flex-col items-center justify-center mt-10 gap-y-8">
-        <!-- <a
-          href="mailto:ignacioamat@ignathedev.com"
-          class="block p-5 text-base font-bold text-white uppercase transition-transform duration-300 ease-in-out transform border border-white rounded-full shadow-md shadow-white/20 hover:scale-105"
-        >
-          <div class="flex items-center gap-x-2 hover:group">
-            <span class="hover:animate-pulse">Saber más</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="transition-transform duration-200 ease-in-out icon icon-tabler icons-tabler-outline icon-tabler-arrow-right group-hover:translate-x-1"
-              ><path
-                stroke="none"
-                d="M0 0h24v24H0z"
-                fill="none"
-              ></path><path d="M5 12l14 0"></path><path d="M13 18l6 -6"
-              ></path><path d="M13 6l6 6"></path></svg
-            >
-          </div>
-        </a> -->
         <a
-          href="mailto:ignacioamat@ignathedev.com"
+          href="#contact"
           class="p-5 text-base font-black text-black uppercase transition-transform duration-300 ease-in-out transform bg-white border border-black rounded-full shadow-md blob-white shadow-white/20 hover:scale-105"
         >
           <span>Contact me and let's get started!</span>

@@ -21,6 +21,7 @@ import Experience from "../components/Experience.astro";
 import Certification from "../components/Certification.astro";
 import Studies from "../components/Studies.astro";
 import Projects from "../components/Projects.astro";
+import ContactForm from "../components/ContactForm.astro";
 ---
 
 <Layout
@@ -89,7 +90,7 @@ import Projects from "../components/Projects.astro";
           <LaracastsIcon class="size-4 md:size-6" />
           Laracasts
         </SocialPill>
-        <SocialPill href="mailto:ignacioamat@ignathedev.com">
+        <SocialPill href="#contact">
           <MailIcon class="size-4 md:size-6" />
           ignacioamat@ignathedev.com
         </SocialPill>
@@ -99,76 +100,48 @@ import Projects from "../components/Projects.astro";
         class="size-12 md:size-16 md:rotate-[-94deg] relative lg:left-[56%] rotate-[-110deg] left-[59%] -top-[0.5rem] md:left-[58%] md:top-[-10px]"
       />
       <a
-        href="mailto:ignacioamat@ignathedev.com"
+        href="#contact"
         class="blob-white border border-black bg-white text-black p-2.5 rounded-full uppercase font-bold text-xs relative lg:left-[66%] lg:bottom-[25px] left-[45%] top-[-0.2rem] md:left-[66%] md:top-[-0.3rem] shadow-md shadow-white/20 transition-transform duration-300 ease-in-out transform hover:scale-105"
       >
         <span>Contáctame para empezar</span>
       </a>
     </SectionContainer>
 
-    <FullSectionContainer
-      id="landingPage"
-      class="relative my-20 text-center text-pretty"
-    >
-      <h2 class="mb-6 text-5xl lg:text-6xl font-bold text-brush gap-x-3">
-        ¿Buscas crear tu página web?
-      </h2>
-      <h3 class="py-4 text-3xl lg:text-4xl font-bold text-yellow-200">
-        ¿Quieres crear tu Landing Page?
-      </h3>
-      <h4 class="py-2 font-bold text-red-200/90 text-pretty">
-        ¿No sabes por dónde empezar?
-      </h4>
-      <span class="opacity-75">
-        ¡No busques más! Estoy aquí para ayudarte a crear tu Landing Page de
-        manera rápida, optimizada y efectiva. Con mi experiencia en desarrollo
-        web Full Stack y mis conocimientos en <a
-          class="text-[#ff7ff9] hover:font-bold underline transition-all"
-          href="https://astro.build/"
-          >Astro,</a
-        >
-        <a
-          class="text-[#A09AC1] hover:font-bold underline transition-all"
-          href="https://wordpress.com/"
-          >Wordpress</a
-        > y más, puedo crear un sitio web que se adapte perfectamente a tus necesidades
-        y objetivos. ¡Contáctame ahora y comencemos a construir tu Landing Page de
-        ensueño!
-      </span>
-      <br />
-      <div class="flex flex-col items-center justify-center mt-10 gap-y-8">
-        <!-- <a
-          href="mailto:ignacioamat@ignathedev.com"
-          class="block p-5 text-base font-bold text-white uppercase transition-transform duration-300 ease-in-out transform border border-white rounded-full shadow-md shadow-white/20 hover:scale-105"
-        >
-          <div class="flex items-center gap-x-2 hover:group">
-            <span class="hover:animate-pulse">Saber más</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="transition-transform duration-200 ease-in-out icon icon-tabler icons-tabler-outline icon-tabler-arrow-right group-hover:translate-x-1"
-              ><path
-                stroke="none"
-                d="M0 0h24v24H0z"
-                fill="none"
-              ></path><path d="M5 12l14 0"></path><path d="M13 18l6 -6"
-              ></path><path d="M13 6l6 6"></path></svg
-            >
+    <FullSectionContainer id="landingPage" class="relative py-20 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="mb-6 text-5xl lg:text-6xl font-bold text-brush gap-x-3">
+          ¿Necesitas una página web profesional?
+        </h2>
+        <div class="space-y-6 mb-12">
+          <h3 class="text-3xl lg:text-4xl font-bold text-yellow-200">
+            Desarrollo web personalizado para tu negocio
+          </h3>
+          <div class="flex flex-wrap justify-center gap-4 text-lg">
+            <span class="flex items-center gap-2">
+              <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Landing Pages
+            </span>
+            <span class="flex items-center gap-2">
+              <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              E-commerce
+            </span>
+            <span class="flex items-center gap-2">
+              <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Aplicaciones Web
+            </span>
           </div>
-        </a> -->
-        <a
-          href="mailto:ignacioamat@ignathedev.com"
-          class="block p-5 text-base font-black text-black uppercase transition-transform duration-300 ease-in-out transform bg-white border border-black rounded-full shadow-md blob-white shadow-white/20 hover:scale-105"
-        >
-          <span>Contáctame y empezamos!</span>
-        </a>
+          <p class="text-xl opacity-90 max-w-2xl mx-auto">
+            Diseño y desarrollo sitios web optimizados, rápidos y efectivos que ayudan a tu negocio a crecer online.
+          </p>
+        </div>
+
+        <ContactForm id="contact" />
       </div>
     </FullSectionContainer>
     <SectionContainer id="experience">

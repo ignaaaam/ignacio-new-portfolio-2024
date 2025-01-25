@@ -1,0 +1,49 @@
+---
+interface Props {
+  type: 'success' | 'error';
+  message: string;
+}
+
+const { type, message } = Astro.props;
+---
+
+<div
+  class:list={[
+    'fixed top-4 right-4 p-4 rounded-lg shadow-lg max-w-md transition-all duration-300 toast-notification',
+    {
+      'bg-green-500 text-white': type === 'success',
+      'bg-red-500 text-white': type === 'error',
+    }
+  ]}
+>
+  {message}
+</div>
+
+<script>
+  // Auto-hide toast after 5 seconds
+  const toast = document.querySelector('.toast-notification');
+  if (toast) {
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      setTimeout(() => toast.remove(), 300);
+    }, 5000);
+  }
+</script>
+
+<style>
+  .toast-notification {
+    animation: slideIn 0.3s ease-out;
+    z-index: 50;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+</style> 
