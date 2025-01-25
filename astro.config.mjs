@@ -23,10 +23,14 @@ export default defineConfig({
   output: "static",
   integrations: [partytown({
     config: {
-      config: {
-        debug: false
+      debug: false,
+      forward: ["dataLayer.push"],
+      resolveUrl: (url) => {
+        return url
       },
-      forward: ["dataLayer.push"]
+      loadScriptsOnMainThread: [
+        "https://www.googletagmanager.com",
+      ],
     }
   }), sitemap(), react(), db(), webVitals(), tailwind()],
   adapter: vercel({
