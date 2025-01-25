@@ -20,7 +20,7 @@ export default defineConfig({
       prefixDefaultLocale: false
     }
   },
-  output: "server",
+  output: "static",
   integrations: [partytown({
     config: {
       config: {

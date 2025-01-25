@@ -1,7 +1,8 @@
 ---
 import { getLangFromUrl } from "../../i18n/utils.ts";
 import Layout from "../../layouts/Layout.astro";
-import { db, eq, Posts, Tags, Images, PostImages, PostTags, desc } from 'astro:db';
+import { desc, eq } from 'drizzle-orm';
+import { db, Posts, Tags, Images, PostImages, PostTags } from 'astro:db';
 
 const lang = getLangFromUrl(Astro.url);
 

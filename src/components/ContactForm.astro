@@ -4,7 +4,7 @@ import Toast from './Toast.astro';
 import { server } from '../actions/contact';
 
 const lang = getLangFromUrl(Astro.url);
-const result = await Astro.getActionResult(server.send);
+const result = Astro.getActionResult(server.send);
 ---
 
 <div class="w-full max-w-4xl mx-auto">
@@ -166,7 +166,7 @@ const result = await Astro.getActionResult(server.send);
   }
   
   if (form) {
-    form.addEventListener('submit', (e: SubmitEvent) => {
+    form.addEventListener('submit', () => {
       const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
       if (!submitButton) return;
       
