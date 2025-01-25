@@ -20,7 +20,8 @@ export const server = {
     }),
     handler: async ({ name, email, project_type, budget, message }) => {
       try {
-        const { error } = await resend.emails.send({
+        // Send email to you
+        const { error: adminError } = await resend.emails.send({
           from: 'Contact Form <onboarding@resend.dev>',
           to: ['ignacioamat@ignathedev.com'],
           subject: `New Contact Form Submission from ${name}`,
@@ -35,10 +36,23 @@ export const server = {
           `,
         });
 
-        if (error) {
+        // Send confirmation email to sender
+        const { error: userError } = await resend.emails.send({
+          from: 'Ignacio Amat <onboarding@resend.dev>',
+          to: [email],
+          subject: 'Thanks for contacting me!',
+          html: `
+            <h2>Hi ${name}!</h2>
+            <p>Thanks for reaching out. I've received your message and will get back to you as soon as possible.</p>
+            <p>Best regards,</p>
+            <p>Ignacio Amat</p>
+          `,
+        });
+
+        if (adminError || userError) {
           throw new ActionError({
             code: 'BAD_REQUEST',
-            message: error.message,
+            message: adminError?.message || userError?.message,
           });
         }
 

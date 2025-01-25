@@ -1,16 +1,37 @@
 ---
 import { getLangFromUrl } from "../../i18n/utils.ts";
 import Layout from "../../layouts/Layout.astro";
+import { db, eq, Posts, Tags, Images, PostImages, PostTags, desc } from 'astro:db';
 
 const lang = getLangFromUrl(Astro.url);
-import { db, eq, Posts, Tags, Images, PostImages, PostTags, desc } from 'astro:db';
 
 export const prerender = false;
 
+interface Post {
+  posts: {
+    id: number;
+    slug: string;
+    title: string;
+    description: string;
+    author: string;
+    publish_date: string;
+    locale: string;
+  };
+  tags: {
+    id: number;
+    name: string;
+  } | null;
+  images: {
+    id: number;
+    url: string;
+    alt: string;
+  } | null;
+}
+
 const posts = await db.select({
-posts: Posts,
-tags: Tags,
-images: Images,
+  posts: Posts,
+  tags: Tags,
+  images: Images,
 })
 .from(Posts)
 .leftJoin(PostTags, eq(PostTags.postId, Posts.id))
@@ -23,31 +44,32 @@ images: Images,
 
 const postsMap = new Map();
 
-posts.forEach((post) => {
-if (!postsMap.has(post.posts.id)) {
-postsMap.set(post.posts.id, {
-id: post.posts.id,
-slug: `/en/blog/${post.posts.slug}`,
-url: `/en/blog/${post.posts.slug}`,
-frontmatter: {
-title: post.posts.title,
-description: post.posts.description,
-},
-tags: [],
-image: {
-url: post.images.url,
-alt: post.images.alt,
-},
-});
-}
-const postEntry = postsMap.get(post.posts.id);
-if (post.tags.name) {
-postEntry.tags.push(post.tags.name);
-}
+posts.forEach((post: Post) => {
+  if (!postsMap.has(post.posts.id)) {
+    postsMap.set(post.posts.id, {
+      id: post.posts.id,
+      slug: `/en/blog/${post.posts.slug}`,
+      url: `/en/blog/${post.posts.slug}`,
+      frontmatter: {
+        title: post.posts.title,
+        description: post.posts.description,
+      },
+      tags: [],
+      image: {
+        url: post.images?.url,
+        alt: post.images?.alt,
+      },
+    });
+  }
+  const postEntry = postsMap.get(post.posts.id);
+  if (post.tags?.name) {
+    postEntry.tags.push(post.tags.name);
+  }
 });
 
 const postsArray = Array.from(postsMap.values());
 ---
+
 
 <Layout
     title="Ignacio Amat Urbina - Desarrollador y Programador Web Full Stack | Especialista en PHP, Laravel, Livewire, Inertia, Vue, TailwindCSS"
