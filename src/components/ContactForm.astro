@@ -7,7 +7,27 @@ const lang = getLangFromUrl(Astro.url);
 const result = Astro.getActionResult(server.send);
 ---
 
-<div class="w-full max-w-4xl mx-auto">
+<div class="w-full max-w-4xl mx-auto relative">
+  <!-- Coming Soon Overlay -->
+  <div class="absolute inset-0 z-10 backdrop-blur-md bg-black/30 rounded-xl flex items-center justify-center border border-white/10">
+    <div class="text-center p-8">
+      <h3 class="text-2xl font-bold text-white mb-2">
+        {lang === 'es' ? 'Próximamente' : 'Coming Soon'}
+      </h3>
+      <p class="text-gray-300">
+        {lang === 'es' 
+          ? 'El formulario de contacto estará disponible pronto. Mientras tanto, puedes contactarme en' 
+          : 'Contact form will be available soon. Meanwhile, you can reach me at'}
+        <a 
+          href="mailto:your@email.com" 
+          class="text-yellow-200 hover:text-yellow-300 transition-colors duration-300"
+        >
+          ignacioamat@ignathedev.com
+        </a>
+      </p>
+    </div>
+  </div>
+
   {result && (
     <Toast 
       type={result.error ? 'error' : 'success'}
@@ -20,7 +40,7 @@ const result = Astro.getActionResult(server.send);
   <form 
     method="POST"
     action={server.send}
-    class="space-y-6 backdrop-blur-sm bg-white/5 p-8 rounded-xl border border-white/10 shadow-2xl transition-all duration-300"
+    class="space-y-6 backdrop-blur-sm bg-white/5 p-8 rounded-xl border border-white/10 shadow-2xl transition-all duration-300 opacity-50 pointer-events-none"
   >
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
       <div>

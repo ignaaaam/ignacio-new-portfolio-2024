@@ -8,7 +8,6 @@ import FooterEnglish from "../pages/en/Footer.astro";
 import "@fontsource-variable/onest";
 import "@fontsource-variable/overpass";
 
-import  SpeedInsights  from "@vercel/speed-insights/astro"
 import { getLangFromUrl, useTranslations  } from '../i18n/utils';
 import { AstroSeo } from '@astrolib/seo';
 
@@ -30,8 +29,9 @@ const siteName = "Ignacio Amat Urbina - Desarrollador Web Full Stack & Laravel E
 <html lang={lang}>
   <head>
     <!-- Google tag (gtag.js) -->
-<script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-VZQ07QHFLN" is:inline></script>
-<script type="text/partytown" is:inline>
+<script type="text/partytown" defer src="https://www.googletagmanager.com/gtag/js?id=G-VZQ07QHFLN">
+</script>
+<script type="text/partytown">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -72,7 +72,6 @@ const siteName = "Ignacio Amat Urbina - Desarrollador Web Full Stack & Laravel E
       ]}
     />
 
-    <SpeedInsights />
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
 
 
