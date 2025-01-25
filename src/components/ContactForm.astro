@@ -155,9 +155,9 @@ const result = await Astro.getActionResult(server.send);
 </style>
 
 <script>
-  const form = document.querySelector('form');
+  const form = document.querySelector('form') as HTMLFormElement;
   const messageTextarea = document.getElementById('message') as HTMLTextAreaElement;
-  const charCount = document.getElementById('charCount');
+  const charCount = document.getElementById('charCount') as HTMLSpanElement;
   
   if (messageTextarea && charCount) {
     messageTextarea.addEventListener('input', () => {
@@ -166,11 +166,10 @@ const result = await Astro.getActionResult(server.send);
   }
   
   if (form) {
-    form.addEventListener('submit', () => {
+    form.addEventListener('submit', (e: SubmitEvent) => {
       const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
       if (!submitButton) return;
       
-      // Add loading state
       submitButton.disabled = true;
       submitButton.innerHTML = `
         <svg class="animate-spin h-5 w-5 text-black inline-block mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
