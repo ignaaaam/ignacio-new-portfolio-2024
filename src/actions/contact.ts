@@ -20,7 +20,7 @@ export const server = {
     }),
     handler: async ({ name, email, project_type, budget, message }) => {
       try {
-        // Send email to you
+        // Send email to admin
         const { error: adminError } = await resend.emails.send({
           from: 'Contact Form <onboarding@resend.dev>',
           to: ['ignacioamat@ignathedev.com'],
@@ -36,7 +36,7 @@ export const server = {
           `,
         });
 
-        // Send confirmation email to sender
+        // Send confirmation email to user
         const { error: userError } = await resend.emails.send({
           from: 'Ignacio Amat <onboarding@resend.dev>',
           to: [email],
@@ -52,7 +52,7 @@ export const server = {
         if (adminError || userError) {
           throw new ActionError({
             code: 'BAD_REQUEST',
-            message: adminError?.message || userError?.message,
+            message: adminError?.message || userError?.message || 'Failed to send email',
           });
         }
 
@@ -66,6 +66,6 @@ export const server = {
           message: error instanceof Error ? error.message : 'Failed to send email',
         });
       }
-    },
-  }),
+    }
+  })
 };
