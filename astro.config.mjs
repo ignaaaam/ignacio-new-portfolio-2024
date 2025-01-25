@@ -1,8 +1,7 @@
 import { defineConfig } from "astro/config";
 import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
-import vercel from "@astrojs/vercel/serverless";
-import tailwind from "@astrojs/tailwind";
+import vercel from "@astrojs/vercel";
 // import vercelStatic from "@astrojs/vercel/static";
 import react from "@astrojs/react";
 import db from "@astrojs/db";
@@ -10,6 +9,8 @@ import db from "@astrojs/db";
 import webVitals from "@astrojs/web-vitals";
 
 import cloudflare from "@astrojs/cloudflare";
+
+import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,15 +22,15 @@ export default defineConfig({
       prefixDefaultLocale: false
     }
   },
-  output: "hybrid",
-  integrations: [tailwind(), partytown({
+  output: "server",
+  integrations: [partytown({
     config: {
       config: {
         debug: false
       },
       forward: ["dataLayer.push"]
     }
-  }), sitemap(), react(), db(), webVitals()],
+  }), sitemap(), react(), db(), webVitals(), tailwind()],
   adapter: vercel({
     webAnalytics: {
       enabled: true
