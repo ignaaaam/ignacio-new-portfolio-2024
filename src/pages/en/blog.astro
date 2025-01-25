@@ -75,7 +75,7 @@ const postsArray = Array.from(postsMap.values());
                 {/* add tag pills */}
                 <div class="tags-wrapper">
                     <div class="flex flex-wrap justify-center gap-2 py-3">
-                        {post.tags.slice(0, 5).map((tag) => (
+                        {post.tags.slice(0, 5).map((tag: string) => (
                         <span
                             class="px-2 py-1 text-xs lg:text-sm font-medium text-white bg-blue-700 rounded-full dark:bg-blue-600">
                             {tag}

@@ -8,8 +8,6 @@ import db from "@astrojs/db";
 
 import webVitals from "@astrojs/web-vitals";
 
-import cloudflare from "@astrojs/cloudflare";
-
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config

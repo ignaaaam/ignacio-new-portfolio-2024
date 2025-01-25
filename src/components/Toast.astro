@@ -9,7 +9,7 @@ const { type, message } = Astro.props;
 
 <div
   class:list={[
-    'fixed top-4 right-4 p-4 rounded-lg shadow-lg max-w-md transition-all duration-300 toast-notification',
+    'fixed top-4 right-4 p-4 rounded-lg shadow-lg max-w-md transition-all duration-300 toast-notification opacity-100',
     {
       'bg-green-500 text-white': type === 'success',
       'bg-red-500 text-white': type === 'error',
@@ -21,7 +21,7 @@ const { type, message } = Astro.props;
 
 <script>
   // Auto-hide toast after 5 seconds
-  const toast = document.querySelector('.toast-notification');
+  const toast = document.querySelector('.toast-notification') as HTMLDivElement;
   if (toast) {
     setTimeout(() => {
       toast.style.opacity = '0';

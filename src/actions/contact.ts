@@ -20,7 +20,7 @@ export const server = {
     }),
     handler: async ({ name, email, project_type, budget, message }) => {
       try {
-        const { data, error } = await resend.emails.send({
+        const { error } = await resend.emails.send({
           from: 'Contact Form <onboarding@resend.dev>',
           to: ['ignacioamat@ignathedev.com'],
           subject: `New Contact Form Submission from ${name}`,
@@ -37,7 +37,7 @@ export const server = {
 
         if (error) {
           throw new ActionError({
-            code: 'SEND_ERROR',
+            code: 'BAD_REQUEST',
             message: error.message,
           });
         }
@@ -48,7 +48,7 @@ export const server = {
         };
       } catch (error) {
         throw new ActionError({
-          code: 'SEND_ERROR',
+          code: 'INTERNAL_SERVER_ERROR',
           message: error instanceof Error ? error.message : 'Failed to send email',
         });
       }

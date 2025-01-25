@@ -1,13 +1,10 @@
 ---
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
-import { actions } from 'astro:actions';
-import { Toast } from './Toast.astro';
+import { getLangFromUrl } from '../i18n/utils';
+import Toast from './Toast.astro';
+import { server } from '../actions/contact';
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-
-// Get form result if coming from a form submission
-const result = await Astro.getActionResult();
+const result = await Astro.getActionResult(server.send);
 ---
 
 <div class="w-full max-w-4xl mx-auto">
@@ -23,7 +20,7 @@ const result = await Astro.getActionResult();
 
   <form 
     method="POST"
-    action={actions.send}
+    action={server.send}
     class="space-y-6 backdrop-blur-sm bg-white/5 p-8 rounded-xl border border-white/10 shadow-2xl transition-all duration-300"
   >
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -159,18 +156,18 @@ const result = await Astro.getActionResult();
 
 <script>
   const form = document.querySelector('form');
-  const messageTextarea = document.getElementById('message');
+  const messageTextarea = document.getElementById('message') as HTMLTextAreaElement;
   const charCount = document.getElementById('charCount');
   
   if (messageTextarea && charCount) {
     messageTextarea.addEventListener('input', () => {
-      charCount.textContent = messageTextarea.value.length;
+      charCount.textContent = messageTextarea.value.length.toString();
     });
   }
   
   if (form) {
-    form.addEventListener('submit', (e) => {
-      const submitButton = form.querySelector('button[type="submit"]');
+    form.addEventListener('submit', () => {
+      const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
       if (!submitButton) return;
       
       // Add loading state
