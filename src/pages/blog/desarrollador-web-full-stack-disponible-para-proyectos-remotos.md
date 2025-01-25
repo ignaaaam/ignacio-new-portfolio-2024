@@ -39,18 +39,13 @@ Para un desarrollo web rápido, optimizado y eficiente, aprovecho el framework A
 - **Enfoque en el Cliente**: Prioritizo entender tus necesidades y ofrecer soluciones que superen tus expectativas.
 - **Versatilidad**: Desde el back end hasta el front end, tengo las habilidades para manejar todos los aspectos del desarrollo web.
 
-## Contáctame
-
-Espero colaborar con nuevos clientes y ayudarte a alcanzar tus objetivos de desarrollo web. Si tienes un proyecto en mente o necesitas asistencia con tu sitio web existente, no dudes en contactarme.
-
-[Contáctame](mailto:ignacioamat@ignathedev.com)
-
 ---
 
-Gracias por considerarme para tus necesidades de desarrollo web. ¡Estoy emocionado por la posibilidad de trabajar juntos y crear algo increíble!
+<div class="py-8">
+  <p class="mb-6">Gracias por considerarme para tus necesidades de desarrollo web. ¡Estoy emocionado por la posibilidad de trabajar juntos y crear algo increíble!</p>
 
-Saludos! 🙌✌️
----
+  <p>Saludos! 🙌✌️</p>
+</div>
 
 <style>
     article {

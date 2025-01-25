@@ -41,14 +41,14 @@ For fast, optimized, and efficient web development, I leverage the Astro framewo
 
 I am looking forward to collaborating with new clients and helping you achieve your web development goals. If you have a project in mind or need assistance with your existing website, feel free to reach out.
 
-[Start building now](mailto:ignacioamat@ignathedev.com)
-
 ---
 
-Thank you for considering me for your web development needs. I am excited about the possibility of working together to create something amazing!
+<div class="py-8">
+  <p class="mb-6">Thank you for considering me for your web development needs. I am excited about the possibility of working together to create something amazing!</p>
 
-Best regards,  
-Ignacio Amat
+  <p>Best regards,
+  Ignacio Amat</p>
+</div>
 
 ---
 
