@@ -1,0 +1,26 @@
+{
+  "en": {
+    "skillsTitle": "Full Stack Development Ecosystem",
+    "backendTitle": "Backend Mastery",
+    "frontendTitle": "Frontend Excellence",
+    "devopsTitle": "DevOps & Deployment",
+    "backendSkills": ["Laravel 11", "REST APIs", "MySQL", "Livewire"],
+    "frontendSkills": ["Vue 3", "JavaScript", "TailwindCSS", "HTML/CSS", "SASS"],
+    "devopsSkills": ["Laravel Forge", "DigitalOcean", "CI/CD"]
+  },
+  "es": {
+    "skillsTitle": "Ecosistema de Desarrollo Full Stack",
+    "backendTitle": "Experto en Backend",
+    "frontendTitle": "Maestría en Frontend",
+    "devopsTitle": "DevOps & Implementación",
+    "backendSkills": ["Laravel 11", "APIs REST", "MySQL", "Livewire"],
+    "frontendSkills": ["Vue 3", "JavaScript", "TailwindCSS", "HTML/CSS", "SASS"],
+    "devopsSkills": ["Laravel Forge", "DigitalOcean", "CI/CD"],
+    "seo": {
+      "breadcrumbHome": "Inicio",
+      "breadcrumbServices": "Servicios",
+      "trustedBy": "Clientes que Confían",
+      "performanceLabel": "Rendimiento Óptimo"
+    }
+  }
+} 

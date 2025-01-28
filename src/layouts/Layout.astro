@@ -107,6 +107,29 @@ const siteName = "Ignacio Amat Urbina - Desarrollador Web Full Stack & Laravel E
 			  "url" : "https://www.ignathedev.com", 
 			  "logo": "https://www.ignathedev.com/assets/img/profile_picture.jpg" }
 		</script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ignacio Amat Urbina",
+      "jobTitle": "Full Stack Developer",
+      "skills": "PHP, Laravel, Vue.js, TailwindCSS, MySQL",
+      "url": "https://www.ignathedev.com",
+      "image": "/img/avatar.jpg",
+      "sameAs": [
+        "https://linkedin.com/in/...",
+        "https://github.com/..."
+      ],
+      "offers": {
+        "@type": "Offer",
+        "category": "Web Development Services",
+        "availability": "Remote",
+        "areaServed": "Worldwide"
+      }
+    }
+    </script>
+    <link rel="alternate" hreflang="es" href={`https://www.ignathedev.com/es${Astro.url.pathname}`} />
+    <link rel="alternate" hreflang="en" href={`https://www.ignathedev.com${Astro.url.pathname}`} />
   </head>
   <body>
     <div

@@ -24,6 +24,10 @@ import Certification from "./Certification.astro";
 import Studies from "./Studies.astro";
 import Projects from "./Projects.astro";
 import ContactForm from "../../components/ContactForm.astro";
+import SkillsCloud from "../../components/SkillsCloud.astro";
+
+import { Image } from 'astro:assets';
+import avatar from '../public/img/avatar.jpg';
 ---
 
 <Layout
@@ -45,7 +49,9 @@ import ContactForm from "../../components/ContactForm.astro";
         >
       </h1>
       <h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
-        <span>+3 years of experience.</span><span class="font-bold text-yellow-200">
+        <span>+3 years of experience.</span><span
+          class="font-bold text-yellow-200"
+        >
           Full Stack Web Developer</span
         >. <span class="text-red-200/90 font-bold"> From Barcelona, Spain.</span>
         <span class="opacity-75"
@@ -54,9 +60,9 @@ import ContactForm from "../../components/ContactForm.astro";
       </h2>
       <br />
       <h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
-        Expert in Back End Web Development with <span class="font-bold text-[#7477AC]"
-          >PHP</span
-        >, <span class="font-bold text-[#FF2819]">Laravel</span>, and <span
+        Expert in Back End Web Development with <span
+          class="font-bold text-[#7477AC]">PHP</span
+        >, <span class="font-bold text-[#FF2819]">Laravel</span> and <span
           class="font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#005E8A] from-30% to-[#EBA921] to-50%"
           >MYSQL</span
         >, and Front End Development with <span class="font-bold text-[#3FB27F]"
@@ -64,7 +70,6 @@ import ContactForm from "../../components/ContactForm.astro";
         >
         and<span class="font-bold text-[#EFD81D]"> Javascript</span>.
       </h2>
-
       <nav class="flex flex-wrap mt-8 gap-x-4 gap-y-4">
         <SocialPill
           href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223"
@@ -95,17 +100,20 @@ import ContactForm from "../../components/ContactForm.astro";
           ignacioamat@ignathedev.com
         </SocialPill>
       </nav>
-
       <div class="fixed right-40 md:static md:bottom-auto md:right-auto"></div>
       <Arrow
         class="size-12 md:size-16 md:rotate-[-94deg] relative lg:left-[56%] rotate-[-110deg] left-[59%] -top-[0.5rem] md:left-[58%] md:top-[-10px]"
       />
       <a
         href="#landingPage"
-        class="blob-white border border-black bg-white text-black p-2.5 rounded-full uppercase font-bold text-xs relative lg:left-[66%] lg:bottom-[25px] left-[50%] top-[-0.2rem] md:left-[66%] md:top-[-0.3rem] shadow-md shadow-white/20 transition-transform duration-300 ease-in-out transform hover:scale-105"
+        class="blob-white border border-black bg-white text-black p-2.5 rounded-full uppercase font-bold text-xs relative lg:left-[66%] lg:bottom-[25px] left-[45%] top-[-0.2rem] md:left-[66%] md:top-[-0.3rem] shadow-md shadow-white/20 transition-transform duration-300 ease-in-out transform hover:scale-105"
       >
-        <span>Contact me to start!</span>
+        <span>Contact me to get started</span>
       </a>
+    </SectionContainer>
+
+    <SectionContainer id="expertise" class="!pt-0">
+      <SkillsCloud lang="en" />
     </SectionContainer>
 
     <FullSectionContainer
@@ -149,7 +157,8 @@ import ContactForm from "../../components/ContactForm.astro";
       </div>
     </FullSectionContainer>
 
-    <SectionContainer id="experience">
+    <SectionContainer id="experience" class="relative group">
+      <div class="absolute inset-0 bg-gradient-to-br from-slate-800/20 to-purple-900/20 rounded-xl border border-purple-400/30 transition-all duration-300 -z-10 group-hover:shadow-[0_0_30px_-5px_rgba(109,40,217,0.3)]" />
       <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
         <BriefCaseIcon class="size-8" />
         Work Experience
@@ -271,4 +280,50 @@ import ContactForm from "../../components/ContactForm.astro";
     background-size: 100% 10px;
     text-decoration: none;
   }
+
+  .tooltip {
+    @apply absolute bottom-full mb-2 hidden group-hover:block bg-slate-800 p-4 rounded-lg border border-purple-500/30;
+    min-width: 220px;
+    box-shadow: 0 10px 30px -10px rgba(109,40,217,0.3);
+  }
+
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+  }
+
+  .sticky .nav-link {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+  }
+
+  .sticky .nav-underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .sticky .nav-link:hover .nav-underline {
+    transform: scaleX(1);
+  }
 </style>
+
+<nav class="sticky-nav" x-data="{ isOpen: false }">
+  <div class="container">
+    <a href="#expertise" class="nav-link group">
+      Skills
+      <span class="nav-underline"></span>
+    </a>
+    <!-- Repeat for other sections -->
+  </div>
+</nav>
