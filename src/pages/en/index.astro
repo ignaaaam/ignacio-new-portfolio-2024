@@ -116,64 +116,64 @@ import avatar from '../public/img/avatar.jpg';
       <SkillsCloud lang="en" />
     </SectionContainer>
 
-    <FullSectionContainer
-      id="landingPage"
-      class="relative my-20 text-center text-pretty"
-    >
-      <h2 class="mb-6 text-5xl lg:text-6xl font-bold text-brush gap-x-3">
-        Are you looking to create your website?
-      </h2>
-      <h3 class="py-4 text-3xl lg:text-4xl font-bold text-yellow-200">
-        Do you want to create your Landing Page?
-      </h3>
-      <h4 class="py-2 font-bold text-red-200/90 text-pretty">
-        Not sure where to start?
-      </h4>
-      <span class="opacity-75">
-        Look no further! I'm here to help you create your Landing Page quickly,
-        optimized, and effectively. With my experience in Full Stack web
-        development and my knowledge in <a
-          class="text-[#ff7ff9] hover:font-bold underline transition-all"
-          href="https://astro.build/"
-          >Astro,</a
-        >
-        <a
-          class="text-[#A09AC1] hover:font-bold underline transition-all"
-          href="https://wordpress.com/"
-          >Wordpress,</a
-        > and more, I can build a website that perfectly fits your needs and goals.
+    <FullSectionContainer id="landingPage" class="relative py-20 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="mb-6 text-5xl lg:text-6xl font-bold text-brush gap-x-3">
+          Need a professional website?
+        </h2>
+        <div class="space-y-6 mb-12">
+          <h3 class="text-3xl lg:text-4xl font-bold text-yellow-200">
+            Custom web development for your business
+          </h3>
+          <div class="flex flex-wrap justify-center gap-4 text-lg">
+            <span class="flex items-center gap-2">
+              <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Landing Pages
+            </span>
+            <span class="flex items-center gap-2">
+              <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              E-commerce
+            </span>
+            <span class="flex items-center gap-2">
+              <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Web Applications
+            </span>
+          </div>
+          <p class="text-xl opacity-90 max-w-2xl mx-auto">
+            I design and develop optimized, fast, and effective websites that help your business grow online.
+          </p>
+        </div>
 
         <ContactForm id="contact" />
-        Contact me now and let's start building your dream Landing Page!
-      </span>
-      <br />
-      <div class="flex flex-col items-center justify-center mt-10 gap-y-8">
-        <a
-          href="#contact"
-          class="p-5 text-base font-black text-black uppercase transition-transform duration-300 ease-in-out transform bg-white border border-black rounded-full shadow-md blob-white shadow-white/20 hover:scale-105"
-        >
-          <span>Contact me and let's get started!</span>
-        </a>
       </div>
     </FullSectionContainer>
 
     <SectionContainer id="experience" class="relative group">
       <div class="absolute inset-0 bg-gradient-to-br from-slate-800/20 to-purple-900/20 rounded-xl border border-purple-400/30 transition-all duration-300 -z-10 group-hover:shadow-[0_0_30px_-5px_rgba(109,40,217,0.3)]" />
-      <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
-        <BriefCaseIcon class="size-8" />
-        Work Experience
-      </h2>
-      <Experience />
+      <div class="p-6 md:p-8">
+        <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
+          <BriefCaseIcon class="size-8" />
+          Work Experience
+        </h2>
+        <Experience />
+      </div>
     </SectionContainer>
 
-    <SectionContainer id="academics">
+    <SectionContainer id="academics" class="py-16">
       <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
         <LearningIcon class="size-8" />
         Academic Experience
       </h2>
       <Studies />
     </SectionContainer>
-    <SectionContainer id="certifications">
+
+    <SectionContainer id="certifications" class="py-16">
       <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
         <CertificationIcon class="size-8" />
         Certifications
@@ -181,7 +181,7 @@ import avatar from '../public/img/avatar.jpg';
       <Certification />
     </SectionContainer>
 
-    <SectionContainer id="projects">
+    <SectionContainer id="projects" class="py-16">
       <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
         <CodeIcon class="size-8" />
         Projects

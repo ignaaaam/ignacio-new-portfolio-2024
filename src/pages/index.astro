@@ -150,22 +150,25 @@ import SkillsCloud from "../components/SkillsCloud.astro";
         <ContactForm id="contact" />
       </div>
     </FullSectionContainer>
-    <SectionContainer id="experience">
-      <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
-        <BriefCaseIcon class="size-8" />
-        Experiencia Laboral
-      </h2>
-      <Experience />
+    <SectionContainer id="experience" class="relative group">
+      <div class="absolute inset-0 bg-gradient-to-br from-slate-800/20 to-purple-900/20 rounded-xl border border-purple-400/30 transition-all duration-300 -z-10 group-hover:shadow-[0_0_30px_-5px_rgba(109,40,217,0.3)]" />
+      <div class="p-6 md:p-8">
+        <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
+          <BriefCaseIcon class="size-8" />
+          Experiencia Laboral
+        </h2>
+        <Experience />
+      </div>
     </SectionContainer>
 
-    <SectionContainer id="academics">
+    <SectionContainer id="academics" class="py-16">
       <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
         <LearningIcon class="size-8" />
         Experiencia Académica
       </h2>
       <Studies />
     </SectionContainer>
-    <SectionContainer id="certifications">
+    <SectionContainer id="certifications" class="py-16">
       <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
         <CertificationIcon class="size-8" />
         Certificaciones
@@ -173,7 +176,7 @@ import SkillsCloud from "../components/SkillsCloud.astro";
       <Certification />
     </SectionContainer>
 
-    <SectionContainer id="projects">
+    <SectionContainer id="projects" class="py-16">
       <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
         <CodeIcon class="size-8" />
         Proyectos
