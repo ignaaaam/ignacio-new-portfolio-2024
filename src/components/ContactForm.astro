@@ -1,46 +1,26 @@
 ---
 import { getLangFromUrl } from '../i18n/utils';
-import Toast from './Toast.astro';
-import { server } from '../actions/contact';
+import { Toast, Icon } from 'webcoreui/astro';
 
 const lang = getLangFromUrl(Astro.url);
-const result = Astro.getActionResult(server.send);
 ---
 
 <div class="w-full max-w-4xl mx-auto relative">
-  <!-- Coming Soon Overlay -->
-  <div class="absolute inset-0 z-10 backdrop-blur-md bg-black/30 rounded-xl flex items-center justify-center border border-white/10">
-    <div class="text-center p-8">
-      <h3 class="text-2xl font-bold text-white mb-2">
-        {lang === 'es' ? 'Próximamente' : 'Coming Soon'}
-      </h3>
-      <p class="text-gray-300">
-        {lang === 'es' 
-          ? 'El formulario de contacto estará disponible pronto. Mientras tanto, puedes contactarme en' 
-          : 'Contact form will be available soon. Meanwhile, you can reach me at'}
-        <a 
-          href="mailto:your@email.com" 
-          class="text-yellow-200 hover:text-yellow-300 transition-colors duration-300"
-        >
-          ignacioamat@ignathedev.com
-        </a>
-      </p>
-    </div>
-  </div>
+  <!-- Success Toast -->
+  <Toast className="toast-success !max-w-sm" position="bottom-right" theme="success">
+    <Icon type="check-circle" slot="icon" />
+  </Toast>
 
-  {result && (
-    <Toast 
-      type={result.error ? 'error' : 'success'}
-      message={result.error ? 
-        (result.error.message || 'Error sending message. Please try again.') : 
-        'Message sent successfully! I will contact you soon.'}
-    />
-  )}
+  <!-- Error Toast -->
+  <Toast className="toast-error !max-w-sm" position="bottom-right" theme="alert">
+    <Icon type="x-circle" slot="icon" />
+  </Toast>
 
-  <form 
+  <form
     method="POST"
-    action={server.send}
-    class="space-y-6 backdrop-blur-sm bg-white/5 p-8 rounded-xl border border-white/10 shadow-2xl transition-all duration-300 opacity-50 pointer-events-none"
+    action="/api/contact"
+    id="contact-form"
+    class="space-y-6 backdrop-blur-sm bg-white/5 p-8 rounded-xl border border-white/10 shadow-2xl transition-all duration-300"
   >
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
       <div>
@@ -52,6 +32,7 @@ const result = Astro.getActionResult(server.send);
           name="name"
           id="name"
           required
+          minlength="2"
           class="mt-1 block w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2 text-white shadow-sm backdrop-blur-sm focus:border-yellow-200 focus:ring-2 focus:ring-yellow-200/50"
           placeholder={lang === 'es' ? 'Tu nombre' : 'Your name'}
         />
@@ -115,8 +96,9 @@ const result = Astro.getActionResult(server.send);
           name="message"
           rows="4"
           required
+          minlength="10"
           maxlength="500"
-          class="mt-1 block w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2 text-white shadow-sm backdrop-blur-sm focus:border-yellow-200 focus:ring-2 focus:ring-yellow-200/50 transition-colors duration-200"
+          class="mt-1 block w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2 text-white shadow-sm backdrop-blur-sm focus:border-yellow-200 focus:ring-2 focus:ring-yellow-200/50"
           placeholder={lang === 'es' ? 'Cuéntame sobre tu proyecto...' : 'Tell me about your project...'}
         ></textarea>
         <div class="absolute bottom-2 right-2 text-xs text-gray-400">
@@ -128,75 +110,67 @@ const result = Astro.getActionResult(server.send);
     <div class="flex justify-center">
       <button
         type="submit"
-        class="blob-white border border-black bg-white text-black p-5 rounded-full uppercase font-black text-base relative shadow-md shadow-white/20 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+        class="blob-white border border-black bg-white text-black p-5 rounded-full uppercase font-black text-base relative shadow-md shadow-white/20 transition-all duration-300 ease-in-out transform hover:scale-105"
       >
-        <span class="button-text">{lang === 'es' ? 'Enviar mensaje' : 'Send message'}</span>
+        <span>{lang === 'es' ? 'Enviar mensaje' : 'Send message'}</span>
       </button>
     </div>
   </form>
 </div>
 
 <style>
-  .form-success {
-    animation: formSuccess 0.5s ease-in-out;
-  }
-
-  @keyframes formSuccess {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.02); }
-    100% { transform: scale(1); }
-  }
-
-  input:invalid:not(:placeholder-shown),
-  select:invalid:not(:placeholder-shown),
-  textarea:invalid:not(:placeholder-shown) {
-    border-color: rgb(239, 68, 68);
-  }
-
-  input:valid:not(:placeholder-shown),
-  select:valid:not(:placeholder-shown),
-  textarea:valid:not(:placeholder-shown) {
-    border-color: rgb(34, 197, 94);
-  }
-
-  .loading {
-    opacity: 0.7;
-    cursor: wait;
-  }
-
-  input, select, textarea {
-    transition: all 0.2s ease-in-out;
-  }
-
-  input:focus, select:focus, textarea:focus {
-    transform: translateY(-1px);
+  :global(.toast-success),
+  :global(.toast-error) {
+    max-height: fit-content !important;
+    height: auto !important;
+    padding: 1rem !important;
   }
 </style>
 
 <script>
-  const form = document.querySelector('form') as HTMLFormElement;
-  const messageTextarea = document.getElementById('message') as HTMLTextAreaElement;
-  const charCount = document.getElementById('charCount') as HTMLSpanElement;
+  import { toast, setDefaultTimeout } from 'webcoreui';
   
-  if (messageTextarea && charCount) {
-    messageTextarea.addEventListener('input', () => {
-      charCount.textContent = messageTextarea.value.length.toString();
-    });
-  }
-  
-  if (form) {
-    form.addEventListener('submit', () => {
-      const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-      if (!submitButton) return;
+  setDefaultTimeout(5000);
+  const form = document.getElementById('contact-form');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
       
-      submitButton.disabled = true;
-      submitButton.innerHTML = `
-        <svg class="animate-spin h-5 w-5 text-black inline-block mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-        </svg>
-        <span>${document.documentElement.lang === 'es' ? 'Enviando...' : 'Sending...'}</span>
-      `;
-    });
-  }
+      if (result.success) {
+        toast({
+          element: '.toast-success',
+          title: result.title,
+          content: result.message,
+          position: 'bottom-right',
+          showProgress: true
+        });
+        (e.target as HTMLFormElement).reset();
+      } else {
+        toast({
+          element: '.toast-error',
+          title: result.title,
+          content: result.error,
+          position: 'bottom-right',
+          showProgress: true
+        });
+      }
+    } catch (error) {
+      toast({
+        element: '.toast-error',
+        title: 'Error',
+        content: 'Something went wrong',
+        position: 'bottom-right',
+        showProgress: true
+      });
+    }
+  });
 </script>

@@ -12,6 +12,18 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
+  vite: {
+    ssr: {
+        noExternal: ['webcoreui']
+    },
+    css: {
+      preprocessorOptions: {
+          scss: {
+              api: 'modern-compiler'
+          }
+      }
+  }
+},
   site: 'https://ignathedev.com',
   i18n: {
     defaultLocale: "es",
@@ -20,7 +32,7 @@ export default defineConfig({
       prefixDefaultLocale: false
     }
   },
-  output: "static",
+  output: "server",
   integrations: [partytown({
     config: {
       debug: false,
