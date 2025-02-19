@@ -7,12 +7,12 @@ const lang = getLangFromUrl(Astro.url);
 
 <div class="w-full max-w-4xl mx-auto relative">
   <!-- Success Toast -->
-  <Toast className="toast-success !max-w-sm" position="bottom-right" theme="success">
+  <Toast className="toast-success !max-w-sm" position="bottom-full" theme="success">
     <Icon type="check-circle" slot="icon" />
   </Toast>
 
   <!-- Error Toast -->
-  <Toast className="toast-error !max-w-sm" position="bottom-right" theme="alert">
+  <Toast className="toast-error !max-w-sm" position="bottom-full" theme="alert">
     <Icon type="x-circle" slot="icon" />
   </Toast>
 
