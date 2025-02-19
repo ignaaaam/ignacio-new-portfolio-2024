@@ -23,7 +23,7 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    const { data: emailData, error } = await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: 'Your Company <onboarding@resend.dev>', // Update with your verified domain
       to: 'ignasiamat10@gmail.com', // Update with your email
       replyTo: email,
