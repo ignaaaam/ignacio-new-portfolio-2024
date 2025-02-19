@@ -150,8 +150,7 @@ const lang = getLangFromUrl(Astro.url);
           element: '.toast-success',
           title: result.title,
           content: result.message,
-          position: 'bottom-right',
-          showProgress: true
+          position: 'bottom-full',
         });
         (e.target as HTMLFormElement).reset();
       } else {
@@ -159,8 +158,7 @@ const lang = getLangFromUrl(Astro.url);
           element: '.toast-error',
           title: result.title,
           content: result.error,
-          position: 'bottom-right',
-          showProgress: true
+          position: 'bottom-full',
         });
       }
     } catch (error) {
@@ -168,8 +166,7 @@ const lang = getLangFromUrl(Astro.url);
         element: '.toast-error',
         title: 'Error',
         content: 'Something went wrong',
-        position: 'bottom-right',
-        showProgress: true
+        position: 'bottom-full',
       });
     }
   });
