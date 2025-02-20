@@ -25,6 +25,16 @@ const BUTTONS = [
 <Layout
   title="Ignacio Amat Urbina - Desarrollador y Programador Web Full Stack | Especialista en PHP, Laravel, Livewire, Inertia, Vue, TailwindCSS"
   description="Ignacio Amat Urbina, contrátame si necesitas un desarrollador Web Full Stack y experto en Back End y Front End. Especializado en PHP, Laravel (Livewire e Inertia), Javascript, Vue y TailwindCSS. Aprendiendo Astro para crear sitios web rápidos, optimizados y de alto rendimiento."
+  additionalMetaTags={[
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { name: 'generator', content: Astro.generator },
+    { name: 'theme-color', content: '#ffffff' },
+    { name: 'author', content: 'Ignacio Amat Urbina' },
+    { name: 'robots', content: 'index, follow, max-image-preview:large' },
+    { name: 'format-detection', content: 'telephone=no' },
+    { property: 'article:author', content: 'Ignacio Amat Urbina' },
+    { property: 'article:published_time', content: new Date().toISOString() }
+  ]}
 >
   <main class="flex flex-col items-center min-h-screen">
     <!--
@@ -172,3 +182,23 @@ const BUTTONS = [
     overflow-x: auto;
   }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{frontmatter.title}",
+  "description": "{frontmatter.description}",
+  "image": "{frontmatter.image.url}",
+  "datePublished": "{new Date(frontmatter.publish_date).toISOString()}",
+  "dateModified": "{new Date(frontmatter.publish_date).toISOString()}",
+  "author": {
+    "@type": "Person",
+    "@id": "https://www.ignathedev.com/#person"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.ignathedev.com{Astro.url.pathname}"
+  }
+}
+</script>
