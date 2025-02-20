@@ -20,23 +20,47 @@ const BUTTONS = [
   WhatsAppShareButton,
 ];
 
+const metaTags = [
+  { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+  { name: 'generator', content: Astro.generator },
+  { name: 'theme-color', content: '#ffffff' },
+  { name: 'author', content: frontmatter.author },
+  { name: 'robots', content: 'index, follow, max-image-preview:large' },
+  { name: 'format-detection', content: 'telephone=no' },
+  { property: 'article:author', content: frontmatter.author },
+  { property: 'article:published_time', content: new Date(frontmatter.publish_date).toISOString() }
+];
+
+const ogImage = frontmatter.image.url;
+const url = `https://www.ignathedev.com${Astro.url.pathname}`;
+
 ---
 
 <Layout
-  title="Ignacio Amat Urbina - Desarrollador y Programador Web Full Stack | Especialista en PHP, Laravel, Livewire, Inertia, Vue, TailwindCSS"
-  description="Ignacio Amat Urbina, contrátame si necesitas un desarrollador Web Full Stack y experto en Back End y Front End. Especializado en PHP, Laravel (Livewire e Inertia), Javascript, Vue y TailwindCSS. Aprendiendo Astro para crear sitios web rápidos, optimizados y de alto rendimiento."
-  additionalMetaTags={[
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    { name: 'generator', content: Astro.generator },
-    { name: 'theme-color', content: '#ffffff' },
-    { name: 'author', content: 'Ignacio Amat Urbina' },
-    { name: 'robots', content: 'index, follow, max-image-preview:large' },
-    { name: 'format-detection', content: 'telephone=no' },
-    { property: 'article:author', content: 'Ignacio Amat Urbina' },
-    { property: 'article:published_time', content: new Date().toISOString() }
-  ]}
+  title={frontmatter.title}
+  description={frontmatter.description}
+  openGraph={{
+    url: url,
+    title: frontmatter.title,
+    type: "article",
+    description: frontmatter.description,
+    images: [{
+      url: ogImage,
+      width: 1200,
+      height: 630,
+      alt: frontmatter.image.alt,
+      type: 'image/jpeg',
+    }],
+    site_name: "Ignacio Amat - Full Stack Developer",
+    locale: 'es-ES'
+  }}
+  twitter={{
+    handle: '@ignathedev',
+    site: '@ignathedev',
+    cardType: 'summary_large_image',
+  }}
 >
-  <main class="flex flex-col items-center min-h-screen">
+  <main class="flex flex-col items-center min-screen">
     <!--
 // v0 by Vercel.
 // https://v0.dev/t/fUIoAq9FjJn
@@ -183,7 +207,7 @@ const BUTTONS = [
   }
 </style>
 
-<script type="application/ld+json">
+<script type="application/ld+json" is:inline>
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",

@@ -74,15 +74,14 @@ const metaTags = [
 <html lang={lang}>
   <head>
     <!-- Google tag (gtag.js) -->
-<script type="text/partytown" defer src="https://www.googletagmanager.com/gtag/js?id=G-VZQ07QHFLN">
-</script>
-<script type="text/partytown">
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VZQ07QHFLN');
-</script>
+    <script type="text/partytown" defer src="https://www.googletagmanager.com/gtag/js?id=G-VZQ07QHFLN" is:inline>
+    </script>
+    <script type="text/partytown" is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VZQ07QHFLN');
+    </script>
     <!-- SEO Meta Tags with AstroSEO -->
           <meta name="viewport" content="width=device-width,initial-scale=1">
      <meta charset="UTF-8" />
@@ -149,37 +148,37 @@ const metaTags = [
     <!-- Author -->
     <!-- <meta property="og:author" content="Ignacio Amat Urbina"> -->
     
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "@id": "https://www.ignathedev.com/#website",
-      "url": "https://www.ignathedev.com",
-      "name": "Ignacio Amat - Full Stack Developer",
-      "description": "Professional Web Development Services",
-      "inLanguage": ["es-ES", "en-US"]
-    },
-    {
-      "@type": "Person",
-      "@id": "https://www.ignathedev.com/#person",
-      "name": "Ignacio Amat Urbina",
-      "jobTitle": "Full Stack Developer",
-      "description": "PHP & Laravel Expert",
-      "sameAs": [
-        "https://linkedin.com/in/...",
-        "https://github.com/..."
-      ],
-      "knowsAbout": ["PHP", "Laravel", "Vue.js", "TailwindCSS", "Full Stack Development"],
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Freelance Web Developer"
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.ignathedev.com/#website",
+            "url": "https://www.ignathedev.com",
+            "name": "Ignacio Amat - Full Stack Developer",
+            "description": "Professional Web Development Services",
+            "inLanguage": ["es-ES", "en-US"]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://www.ignathedev.com/#person",
+            "name": "Ignacio Amat Urbina",
+            "jobTitle": "Full Stack Developer",
+            "description": "PHP & Laravel Expert",
+            "sameAs": [
+              "https://linkedin.com/in/...",
+              "https://github.com/..."
+            ],
+            "knowsAbout": ["PHP", "Laravel", "Vue.js", "TailwindCSS", "Full Stack Development"],
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Freelance Web Developer"
+            }
+          }
+        ]
       }
-    }
-  ]
-}
-</script>
+    </script>
     <link rel="alternate" hreflang="es-ES" href={`https://www.ignathedev.com/es${Astro.url.pathname}`} />
     <link rel="alternate" hreflang="en-US" href={`https://www.ignathedev.com/en${Astro.url.pathname}`} />
     <link rel="alternate" hreflang="x-default" href={`https://www.ignathedev.com${Astro.url.pathname}`} />
