@@ -14,7 +14,6 @@ import { AstroSeo } from '@astrolib/seo';
 interface Props {
   title: string;
   description: string;
-  additionalMetaTags?: Array<{ name?: string; property?: string; content: string; }>;
   canonical?: string;
   openGraph?: {
     url: string;
@@ -38,19 +37,15 @@ interface Props {
   };
 }
 
+interface MetaTag {
+  name?: string;
+  property?: string;
+  content: string;
+}
+
 const { 
   title, 
   description,
-  additionalMetaTags = [
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    { name: 'generator', content: Astro.generator },
-    { name: 'theme-color', content: '#ffffff' },
-    { name: 'author', content: 'Ignacio Amat Urbina' },
-    { name: 'robots', content: 'index, follow, max-image-preview:large' },
-    { name: 'format-detection', content: 'telephone=no' },
-    { property: 'article:author', content: 'Ignacio Amat Urbina' },
-    { property: 'article:published_time', content: new Date().toISOString() }
-  ]
 } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
@@ -62,6 +57,17 @@ const siteName = "Ignacio Amat Urbina - Desarrollador Web Full Stack & Laravel E
 const pageTitle = title || "Ignacio Amat - Full Stack Developer";
 const metaTitle = `${pageTitle} | PHP & Laravel Expert`.substring(0, 60);
 const metaDescription = (description || "Full Stack Web Developer specializing in PHP, Laravel, Vue.js, and modern web technologies. Available for remote projects worldwide.").substring(0, 155);
+
+const metaTags = [
+  { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+  { name: 'generator', content: Astro.generator },
+  { name: 'theme-color', content: '#ffffff' },
+  { name: 'author', content: 'Ignacio Amat Urbina' },
+  { name: 'robots', content: 'index, follow, max-image-preview:large' },
+  { name: 'format-detection', content: 'telephone=no' },
+  { property: 'article:author', content: 'Ignacio Amat Urbina' },
+  { property: 'article:published_time', content: new Date().toISOString() }
+] as const;
 ---
 
 <!doctype html>
@@ -104,7 +110,7 @@ const metaDescription = (description || "Full Stack Web Developer specializing i
         site: '@ignathedev',
         cardType: 'summary_large_image',
       }}
-      additionalMetaTags={additionalMetaTags}
+      additionalMetaTags={metaTags}
       additionalLinkTags={[
         { rel: 'icon', href: '/favicon.ico' },
         { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
