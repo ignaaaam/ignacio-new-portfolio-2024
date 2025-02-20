@@ -1,0 +1,27 @@
+{
+  "name": "Ignacio Amat - Full Stack Developer",
+  "short_name": "IgnaTheDev",
+  "description": "Full Stack Web Developer specializing in PHP, Laravel, Vue, and modern web technologies",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/img/profile_picture_og-upscaled.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "lang": "es",
+  "dir": "ltr",
+  "orientation": "any",
+  "categories": ["development", "web"],
+  "prefer_related_applications": false
+} 

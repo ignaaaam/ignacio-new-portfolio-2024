@@ -39,7 +39,7 @@ const siteName = "Ignacio Amat Urbina - Desarrollador Web Full Stack & Laravel E
   gtag('config', 'G-VZQ07QHFLN');
 </script>
     <!-- SEO Meta Tags with AstroSEO -->
-     <meta name="viewport" content="width=device-width,initial-scale=1">
+          <meta name="viewport" content="width=device-width,initial-scale=1">
      <meta charset="UTF-8" />
     <AstroSeo
       title={title}
@@ -48,18 +48,17 @@ const siteName = "Ignacio Amat Urbina - Desarrollador Web Full Stack & Laravel E
       openGraph={{
         url: url,
         title: title,
+        type: "website",
         description: description,
-        images: [
-          {
-            url: ogImage,
-            width: 1200,
-            height: 630,
-            alt: 'Profile picture of Ignacio Amat Urbina',
-            type: 'image/jpeg',
-          }
-        ],
+        images: [{
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: 'Profile picture of Ignacio Amat Urbina',
+          type: 'image/jpeg',
+        }],
         site_name: siteName,
-        locale: lang === 'es' ? 'es_ES' : 'en_US',
+        locale: lang === 'es' ? 'es-ES' : 'en-US',
       }}
       twitter={{
         handle: '@ignathedev',
@@ -67,10 +66,18 @@ const siteName = "Ignacio Amat Urbina - Desarrollador Web Full Stack & Laravel E
         cardType: 'summary_large_image',
       }}
       additionalMetaTags={[
-        { name: 'keywords', content: t('keywords') },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'generator', content: Astro.generator },
+        { name: 'theme-color', content: '#ffffff' },
         { name: 'author', content: 'Ignacio Amat Urbina' },
       ]}
+      additionalLinkTags={[
+        { rel: 'icon', href: '/favicon.ico' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+        { rel: 'manifest', href: '/manifest.json' }
+      ]}
     />
+
 
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
 
@@ -128,8 +135,12 @@ const siteName = "Ignacio Amat Urbina - Desarrollador Web Full Stack & Laravel E
       }
     }
     </script>
-    <link rel="alternate" hreflang="es" href={`https://www.ignathedev.com/es${Astro.url.pathname}`} />
-    <link rel="alternate" hreflang="en" href={`https://www.ignathedev.com${Astro.url.pathname}`} />
+    <link rel="alternate" hreflang="es-ES" href={`https://www.ignathedev.com/es${Astro.url.pathname}`} />
+    <link rel="alternate" hreflang="en-US" href={`https://www.ignathedev.com/en${Astro.url.pathname}`} />
+    <link rel="alternate" hreflang="x-default" href={`https://www.ignathedev.com${Astro.url.pathname}`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href={ogImage} />
   </head>
   <body>
     <div

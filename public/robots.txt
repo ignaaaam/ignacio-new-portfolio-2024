@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+Crawl-delay: 10
+
+# Prevent crawling of certain paths
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
 
 Sitemap: https://ignathedev.com/sitemap-index.xml
