@@ -1,0 +1,1086 @@
+---
+import NextJS from "./icons/NextJSIcon.astro";
+import Tailwind from "./icons/TailwindIcon.astro";
+import React from "./icons/ReactIcon.astro";
+import Astro from "./icons/AstroIcon.astro";
+import Github from "./icons/GithubIcon.astro";
+import Javascript from "./icons/JavascriptIcon.astro";
+import Php from "./icons/PHPIcon.astro";
+import Vue from "./icons/VueIcon.astro";
+import Wordpress from "./icons/WordpressIcon.astro";
+import Html from "./icons/HTMLIcon.astro";
+import Alpine from "./icons/AlpineIcon.astro";
+import Laravel from "./icons/LaravelIcon.astro";
+import Css from "./icons/CSSIcon.astro";
+import SassIcon from "./icons/SassIcon.astro";
+import DocumentIcon from "./icons/DocumentIcon.astro";
+
+const TAGS = {
+  NEXT: {
+    name: "NextJS",
+    class: "bg-black text-white",
+    icon: NextJS,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: Tailwind,
+  },
+  REACT: {
+    name: "React",
+    class: "bg-white text-[#0ACCEF]",
+    icon: React,
+  },
+  ASTRO: {
+    name: "Astro",
+    class: "bg-black text-white",
+    icon: Astro,
+  },
+  GITHUB: {
+    name: "GitHub",
+    class: "bg-black text-white",
+    icon: Github,
+  },
+  JAVASCRIPT: {
+    name: "JavaScript",
+    class: "bg-yellow-100 text-black",
+    icon: Javascript,
+  },
+  PHP: {
+    name: "PHP",
+    class: "bg-blue-600 text-white",
+    icon: Php,
+  },
+  VUE: {
+    name: "Vue",
+    class: "bg-green-500 text-white",
+    icon: Vue,
+  },
+  WORDPRESS: {
+    name: "WordPress",
+    class: "bg-blue-300 text-white",
+    icon: Wordpress,
+  },
+  HTML: {
+    name: "HTML",
+    class: "bg-[#FFFFFF] text-black",
+    icon: Html,
+  },
+  ALPINE: {
+    name: "AlpineJS",
+    class: "bg-[#242934] text-white",
+    icon: Alpine,
+  },
+  LARAVEL: {
+    name: "Laravel",
+    class: "bg-[#171923] text-white",
+    icon: Laravel,
+  },
+  CSS: {
+    name: "CSS",
+    class: "bg-[#2965F1] text-white",
+    icon: Css,
+  },
+  SASS: {
+    name: "Sass",
+    class: "bg-[#70254b] text-white",
+    icon: SassIcon,
+  },
+};
+
+const PROJECTS = [
+  {
+    title: "Trycat Website (Wordle Game)",
+    description:
+      "Interactive web game made to learn about AlpineJS, it's a clone made from the popular game Wordle",
+    link: "https://github.com/ignaaaam/WordleGame",
+    github: "https://github.com/ignaaaam/WordleGame",
+    image: "/img/optimized/showcase4.webp",
+    tags: [TAGS.PHP, TAGS.LARAVEL, TAGS.TAILWIND, TAGS.ALPINE, TAGS.JAVASCRIPT],
+    featured: false,
+  },
+  {
+    title: "Halloween Website",
+    description:
+      "Responsive website simulating a halloween store, frontend only using HTML CSS and JavaScript, some JS libraries were used and some CSS animations were added.",
+    link: "https://spookywebsite.netlify.app/",
+    github: "https://github.com/ignaaaam/spookywebsite",
+    image: "/img/optimized/showcase0.webp",
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT],
+    featured: true,
+  },
+  {
+    title: "Natours Website",
+    description:
+      "Website about nature tours, made in a course while refining my HTML and CSS skills. It's a landing page that has a clean user interface made entirely with pure HTML and CSS.",
+    link: "https://websiteproject-natours.netlify.app/",
+    github: "https://github.com/ignaaaam/natours-project",
+    image: "/img/optimized/showcase1.webp",
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.SASS, TAGS.JAVASCRIPT],
+    featured: false,
+  },
+  {
+    title: "Omnifood Website",
+    description:
+      "Website about healthy food delivery made in my early days of learning HTML and CSS while starting to learn basic technologies.",
+    link: "https://omnifoodrestaurant.netlify.app/",
+    github: "https://github.com/ignaaaam/omnifood-project",
+    image: "/img/optimized/showcase2.webp",
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT],
+    featured: false,
+  },
+];
+
+// Get unique tags for filter buttons
+const uniqueTags = [...new Set(PROJECTS.flatMap(project => project.tags))];
+
+// Props for localization
+const { viewText = "View Project", githubText = "Github", moreProjectsText = "If you want to see other projects and languages I'm learning like Livewire, AlpineJS, Vue and others, don't hesitate to visit my Github profile" } = Astro.props;
+---
+
+<div class="projects-container">
+  <!-- Filter Controls -->
+  <div class="filter-controls">
+    <div class="filter-heading">
+      <span class="filter-title">Filter by technology</span>
+      <div class="filter-line"></div>
+    </div>
+    <div class="filter-buttons">
+      <button 
+        class="filter-btn active" 
+        data-filter="all"
+        aria-pressed="true"
+      >
+        <span class="filter-text">All Projects</span>
+      </button>
+      {uniqueTags.map((tag) => (
+        <button 
+          class="filter-btn" 
+          data-filter={tag.name.toLowerCase().replace(/\s+/g, '-')}
+          aria-pressed="false"
+        >
+          <tag.icon class="filter-icon" />
+          <span class="filter-text">{tag.name}</span>
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <div class="projects-content">
+    <!-- Featured Project (Conditionally displayed) -->
+    <div class="featured-project-container">
+      {PROJECTS.filter(p => p.featured).map(({ title, description, tags, image, link, github }) => (
+        <article class="featured-project" data-tags={tags.map(t => t.name.toLowerCase().replace(/\s+/g, '-')).join(' ')}>
+          <div class="featured-content">
+            <h3 class="project-title">
+              <span class="featured-badge">Featured Project</span>
+              {title}
+            </h3>
+            <p class="project-description">{description}</p>
+            <ul class="tags-list">
+              {tags.map((tag) => (
+                <li>
+                  <span
+                    class={`tag ${tag.class}`}
+                  >
+                    <tag.icon class="tag-icon" />
+                    {tag.name}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <div class="project-links">
+              <a
+                href={link}
+                target="_blank"
+                rel="noopener"
+                class="view-link"
+              >
+                {viewText}{" "}
+                <svg
+                  class="link-icon"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  />
+                </svg>
+              </a>
+
+              <a href={github}
+                target="_blank"
+                rel="noopener" class="github-link">
+                <span class="github-link-animation" />
+                <span class="github-link-content">
+                  {githubText}
+                  <Github class="github-icon" />
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="featured-image-container">
+            <img
+              class="featured-image"
+              src={image}
+              alt={`Screenshot of ${title}`}
+              loading="lazy"
+            />
+            <div class="featured-image-overlay">
+              <div class="featured-image-overlay-content">
+                <div class="featured-image-links">
+                  <a href={link} target="_blank" rel="noopener" class="featured-image-link view-btn">
+                    {viewText}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      {PROJECTS.filter(p => !p.featured).map(({ title, description, tags, image, link, github }) => (
+        <article class="project-card" data-tags={tags.map(t => t.name.toLowerCase().replace(/\s+/g, '-')).join(' ')}>
+          <div class="card-image-container">
+            <img
+              class="card-image"
+              src={image}
+              alt={`Screenshot of ${title}`}
+              loading="lazy"
+            />
+            <div class="card-overlay">
+              <div class="card-overlay-content">
+                <ul class="card-tags-list">
+                  {tags.map((tag) => (
+                    <li>
+                      <span class={`card-tag ${tag.class}`}>
+                        <tag.icon class="card-tag-icon" />
+                        {tag.name}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <div class="card-links">
+                  <a href={link} target="_blank" rel="noopener" class="card-link view-btn">
+                    {viewText}
+                  </a>
+                  <a href={github} target="_blank" rel="noopener" class="card-link github-btn">
+                    {githubText}
+                    <Github class="card-github-icon" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h3 class="card-title">{title}</h3>
+          <p class="card-description">{description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <!-- GitHub CTA -->
+  <div class="github-cta">
+    <p class="github-cta-text">
+      {moreProjectsText}
+    </p>
+    <a
+      href="https://github.com/ignaaaam"
+      target="_blank"
+      rel="noopener"
+      class="github-cta-link"
+    >
+      <span class="github-cta-animation" />
+      <span class="github-cta-content">
+        Github
+        <Github class="github-cta-icon" />
+      </span>
+    </a>
+  </div>
+</div>
+
+<script>
+  // Filter functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const featuredProjects = document.querySelectorAll('.featured-project');
+    const projectCards = document.querySelectorAll('.project-card');
+    const featuredContainer = document.querySelector('.featured-project-container');
+    const projectsContent = document.querySelector('.projects-content');
+    const githubCta = document.querySelector('.github-cta');
+    
+    // Initially show all projects with a staggered animation
+    featuredProjects.forEach((project, index) => {
+      setTimeout(() => {
+        project.classList.add('show');
+      }, 100 * index);
+    });
+    
+    projectCards.forEach((project, index) => {
+      setTimeout(() => {
+        project.classList.add('show');
+      }, 100 * (index + featuredProjects.length));
+    });
+    
+    // Function to adjust spacing based on visible projects
+    function adjustSpacing() {
+      const visibleProjects = document.querySelectorAll('.project-card.show').length;
+      const visibleFeatured = document.querySelectorAll('.featured-project.show').length;
+      const totalVisible = visibleProjects + visibleFeatured;
+      
+      // Adjust spacing based on number of visible projects
+      if (totalVisible <= 2) {
+        githubCta.style.marginTop = '1rem';
+      } else if (totalVisible <= 4) {
+        githubCta.style.marginTop = '1.5rem';
+      } else {
+        githubCta.style.marginTop = '2rem';
+      }
+    }
+    
+    // Initial spacing adjustment
+    adjustSpacing();
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Update active button state
+        filterButtons.forEach(btn => {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-pressed', 'false');
+        });
+        button.classList.add('active');
+        button.setAttribute('aria-pressed', 'true');
+        
+        const filter = button.getAttribute('data-filter');
+        let featuredVisible = false;
+        
+        // Check if any featured project will be visible for this filter
+        featuredProjects.forEach(project => {
+          const projectTags = project.getAttribute('data-tags');
+          if (filter === 'all' || (projectTags && matchesExactTag(projectTags, filter))) {
+            featuredVisible = true;
+          }
+        });
+        
+        // Handle featured projects visibility
+        featuredProjects.forEach(project => {
+          project.classList.remove('show');
+          
+          // Show all featured projects for "all" filter
+          if (filter === 'all') {
+            setTimeout(() => {
+              project.classList.add('show');
+            }, 300);
+            return;
+          }
+          
+          // Show featured projects that match filter
+          const projectTags = project.getAttribute('data-tags');
+          if (projectTags && matchesExactTag(projectTags, filter)) {
+            setTimeout(() => {
+              project.classList.add('show');
+            }, 300);
+          }
+        });
+        
+        // Toggle the entire featured container based on whether any featured project is visible
+        if (featuredVisible) {
+          featuredContainer.classList.remove('hidden');
+          projectsContent.classList.remove('no-featured');
+        } else {
+          featuredContainer.classList.add('hidden');
+          projectsContent.classList.add('no-featured');
+        }
+        
+        // Handle regular project cards
+        projectCards.forEach(project => {
+          project.classList.remove('show');
+          
+          // Show all projects for "all" filter
+          if (filter === 'all') {
+            setTimeout(() => {
+              project.classList.add('show');
+            }, 300);
+            return;
+          }
+          
+          // Show projects that match filter
+          const projectTags = project.getAttribute('data-tags');
+          if (projectTags && matchesExactTag(projectTags, filter)) {
+            setTimeout(() => {
+              project.classList.add('show');
+            }, 300);
+          }
+        });
+        
+        // Adjust spacing after filter change (with a delay to account for animations)
+        setTimeout(adjustSpacing, 350);
+      });
+    });
+    
+    // Helper function to match exact tags
+    function matchesExactTag(tagString, filter) {
+      // Split tag string into individual tags
+      const tags = tagString.split(' ');
+      // Check if any tag exactly matches the filter
+      return tags.includes(filter);
+    }
+    
+    // Add hover effect on project cards
+    projectCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.classList.add('hover');
+      });
+      card.addEventListener('mouseleave', () => {
+        card.classList.remove('hover');
+      });
+    });
+    
+    // Implement keyboard navigation
+    const focusableProjects = Array.from([...featuredProjects, ...projectCards]);
+    focusableProjects.forEach((project, index) => {
+      project.setAttribute('tabindex', '0');
+      project.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+          const nextIndex = (index + 1) % focusableProjects.length;
+          focusableProjects[nextIndex].focus();
+        } else if (e.key === 'ArrowLeft') {
+          const prevIndex = (index - 1 + focusableProjects.length) % focusableProjects.length;
+          focusableProjects[prevIndex].focus();
+        }
+      });
+    });
+    
+    // Implement lazy loading with IntersectionObserver
+    if ('IntersectionObserver' in window) {
+      const imgObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            const src = img.getAttribute('data-src');
+            if (src) {
+              img.src = src;
+              img.removeAttribute('data-src');
+            }
+            observer.unobserve(img);
+          }
+        });
+      });
+      
+      const lazyImages = document.querySelectorAll('img[data-src]');
+      lazyImages.forEach(img => {
+        imgObserver.observe(img);
+      });
+    }
+  });
+</script>
+
+<style>
+  /* Base Styles */
+  .projects-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .projects-content {
+    position: relative;
+  }
+  
+  .projects-content.no-featured .projects-grid {
+    margin-top: 0;
+  }
+  
+  /* Filter Controls */
+  .filter-controls {
+    margin-bottom: 2.5rem;
+  }
+  
+  .filter-heading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+  }
+  
+  .filter-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: rgba(255, 220, 100, 0.9);
+    white-space: nowrap;
+  }
+  
+  .filter-line {
+    flex-grow: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(255, 220, 100, 0.5), rgba(255, 255, 255, 0.1));
+  }
+  
+  .filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.7rem 1rem;
+    background: rgba(20, 20, 30, 0.4);
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    background: rgba(40, 40, 50, 0.5);
+    color: white;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .filter-btn:hover {
+    background: rgba(60, 60, 70, 0.7);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .filter-btn.active {
+    background: linear-gradient(135deg, rgba(255, 220, 100, 0.2), rgba(255, 154, 61, 0.3));
+    border-color: rgba(255, 220, 100, 0.5);
+    color: rgba(255, 220, 100, 1);
+    box-shadow: 0 0 15px rgba(255, 220, 100, 0.2);
+  }
+  
+  .filter-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  /* Featured Project */
+  .featured-project-container {
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+  }
+  
+  .featured-project-container.hidden {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .featured-project {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    background: rgba(20, 20, 30, 0.4);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .featured-project::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #ffdc64, #ff9a3d, rgba(255, 255, 255, 0.1));
+  }
+  
+  @media (min-width: 768px) {
+    .featured-project {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+  
+  .featured-project.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .featured-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #ffdc64, #ff9a3d);
+    color: #000;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 2px 6px rgba(255, 220, 100, 0.3);
+  }
+  
+  .project-title {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #ffdc64;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .project-description {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .tag {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .tag-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .project-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .view-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: white;
+    color: #000;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .view-link:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .link-icon {
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-left: 0.5rem;
+  }
+  
+  .github-link {
+    position: relative;
+    display: inline-flex;
+    overflow: hidden;
+    border-radius: 9999px;
+    padding: 1px;
+  }
+  
+  .github-link-animation {
+    position: absolute;
+    inset: -1000%;
+    animation: spin 2s linear infinite;
+    background: conic-gradient(from 90deg at 50% 50%, #E2CBFF 0%, #393BB2 50%, #E2CBFF 100%);
+  }
+  
+  .github-link-content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    background: #121212;
+    color: white;
+    z-index: 1;
+    position: relative;
+  }
+  
+  .github-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  .featured-image-container {
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease;
+    height: 0;
+    padding-bottom: 60%; /* Aspect ratio for the container */
+    width: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .featured-image-container {
+      padding-bottom: 75%; /* Different aspect ratio for larger screens */
+      margin: 0 auto;
+      width: 95%;
+    }
+  }
+  
+  .featured-image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+    border-radius: 0.75rem;
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  .featured-image-container:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.8);
+  }
+  
+  .featured-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    transition: transform 0.5s ease;
+  }
+  
+  .featured-image-container:hover .featured-image {
+    transform: scale(1.03);
+  }
+  
+  .featured-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+  }
+  
+  .featured-image-container:hover .featured-image-overlay {
+    opacity: 1;
+  }
+  
+  .featured-image-overlay-content {
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .featured-image-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .featured-image-link {
+    padding: 0.4rem 0.9rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    background: white;
+    color: black;
+  }
+  
+  .featured-image-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Projects Grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .project-card {
+    background: rgba(20, 20, 30, 0.4);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.3);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .project-card.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .project-card:hover,
+  .project-card.hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 220, 100, 0.3);
+  }
+  
+  .card-image-container {
+    position: relative;
+    overflow: hidden;
+    height: 0;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+  }
+  
+  .card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .project-card:hover .card-image {
+    transform: scale(1.05);
+  }
+  
+  .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .project-card:hover .card-overlay {
+    opacity: 1;
+  }
+  
+  .card-overlay-content {
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .card-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+  }
+  
+  .card-tag-icon {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+  
+  .card-links {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+  
+  .card-link {
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  
+  .view-btn {
+    background: white;
+    color: black;
+  }
+  
+  .github-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: #2a2a2a;
+    color: white;
+  }
+  
+  .card-github-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 1rem 1rem 0.5rem 1rem;
+    color: #ffdc64;
+  }
+  
+  .card-description {
+    padding: 0 1rem 1.5rem 1rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    flex: 1;
+  }
+  
+  /* GitHub CTA */
+  .github-cta {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 2rem;
+    background: rgba(20, 20, 30, 0.3);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .github-cta-text {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .github-cta-link {
+    position: relative;
+    display: inline-flex;
+    overflow: hidden;
+    border-radius: 9999px;
+    padding: 1px;
+  }
+  
+  .github-cta-animation {
+    position: absolute;
+    inset: -1000%;
+    animation: spin 2s linear infinite;
+    background: conic-gradient(from 90deg at 50% 50%, #E2CBFF 0%, #393BB2 50%, #E2CBFF 100%);
+  }
+  
+  .github-cta-content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    height: 100%;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    background: #121212;
+    color: white;
+    z-index: 1;
+    position: relative;
+    font-weight: 500;
+  }
+  
+  .github-cta-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  /* Animations */
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .filter-buttons {
+      justify-content: center;
+    }
+    
+    .filter-text {
+      display: none;
+    }
+    
+    .filter-btn {
+      padding: 0.5rem;
+    }
+    
+    .filter-btn.active .filter-text,
+    .filter-btn:first-child .filter-text {
+      display: inline;
+    }
+    
+    .projects-grid {
+      grid-template-columns: minmax(280px, 1fr);
+    }
+    
+    .featured-project {
+      padding: 1.5rem;
+    }
+    
+    .project-links {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  
+  /* Utility class for hiding */
+  .hidden {
+    display: none;
+  }
+</style> 

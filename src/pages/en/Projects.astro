@@ -13,6 +13,7 @@ import Alpine from "./../../components/icons/AlpineIcon.astro";
 import Laravel from "./../../components/icons/LaravelIcon.astro";
 import Css from "./../../components/icons/CSSIcon.astro";
 import SassIcon from "./../../components/icons/SassIcon.astro";
+import ProjectsGrid from "../../components/ProjectsGrid.astro";
 
 
 const TAGS = {
@@ -128,63 +129,8 @@ const PROJECTS = [
 ];
 ---
 
-{
-  PROJECTS.map(({ title, description, tags, image, link, github }) => (
-    <article class="mt-12 first-of-type:mt-8">
-      <h3 class="mb-2 text-2xl font-semibold text-yellow-200">{title}</h3>
-      <p class="mb-4 text-lg text-pretty">{description}</p>
-      <ul class="flex flex-row mb-4 gap-x-2">
-        {tags.map((tag) => (
-          <li>
-            <span
-              class={`flex gap-x-2 rounded-full text-sm ${tag.class} py-1 px-2 items-center`}
-            >
-              <tag.icon class="size-4" />
-              {tag.name}
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        class="rounded shadow-2xl shadow-white/10"
-        src={image}
-        alt={`Captura de pantalla del proyecto ${image}`}
-      />
-      <div class="flex mt-8 gap-x-4">
-        <a
-          href={link}
-          target="_blank"
-          rel="noopener"
-          class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 transition bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-yellow-500/90 focus:z-10 focus:ring-2 focus:outline-none focus:ring-gray-200 focus:text-yellow-500/90"
-        >
-          View Project{" "}
-          <svg
-            class="w-3 h-3 ms-2 rtl:rotate-180"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 14 10"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M1 5h12m0 0L9 1m4 4L9 9"
-            />
-          </svg>
-        </a>
-
-        <a href={github}
-          target="_blank"
-          rel="noopener" class="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-          <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-          <span class="inline-flex items-center justify-center w-full h-full px-3 py-1 text-sm font-medium text-white rounded-full cursor-pointer gap-x-2 bg-slate-950 backdrop-blur-3xl">
-            Github
-            <Github class="size-5" />
-          </span>
-        </a>
-      </div>
-    </article>
-  ))
-}
+<ProjectsGrid 
+  viewText="View Project" 
+  githubText="Github" 
+  moreProjectsText="If you want to see other projects and languages I'm learning like Livewire, AlpineJS, Vue and others, don't hesitate to visit my Github profile"
+/>
