@@ -1,0 +1,151 @@
+import DocumentIcon from "./icons/DocumentIcon.astro";
+
+<div class="cv-button-wrapper">
+  <button id="cv-download-btn" class="cv-download-btn">
+    <DocumentIcon class="size-4 md:size-6" />
+    <span class="cv-btn-text">
+      <slot>Download CV</slot>
+    </span>
+  </button>
+</div>
+
+<script>
+  // Simple client-side rate limiting
+  document.addEventListener('DOMContentLoaded', () => {
+    const downloadBtn = document.getElementById('cv-download-btn');
+    
+    if (downloadBtn) {
+      downloadBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        
+        // Check local storage for download count
+        const now = Date.now();
+        const ONE_HOUR = 60 * 60 * 1000;
+        
+        // Get download history from localStorage
+        const downloadHistory = JSON.parse(localStorage.getItem('cv_downloads') || '[]');
+        
+        // Clean old downloads outside the 1-hour window
+        const recentDownloads = downloadHistory.filter(time => (now - time) < ONE_HOUR);
+        
+        if (recentDownloads.length >= 3) {
+          // Too many downloads
+          alert('You have reached the download limit. Please try again later.');
+          return;
+        }
+        
+        // Two options for downloading:
+        
+        // OPTION 1: Direct download (simpler)
+        const link = document.createElement('a');
+        link.href = '/CV-UPDATED-2024.pdf';
+        link.download = 'ignacio-cv-2025.pdf';
+        link.click();
+        
+        // OPTION 2: Use API endpoint (if you implement the server-side approach)
+        /* 
+        try {
+          const response = await fetch('/api/get-cv-url');
+          const data = await response.json();
+          
+          if (data.url) {
+            const link = document.createElement('a');
+            link.href = data.url;
+            link.download = 'ignacio-cv-2025.pdf';
+            link.click();
+          } else {
+            throw new Error(data.error || 'Failed to get download URL');
+          }
+        } catch (error) {
+          console.error('Download error:', error);
+          alert('Error downloading CV. Please try again later.');
+          return;
+        }
+        */
+        
+        // Update download history
+        recentDownloads.push(now);
+        localStorage.setItem('cv_downloads', JSON.stringify(recentDownloads));
+      });
+    }
+  });
+</script>
+
+<style>
+  .cv-download-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    text-decoration: none;
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    
+    /* Same styling as the social pill */
+    background: linear-gradient(135deg, #ffdc64, #ff9a3d);
+    border: 2px solid rgba(255, 220, 100, 0.6);
+    font-weight: 600;
+    color: #000;
+    animation: pulse-cv 2.5s infinite;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .cv-download-btn:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #ffea94, #ffb06d);
+    box-shadow: 0 7px 14px rgba(255, 220, 100, 0.3);
+  }
+  
+  .cv-download-btn::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    z-index: -1;
+    background: linear-gradient(90deg, #ffdc64, #ff9a3d, #ffdc64);
+    background-size: 200% 100%;
+    animation: gradientMove 3s linear infinite;
+    opacity: 0.7;
+    border-radius: 9999px;
+  }
+  
+  @keyframes pulse-cv {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 220, 100, 0.7);
+    }
+    
+    70% {
+      box-shadow: 0 0 0 8px rgba(255, 220, 100, 0);
+    }
+    
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 220, 100, 0);
+    }
+  }
+  
+  @keyframes gradientMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Make the CV button stand out even more with a scale effect */
+  .cv-button-wrapper {
+    display: inline-block;
+    transform: scale(1.05);
+  }
+</style> 
