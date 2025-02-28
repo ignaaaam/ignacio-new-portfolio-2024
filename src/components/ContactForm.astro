@@ -132,10 +132,34 @@ const lang = getLangFromUrl(Astro.url);
   
   setDefaultTimeout(5000);
   const form = document.getElementById('contact-form');
+  const submitButton = form?.querySelector('button[type="submit"]');
+  const originalButtonText = submitButton?.querySelector('span')?.textContent || '';
+  
+  // Character counter for message
+  const messageTextarea = document.getElementById('message');
+  const charCount = document.getElementById('charCount');
+  
+  messageTextarea?.addEventListener('input', () => {
+    if (charCount) {
+      charCount.textContent = (messageTextarea as HTMLTextAreaElement).value.length.toString();
+    }
+  });
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
+    
+    if (!submitButton) return;
+    
+    // Set loading state
+    submitButton.setAttribute('disabled', 'true');
+    const loadingSpan = submitButton.querySelector('span');
+    if (loadingSpan) {
+      loadingSpan.textContent = 'Sending...';
+    }
+    submitButton.classList.add('opacity-75');
+    
     const formData = new FormData(e.target as HTMLFormElement);
+    console.log('Submitting form to /api/contact');
 
     try {
       const response = await fetch('/api/contact', {
@@ -143,7 +167,19 @@ const lang = getLangFromUrl(Astro.url);
         body: formData,
       });
 
-      const result = await response.json();
+      // Log response status for debugging
+      console.log('Response status:', response.status);
+      
+      let result;
+      try {
+        result = await response.json();
+      } catch (jsonError) {
+        console.error('Failed to parse JSON response:', jsonError);
+        throw new Error('Invalid server response');
+      }
+      
+      // Log the result for debugging
+      console.log('Response result:', result);
       
       if (result.success) {
         toast({
@@ -153,21 +189,31 @@ const lang = getLangFromUrl(Astro.url);
           position: 'bottom-full',
         });
         (e.target as HTMLFormElement).reset();
+        if (charCount) charCount.textContent = '0';
       } else {
         toast({
           element: '.toast-error',
-          title: result.title,
-          content: result.error,
+          title: result.title || 'Error',
+          content: result.error || 'Failed to send message',
           position: 'bottom-full',
         });
       }
     } catch (error) {
+      console.error('Form submission error:', error);
       toast({
         element: '.toast-error',
         title: 'Error',
-        content: 'Something went wrong',
+        content: 'Unable to process your request. Please try again later.',
         position: 'bottom-full',
       });
+    } finally {
+      // Reset button state
+      submitButton.removeAttribute('disabled');
+      const span = submitButton.querySelector('span');
+      if (span) {
+        span.textContent = originalButtonText;
+      }
+      submitButton.classList.remove('opacity-75');
     }
   });
 </script>

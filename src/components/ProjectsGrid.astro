@@ -2,7 +2,7 @@
 import NextJS from "./icons/NextJSIcon.astro";
 import Tailwind from "./icons/TailwindIcon.astro";
 import React from "./icons/ReactIcon.astro";
-import Astro from "./icons/AstroIcon.astro";
+import AstroIcon from "./icons/AstroIcon.astro";
 import Github from "./icons/GithubIcon.astro";
 import Javascript from "./icons/JavascriptIcon.astro";
 import Php from "./icons/PHPIcon.astro";
@@ -34,7 +34,7 @@ const TAGS = {
   ASTRO: {
     name: "Astro",
     class: "bg-black text-white",
-    icon: Astro,
+    icon: AstroIcon,
   },
   GITHUB: {
     name: "GitHub",
@@ -135,6 +135,12 @@ const PROJECTS = [
 const uniqueTags = [...new Set(PROJECTS.flatMap(project => project.tags))];
 
 // Props for localization
+interface Props {
+  viewText?: string;
+  githubText?: string;
+  moreProjectsText?: string;
+}
+
 const { viewText = "View Project", githubText = "Github", moreProjectsText = "If you want to see other projects and languages I'm learning like Livewire, AlpineJS, Vue and others, don't hesitate to visit my Github profile" } = Astro.props;
 ---
 
@@ -316,7 +322,7 @@ const { viewText = "View Project", githubText = "Github", moreProjectsText = "If
     const projectCards = document.querySelectorAll('.project-card');
     const featuredContainer = document.querySelector('.featured-project-container');
     const projectsContent = document.querySelector('.projects-content');
-    const githubCta = document.querySelector('.github-cta');
+    const githubCta = document.querySelector('.github-cta') as HTMLElement;
     
     // Initially show all projects with a staggered animation
     featuredProjects.forEach((project, index) => {
@@ -428,7 +434,7 @@ const { viewText = "View Project", githubText = "Github", moreProjectsText = "If
     });
     
     // Helper function to match exact tags
-    function matchesExactTag(tagString, filter) {
+    function matchesExactTag(tagString: string, filter: string) {
       // Split tag string into individual tags
       const tags = tagString.split(' ');
       // Check if any tag exactly matches the filter
@@ -449,13 +455,13 @@ const { viewText = "View Project", githubText = "Github", moreProjectsText = "If
     const focusableProjects = Array.from([...featuredProjects, ...projectCards]);
     focusableProjects.forEach((project, index) => {
       project.setAttribute('tabindex', '0');
-      project.addEventListener('keydown', (e) => {
+      project.addEventListener('keydown', (e: KeyboardEvent) => {
         if (e.key === 'ArrowRight') {
           const nextIndex = (index + 1) % focusableProjects.length;
-          focusableProjects[nextIndex].focus();
+          (focusableProjects[nextIndex] as HTMLElement).focus();
         } else if (e.key === 'ArrowLeft') {
           const prevIndex = (index - 1 + focusableProjects.length) % focusableProjects.length;
-          focusableProjects[prevIndex].focus();
+          (focusableProjects[prevIndex] as HTMLElement).focus();
         }
       });
     });
@@ -465,7 +471,7 @@ const { viewText = "View Project", githubText = "Github", moreProjectsText = "If
       const imgObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            const img = entry.target;
+            const img = entry.target as HTMLImageElement;
             const src = img.getAttribute('data-src');
             if (src) {
               img.src = src;
