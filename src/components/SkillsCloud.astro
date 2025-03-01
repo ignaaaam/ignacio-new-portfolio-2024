@@ -9,7 +9,10 @@ const { lang } = Astro.props;
 const t = translations[lang];
 ---
 
-<div class="mt-12">
+<div class="mt-12 pt-16 relative">
+  <!-- Visual separator at the top of the section -->
+  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-purple-500 to-transparent rounded-full opacity-60"></div>
+  
   <h3 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-purple-400 to-yellow-200 bg-clip-text text-transparent">
     {t.skillsTitle}
   </h3>

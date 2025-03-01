@@ -15,6 +15,7 @@ import CodeIcon from "../components/icons/CodeIcon.astro";
 import LearningIcon from "../components/icons/LearningIcon.astro";
 import CertificationIcon from "../components/icons/CertificationIcon.astro";
 import CVDownloadButton from "../components/CVDownloadButton.astro";
+import ScrollIndicator from "../components/ScrollIndicator.astro";
 
 import Arrow from "../components/Arrow.astro";
 
@@ -32,7 +33,7 @@ import SkillsCloud from "../components/SkillsCloud.astro";
 >
   <main class="px-4">
 
-    <SectionContainer class="py-8 md:py-12 pb-30 lg:py-32">
+    <SectionContainer class="hero-section py-8 md:py-12 pb-30 lg:py-32 min-h-screen flex flex-col justify-center relative">
       <h1
         class="flex pb-6 mb-4 text-3xl font-extrabold leading-none text-center text-white md:text-4xl lg:text-5xl gap-x-4 lg:pb-10"
       >
@@ -107,13 +108,14 @@ import SkillsCloud from "../components/SkillsCloud.astro";
       />
       <a
         href="#landingPage"
-        class="blob-white border border-black bg-white text-black p-2.5 rounded-full uppercase font-bold text-xs relative lg:left-[66%] lg:bottom-[25px] left-[35%] top-[-0.2rem] md:left-[66%] md:top-[-0.3rem] shadow-md shadow-white/20 transition-transform duration-300 ease-in-out transform hover:scale-105"
+        class="blob-white border border-black bg-white text-black p-2.5 rounded-full uppercase font-bold text-xs relative lg:left-[66%] lg:bottom-[25px] left-[35%] top-[-0.2rem] md:left-[66%] md:top-[-0.3rem] shadow-md shadow-white/20 transition-transform duration-300 ease-in-out transform hover:scale-105 max-w-[200px] inline-flex items-center justify-center"
       >
         <span>Contáctame para empezar</span>
       </a>
+      <ScrollIndicator />
     </SectionContainer>
 
-    <SectionContainer id="expertise" class="!pt-0">
+    <SectionContainer id="expertise" class="!pt-24">
       <SkillsCloud lang="es" />
     </SectionContainer>
 
