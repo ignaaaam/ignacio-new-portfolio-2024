@@ -1,15 +1,17 @@
 ---
+// import { SEO } from "astro-seo";
+// import { ViewTransitions } from "astro:transitions";
 import Header from "../components/Header.astro";
 import HeaderEnglish from "../pages/en/Header.astro";
-
 import Footer from "../components/Footer.astro";
 import FooterEnglish from "../pages/en/Footer.astro";
-
 import "@fontsource-variable/onest";
 import "@fontsource-variable/overpass";
-
-import { getLangFromUrl, useTranslations  } from '../i18n/utils';
+import { getLangFromUrl } from '../i18n/utils';
 import { AstroSeo } from '@astrolib/seo';
+// import { SpeedInsights } from "@vercel/speed-insights/astro";
+// import { Analytics } from "@vercel/analytics/react";
+// import { Partytown } from "@astrojs/partytown/components";
 
 interface Props {
   title: string;
@@ -37,19 +39,12 @@ interface Props {
   };
 }
 
-interface MetaTag {
-  name?: string;
-  property?: string;
-  content: string;
-}
-
 const { 
   title, 
   description,
 } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 const ogImage = "https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg";
 const url = "https://www.ignathedev.com/";
 const siteName = "Ignacio Amat Urbina - Desarrollador Web Full Stack & Laravel Expert";

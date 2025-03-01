@@ -25,10 +25,10 @@ import DocumentIcon from "./icons/DocumentIcon.astro";
         const ONE_HOUR = 60 * 60 * 1000;
         
         // Get download history from localStorage
-        const downloadHistory = JSON.parse(localStorage.getItem('cv_downloads') || '[]');
+        const downloadHistory = JSON.parse(localStorage.getItem('cv_downloads') || '[]') as number[];
         
         // Clean old downloads outside the 1-hour window
-        const recentDownloads = downloadHistory.filter(time => (now - time) < ONE_HOUR);
+        const recentDownloads = downloadHistory.filter((time: number) => (now - time) < ONE_HOUR);
         
         if (recentDownloads.length >= 3) {
           // Too many downloads

@@ -20,6 +20,7 @@ const BUTTONS = [
   WhatsAppShareButton,
 ];
 
+/* Unused variable - commented out to fix TypeScript warning
 const metaTags = [
   { name: 'viewport', content: 'width=device-width, initial-scale=1' },
   { name: 'generator', content: Astro.generator },
@@ -30,6 +31,7 @@ const metaTags = [
   { property: 'article:author', content: frontmatter.author },
   { property: 'article:published_time', content: new Date(frontmatter.publish_date).toISOString() }
 ];
+*/
 
 const ogImage = frontmatter.image.url;
 const url = `https://www.ignathedev.com${Astro.url.pathname}`;

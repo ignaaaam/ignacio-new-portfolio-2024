@@ -170,7 +170,7 @@ const lang = getLangFromUrl(Astro.url);
       // Log response status for debugging
       console.log('Response status:', response.status);
       
-      let result;
+      let result: { success: boolean; message?: string; error?: string; title?: string };
       try {
         result = await response.json();
       } catch (jsonError) {
