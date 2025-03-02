@@ -78,8 +78,8 @@ const metaTags = [
       gtag('config', 'G-VZQ07QHFLN');
     </script>
     <!-- SEO Meta Tags with AstroSEO -->
-          <meta name="viewport" content="width=device-width,initial-scale=1">
-     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8" />
     <AstroSeo
       title={metaTitle}
       description={metaDescription}
@@ -180,6 +180,14 @@ const metaTags = [
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" as="image" href={ogImage} />
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#000000">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
   </head>
   <body class="bg-neutral-950">
     <!-- 1st gradient -->

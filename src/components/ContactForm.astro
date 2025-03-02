@@ -6,6 +6,9 @@ const lang = getLangFromUrl(Astro.url);
 ---
 
 <div class="w-full max-w-4xl mx-auto relative">
+  <!-- iOS form styling prevention -->
+  <meta name="format-detection" content="telephone=no">
+  
   <!-- Success Toast -->
   <Toast className="toast-success !max-w-sm" position="bottom-full" theme="success">
     <Icon type="check-circle" slot="icon" />
@@ -33,7 +36,7 @@ const lang = getLangFromUrl(Astro.url);
           id="name"
           required
           minlength="2"
-          class="mt-1 block w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2 text-white shadow-sm backdrop-blur-sm focus:border-yellow-200 focus:ring-2 focus:ring-yellow-200/50"
+          class="form-input mt-1 block w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2 text-white shadow-sm backdrop-blur-sm focus:border-yellow-200 focus:ring-2 focus:ring-yellow-200/50"
           placeholder={lang === 'es' ? 'Tu nombre' : 'Your name'}
         />
       </div>
@@ -44,7 +47,7 @@ const lang = getLangFromUrl(Astro.url);
           name="email"
           id="email"
           required
-          class="mt-1 block w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2 text-white shadow-sm backdrop-blur-sm focus:border-yellow-200 focus:ring-2 focus:ring-yellow-200/50"
+          class="form-input mt-1 block w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2 text-white shadow-sm backdrop-blur-sm focus:border-yellow-200 focus:ring-2 focus:ring-yellow-200/50"
           placeholder={lang === 'es' ? 'tu@email.com' : 'your@email.com'}
         />
       </div>
@@ -58,7 +61,7 @@ const lang = getLangFromUrl(Astro.url);
         id="project_type"
         name="project_type"
         required
-        class="mt-1 block w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2 text-white shadow-sm backdrop-blur-sm focus:border-yellow-200 focus:ring-2 focus:ring-yellow-200/50"
+        class="form-select mt-1 block w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2 text-white shadow-sm backdrop-blur-sm focus:border-yellow-200 focus:ring-2 focus:ring-yellow-200/50"
       >
         <option value="">{lang === 'es' ? 'Selecciona una opción' : 'Select an option'}</option>
         <option value="landing">Landing Page</option>
@@ -76,7 +79,7 @@ const lang = getLangFromUrl(Astro.url);
         id="budget"
         name="budget"
         required
-        class="mt-1 block w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2 text-white shadow-sm backdrop-blur-sm focus:border-yellow-200 focus:ring-2 focus:ring-yellow-200/50"
+        class="form-select mt-1 block w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2 text-white shadow-sm backdrop-blur-sm focus:border-yellow-200 focus:ring-2 focus:ring-yellow-200/50"
       >
         <option value="">{lang === 'es' ? 'Selecciona un rango' : 'Select a range'}</option>
         <option value="500-1000">500€ - 1.000€</option>
@@ -98,7 +101,7 @@ const lang = getLangFromUrl(Astro.url);
           required
           minlength="10"
           maxlength="500"
-          class="mt-1 block w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2 text-white shadow-sm backdrop-blur-sm focus:border-yellow-200 focus:ring-2 focus:ring-yellow-200/50"
+          class="form-textarea mt-1 block w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2 text-white shadow-sm backdrop-blur-sm focus:border-yellow-200 focus:ring-2 focus:ring-yellow-200/50"
           placeholder={lang === 'es' ? 'Cuéntame sobre tu proyecto...' : 'Tell me about your project...'}
         ></textarea>
         <div class="absolute bottom-2 right-2 text-xs text-gray-400">
@@ -126,10 +129,10 @@ const lang = getLangFromUrl(Astro.url);
     padding: 1rem !important;
   }
 
-  /* Normalize form inputs across devices */
-  .contact-form-container input,
-  .contact-form-container select,
-  .contact-form-container textarea {
+  /* Target specific form elements with classes */
+  .form-input,
+  .form-select,
+  .form-textarea {
     -webkit-appearance: none !important;
     -moz-appearance: none !important;
     appearance: none !important;
@@ -140,44 +143,111 @@ const lang = getLangFromUrl(Astro.url);
     border: 1px solid rgb(55, 65, 81) !important;
   }
 
-  /* Remove iOS-specific styling that was causing issues */
+  /* Reset all form control styles first */
+  .contact-form-container input,
+  .contact-form-container select,
+  .contact-form-container textarea,
+  .contact-form-container button {
+    all: unset;
+    box-sizing: border-box;
+    font-family: inherit;
+  }
+
+  /* Apply base styling for all inputs */
+  .contact-form-container input,
+  .contact-form-container select,
+  .contact-form-container textarea {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 16px;
+    line-height: 1.5;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(55, 65, 81);
+    background-color: rgba(17, 24, 39, 0.5);
+    color: white;
+    margin-top: 0.25rem;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Apply specific select styling */
+  .contact-form-container select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em;
+    padding-right: 2.5rem;
+  }
+  
+  /* Focus states */
+  .contact-form-container input:focus,
+  .contact-form-container select:focus,
+  .contact-form-container textarea:focus {
+    outline: none;
+    border-color: rgb(250, 204, 21);
+    box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.5);
+  }
+
+  /* iOS specific fixes */
   @supports (-webkit-touch-callout: none) {
     .contact-form-container input,
     .contact-form-container select,
     .contact-form-container textarea {
-      box-shadow: none !important;
-      background-clip: padding-box !important;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    
+    .contact-form-container select {
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
     }
   }
 
-  /* Ensure proper focus states */
-  .contact-form-container input:focus,
-  .contact-form-container select:focus,
-  .contact-form-container textarea:focus {
-    border-color: rgb(250, 204, 21) !important; /* yellow-200 */
-    outline: none !important;
-    box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.5) !important;
-  }
-  
-  /* Fix select dropdown appearance on mobile */
-  .contact-form-container select {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") !important;
-    background-position: right 0.5rem center !important;
-    background-repeat: no-repeat !important;
-    background-size: 1.5em 1.5em !important;
-    padding-right: 2.5rem !important;
+  /* Button styling */
+  .contact-form-container button[type="submit"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    background-color: white;
+    color: black;
+    font-weight: 900;
+    text-transform: uppercase;
+    border-radius: 9999px;
+    border: 1px solid black;
+    box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
   }
 
-  /* Fix submit button on mobile */
-  .contact-form-container button[type="submit"] {
-    -webkit-appearance: none !important;
-    -moz-appearance: none !important;
-    appearance: none !important;
-    transform: translateZ(0) !important;
-    backface-visibility: hidden !important;
-    -webkit-font-smoothing: subpixel-antialiased !important;
-    background-color: white !important;
-    color: black !important;
+  .contact-form-container button[type="submit"]:hover {
+    transform: scale(1.05);
+  }
+
+  /* Remove browser-specific styling on iOS */
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .contact-form-container select,
+    .contact-form-container textarea,
+    .contact-form-container input {
+      font-size: 16px;
+    }
+  }
+
+  /* iOS focus state */
+  .ios-focus {
+    background-color: rgba(17, 24, 39, 0.5) !important;
+    color: white !important;
+    border-color: rgb(250, 204, 21) !important;
+  }
+  
+  /* Body class when iOS keyboard is open */
+  :global(body.ios-keyboard-open) {
+    position: fixed;
+    width: 100%;
+    height: 100%;
   }
 </style>
 
@@ -270,4 +340,37 @@ const lang = getLangFromUrl(Astro.url);
       submitButton.classList.remove('opacity-75');
     }
   });
+  
+  // Fix for iOS form inputs styling
+  if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+    const inputs = document.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+      input.addEventListener('focus', function() {
+        document.body.classList.add('ios-keyboard-open');
+        this.classList.add('ios-focus');
+      });
+      
+      input.addEventListener('blur', function() {
+        document.body.classList.remove('ios-keyboard-open');
+        this.classList.remove('ios-focus');
+      });
+    });
+  }
+</script>
+
+<!-- Inline reset script for iOS -->
+<script is:inline>
+  // Force iOS to use our styles
+  if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+    document.addEventListener('DOMContentLoaded', function() {
+      const inputs = document.querySelectorAll('input, select, textarea');
+      inputs.forEach(input => {
+        // Reset iOS styling by toggling focus briefly
+        setTimeout(() => {
+          input.focus();
+          setTimeout(() => input.blur(), 1);
+        }, 100);
+      });
+    });
+  }
 </script>
