@@ -33,7 +33,7 @@ import SkillsCloud from "../components/SkillsCloud.astro";
 >
   <main class="px-4">
 
-    <SectionContainer class="hero-section py-8 md:py-12 pb-30 lg:py-32 min-h-screen flex flex-col justify-center relative">
+    <SectionContainer class="hero-section -mt-12 pt-2 pb-14 md:pt-4 md:pb-16 lg:py-32 min-h-[92vh] md:min-h-[95vh] lg:min-h-screen flex flex-col justify-center relative">
       <h1
         class="flex pb-6 mb-4 text-3xl font-extrabold leading-none text-center text-white md:text-4xl lg:text-5xl gap-x-4 lg:pb-10"
       >
@@ -69,7 +69,7 @@ import SkillsCloud from "../components/SkillsCloud.astro";
         >
         y<span class="font-bold text-[#EFD81D]"> Javascript</span>.
       </h2>
-      <nav class="flex flex-wrap mt-8 gap-x-4 gap-y-4">
+      <nav class="flex flex-wrap mt-20 gap-4 overflow-x-auto pb-2 max-w-full social-pills-container">
         <SocialPill
           href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223"
         >
@@ -97,22 +97,19 @@ import SkillsCloud from "../components/SkillsCloud.astro";
         <CVDownloadButton>
           Descargar CV
         </CVDownloadButton>
-        <SocialPill href="#contact">
-          <MailIcon class="size-4 md:size-6" />
-          ignacioamat@ignathedev.com
-        </SocialPill>
+        <div class="flex flex-col items-start">
+          <SocialPill href="#contact" class="min-w-[16rem] md:min-w-[18rem]">
+            <MailIcon class="size-4 md:size-6" />
+            ignacioamat@ignathedev.com
+          </SocialPill>
+          <span class="text-xs text-white/70 ml-2 mt-1 italic">Contáctame por email</span>
+        </div>
       </nav>
-      <div class="fixed right-40 md:static md:bottom-auto md:right-auto"></div>
-      <Arrow
-        class="size-12 md:size-16 md:rotate-[-94deg] relative lg:left-[56%] rotate-[-110deg] left-[59%] -top-[0.5rem] md:left-[58%] md:top-[-10px]"
-      />
-      <a
-        href="#landingPage"
-        class="blob-white border border-black bg-white text-black p-2.5 rounded-full uppercase font-bold text-xs relative lg:left-[66%] lg:bottom-[25px] left-[35%] top-[-0.2rem] md:left-[66%] md:top-[-0.3rem] shadow-md shadow-white/20 transition-transform duration-300 ease-in-out transform hover:scale-105 max-w-[200px] inline-flex items-center justify-center"
-      >
-        <span>Contáctame para empezar</span>
-      </a>
-      <ScrollIndicator />
+      
+      <!-- Scroll indicator (visible on all devices, adjusted for better visibility) -->
+      <ScrollIndicator class="!bottom-2 md:!bottom-16 lg:!bottom-24" />
+      
+      <!-- CTA button - positioned at the right for better visibility -->
     </SectionContainer>
 
     <SectionContainer id="expertise" class="!pt-24">

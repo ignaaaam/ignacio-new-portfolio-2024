@@ -40,7 +40,7 @@ import DocumentIcon from "./icons/DocumentIcon.astro";
         
         // OPTION 1: Direct download (simpler)
         const link = document.createElement('a');
-        link.href = '/CV-UPDATED-2024.pdf';
+        link.href = '/CV-UPDATED-2025.pdf';
         link.download = 'ignacio-cv-2025.pdf';
         link.click();
         
@@ -77,17 +77,22 @@ import DocumentIcon from "./icons/DocumentIcon.astro";
   .cv-download-btn {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
-    padding: 0.5rem 1rem;
     border-radius: 9999px;
-    font-size: 0.875rem;
-    line-height: 1.5rem;
     text-decoration: none;
     transition-property: all;
     transition-duration: 0.3s;
     transition-timing-function: ease;
+    white-space: nowrap;
     
-    /* Same styling as the social pill */
+    /* Match sizing with social pills */
+    min-width: 7rem;
+    height: 2rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    
+    /* Special styling for CV button */
     background: linear-gradient(135deg, #ffdc64, #ff9a3d);
     border: 2px solid rgba(255, 220, 100, 0.6);
     font-weight: 600;
@@ -98,8 +103,18 @@ import DocumentIcon from "./icons/DocumentIcon.astro";
     z-index: 1;
   }
   
+  /* Responsive adjustments to match social pills */
+  @media (min-width: 768px) {
+    .cv-download-btn {
+      min-width: 8rem;
+      height: 2.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+    }
+  }
+  
   .cv-download-btn:hover {
-    transform: translateY(-3px);
+    transform: translateY(-3px) scale(1.05);
     background: linear-gradient(135deg, #ffea94, #ffb06d);
     box-shadow: 0 7px 14px rgba(255, 220, 100, 0.3);
   }
@@ -145,7 +160,7 @@ import DocumentIcon from "./icons/DocumentIcon.astro";
     }
   }
   
-  /* Make the CV button stand out even more with a scale effect */
+  /* Make the CV button stand out just a little with scale */
   .cv-button-wrapper {
     display: inline-block;
     transform: scale(1.05);

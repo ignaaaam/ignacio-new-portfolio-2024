@@ -34,7 +34,7 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
   description="Ignacio Amat Urbina, hire me if you need a Full Stack Web Developer and expert in Back End and Front End. Specialized in PHP, Laravel (Livewire and Inertia), Javascript, Vue and TailwindCSS. Learning Astro to create fast, optimized, and high-performance websites."
 >
   <main class="px-4">
-    <SectionContainer class="hero-section py-8 md:py-12 pb-30 lg:py-32 min-h-screen flex flex-col justify-center relative">
+    <SectionContainer class="hero-section -mt-12 pt-2 pb-14 md:pt-4 md:pb-16 lg:py-32 min-h-[92vh] md:min-h-[95vh] lg:min-h-screen flex flex-col justify-center relative">
       <h1
         class="flex pb-6 mb-4 text-3xl font-extrabold leading-none text-center text-white md:text-4xl lg:text-5xl gap-x-4 lg:pb-10"
       >
@@ -69,7 +69,7 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
         >
         and<span class="font-bold text-[#EFD81D]"> Javascript</span>.
       </h2>
-      <nav class="flex flex-wrap mt-8 gap-x-4 gap-y-4">
+      <nav class="flex flex-wrap mt-20 gap-4 overflow-x-auto pb-2 max-w-full social-pills-container">
         <SocialPill
           href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223"
         >
@@ -97,22 +97,17 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
         <CVDownloadButton>
           Download CV
         </CVDownloadButton>
-        <SocialPill href="#contact">
-          <MailIcon class="size-4 md:size-6" />
-          ignacioamat@ignathedev.com
-        </SocialPill>
+        <div class="flex flex-col items-start">
+          <SocialPill href="#contact" class="min-w-[16rem] md:min-w-[18rem]">
+            <MailIcon class="size-4 md:size-6" />
+            ignacioamat@ignathedev.com
+          </SocialPill>
+          <span class="text-xs text-white/70 ml-2 mt-1 italic">Contact me by email</span>
+        </div>
       </nav>
-      <div class="fixed right-40 md:static md:bottom-auto md:right-auto"></div>
-      <Arrow
-        class="size-12 md:size-16 md:rotate-[-94deg] relative lg:left-[56%] rotate-[-110deg] left-[59%] -top-[0.5rem] md:left-[58%] md:top-[-10px]"
-      />
-      <a
-        href="#landingPage"
-        class="blob-white border border-black bg-white text-black p-2.5 rounded-full uppercase font-bold text-xs relative lg:left-[66%] lg:bottom-[25px] left-[35%] top-[-0.2rem] md:left-[66%] md:top-[-0.3rem] shadow-md shadow-white/20 transition-transform duration-300 ease-in-out transform hover:scale-105 max-w-[240px] inline-flex items-center justify-center"
-      >
-        <span>Contact me to get started</span>
-      </a>
-      <ScrollIndicator />
+      
+      <!-- Scroll indicator (visible on all devices, adjusted for better visibility) -->
+      <ScrollIndicator class="!bottom-2 md:!bottom-16 lg:!bottom-24" />
     </SectionContainer>
 
     <SectionContainer id="expertise" class="!pt-24">
@@ -195,10 +190,6 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
 </Layout>
 
 <style>
-  html {
-    font-family: "Onest Variable", system-ui, sans-serif;
-    scroll-behavior: smooth;
-  }
   main {
     margin: auto;
     padding: 1rem;
@@ -251,6 +242,18 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
     grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
     gap: 2rem;
     padding: 0;
+  }
+
+  #landingPageTitle {
+    background: linear-gradient(
+      90deg,
+      rgba(36, 5, 3, 0.705) 0%,
+      rgba(255, 40, 25, 0.829) 50%,
+      rgba(36, 5, 3, 0.705) 100%
+    );
+    line-height: normal;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   @keyframes pulse-white {
@@ -348,50 +351,4 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
     background-size: 100% 10px;
     text-decoration: none;
   }
-
-  .tooltip {
-    @apply absolute bottom-full mb-2 hidden group-hover:block bg-slate-800 p-4 rounded-lg border border-purple-500/30;
-    min-width: 220px;
-    box-shadow: 0 10px 30px -10px rgba(109,40,217,0.3);
-  }
-
-  .sticky-nav {
-    position: sticky;
-    top: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 100;
-  }
-
-  .sticky .nav-link {
-    position: relative;
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-  }
-
-  .sticky .nav-underline {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: white;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-  }
-
-  .sticky .nav-link:hover .nav-underline {
-    transform: scaleX(1);
-  }
 </style>
-
-<nav class="sticky-nav" x-data="{ isOpen: false }">
-  <div class="container">
-    <a href="#expertise" class="nav-link group">
-      Skills
-      <span class="nav-underline"></span>
-    </a>
-    <!-- Repeat for other sections -->
-  </div>
-</nav>

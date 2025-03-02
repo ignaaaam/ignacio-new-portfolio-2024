@@ -41,12 +41,27 @@ const { class: className = "", targetId = "expertise" } = Astro.props;
     display: flex;
     justify-content: center;
     position: absolute;
-    bottom: 150px;
+    bottom: 50px; /* Default for mobile */
     width: 100%;
     left: 0;
     z-index: 10;
   }
+  
+  /* Tablet positioning */
+  @media (min-width: 768px) {
+    .scroll-indicator-container:not([class*="!bottom-"]) {
+      bottom: 100px;
+    }
+  }
+  
+  /* Desktop positioning */
+  @media (min-width: 1024px) {
+    .scroll-indicator-container:not([class*="!bottom-"]) {
+      bottom: 150px;
+    }
+  }
 
+  /* Make the indicator more visible on all screens */
   .scroll-indicator {
     position: relative;
     width: 30px;
@@ -54,6 +69,18 @@ const { class: className = "", targetId = "expertise" } = Astro.props;
     opacity: 0;
     animation: fadeIn 1s ease-in-out 1s forwards;
     cursor: pointer;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
+  }
+  
+  @media (max-width: 767px) {
+    .scroll-indicator {
+      transform: scale(0.8);
+      margin-bottom: -10px;
+    }
+    .chevron:before,
+    .chevron:after {
+      background: rgba(255, 255, 255, 0.95);
+    }
   }
 
   .chevron {

@@ -181,11 +181,14 @@ const metaTags = [
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" as="image" href={ogImage} />
   </head>
-  <body>
-    <div
-      class="absolute top-0 z-[-2] h-[100%] w-[100%] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+  <body class="bg-neutral-950">
+    <!-- 1st gradient -->
+    <!-- <div
+      class="absolute top-0 left-0 right-0 z-[-1] w-full h-[50vh] bg-gradient-to-b from-purple-900 via-purple-800/50 via-30% to-transparent to-70%"
     >
-  </div>
+    </div> -->
+    <!-- 2nd gradient -->
+    <div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(10,10,10,0))]"></div>
     {lang === 'es' ? (
       <Header />
     ) : (
@@ -208,20 +211,42 @@ const metaTags = [
 </style>
 <style is:global>
   :root {
-    color-scheme: light dark;
+    color-scheme: dark light;
   }
+
   html {
     font-family: "Onest Variable", system-ui, sans-serif;
     scroll-behavior: smooth;
-    height: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   body {
-    background: rgb(10 10 10);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
     overflow-x: hidden;
+    background-color: rgb(10, 10, 10);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  /* Hide scrollbar for social pills container but keep functionality */
+  .social-pills-container {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    padding: 0.5rem; /* Add padding to prevent pills from being clipped on hover */
+    width: 100%; /* Adjust width to account for padding */
+  }
+  
+  .social-pills-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
 
   /* Ensuring the hero section takes up at least the full viewport height */
@@ -231,6 +256,21 @@ const metaTags = [
     flex-direction: column;
     justify-content: center;
     position: relative;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Responsive text sizing for smaller devices */
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 1.75rem !important;
+    }
+    h2 {
+      font-size: 1.25rem !important;
+    }
+    .hero-section {
+      padding-bottom: 5rem; /* Extra space for the scroll indicator on mobile */
+    }
   }
 
   /* Create some space between sections */
@@ -239,9 +279,10 @@ const metaTags = [
     scroll-margin-top: 2rem;
   }
 
-  @media {prefers-reduced-motion: reduce} {
-    html {
-      scroll-behavior: auto;
-    }
+  .dark-section {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
   }
 </style>
