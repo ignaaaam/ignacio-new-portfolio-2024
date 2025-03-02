@@ -20,7 +20,7 @@ const lang = getLangFromUrl(Astro.url);
     method="POST"
     action="/api/contact"
     id="contact-form"
-    class="space-y-6 backdrop-blur-sm bg-white/5 p-8 rounded-xl border border-white/10 shadow-2xl transition-all duration-300"
+    class="contact-form-container space-y-6 backdrop-blur-sm bg-white/5 p-8 rounded-xl border border-white/10 shadow-2xl transition-all duration-300"
   >
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
       <div>
@@ -127,39 +127,57 @@ const lang = getLangFromUrl(Astro.url);
   }
 
   /* Normalize form inputs across devices */
-  input, select, textarea {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+  .contact-form-container input,
+  .contact-form-container select,
+  .contact-form-container textarea {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
     border-radius: 0.5rem !important;
-    font-size: 16px !important; /* Prevents iOS zoom */
+    font-size: 16px !important;
+    background-color: rgba(17, 24, 39, 0.5) !important;
+    color: white !important;
+    border: 1px solid rgb(55, 65, 81) !important;
   }
 
-  /* Ensure consistent styling on iOS devices */
+  /* Remove iOS-specific styling that was causing issues */
   @supports (-webkit-touch-callout: none) {
-    input, select, textarea {
-      font-size: 16px !important;
-      background-color: rgba(17, 24, 39, 0.5) !important;
+    .contact-form-container input,
+    .contact-form-container select,
+    .contact-form-container textarea {
+      box-shadow: none !important;
+      background-clip: padding-box !important;
     }
   }
 
+  /* Ensure proper focus states */
+  .contact-form-container input:focus,
+  .contact-form-container select:focus,
+  .contact-form-container textarea:focus {
+    border-color: rgb(250, 204, 21) !important; /* yellow-200 */
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.5) !important;
+  }
+  
   /* Fix select dropdown appearance on mobile */
-  select {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-    background-position: right 0.5rem center;
-    background-repeat: no-repeat;
-    background-size: 1.5em 1.5em;
-    padding-right: 2.5rem;
+  .contact-form-container select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") !important;
+    background-position: right 0.5rem center !important;
+    background-repeat: no-repeat !important;
+    background-size: 1.5em 1.5em !important;
+    padding-right: 2.5rem !important;
   }
 
   /* Fix submit button on mobile */
-  button[type="submit"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-font-smoothing: subpixel-antialiased;
+  .contact-form-container button[type="submit"] {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+    background-color: white !important;
+    color: black !important;
   }
 </style>
 
