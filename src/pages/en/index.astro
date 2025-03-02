@@ -116,7 +116,7 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
 
     <FullSectionContainer id="landingPage" class="relative py-20 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="mb-6 text-5xl lg:text-6xl font-bold text-brush gap-x-3">
+        <h2 class="mb-6 text-5xl lg:text-6xl font-bold text-yellow-200 text-glow gap-x-3">
           Need a professional website?
         </h2>
         <div class="space-y-6 mb-12">
@@ -350,5 +350,18 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
     background-position: 10px bottom;
     background-size: 100% 10px;
     text-decoration: none;
+  }
+
+  /* Add text glow effect for better visibility on mobile */
+  .text-glow {
+    text-shadow: 0 0 10px rgba(255, 240, 107, 0.7), 0 0 20px rgba(255, 240, 107, 0.4);
+    position: relative;
+    z-index: 1;
+  }
+  
+  @media (max-width: 640px) {
+    .text-glow {
+      text-shadow: 0 0 15px rgba(255, 240, 107, 0.8), 0 0 25px rgba(255, 240, 107, 0.5);
+    }
   }
 </style>
