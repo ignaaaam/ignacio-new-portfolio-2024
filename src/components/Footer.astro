@@ -1,8 +1,12 @@
+---
+import SocialShareButtons from './SocialShareButtons.astro';
+---
+
 <footer
   class="rounded-lg shadow m-4 bg-black/20 backdrop-blur-lg w-full mx-auto lg:gap-x-10 md:gap-x-4 lg:justify-between lg:w-[1120px] mb-10"
 >
   <div
-    class="w-full max-w-screen-xl p-4 mx-auto md:flex md:items-center md:justify-between"
+    class="w-full max-w-screen-xl p-4 mx-auto md:flex md:items-center md:justify-between flex-wrap"
   >
     <span class="text-sm text-yellow-200 sm:text-center"
       >© {new Date().getFullYear()}
@@ -51,5 +55,14 @@
         >
       </li>
     </ul>
+    
+    <div class="w-full mt-6 flex justify-center md:justify-end">
+      <SocialShareButtons 
+        url="https://ignathedev.com/" 
+        title="Ignacio Amat Urbina - Desarrollador Web Full Stack en Barcelona | Experto en PHP y Laravel" 
+        description="Desarrollador web full stack en Barcelona especializado en crear aplicaciones web a medida con PHP, Laravel, Vue y tecnologías modernas. Ofrezco soluciones web de alto rendimiento para empresas."
+        hashtags="desarrolladorweb,desarrolladorwebbarcelona,expertolaravel,phpdesarrollo,aplicacionesweb,solucioneswebpymes" 
+      />
+    </div>
   </div>
 </footer>
