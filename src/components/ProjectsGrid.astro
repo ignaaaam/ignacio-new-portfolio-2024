@@ -13,6 +13,7 @@ import Alpine from "./icons/AlpineIcon.astro";
 import Laravel from "./icons/LaravelIcon.astro";
 import Css from "./icons/CSSIcon.astro";
 import SassIcon from "./icons/SassIcon.astro";
+import { getLangFromUrl } from '../i18n/utils';
 
 const TAGS = {
   NEXT: {
@@ -87,6 +88,24 @@ const TAGS = {
   },
 };
 
+// Function to get tag object from tag name
+const getTagObject = (tagName: string) => {
+  // Check if tagName is a key in TAGS
+  const tag = Object.values(TAGS).find(tag => tag.name === tagName);
+  
+  // If found, return it
+  if (tag) {
+    return tag;
+  }
+  
+  // If not found, return a default tag object
+  return {
+    name: tagName,
+    class: "bg-gray-700 text-white",
+    icon: null
+  };
+};
+
 const PROJECTS = [
   {
     title: "Trycat Website (Wordle Game)",
@@ -131,7 +150,7 @@ const PROJECTS = [
 ];
 
 // Get unique tags for filter buttons
-const uniqueTags = [...new Set(PROJECTS.flatMap(project => project.tags))];
+const uniqueTags = [...new Set(PROJECTS.flatMap(project => project.tags.map(tag => tag.name)))];
 
 // Props for localization
 interface Props {
@@ -141,111 +160,104 @@ interface Props {
 }
 
 const { viewText = "View Project", githubText = "Github", moreProjectsText = "If you want to see other projects and languages I'm learning like Livewire, AlpineJS, Vue and others, don't hesitate to visit my Github profile" } = Astro.props;
+
+// Get current language
+const lang = getLangFromUrl(Astro.url);
+
+// Translation object
+const translations = {
+  en: {
+    filterByTech: "Filter by technology",
+    allProjects: "All Projects",
+    featuredProject: "Featured Project",
+    viewText: viewText,
+    githubText: githubText
+  },
+  es: {
+    filterByTech: "Filtrar por tecnología",
+    allProjects: "Todos los Proyectos",
+    featuredProject: "Proyecto Destacado",
+    viewText: "Ver Proyecto",
+    githubText: "Github"
+  }
+};
+
+// Select the appropriate translation based on the language
+const t = translations[lang] || translations.en;
+
+// Process projects for rendering
+const projects = PROJECTS.map(project => ({
+  ...project,
+  technologies: project.tags.map(tag => tag.name)
+}));
 ---
 
-<div class="projects-container">
-  <!-- Filter Controls -->
-  <div class="filter-controls">
-    <div class="filter-heading">
-      <span class="filter-title">Filter by technology</span>
-      <div class="filter-line"></div>
-    </div>
+<div class="projects-component">
+  <div class="filter-container mb-12">
+    <h3 class="filter-heading">{t.filterByTech}</h3>
     <div class="filter-buttons">
       <button 
         class="filter-btn active" 
         data-filter="all"
         aria-pressed="true"
       >
-        <span class="filter-text">All Projects</span>
+        <span class="filter-text">{t.allProjects}</span>
       </button>
-      {uniqueTags.map((tag) => (
-        <button 
-          class="filter-btn" 
-          data-filter={tag.name.toLowerCase().replace(/\s+/g, '-')}
-          aria-pressed="false"
-        >
-          <tag.icon class="filter-icon" />
-          <span class="filter-text">{tag.name}</span>
-        </button>
-      ))}
+      {uniqueTags.map((tagName) => {
+        const tagObj = getTagObject(tagName);
+        return (
+          <button 
+            class="filter-btn" 
+            data-filter={tagName.toLowerCase().replace(/\s+/g, '-')}
+            aria-pressed="false"
+          >
+            {tagObj.icon && <tagObj.icon class="filter-icon" />}
+            <span class="filter-text">{tagName}</span>
+          </button>
+        );
+      })}
     </div>
   </div>
 
   <div class="projects-content">
     <!-- Featured Project (Conditionally displayed) -->
     <div class="featured-project-container">
-      {PROJECTS.filter(p => p.featured).map(({ title, description, tags, image, link, github }) => (
-        <article class="featured-project" data-tags={tags.map(t => t.name.toLowerCase().replace(/\s+/g, '-')).join(' ')}>
+      {projects.filter(p => p.featured === true).map(({ title, description, technologies, image, link, github }) => (
+        <article class="featured-project" data-tags={technologies.map((t: string) => t.toLowerCase().replace(/\s+/g, '-')).join(' ')}>
           <div class="featured-content">
             <h3 class="project-title">
-              <span class="featured-badge">Featured Project</span>
+              <span class="featured-badge">{t.featuredProject}</span>
               {title}
             </h3>
             <p class="project-description">{description}</p>
             <ul class="tags-list">
-              {tags.map((tag) => (
-                <li>
-                  <span
-                    class={`tag ${tag.class}`}
-                  >
-                    <tag.icon class="tag-icon" />
-                    {tag.name}
-                  </span>
-                </li>
-              ))}
+              {technologies.map((tagName: string) => {
+                const tagObj = getTagObject(tagName);
+                return (
+                  <li>
+                    <span class={`tag ${tagObj.class || 'bg-gray-700 text-white'}`}>
+                      {tagObj.icon && <tagObj.icon class="tag-icon" />}
+                      {tagName}
+                    </span>
+                  </li>
+                );
+              })}
             </ul>
             <div class="project-links">
-              <a
-                href={link}
-                target="_blank"
-                rel="noopener"
-                class="view-link"
-              >
-                {viewText}{" "}
-                <svg
-                  class="link-icon"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
-
-              <a href={github}
-                target="_blank"
-                rel="noopener" class="github-link">
-                <span class="github-link-animation" />
-                <span class="github-link-content">
-                  {githubText}
-                  <Github class="github-icon" />
-                </span>
-              </a>
+              {link && (
+                <a href={link} target="_blank" rel="noopener" class="view-link">
+                  {t.viewText}
+                </a>
+              )}
+              {github && (
+                <a href={github} target="_blank" rel="noopener" class="github-link">
+                  {t.githubText}
+                </a>
+              )}
             </div>
           </div>
           <div class="featured-image-container">
-            <img
-              class="featured-image"
-              src={image}
-              alt={`Screenshot of ${title}`}
-              loading="lazy"
-            />
-            <div class="featured-image-overlay">
-              <div class="featured-image-overlay-content">
-                <div class="featured-image-links">
-                  <a href={link} target="_blank" rel="noopener" class="featured-image-link view-btn">
-                    {viewText}
-                  </a>
-                </div>
-              </div>
-            </div>
+            <img src={image} alt={`Screenshot of ${title}`} class="featured-image" loading="lazy" />
           </div>
         </article>
       ))}
@@ -253,8 +265,8 @@ const { viewText = "View Project", githubText = "Github", moreProjectsText = "If
 
     <!-- Projects Grid -->
     <div class="projects-grid">
-      {PROJECTS.filter(p => !p.featured).map(({ title, description, tags, image, link, github }) => (
-        <article class="project-card" data-tags={tags.map(t => t.name.toLowerCase().replace(/\s+/g, '-')).join(' ')}>
+      {projects.filter(p => p.featured !== true).map(({ title, description, technologies, image, link, github }) => (
+        <article class="project-card" data-tags={technologies.map((t: string) => t.toLowerCase().replace(/\s+/g, '-')).join(' ')}>
           <div class="card-image-container">
             <img
               class="card-image"
@@ -265,29 +277,37 @@ const { viewText = "View Project", githubText = "Github", moreProjectsText = "If
             <div class="card-overlay">
               <div class="card-overlay-content">
                 <ul class="card-tags-list">
-                  {tags.map((tag) => (
-                    <li>
-                      <span class={`card-tag ${tag.class}`}>
-                        <tag.icon class="card-tag-icon" />
-                        {tag.name}
-                      </span>
-                    </li>
-                  ))}
+                  {technologies.map((tagName: string) => {
+                    const tagObj = getTagObject(tagName);
+                    return (
+                      <li>
+                        <span class={`card-tag ${tagObj.class || 'bg-gray-700 text-white'}`}>
+                          {tagObj.icon && <tagObj.icon class="card-tag-icon" />}
+                          {tagName}
+                        </span>
+                      </li>
+                    );
+                  })}
                 </ul>
                 <div class="card-links">
-                  <a href={link} target="_blank" rel="noopener" class="card-link view-btn">
-                    {viewText}
-                  </a>
-                  <a href={github} target="_blank" rel="noopener" class="card-link github-btn">
-                    {githubText}
-                    <Github class="card-github-icon" />
-                  </a>
+                  {link && (
+                    <a href={link} target="_blank" rel="noopener" class="card-link view-btn">
+                      {t.viewText}
+                    </a>
+                  )}
+                  {github && (
+                    <a href={github} target="_blank" rel="noopener" class="card-link github-btn">
+                      {t.githubText}
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
           </div>
-          <h3 class="card-title">{title}</h3>
-          <p class="card-description">{description}</p>
+          <div class="card-content">
+            <h3 class="card-title">{title}</h3>
+            <p class="card-description">{description}</p>
+          </div>
         </article>
       ))}
     </div>
@@ -314,178 +334,39 @@ const { viewText = "View Project", githubText = "Github", moreProjectsText = "If
 </div>
 
 <script>
-  // Filter functionality
   document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const featuredProjects = document.querySelectorAll('.featured-project');
-    const projectCards = document.querySelectorAll('.project-card');
-    const featuredContainer = document.querySelector('.featured-project-container');
-    const projectsContent = document.querySelector('.projects-content');
-    const githubCta = document.querySelector('.github-cta') as HTMLElement;
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projects = document.querySelectorAll('.featured-project, .project-card');
     
-    // Initially show all projects with a staggered animation
-    featuredProjects.forEach((project, index) => {
-      setTimeout(() => {
-        project.classList.add('show');
-      }, 100 * index);
+    // Make all projects visible initially
+    projects.forEach(project => {
+      project.classList.add('show');
     });
     
-    projectCards.forEach((project, index) => {
-      setTimeout(() => {
-        project.classList.add('show');
-      }, 100 * (index + featuredProjects.length));
-    });
-    
-    // Function to adjust spacing based on visible projects
-    function adjustSpacing() {
-      const visibleProjects = document.querySelectorAll('.project-card.show').length;
-      const visibleFeatured = document.querySelectorAll('.featured-project.show').length;
-      const totalVisible = visibleProjects + visibleFeatured;
-      
-      // Adjust spacing based on number of visible projects
-      if (totalVisible <= 2) {
-        githubCta.style.marginTop = '1rem';
-      } else if (totalVisible <= 4) {
-        githubCta.style.marginTop = '1.5rem';
-      } else {
-        githubCta.style.marginTop = '2rem';
-      }
-    }
-    
-    // Initial spacing adjustment
-    adjustSpacing();
-    
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        // Update active button state
-        filterButtons.forEach(btn => {
-          btn.classList.remove('active');
-          btn.setAttribute('aria-pressed', 'false');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+        
+        // Update button states
+        filterBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
         });
-        button.classList.add('active');
-        button.setAttribute('aria-pressed', 'true');
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
         
-        const filter = button.getAttribute('data-filter');
-        let featuredVisible = false;
-        
-        // Check if any featured project will be visible for this filter
-        featuredProjects.forEach(project => {
-          const projectTags = project.getAttribute('data-tags');
-          if (filter === 'all' || (projectTags && matchesExactTag(projectTags, filter))) {
-            featuredVisible = true;
-          }
-        });
-        
-        // Handle featured projects visibility
-        featuredProjects.forEach(project => {
-          project.classList.remove('show');
-          
-          // Show all featured projects for "all" filter
-          if (filter === 'all') {
-            setTimeout(() => {
-              project.classList.add('show');
-            }, 300);
-            return;
-          }
-          
-          // Show featured projects that match filter
-          const projectTags = project.getAttribute('data-tags');
-          if (projectTags && matchesExactTag(projectTags, filter)) {
-            setTimeout(() => {
-              project.classList.add('show');
-            }, 300);
-          }
-        });
-        
-        // Toggle the entire featured container based on whether any featured project is visible
-        if (featuredVisible) {
-          featuredContainer.classList.remove('hidden');
-          projectsContent.classList.remove('no-featured');
-        } else {
-          featuredContainer.classList.add('hidden');
-          projectsContent.classList.add('no-featured');
-        }
-        
-        // Handle regular project cards
-        projectCards.forEach(project => {
-          project.classList.remove('show');
-          
-          // Show all projects for "all" filter
-          if (filter === 'all') {
-            setTimeout(() => {
-              project.classList.add('show');
-            }, 300);
-            return;
-          }
-          
-          // Show projects that match filter
-          const projectTags = project.getAttribute('data-tags');
-          if (projectTags && matchesExactTag(projectTags, filter)) {
-            setTimeout(() => {
-              project.classList.add('show');
-            }, 300);
-          }
-        });
-        
-        // Adjust spacing after filter change (with a delay to account for animations)
-        setTimeout(adjustSpacing, 350);
-      });
-    });
-    
-    // Helper function to match exact tags
-    function matchesExactTag(tagString: string, filter: string) {
-      // Split tag string into individual tags
-      const tags = tagString.split(' ');
-      // Check if any tag exactly matches the filter
-      return tags.includes(filter);
-    }
-    
-    // Add hover effect on project cards
-    projectCards.forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        card.classList.add('hover');
-      });
-      card.addEventListener('mouseleave', () => {
-        card.classList.remove('hover');
-      });
-    });
-    
-    // Implement keyboard navigation
-    const focusableProjects = Array.from([...featuredProjects, ...projectCards]);
-    focusableProjects.forEach((project, index) => {
-      project.setAttribute('tabindex', '0');
-      project.addEventListener('keydown', (e: KeyboardEvent) => {
-        if (e.key === 'ArrowRight') {
-          const nextIndex = (index + 1) % focusableProjects.length;
-          (focusableProjects[nextIndex] as HTMLElement).focus();
-        } else if (e.key === 'ArrowLeft') {
-          const prevIndex = (index - 1 + focusableProjects.length) % focusableProjects.length;
-          (focusableProjects[prevIndex] as HTMLElement).focus();
-        }
-      });
-    });
-    
-    // Implement lazy loading with IntersectionObserver
-    if ('IntersectionObserver' in window) {
-      const imgObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const img = entry.target as HTMLImageElement;
-            const src = img.getAttribute('data-src');
-            if (src) {
-              img.src = src;
-              img.removeAttribute('data-src');
-            }
-            observer.unobserve(img);
+        // Filter projects
+        projects.forEach(project => {
+          const tags = project.getAttribute('data-tags');
+          // Make sure to keep 'show' class for opacity
+          if (filter === 'all' || (tags && tags.includes(filter))) {
+            (project as HTMLElement).style.display = 'block';
+          } else {
+            (project as HTMLElement).style.display = 'none';
           }
         });
       });
-      
-      const lazyImages = document.querySelectorAll('img[data-src]');
-      lazyImages.forEach(img => {
-        imgObserver.observe(img);
-      });
-    }
+    });
   });
 </script>
 

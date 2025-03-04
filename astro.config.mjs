@@ -22,8 +22,14 @@ export default defineConfig({
               api: 'modern-compiler'
           }
       }
-  }
-},
+    },
+    resolve: {
+        dedupe: ['webcoreui']
+    },
+    optimizeDeps: {
+      include: ['webcoreui']
+    }
+  },
   site: 'https://ignathedev.com',
   i18n: {
     defaultLocale: "es",
