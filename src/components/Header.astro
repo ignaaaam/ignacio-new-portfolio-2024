@@ -9,11 +9,19 @@ const pathname = Astro.url.pathname;
   <div
     class={`flex items-center lg:flex-row gap-x-4 ${pathname !== "/" ? "order-1 flex-row lg:flex-row" : "flex-col"}`}
   >
-    <img
-      class="flex self-center rounded-full size-8 md:size-12"
-      src="/img/profile_picture.jpg"
-      alt="ignathedev photo"
-    />
+    <div class="flex items-center w-full justify-between lg:w-auto lg:justify-start">
+      <img
+        class="flex rounded-full size-8 md:size-12"
+        src="/img/profile_picture.jpg"
+        alt="ignathedev photo"
+      />
+      <a
+        class="bg-white text-black transition rounded-lg hover:text-white hover:bg-[rgba(120,119,198,0.5)] px-4 py-2 lg:py-2 lg:px-4 text-sm lg:text-base lg:hidden"
+        href="/blog"
+        rel="noopener noreferrer"
+        >Blog</a
+      >
+    </div>
     <nav
       class={`flex flex-row text-sm lg:text-base flex-wrap items-center justify-center gap-4 xl:gap-y-0 opacity-80 lg:mt-0 ${pathname !== "/" ? "mt-0" : "mt-4"}`}
     >
@@ -70,16 +78,16 @@ const pathname = Astro.url.pathname;
             </a>
       }
     </nav>
-  </div>
-  <div
-    class={`flex items-center justify-center gap-x-2 lg:mt-0 ${pathname !== "/" ? "mt-0 order-2 flex-row lg:flex-row" : "mt-4"}`}
-  >
-    <Dropdown class="flex order-1" />
     <a
-      class="bg-white text-black transition rounded-lg hover:text-white hover:bg-[rgba(120,119,198,0.5)] px-4 py-2 lg:py-2 lg:px-4 order-2 text-sm lg:text-base"
+      class="hidden lg:inline-flex bg-white text-black transition rounded-lg hover:text-white hover:bg-[rgba(120,119,198,0.5)] px-4 py-2 lg:py-2 lg:px-4 text-sm lg:text-base"
       href="/blog"
       rel="noopener noreferrer"
       >Blog</a
     >
+  </div>
+  <div
+    class="flex items-center justify-center gap-x-2 lg:mt-0 mt-0 order-2"
+  >
+    <Dropdown class="flex" />
   </div>
 </header>
