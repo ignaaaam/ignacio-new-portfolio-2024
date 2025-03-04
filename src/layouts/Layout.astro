@@ -1,6 +1,4 @@
 ---
-// import { SEO } from "astro-seo";
-// import { ViewTransitions } from "astro:transitions";
 import Header from "../components/Header.astro";
 import HeaderEnglish from "../pages/en/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -9,9 +7,6 @@ import "@fontsource-variable/onest";
 import "@fontsource-variable/overpass";
 import { getLangFromUrl } from '../i18n/utils';
 import { AstroSeo } from '@astrolib/seo';
-// import { SpeedInsights } from "@vercel/speed-insights/astro";
-// import { Analytics } from "@vercel/analytics/react";
-// import { Partytown } from "@astrojs/partytown/components";
 
 interface Props {
   title: string;
@@ -54,7 +49,6 @@ const metaTitle = `${pageTitle} | PHP & Laravel Expert`.substring(0, 60);
 const metaDescription = (description || "Full Stack Web Developer specializing in PHP, Laravel, Vue.js, and modern web technologies. Available for remote projects worldwide.").substring(0, 155);
 
 const metaTags = [
-  { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' },
   { name: 'author', content: 'Ignacio Amat Urbina' },
   { name: 'robots', content: 'index, follow, max-image-preview:large' },
   { name: 'theme-color', content: '#0a0a0a' },
@@ -113,6 +107,7 @@ const metaTags = [
         { rel: 'manifest', href: '/manifest.json' }
       ]}
     />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
 
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
