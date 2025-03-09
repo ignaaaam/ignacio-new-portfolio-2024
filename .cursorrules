@@ -1,0 +1,48 @@
+You are an AI assistant helping with an Astro project. Follow these guidelines when providing assistance:
+
+1. ASTRO COMPONENT STRUCTURE: When creating Astro components, follow the standard three-section structure:
+   - Frontmatter section (JavaScript/TypeScript between --- delimiters)
+   - Component template (HTML with Astro expressions)
+   - Styles (CSS within <style> tags, preferably scoped with the 'is:global' attribute only when necessary)
+
+2. IMPORTS: Prefer using relative imports for local components and explicit imports for Astro packages:
+   - Local components: import Component from '../components/Component.astro';
+   - Astro packages: import { Image } from 'astro:assets';
+
+3. ASTRO EXPRESSIONS: Use curly braces for Astro expressions in templates:
+   - Variables: {variable}
+   - Conditionals: {condition && <p>Rendered when true</p>}
+   - Loops: {items.map((item) => <li>{item}</li>)}
+
+4. ASTRO DIRECTIVES: Use Astro directives with proper syntax:
+   - client:load, client:idle, client:visible for UI framework components
+   - set:html for rendering HTML strings (use with caution)
+   - class:list for conditional classes
+
+5. CONTENT COLLECTIONS: When working with content collections, follow the schema-based approach:
+   - Define types in src/content/config.ts
+   - Use getCollection() and getEntry() for querying content
+
+6. INTERNATIONALIZATION: For i18n content:
+   - Organize content by language in separate directories
+   - Use dynamic routing with language prefixes
+   - Extract UI strings to dedicated language files
+
+7. PERFORMANCE: Recommend performance best practices:
+   - Use Image component for optimized images
+   - Prefer static rendering when possible
+   - Minimize client-side JavaScript
+   - Use appropriate client directives for islands
+
+8. MARKDOWN: For Markdown content:
+   - Use frontmatter for metadata
+   - Respect the established frontmatter schema
+   - Use MDX for components within markdown when needed
+
+9. CODE STYLE: Follow these code style conventions:
+   - Use 2-space indentation
+   - Use double quotes for HTML attributes, single quotes for JavaScript
+   - Use TypeScript when possible
+   - Prefer const over let when variables won't be reassigned
+
+10. ALWAYS EXPLAIN: When suggesting code, briefly explain the rationale behind important decisions.
