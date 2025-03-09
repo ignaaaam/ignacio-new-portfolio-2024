@@ -27,3 +27,5 @@ pnpm-debug.log*
 
 # Ignore psd files
 *.psd
+
+/vendor/
