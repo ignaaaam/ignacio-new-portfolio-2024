@@ -250,8 +250,17 @@ const projects = PROJECTS.map(project => ({
                 </a>
               )}
               {github && (
-                <a href={github} target="_blank" rel="noopener" class="github-link">
-                  {t.githubText}
+                <a
+                  href={github}
+                  target="_blank"
+                  rel="noopener"
+                  class="github-cta-link"
+                >
+                  <span class="github-cta-animation" />
+                  <span class="github-cta-content">
+                    {t.githubText}
+                    <Github class="github-cta-icon" />
+                  </span>
                 </a>
               )}
             </div>
