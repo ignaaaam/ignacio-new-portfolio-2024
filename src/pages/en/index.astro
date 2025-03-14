@@ -362,4 +362,11 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
       text-shadow: 0 0 15px rgba(255, 240, 107, 0.8), 0 0 25px rgba(255, 240, 107, 0.5);
     }
   }
+
+  .split-parent [style*="opacity: 0"] {
+    visibility: hidden;
+  }
+  .split-parent [style*="opacity: 1"] {
+    visibility: visible;
+  }
 </style>
