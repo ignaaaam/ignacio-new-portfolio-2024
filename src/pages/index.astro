@@ -30,8 +30,9 @@ import SkillsCloud from "../components/SkillsCloud.astro";
   description="Desarrollador web full stack en Barcelona especializado en crear aplicaciones web a medida con PHP, Laravel, Vue y tecnologías modernas. Ofrezco soluciones web de alto rendimiento para empresas y sitios web profesionales optimizados para SEO."
 >
   <main class="px-4">
-
-    <SectionContainer class="hero-section -mt-6 pt-2 pb-14 md:pt-4 md:pb-16 lg:py-32 min-h-[92vh] md:min-h-[95vh] lg:min-h-screen flex flex-col justify-center relative">
+    <SectionContainer
+      class="hero-section -mt-6 pt-2 pb-14 md:pt-4 md:pb-16 lg:py-32 min-h-[92vh] md:min-h-[95vh] lg:min-h-screen flex flex-col justify-center relative"
+    >
       <h1
         class="flex pb-6 mb-4 text-3xl font-extrabold leading-none text-center text-white md:text-4xl lg:text-5xl gap-x-4 lg:pb-10"
       >
@@ -40,9 +41,15 @@ import SkillsCloud from "../components/SkillsCloud.astro";
           href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223"
           target="_blank"
           rel="noopener"
-          class="flex items-center justify-center"
-          ><Badge>Hired</Badge></a
+          class="flex items-center justify-center gap-2"
         >
+          <Badge class="bg-green-400/80 text-emerald-950 hover:bg-green-400 transition-colors">
+            Hired
+          </Badge>
+          <Badge class="bg-blue-400/80 text-blue-950 hover:bg-blue-400 transition-colors">
+            Open for offers
+          </Badge>
+        </a>
       </h1>
       <h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
         <span>+3 años de experiencia.</span><span
@@ -67,7 +74,9 @@ import SkillsCloud from "../components/SkillsCloud.astro";
         >
         y<span class="font-bold text-[#EFD81D]"> Javascript</span>.
       </h2>
-      <nav class="flex flex-wrap mt-20 gap-4 overflow-x-auto pb-2 max-w-full social-pills-container">
+      <nav
+        class="flex flex-wrap mt-20 gap-4 overflow-x-auto pb-2 max-w-full social-pills-container"
+      >
         <SocialPill
           href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223"
         >
@@ -92,31 +101,42 @@ import SkillsCloud from "../components/SkillsCloud.astro";
           <LaracastsIcon class="size-4 md:size-6" />
           Laracasts
         </SocialPill>
-        <CVDownloadButton>
-          Descargar CV
-        </CVDownloadButton>
+        <CVDownloadButton> Descargar CV </CVDownloadButton>
         <div class="flex flex-col items-start">
-          <SocialPill href="#contact" class="min-w-[16rem] md:min-w-[18rem]">
+          <SocialPill
+            href="#contact"
+            class="min-w-[16rem] md:min-w-[18rem]"
+          >
             <MailIcon class="size-4 md:size-6" />
             ignacioamat@ignathedev.com
           </SocialPill>
-          <span class="text-xs text-white/70 ml-2 mt-1 italic">Contáctame por email</span>
+          <span class="text-xs text-white/70 ml-2 mt-1 italic"
+            >Contáctame por email</span
+          >
         </div>
       </nav>
-      
+
       <!-- Scroll indicator (visible on all devices, adjusted for better visibility) -->
       <ScrollIndicator class="!bottom-2 md:!bottom-16 lg:!bottom-24" />
-      
+
       <!-- CTA button - positioned at the right for better visibility -->
     </SectionContainer>
 
-    <SectionContainer id="expertise" class="!pt-24">
+    <SectionContainer
+      id="expertise"
+      class="!pt-24"
+    >
       <SkillsCloud lang="es" />
     </SectionContainer>
 
-    <FullSectionContainer id="landingPage" class="relative py-20 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent">
+    <FullSectionContainer
+      id="landingPage"
+      class="relative py-20 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent"
+    >
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="mb-6 text-5xl lg:text-6xl font-bold text-yellow-200 text-glow gap-x-3">
+        <h2
+          class="mb-6 text-5xl lg:text-6xl font-bold text-yellow-200 text-glow gap-x-3"
+        >
           ¿Necesitas una página web profesional?
         </h2>
         <div class="space-y-6 mb-12">
@@ -125,34 +145,71 @@ import SkillsCloud from "../components/SkillsCloud.astro";
           </h3>
           <div class="flex flex-wrap justify-center gap-4 text-lg">
             <span class="flex items-center gap-2">
-              <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              <svg
+                class="w-6 h-6 text-green-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
               </svg>
               Landing Pages
             </span>
             <span class="flex items-center gap-2">
-              <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              <svg
+                class="w-6 h-6 text-green-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
               </svg>
               E-commerce
             </span>
             <span class="flex items-center gap-2">
-              <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              <svg
+                class="w-6 h-6 text-green-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
               </svg>
               Aplicaciones Web
             </span>
           </div>
           <p class="text-xl opacity-90 max-w-2xl mx-auto">
-            Diseño y desarrollo sitios web optimizados, rápidos y efectivos que ayudan a tu negocio a crecer online.
+            Diseño y desarrollo sitios web optimizados, rápidos y efectivos que
+            ayudan a tu negocio a crecer online.
           </p>
         </div>
 
         <ContactForm id="contact" />
       </div>
     </FullSectionContainer>
-    <SectionContainer id="experience" class="relative group">
-      <div class="absolute inset-0 bg-gradient-to-br from-slate-800/20 to-purple-900/20 rounded-xl border border-purple-400/30 transition-all duration-300 -z-10 group-hover:shadow-[0_0_30px_-5px_rgba(109,40,217,0.3)]" />
+    <SectionContainer
+      id="experience"
+      class="relative group"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-slate-800/20 to-purple-900/20 rounded-xl border border-purple-400/30 transition-all duration-300 -z-10 group-hover:shadow-[0_0_30px_-5px_rgba(109,40,217,0.3)]"
+      >
+      </div>
       <div class="p-6 md:p-8">
         <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
           <BriefCaseIcon class="size-8" />
@@ -162,14 +219,20 @@ import SkillsCloud from "../components/SkillsCloud.astro";
       </div>
     </SectionContainer>
 
-    <SectionContainer id="academics" class="py-16">
+    <SectionContainer
+      id="academics"
+      class="py-16"
+    >
       <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
         <LearningIcon class="size-8" />
         Experiencia Académica
       </h2>
       <Studies />
     </SectionContainer>
-    <SectionContainer id="certifications" class="py-16">
+    <SectionContainer
+      id="certifications"
+      class="py-16"
+    >
       <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
         <CertificationIcon class="size-8" />
         Certificaciones
@@ -177,14 +240,16 @@ import SkillsCloud from "../components/SkillsCloud.astro";
       <Certification />
     </SectionContainer>
 
-    <SectionContainer id="projects" class="py-16">
+    <SectionContainer
+      id="projects"
+      class="py-16"
+    >
       <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
         <CodeIcon class="size-8" />
         Proyectos
       </h2>
       <Projects />
     </SectionContainer>
-
   </main>
 </Layout>
 
@@ -276,11 +341,11 @@ import SkillsCloud from "../components/SkillsCloud.astro";
     0% {
       box-shadow: 0 0 0 0 rgba(255, 220, 100, 0.7);
     }
-    
+
     70% {
       box-shadow: 0 0 0 8px rgba(255, 220, 100, 0);
     }
-    
+
     100% {
       box-shadow: 0 0 0 0 rgba(255, 220, 100, 0);
     }
@@ -297,15 +362,15 @@ import SkillsCloud from "../components/SkillsCloud.astro";
     overflow: hidden;
     z-index: 1;
   }
-  
+
   .cv-button-wrapper a:hover {
     transform: translateY(-3px);
     background: linear-gradient(135deg, #ffea94, #ffb06d) !important;
     box-shadow: 0 7px 14px rgba(255, 220, 100, 0.3);
   }
-  
+
   .cv-button-wrapper a::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -2px;
     left: -2px;
@@ -318,7 +383,7 @@ import SkillsCloud from "../components/SkillsCloud.astro";
     opacity: 0.7;
     border-radius: 9999px;
   }
-  
+
   @keyframes gradientMove {
     0% {
       background-position: 0% 50%;
@@ -353,26 +418,31 @@ import SkillsCloud from "../components/SkillsCloud.astro";
 
   /* Add text glow effect for better visibility on mobile */
   .text-glow {
-    text-shadow: 0 0 10px rgba(255, 240, 107, 0.7), 0 0 20px rgba(255, 240, 107, 0.4);
+    text-shadow:
+      0 0 10px rgba(255, 240, 107, 0.7),
+      0 0 20px rgba(255, 240, 107, 0.4);
     position: relative;
     z-index: 1;
   }
-  
+
   @media (max-width: 640px) {
     .text-glow {
-      text-shadow: 0 0 15px rgba(255, 240, 107, 0.8), 0 0 25px rgba(255, 240, 107, 0.5);
+      text-shadow:
+        0 0 15px rgba(255, 240, 107, 0.8),
+        0 0 25px rgba(255, 240, 107, 0.5);
     }
   }
 
   @keyframes bounce-slow {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0) scale(1.5);
     }
     50% {
       transform: translateY(-10px) scale(1.5);
     }
   }
-  
+
   .animate-bounce-slow {
     animation: bounce-slow 3s ease-in-out infinite;
   }
