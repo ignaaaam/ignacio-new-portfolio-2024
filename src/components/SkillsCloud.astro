@@ -1,6 +1,7 @@
 ---
 import translations from '../i18n/translations.json';
 import PixelCard from './PixelCard/PixelCard.jsx';
+import ShinyText from '../TextAnimations/ShinyText/ShinyText.jsx';
 
 interface Props {
   lang: 'en' | 'es';
@@ -83,9 +84,14 @@ function getSkillUrl(skill: string) {
               href={url} 
               target="_blank" 
               rel="noopener noreferrer"
-              class="px-2.5 py-0.5 text-xs font-medium bg-purple-900/30 text-purple-200 rounded-md border border-purple-500/20 hover:bg-purple-800/50 hover:border-purple-400/40 hover:-translate-y-0.5 hover:text-white transition-all duration-200 shadow-sm shadow-purple-900/20 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:ring-offset-1 focus:ring-offset-purple-900/30"
+              class="px-2.5 py-0.5 text-xs font-medium bg-purple-900/30 rounded-md border border-purple-500/20 hover:bg-purple-800/50 hover:border-purple-400/40 hover:-translate-y-0.5 transition-all duration-200 shadow-sm shadow-purple-900/20 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:ring-offset-1 focus:ring-offset-purple-900/30"
             >
-              {skill}
+              <ShinyText
+              client:load
+                text={skill}
+                speed={2.2}
+                className="text-purple-200 hover:text-white"
+              />
             </a>
           );
         })}
@@ -108,9 +114,14 @@ function getSkillUrl(skill: string) {
               href={url} 
               target="_blank" 
               rel="noopener noreferrer"
-              class="px-2.5 py-0.5 text-xs font-medium bg-blue-900/30 text-blue-200 rounded-md border border-blue-500/20 hover:bg-blue-800/50 hover:border-blue-400/40 hover:-translate-y-0.5 hover:text-white transition-all duration-200 shadow-sm shadow-blue-900/20 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:ring-offset-1 focus:ring-offset-blue-900/30"
+              class="px-2.5 py-0.5 text-xs font-medium bg-blue-900/30 rounded-md border border-blue-500/20 hover:bg-blue-800/50 hover:border-blue-400/40 hover:-translate-y-0.5 transition-all duration-200 shadow-sm shadow-blue-900/20 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:ring-offset-1 focus:ring-offset-blue-900/30"
             >
-              {skill}
+              <ShinyText
+              client:load
+                text={skill}
+                speed={2.2}
+                className="text-blue-200 hover:text-white"
+              />
             </a>
           );
         })}
@@ -133,13 +144,29 @@ function getSkillUrl(skill: string) {
               href={url} 
               target="_blank" 
               rel="noopener noreferrer"
-              class="px-2.5 py-0.5 text-xs font-medium bg-green-900/30 text-green-200 rounded-md border border-green-500/20 hover:bg-green-800/50 hover:border-green-400/40 hover:-translate-y-0.5 hover:text-white transition-all duration-200 shadow-sm shadow-green-900/20 focus:outline-none focus:ring-2 focus:ring-green-400/50 focus:ring-offset-1 focus:ring-offset-green-900/30"
+              class="px-2.5 py-0.5 text-xs font-medium bg-green-900/30 rounded-md border border-green-500/20 hover:bg-green-800/50 hover:border-green-400/40 hover:-translate-y-0.5 transition-all duration-200 shadow-sm shadow-green-900/20 focus:outline-none focus:ring-2 focus:ring-green-400/50 focus:ring-offset-1 focus:ring-offset-green-900/30"
             >
-              {skill}
+              <ShinyText
+              client:load
+                text={skill}
+                speed={2.2}
+                className="text-green-200 hover:text-white"
+              />
             </a>
           );
         })}
       </div>
     </PixelCard>
   </div>
-</div> 
+</div>
+
+<style>
+  @keyframes shine {
+    0% { background-position: 100%; }
+    100% { background-position: -100%; }
+  }
+
+  .animate-shine {
+    animation: shine 5s linear infinite;
+  }
+</style> 

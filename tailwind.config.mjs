@@ -9,6 +9,7 @@ export default {
     extend: {
       animation: {
         "meteor-effect": "meteor 5s linear infinite",
+        shine: 'shine 5s linear infinite'
       },
       keyframes: {
         meteor: {
@@ -19,6 +20,10 @@ export default {
             opacity: 0,
           },
         },
+        shine: {
+          '0%': { backgroundPosition: '100%' },
+          '100%': { backgroundPosition: '-100%' }
+        }
       },
     },
   },
