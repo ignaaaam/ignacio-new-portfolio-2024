@@ -133,7 +133,7 @@ const Aurora = () => {
         this.y = Math.random() * canvas.height;
         this.vx = Math.random() * 0.2 - 0.1;
         this.vy = Math.random() * 0.2 - 0.1;
-        this.size = Math.random() * 2 + 0.5;
+        this.size = Math.random() * .1 + 0.5;
       }
 
       update() {
@@ -164,7 +164,7 @@ const Aurora = () => {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      gradient.addColorStop(0, 'rgba(120, 119, 198, 0.3)');
+      gradient.addColorStop(0, 'rgba(200, 200, 198, 0.3)');
       gradient.addColorStop(1, 'rgba(67, 56, 202, 0.3)');
       ctx.fillStyle = gradient;
 

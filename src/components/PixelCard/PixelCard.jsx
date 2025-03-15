@@ -2,7 +2,7 @@
 	Installed from https://reactbits.dev/tailwind/
 */
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useInView } from "@react-spring/web";
 
 const isBrowser = typeof window !== 'undefined';
