@@ -3,7 +3,7 @@ import Header from "../components/Header.astro";
 import HeaderEnglish from "../pages/en/Header.astro";
 import Footer from "../components/Footer.astro";
 import FooterEnglish from "../pages/en/Footer.astro";
-import Aurora from "../Backgrounds/Aurora/Aurora.jsx";
+import Aurora from "../Backgrounds/Aurora/Aurora.tsx";
 import "@fontsource-variable/onest";
 import "@fontsource-variable/overpass";
 import { getLangFromUrl } from '../i18n/utils';
@@ -214,10 +214,12 @@ const metaDescription = (description || "Full Stack Web Developer specializing i
   </head>
   <body class="bg-neutral-950">
     <!-- Replace the gradient div with Aurora -->
-    <Aurora client:load colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
-    blend={0.5}
-    amplitude={1.0}
-    speed={0.5} />
+    <Aurora 
+      client:load 
+      colorStops={["#6D7778", "#20694A", "#1A2F32"]}
+      amplitude={2.0} 
+      blend={0.8}
+    />
     
     {lang === 'es' ? (
       <Header />

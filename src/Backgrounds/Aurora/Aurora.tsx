@@ -1,7 +1,3 @@
-/*
-	Installed from https://reactbits.dev/tailwind/
-*/
-
 import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
 import { useEffect, useRef } from "react";
 
@@ -113,91 +109,98 @@ void main() {
 }
 `;
 
-const Aurora = () => {
-  const canvasRef = useRef(null);
+export default function Aurora(props) {
+  const {
+    colorStops = ["#00d8ff", "#7cff67", "#00d8ff"],
+    amplitude = 1.0,
+    blend = 0.5
+  } = props;
+  const propsRef = useRef(props);
+  propsRef.current = props;
+
+  const ctnDom = useRef(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    let animationFrameId;
-    let particles = [];
+    const ctn = ctnDom.current;
+    if (!ctn) return;
 
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
+    const renderer = new Renderer({
+      alpha: true,
+      premultipliedAlpha: true,
+      antialias: true
+    });
+    const gl = renderer.gl;
+    gl.clearColor(0, 0, 0, 0);
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+    gl.canvas.style.backgroundColor = 'transparent';
 
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = Math.random() * 0.2 - 0.1;
-        this.vy = Math.random() * 0.2 - 0.1;
-        this.size = Math.random() * .1 + 0.5;
-      }
+    let program;
 
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-      }
-
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.closePath();
-        ctx.fill();
+    function resize() {
+      if (!ctn) return;
+      const width = ctn.offsetWidth;
+      const height = ctn.offsetHeight;
+      renderer.setSize(width, height);
+      if (program) {
+        program.uniforms.uResolution.value = [width, height];
       }
     }
+    window.addEventListener("resize", resize);
 
-    const createParticles = () => {
-      particles = [];
-      for (let i = 0; i < 150; i++) {
-        particles.push(new Particle());
-      }
-    };
+    const geometry = new Triangle(gl);
+    if (geometry.attributes.uv) {
+      delete geometry.attributes.uv;
+    }
 
-    const animate = () => {
-      ctx.fillStyle = 'rgba(10, 10, 10, 0.1)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      gradient.addColorStop(0, 'rgba(200, 200, 198, 0.3)');
-      gradient.addColorStop(1, 'rgba(67, 56, 202, 0.3)');
-      ctx.fillStyle = gradient;
-
-      particles.forEach(particle => {
-        particle.update();
-        particle.draw();
-      });
-
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    resize();
-    createParticles();
-    animate();
-
-    window.addEventListener('resize', () => {
-      resize();
-      createParticles();
+    const colorStopsArray = colorStops.map((hex) => {
+      const c = new Color(hex);
+      return [c.r, c.g, c.b];
     });
 
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', resize);
+    program = new Program(gl, {
+      vertex: VERT,
+      fragment: FRAG,
+      uniforms: {
+        uTime: { value: 0 },
+        uAmplitude: { value: amplitude },
+        uColorStops: { value: colorStopsArray },
+        uResolution: { value: [ctn.offsetWidth, ctn.offsetHeight] },
+        uBlend: { value: blend }
+      }
+    });
+
+    const mesh = new Mesh(gl, { geometry, program });
+    ctn.appendChild(gl.canvas);
+
+    let animateId = 0;
+    const update = (t) => {
+      animateId = requestAnimationFrame(update);
+      const { time = t * 0.01, speed = 1.0 } = propsRef.current;
+      program.uniforms.uTime.value = time * speed * 0.1;
+      program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? 1.0;
+      program.uniforms.uBlend.value = propsRef.current.blend ?? blend;
+      const stops = propsRef.current.colorStops ?? colorStops;
+      program.uniforms.uColorStops.value = stops.map((hex) => {
+        const c = new Color(hex);
+        return [c.r, c.g, c.b];
+      });
+      renderer.render({ scene: mesh });
     };
-  }, []);
+    animateId = requestAnimationFrame(update);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-screen z-[-2] bg-neutral-950"
-      style={{ opacity: 0.8 }}
-    />
-  );
-};
+    resize();
 
-export default Aurora;
+    return () => {
+      cancelAnimationFrame(animateId);
+      window.removeEventListener("resize", resize);
+      if (ctn && gl.canvas.parentNode === ctn) {
+        ctn.removeChild(gl.canvas);
+      }
+      gl.getExtension("WEBGL_lose_context")?.loseContext();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [amplitude]);
+
+  return <div ref={ctnDom} className="w-full h-full" />;
+}
