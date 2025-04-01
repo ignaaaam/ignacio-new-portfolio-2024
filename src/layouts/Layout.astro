@@ -49,6 +49,165 @@ const pageTitle = title || "Ignacio Amat - Full Stack Developer";
 const metaTitle = `${pageTitle} | PHP & Laravel Expert`.substring(0, 60);
 const metaDescription = (description || "Full Stack Web Developer specializing in PHP, Laravel, Vue.js, and modern web technologies. Available for remote projects worldwide.").substring(0, 155);
 
+// Add more specific meta information for better SEO
+const targetLocations = lang === 'es' 
+  ? [
+      // Major cities by population
+      "Madrid", "Barcelona", "Valencia", "Sevilla", "Zaragoza", 
+      "Málaga", "Murcia", "Palma", "Las Palmas", "Bilbao",
+      "Alicante", "Córdoba", "Valladolid", "Vigo", "Gijón",
+      "Hospitalet", "Vitoria", "La Coruña", "Granada", "Elche",
+      "Oviedo", "Terrassa", "Badalona", "Cartagena", "Sabadell",
+      // Regions
+      "Comunidad de Madrid", "Cataluña", "Andalucía", "País Vasco", 
+      "Comunidad Valenciana", "Galicia", "Castilla y León", "Islas Baleares",
+      "Canarias", "Asturias", "Murcia",
+      // General
+      "España", "Remoto", "Internacional"
+    ]
+  : [
+      // Major cities by population
+      "Madrid", "Barcelona", "Valencia", "Seville", "Zaragoza",
+      "Malaga", "Murcia", "Palma", "Las Palmas", "Bilbao",
+      "Alicante", "Cordoba", "Valladolid", "Vigo", "Gijon",
+      "Hospitalet", "Vitoria", "A Coruna", "Granada", "Elche",
+      "Oviedo", "Terrassa", "Badalona", "Cartagena", "Sabadell",
+      // Regions
+      "Community of Madrid", "Catalonia", "Andalusia", "Basque Country",
+      "Valencian Community", "Galicia", "Castile and León", "Balearic Islands",
+      "Canary Islands", "Asturias", "Murcia",
+      // General
+      "Spain", "Remote", "International"
+    ];
+
+const technologies = lang === 'es'
+  ? {
+      frontend: ["Vue.js", "JavaScript", "TypeScript", "TailwindCSS", "HTML5", "CSS3", "Astro", "React"],
+      backend: ["PHP", "Laravel", "MySQL", "API REST", "Node.js", "Express", "MongoDB"],
+      tools: ["Git", "Docker", "AWS", "Linux", "Nginx", "Apache"]
+    }
+  : {
+      frontend: ["Vue.js", "JavaScript", "TypeScript", "TailwindCSS", "HTML5", "CSS3", "Astro", "React"],
+      backend: ["PHP", "Laravel", "MySQL", "REST API", "Node.js", "Express", "MongoDB"],
+      tools: ["Git", "Docker", "AWS", "Linux", "Nginx", "Apache"]
+    };
+
+// Generate technology-based keywords
+const techKeywords = Object.entries(technologies).flatMap(([category, techs]) => {
+  return techs.flatMap(tech => {
+    const prefixes = lang === 'es'
+      ? [
+          `desarrollador ${tech}`,
+          `experto ${tech}`,
+          `programador ${tech}`,
+          `${tech} developer`
+        ]
+      : [
+          `${tech} developer`,
+          `${tech} expert`,
+          `${tech} programmer`,
+          `${tech} specialist`
+        ];
+    return prefixes;
+  });
+});
+
+// Generate role-based keywords
+const roleKeywords = targetLocations.flatMap(location => {
+  const roles = lang === 'es'
+    ? [
+        "desarrollador frontend",
+        "desarrollador backend",
+        "desarrollador full stack",
+        "programador PHP",
+        "desarrollador Laravel",
+        "desarrollador Vue.js",
+        "experto en desarrollo web",
+        "programador JavaScript",
+        "desarrollador de aplicaciones web",
+        "desarrollador TypeScript"
+      ]
+    : [
+        "frontend developer",
+        "backend developer",
+        "full stack developer",
+        "PHP programmer",
+        "Laravel developer",
+        "Vue.js developer",
+        "web development expert",
+        "JavaScript programmer",
+        "web application developer",
+        "TypeScript developer"
+      ];
+  return roles.map(role => `${role} ${lang === 'es' ? 'en' : 'in'} ${location}`);
+});
+
+const metaKeywords = lang === 'es' 
+  ? [
+      // Generic keywords
+      "desarrollador web freelance",
+      "desarrollo web profesional",
+      "experto Laravel España",
+      "programador PHP freelance",
+      "desarrollo aplicaciones web",
+      "desarrollador full stack senior",
+      "experto Vue.js y Laravel",
+      "desarrollador JavaScript moderno",
+      "especialista TypeScript",
+      "desarrollador TailwindCSS",
+      // Specific tech combinations
+      "desarrollo Laravel y Vue.js",
+      "aplicaciones web PHP modernas",
+      "desarrollo full stack JavaScript",
+      "experto LAMP stack",
+      "desarrollo web Node.js y Express",
+      // Project types
+      "desarrollo e-commerce",
+      "aplicaciones web empresariales",
+      "desarrollo API REST",
+      "sitios web alto rendimiento",
+      "aplicaciones web escalables",
+      // Location and tech combinations
+      ...roleKeywords,
+      ...techKeywords,
+      // Remote specific
+      "desarrollo web remoto España",
+      "programador Laravel remoto",
+      "servicios desarrollo web online"
+    ].join(", ")
+  : [
+      // Generic keywords
+      "freelance web developer",
+      "professional web development",
+      "Laravel expert Spain",
+      "freelance PHP developer",
+      "web application development",
+      "senior full stack developer",
+      "Vue.js and Laravel expert",
+      "modern JavaScript developer",
+      "TypeScript specialist",
+      "TailwindCSS developer",
+      // Specific tech combinations
+      "Laravel and Vue.js development",
+      "modern PHP applications",
+      "full stack JavaScript development",
+      "LAMP stack expert",
+      "Node.js and Express development",
+      // Project types
+      "e-commerce development",
+      "enterprise web applications",
+      "REST API development",
+      "high-performance websites",
+      "scalable web applications",
+      // Location and tech combinations
+      ...roleKeywords,
+      ...techKeywords,
+      // Remote specific
+      "remote web developer Spain",
+      "remote Laravel developer",
+      "online web development services"
+    ].join(", ");
+
 // Removed metaTags variable since we're using direct meta tags
 ---
 
@@ -74,10 +233,7 @@ const metaDescription = (description || "Full Stack Web Developer specializing i
     <meta name="theme-color" content="#0a0a0a" />
     <meta property="article:author" content="Ignacio Amat Urbina" />
     <meta property="article:published_time" content={new Date().toISOString()} />
-    <meta name="keywords" content={lang === 'es' 
-      ? 'desarrollador web full stack en Barcelona, desarrollador Laravel experto, desarrollo de aplicaciones web a medida, desarrollo web con PHP y Laravel, contrata desarrollador web full stack, sitios web de alto rendimiento, soluciones web para pymes, experto en Laravel y PHP'
-      : 'full stack web developer for hire, professional web developer in Spain, custom web development services, Laravel expert developer, high-performance website development, PHP Laravel web applications, responsive web design, full stack development services'
-    } />
+    <meta name="keywords" content={metaKeywords} />
     
     <AstroSeo
       title={metaTitle}
@@ -211,6 +367,93 @@ const metaDescription = (description || "Full Stack Web Developer specializing i
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
+
+    <!-- Update structured data for RemoteService -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "@id": "https://www.ignathedev.com/#business",
+        "name": "Ignacio Amat - Web Development Services",
+        "image": "${ogImage}",
+        "url": "https://www.ignathedev.com",
+        "description": ${lang === 'es' 
+          ? '"Servicios profesionales de desarrollo web remoto. Especializado en crear aplicaciones web y sitios web de alto rendimiento con PHP, Laravel y Vue.js"'
+          : '"Professional remote web development services. Specialized in creating high-performance web applications and websites with PHP, Laravel, and Vue.js"'},
+        "availableLanguage": ["es", "en"],
+        "serviceType": "Web Development",
+        "serviceOutput": "Web Applications and Websites",
+        "sameAs": [
+          "https://linkedin.com/in/ignacio-amat-urbina-789244223",
+          "https://github.com/ignaaaam",
+          "https://www.behance.net/igna21df",
+          "https://stackoverflow.com/users/18973790/ignacio",
+          "https://laracasts.com/@ignaaaam"
+        ]
+      }
+    </script>
+
+    <!-- Update structured data for Service -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Web Development",
+        "provider": {
+          "@type": "ProfessionalService",
+          "@id": "https://www.ignathedev.com/#business"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Spain",
+          "additionalProperty": {
+            "@type": "PropertyValue",
+            "name": "serviceAreas",
+            "value": ${JSON.stringify(targetLocations)}
+          }
+        },
+        "availableLanguage": ["es", "en"],
+        "description": ${lang === 'es' 
+          ? '"Servicios profesionales de desarrollo web disponibles en toda España. Trabajo de forma remota con clientes de cualquier ciudad, ofreciendo servicios de desarrollo web, Laravel, y PHP de alta calidad."'
+          : '"Professional web development services available throughout Spain. Working remotely with clients from any city, offering high-quality web development, Laravel, and PHP services."'},
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Web Development Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": ${lang === 'es' ? '"Desarrollo de Aplicaciones Web"' : '"Web Application Development"'},
+                "description": ${lang === 'es' 
+                  ? '"Desarrollo de aplicaciones web personalizadas. Disponible para proyectos en toda España."' 
+                  : '"Custom web application development. Available for projects throughout Spain."'}
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": ${lang === 'es' ? '"Desarrollo Laravel"' : '"Laravel Development"'},
+                "description": ${lang === 'es'
+                  ? '"Desarrollo de aplicaciones Laravel de alto rendimiento. Servicios disponibles en todas las ciudades de España."'
+                  : '"High-performance Laravel application development. Services available in all Spanish cities."'}
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": ${lang === 'es' ? '"Desarrollo Vue.js"' : '"Vue.js Development"'},
+                "description": ${lang === 'es'
+                  ? '"Desarrollo de interfaces modernas con Vue.js. Servicios disponibles en toda España."'
+                  : '"Modern interface development with Vue.js. Services available throughout Spain."'}
+              }
+            }
+          ]
+        }
+      }
+    </script>
   </head>
   <body class="bg-neutral-950">
     <div class="absolute inset-0 w-full h-full overflow-hidden">
