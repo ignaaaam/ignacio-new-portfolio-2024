@@ -199,7 +199,9 @@ import SkillsCloud from "../components/SkillsCloud.astro";
           </p>
         </div>
 
-        <ContactForm id="contact" />
+        <a href="#contact" class="inline-block px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-purple-800 rounded-full hover:from-purple-700 hover:to-purple-900 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+          ¿Hablamos de tu proyecto?
+        </a>
       </div>
     </FullSectionContainer>
     <SectionContainer
@@ -249,6 +251,14 @@ import SkillsCloud from "../components/SkillsCloud.astro";
         Proyectos
       </h2>
       <Projects />
+    </SectionContainer>
+
+    <SectionContainer id="contact" class="py-16">
+      <h2 class="flex items-center mb-6 text-3xl font-bold gap-x-3">
+        <MailIcon class="size-8" />
+        Contacto
+      </h2>
+      <ContactForm />
     </SectionContainer>
   </main>
 </Layout>
