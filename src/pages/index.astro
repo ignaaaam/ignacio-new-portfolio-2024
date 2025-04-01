@@ -126,10 +126,10 @@ import SkillsCloud from "../components/SkillsCloud.astro";
           >
         </div>
       </nav>
-
+      
       <!-- Scroll indicator (visible on all devices, adjusted for better visibility) -->
       <ScrollIndicator class="!bottom-2 md:!bottom-16 lg:!bottom-24" />
-
+      
       <!-- CTA button - positioned at the right for better visibility -->
     </SectionContainer>
 
@@ -556,11 +556,11 @@ import SkillsCloud from "../components/SkillsCloud.astro";
     0% {
       box-shadow: 0 0 0 0 rgba(255, 220, 100, 0.7);
     }
-
+    
     70% {
       box-shadow: 0 0 0 8px rgba(255, 220, 100, 0);
     }
-
+    
     100% {
       box-shadow: 0 0 0 0 rgba(255, 220, 100, 0);
     }
@@ -577,13 +577,13 @@ import SkillsCloud from "../components/SkillsCloud.astro";
     overflow: hidden;
     z-index: 1;
   }
-
+  
   .cv-button-wrapper a:hover {
     transform: translateY(-3px);
     background: linear-gradient(135deg, #ffea94, #ffb06d) !important;
     box-shadow: 0 7px 14px rgba(255, 220, 100, 0.3);
   }
-
+  
   .cv-button-wrapper a::before {
     content: "";
     position: absolute;
@@ -598,7 +598,7 @@ import SkillsCloud from "../components/SkillsCloud.astro";
     opacity: 0.7;
     border-radius: 9999px;
   }
-
+  
   @keyframes gradientMove {
     0% {
       background-position: 0% 50%;
@@ -639,7 +639,7 @@ import SkillsCloud from "../components/SkillsCloud.astro";
     position: relative;
     z-index: 1;
   }
-
+  
   @media (max-width: 640px) {
     .text-glow {
       text-shadow:
@@ -657,7 +657,7 @@ import SkillsCloud from "../components/SkillsCloud.astro";
       transform: translateY(-10px) scale(1.5);
     }
   }
-
+  
   .animate-bounce-slow {
     animation: bounce-slow 3s ease-in-out infinite;
   }

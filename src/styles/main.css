@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+@keyframes aurora {
+  from {
+    background-position:
+      50% 50%,
+      50% 50%;
+  }
+  to {
+    background-position:
+      350% 50%,
+      350% 50%;
+  }
+}
+
+.after\:animate-aurora::after {
+  animation: aurora 90s linear infinite;
+}
+
+.after\:animate-aurora-slow::after {
+  animation: aurora 180s linear infinite;
+}
+
+.after\:animate-aurora-fast::after {
+  animation: aurora 60s linear infinite;
+}

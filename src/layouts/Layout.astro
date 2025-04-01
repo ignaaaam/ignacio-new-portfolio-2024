@@ -3,7 +3,7 @@ import Header from "../components/Header.astro";
 import HeaderEnglish from "../pages/en/Header.astro";
 import Footer from "../components/Footer.astro";
 import FooterEnglish from "../pages/en/Footer.astro";
-import Aurora from "../Backgrounds/Aurora/Aurora.tsx";
+import Particles from "../Backgrounds/Particles.tsx";
 import "@fontsource-variable/onest";
 import "@fontsource-variable/overpass";
 import { getLangFromUrl } from '../i18n/utils';
@@ -456,20 +456,18 @@ const metaKeywords = lang === 'es'
     </script>
   </head>
   <body class="bg-neutral-950">
-    <div class="absolute inset-0 w-full h-full overflow-hidden">
-      <Aurora 
-        client:load 
-        colorStops={[
-          "#0A0A0A", // Dark base
-          "#3E2723", // Deep brown
-          "#FFC107"  // Amber/yellow
-        ]}
-        amplitude={0.8} 
-        blend={0.5}
-      />
-    </div>
+    <div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+    <Particles client:load 
+    particleColors={['#818cf8', '#6366f1', '#4f46e5', '#a855f7', '#8b5cf6', '#3b82f6']}
+    particleCount={180}
+    particleSpread={30}
+    speed={0.3}
+    particleBaseSize={2.2}
+    moveParticlesOnHover={true}
+    alphaParticles={true}
+    disableRotation={false} />
 
-    <div class="relative min-h-screen flex flex-col">
+    <div class="relative min-h-screen flex flex-col z-10">
       {lang === 'es' ? (
         <Header />
       ) : (
