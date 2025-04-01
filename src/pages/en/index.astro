@@ -126,197 +126,139 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
     </SectionContainer>
 
     <!-- New services section with clear value proposition -->
-    <SectionContainer id="services" class="py-16 relative">
-      <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/20 to-purple-900/20 rounded-xl border border-indigo-400/20 -z-10"></div>
-      <div class="p-6 md:p-8">
-        <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-yellow-200 text-glow">
-          Need a professional website?
-        </h2>
-        
-        <div class="grid md:grid-cols-2 gap-8 mb-12">
-          <div class="bg-black/40 p-6 rounded-lg border border-indigo-500/20 hover:border-indigo-500/40 transition-all duration-300 shadow-lg hover:shadow-indigo-500/20">
-            <div class="flex items-center mb-4">
-              <div class="bg-gradient-to-br from-indigo-500 to-purple-600 p-3 rounded-lg mr-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
-                </svg>
-              </div>
-              <h3 class="text-2xl font-bold text-white">Professional Websites</h3>
-            </div>
-            <p class="text-white/80 mb-4">SEO-optimized websites that professionally represent your business or personal brand.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="bg-indigo-900/50 px-3 py-1 rounded-full text-sm text-white/90 flex items-center">
-                <svg class="w-4 h-4 mr-1 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Responsive design
-              </span>
-              <span class="bg-indigo-900/50 px-3 py-1 rounded-full text-sm text-white/90 flex items-center">
-                <svg class="w-4 h-4 mr-1 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                SEO optimized
-              </span>
-              <span class="bg-indigo-900/50 px-3 py-1 rounded-full text-sm text-white/90 flex items-center">
-                <svg class="w-4 h-4 mr-1 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                High performance
-              </span>
-            </div>
-          </div>
+    <SectionContainer id="services" class="py-20 px-4 md:py-28 relative" wide={true}>
+      <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/20 via-slate-900/10 to-purple-900/20 rounded-xl border border-indigo-400/20 -z-10"></div>
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-8">My Services</h2>
+      <p class="text-xl text-white/80 text-center max-w-3xl mx-auto mb-16 md:mb-20 px-4">
+        Custom web solutions: from optimized landing pages to complex applications, focused on performance, usability, and results.
+      </p>
 
-          <div class="bg-black/40 p-6 rounded-lg border border-indigo-500/20 hover:border-indigo-500/40 transition-all duration-300 shadow-lg hover:shadow-indigo-500/20">
-            <div class="flex items-center mb-4">
-              <div class="bg-gradient-to-br from-indigo-500 to-purple-600 p-3 rounded-lg mr-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                </svg>
-              </div>
-              <h3 class="text-2xl font-bold text-white">E-commerce Stores</h3>
-            </div>
-            <p class="text-white/80 mb-4">Complete and secure online stores to sell your products or services on the internet.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="bg-indigo-900/50 px-3 py-1 rounded-full text-sm text-white/90 flex items-center">
-                <svg class="w-4 h-4 mr-1 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Product management
-              </span>
-              <span class="bg-indigo-900/50 px-3 py-1 rounded-full text-sm text-white/90 flex items-center">
-                <svg class="w-4 h-4 mr-1 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Payment gateways
-              </span>
-              <span class="bg-indigo-900/50 px-3 py-1 rounded-full text-sm text-white/90 flex items-center">
-                <svg class="w-4 h-4 mr-1 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Admin panel
-              </span>
-            </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-10 mb-16 md:mb-20 px-4 md:px-0">
+        <!-- Card 1: Comprehensive Web Development -->
+        <div class="bg-gradient-to-br from-slate-800/60 to-slate-900/60 p-6 md:p-8 rounded-xl border border-indigo-400/20 hover:border-indigo-400/50 hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 group flex flex-col md:flex-row items-start gap-5">
+          <div class="flex-shrink-0 bg-indigo-900/40 w-14 h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center mt-1 group-hover:bg-indigo-800/50 transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 md:h-9 md:w-9 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
           </div>
-
-          <div class="bg-black/40 p-6 rounded-lg border border-indigo-500/20 hover:border-indigo-500/40 transition-all duration-300 shadow-lg hover:shadow-indigo-500/20">
-            <div class="flex items-center mb-4">
-              <div class="bg-gradient-to-br from-indigo-500 to-purple-600 p-3 rounded-lg mr-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-              </div>
-              <h3 class="text-2xl font-bold text-white">Web Applications</h3>
-            </div>
-            <p class="text-white/80 mb-4">Custom web applications that automate processes and solve specific problems for your business.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="bg-indigo-900/50 px-3 py-1 rounded-full text-sm text-white/90 flex items-center">
-                <svg class="w-4 h-4 mr-1 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Laravel
-              </span>
-              <span class="bg-indigo-900/50 px-3 py-1 rounded-full text-sm text-white/90 flex items-center">
-                <svg class="w-4 h-4 mr-1 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Vue.js
-              </span>
-              <span class="bg-indigo-900/50 px-3 py-1 rounded-full text-sm text-white/90 flex items-center">
-                <svg class="w-4 h-4 mr-1 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                APIs
-              </span>
-            </div>
-          </div>
-
-          <div class="bg-black/40 p-6 rounded-lg border border-indigo-500/20 hover:border-indigo-500/40 transition-all duration-300 shadow-lg hover:shadow-indigo-500/20">
-            <div class="flex items-center mb-4">
-              <div class="bg-gradient-to-br from-indigo-500 to-purple-600 p-3 rounded-lg mr-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                </svg>
-              </div>
-              <h3 class="text-2xl font-bold text-white">Optimization & Improvements</h3>
-            </div>
-            <p class="text-white/80 mb-4">Improve the performance and functionality of your current website to get better results.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="bg-indigo-900/50 px-3 py-1 rounded-full text-sm text-white/90 flex items-center">
-                <svg class="w-4 h-4 mr-1 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                SEO audit
-              </span>
-              <span class="bg-indigo-900/50 px-3 py-1 rounded-full text-sm text-white/90 flex items-center">
-                <svg class="w-4 h-4 mr-1 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Speed improvements
-              </span>
-              <span class="bg-indigo-900/50 px-3 py-1 rounded-full text-sm text-white/90 flex items-center">
-                <svg class="w-4 h-4 mr-1 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                New features
-              </span>
+          <div class="flex-grow flex flex-col h-full">
+            <h3 class="text-xl md:text-2xl font-bold mb-3">Comprehensive Web Development</h3>
+            <p class="text-white/80 mb-5 text-base leading-relaxed flex-grow">
+              I create complete, custom web solutions, from static websites and landing pages with Astro to complex dynamic applications, tailored to your goals.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-auto pt-2">
+              <span class="text-xs font-medium bg-indigo-900/50 text-indigo-300 py-1 px-2.5 rounded-md">PHP</span>
+              <span class="text-xs font-medium bg-indigo-900/50 text-indigo-300 py-1 px-2.5 rounded-md">Laravel</span>
+              <span class="text-xs font-medium bg-sky-900/60 text-sky-300 py-1 px-2.5 rounded-md">Astro</span>
+              <span class="text-xs font-medium bg-emerald-900/60 text-emerald-300 py-1 px-2.5 rounded-md">Vue.js</span>
+              <span class="text-xs font-medium bg-gray-700/60 text-gray-300 py-1 px-2.5 rounded-md">WordPress</span>
             </div>
           </div>
         </div>
 
-        <!-- Quote section -->
-        <div class="bg-gradient-to-r from-indigo-900/30 to-purple-900/30 p-8 rounded-lg border border-indigo-500/30 mt-12 mb-10 relative overflow-hidden">
-          <div class="absolute top-0 right-0 opacity-10">
-            <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 24 24" fill="currentColor" class="text-purple-300">
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path>
+        <!-- Card 2: Robust & Scalable Back-End -->
+        <div class="bg-gradient-to-br from-slate-800/60 to-slate-900/60 p-6 md:p-8 rounded-xl border border-indigo-400/20 hover:border-indigo-400/50 hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 group flex flex-col md:flex-row items-start gap-5">
+          <div class="flex-shrink-0 bg-indigo-900/40 w-14 h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center mt-1 group-hover:bg-indigo-800/50 transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 md:h-9 md:w-9 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
           </div>
-          <div class="md:flex items-center">
-            <div class="md:w-2/3 md:pr-8">
-              <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">Your website is your business's first impression online</h3>
-              <p class="text-lg text-white/90 mb-4">A professional website not only enhances your image, but also:</p>
-              <ul class="space-y-3 text-white/90">
-                <li class="flex items-start">
-                  <svg class="w-5 h-5 mr-2 text-green-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  <span>Builds <strong class="text-yellow-200">trust and credibility</strong> with potential clients</span>
-                </li>
-                <li class="flex items-start">
-                  <svg class="w-5 h-5 mr-2 text-green-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  <span>Helps you <strong class="text-yellow-200">attract new customers</strong></span>
-                </li>
-                <li class="flex items-start">
-                  <svg class="w-5 h-5 mr-2 text-green-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  <span>Makes your business <strong class="text-yellow-200">available 24/7</strong></span>
-                </li>
-              </ul>
-            </div>
-            <div class="mt-6 md:mt-0 md:w-1/3 flex justify-center">
-              <a href="#contact" class="px-6 py-4 text-lg font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-lg shadow-xl hover:from-indigo-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 flex items-center gap-2 whitespace-nowrap">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                </svg>
-                Request a quote
-              </a>
+          <div class="flex-grow flex flex-col h-full">
+            <h3 class="text-xl md:text-2xl font-bold mb-3">Robust & Scalable Back-End</h3>
+            <p class="text-white/80 mb-5 text-base leading-relaxed flex-grow">
+              I build the logic and database foundation for your web applications, ensuring performance, security, and scalability. Experienced in PHP and Laravel for APIs and complex systems.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-auto pt-2">
+              <span class="text-xs font-medium bg-indigo-900/50 text-indigo-300 py-1 px-2.5 rounded-md">PHP</span>
+              <span class="text-xs font-medium bg-red-900/60 text-red-300 py-1 px-2.5 rounded-md">Laravel</span>
+              <span class="text-xs font-medium bg-blue-900/60 text-blue-300 py-1 px-2.5 rounded-md">MySQL</span>
+              <span class="text-xs font-medium bg-purple-900/60 text-purple-300 py-1 px-2.5 rounded-md">REST API</span>
+              <span class="text-xs font-medium bg-yellow-900/60 text-yellow-300 py-1 px-2.5 rounded-md">Security</span>
             </div>
           </div>
         </div>
 
-        <!-- Primary CTA -->
-        <div class="flex flex-col items-center justify-center">
-          <a href="#contact" class="px-10 py-6 text-2xl font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-lg shadow-xl hover:from-indigo-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 flex items-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+        <!-- Card 3: Modern & Optimized Interfaces -->
+        <div class="bg-gradient-to-br from-slate-800/60 to-slate-900/60 p-6 md:p-8 rounded-xl border border-indigo-400/20 hover:border-indigo-400/50 hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 group flex flex-col md:flex-row items-start gap-5">
+          <div class="flex-shrink-0 bg-indigo-900/40 w-14 h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center mt-1 group-hover:bg-indigo-800/50 transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 md:h-9 md:w-9 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
-            Request free quote
-          </a>
-          <p class="text-white/70 mt-3 text-sm">No commitment • Response within 24-48h</p>
+          </div>
+          <div class="flex-grow flex flex-col h-full">
+            <h3 class="text-xl md:text-2xl font-bold mb-3">Modern & Optimized Interfaces</h3>
+            <p class="text-white/80 mb-5 text-base leading-relaxed flex-grow">
+              I design and develop attractive, fast, and user-friendly interfaces with Vue.js, Astro, and TailwindCSS, focusing on user experience and conversion.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-auto pt-2">
+              <span class="text-xs font-medium bg-emerald-900/60 text-emerald-300 py-1 px-2.5 rounded-md">Vue.js</span>
+              <span class="text-xs font-medium bg-sky-900/60 text-sky-300 py-1 px-2.5 rounded-md">Astro</span>
+              <span class="text-xs font-medium bg-cyan-900/60 text-cyan-300 py-1 px-2.5 rounded-md">TailwindCSS</span>
+              <span class="text-xs font-medium bg-yellow-800/60 text-yellow-300 py-1 px-2.5 rounded-md">JavaScript</span>
+              <span class="text-xs font-medium bg-pink-900/60 text-pink-300 py-1 px-2.5 rounded-md">UX/UI</span>
+              <span class="text-xs font-medium bg-orange-900/60 text-orange-300 py-1 px-2.5 rounded-md">Performance</span>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Value proposition boxes -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-20 px-4 md:px-0">
+        <div class="bg-gradient-to-br from-slate-800/40 to-slate-900/40 p-6 rounded-xl border border-slate-700/50 hover:border-slate-600/70 transition-all duration-300">
+          <div class="flex items-center mb-4">
+            <div class="rounded-lg bg-green-500/10 p-2.5 md:p-3 mr-3 md:mr-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-7 md:w-7 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg md:text-xl font-semibold">High Quality</h3>
+          </div>
+          <p class="text-white/80 text-base md:text-lg">Clean, maintainable, and tested code following industry best practices.</p>
+        </div>
+
+        <div class="bg-gradient-to-br from-slate-800/40 to-slate-900/40 p-6 rounded-xl border border-slate-700/50 hover:border-slate-600/70 transition-all duration-300">
+          <div class="flex items-center mb-4">
+            <div class="rounded-lg bg-blue-500/10 p-2.5 md:p-3 mr-3 md:mr-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-7 md:w-7 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg md:text-xl font-semibold">High Performance</h3>
+          </div>
+          <p class="text-white/80 text-base md:text-lg">Fast websites and applications, optimized for speed and a better user experience (UX).</p>
+        </div>
+
+        <div class="bg-gradient-to-br from-slate-800/40 to-slate-900/40 p-6 rounded-xl border border-slate-700/50 hover:border-slate-600/70 transition-all duration-300">
+          <div class="flex items-center mb-4">
+            <div class="rounded-lg bg-purple-500/10 p-2.5 md:p-3 mr-3 md:mr-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-7 md:w-7 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg md:text-xl font-semibold">Modern Technology</h3>
+          </div>
+          <p class="text-white/80 text-base md:text-lg">Using the latest technologies and frameworks to build scalable, secure, and future-proof solutions.</p>
+        </div>
+      </div>
+
+      <!-- CTA section with two buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8 mt-12 md:mt-16 px-4">
+        <a href="#projects" class="w-full sm:w-auto px-8 py-4 text-base sm:text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-700 rounded-lg shadow-xl hover:from-blue-700 hover:to-indigo-800 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+          </svg>
+          View projects
+        </a>
+        
+        <a href="#contact" class="w-full sm:w-auto px-8 py-4 text-base sm:text-lg font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-lg shadow-xl hover:from-indigo-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+          </svg>
+          Request a quote
+        </a>
+      </div>
+      
+      <p class="text-white/70 mt-5 text-center text-base">No commitment • Response within 24-48h</p>
     </SectionContainer>
 
     <SectionContainer id="expertise" class="!pt-24">

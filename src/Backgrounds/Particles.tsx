@@ -52,10 +52,20 @@ export default function Particles({
     animate();
     window.addEventListener("resize", initCanvas);
 
+    // Add these event listeners for mobile
+    if (moveParticlesOnHover) {
+      window.addEventListener("touchmove", handleTouchMove);
+      window.addEventListener("touchstart", handleTouchMove);
+    }
+
     return () => {
       window.removeEventListener("resize", initCanvas);
+      if (moveParticlesOnHover) {
+        window.removeEventListener("touchmove", handleTouchMove);
+        window.removeEventListener("touchstart", handleTouchMove);
+      }
     };
-  }, []);
+  }, [moveParticlesOnHover]);
 
   useEffect(() => {
     initCanvas();
@@ -150,14 +160,16 @@ export default function Particles({
             (mouse.current.y - circle.y) / (staticity + (circle.size * particleSpread));
         }
         
-        circle.x += Math.sin(Date.now() * 0.001 * circle.speed) * 0.2;
-        circle.y += Math.cos(Date.now() * 0.001 * circle.speed) * 0.2;
+        // Simplified movement calculations to improve performance
+        const time = Date.now() * 0.001 * circle.speed;
+        circle.x += Math.sin(time) * 0.2;
+        circle.y += Math.cos(time) * 0.2;
         
         context.current!.save();
         
         if (!disableRotation) {
           context.current!.translate(circle.x, circle.y);
-          context.current!.rotate((circle.rotation + Date.now() * 0.0001 * circle.speed) % 360 * Math.PI / 180);
+          context.current!.rotate((circle.rotation + time) % 360 * Math.PI / 180);
           context.current!.translate(-circle.x, -circle.y);
         }
         
@@ -190,7 +202,10 @@ export default function Particles({
         }
       });
     }
-    window.requestAnimationFrame(animate);
+    
+    // Using this method for more reliable animation frames
+    const animationId = window.requestAnimationFrame(animate);
+    return () => window.cancelAnimationFrame(animationId);
   };
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -199,6 +214,21 @@ export default function Particles({
       const { w, h } = canvasSize.current;
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
+      
+      mouse.current = {
+        x: x,
+        y: y,
+      };
+    }
+  };
+
+  // Add touch event handler
+  const handleTouchMove = (event: TouchEvent) => {
+    if (canvasContainerRef.current && moveParticlesOnHover && event.touches.length > 0) {
+      const rect = canvasContainerRef.current.getBoundingClientRect();
+      const touch = event.touches[0];
+      const x = touch.clientX - rect.left;
+      const y = touch.clientY - rect.top;
       
       mouse.current = {
         x: x,
