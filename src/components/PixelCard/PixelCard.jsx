@@ -3,7 +3,6 @@
 */
 
 import { useEffect, useRef } from "react";
-import { useInView } from "@react-spring/web";
 
 const isBrowser = typeof window !== 'undefined';
 
@@ -129,12 +128,6 @@ const VARIANTS = {
   }
 };
 
-const CARD_STYLES = {
-  purple: 'hover:shadow-[0_0_30px_-5px_rgba(109,40,217,0.3)] border-purple-400/20',
-  blue: 'hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.3)] border-blue-400/20',
-  green: 'hover:shadow-[0_0_30px_-5px_rgba(34,197,94,0.3)] border-green-400/20'
-};
-
 export default function PixelCard({
   variant = "backend",
   className = "",
@@ -229,14 +222,6 @@ export default function PixelCard({
 
   const onMouseEnter = () => handleAnimation("appear");
   const onMouseLeave = () => handleAnimation("disappear");
-  const onFocus = (e) => {
-    if (e.currentTarget.contains(e.relatedTarget)) return;
-    handleAnimation("appear");
-  };
-  const onBlur = (e) => {
-    if (e.currentTarget.contains(e.relatedTarget)) return;
-    handleAnimation("disappear");
-  };
 
   useEffect(() => {
     if (!isBrowser) return;
@@ -252,7 +237,7 @@ export default function PixelCard({
       observer.disconnect();
       cancelAnimationFrame(animationRef.current);
     };
-  }, [finalGap, finalSpeed, finalColors]);
+  }, []);
 
   return (
     <div

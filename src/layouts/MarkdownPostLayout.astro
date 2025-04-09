@@ -2,6 +2,7 @@
 const { frontmatter } = Astro.props;
 import ContactForm from "../components/ContactForm.astro";
 import Layout from "../layouts/Layout.astro";
+import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
 
 import {
   FacebookShareButton,
@@ -62,6 +63,8 @@ const url = `https://www.ignathedev.com${Astro.url.pathname}`;
     cardType: 'summary_large_image',
   }}
 >
+  <BreadcrumbSchema items={[{ name: "Blog", item: "https://www.ignathedev.com/blog" }, { name: frontmatter.title, item: url }]} />
+  
   <main class="flex flex-col items-center min-screen">
     <!--
 // v0 by Vercel.
@@ -220,11 +223,25 @@ const url = `https://www.ignathedev.com${Astro.url.pathname}`;
   "dateModified": "{new Date(frontmatter.publish_date).toISOString()}",
   "author": {
     "@type": "Person",
-    "@id": "https://www.ignathedev.com/#person"
+    "@id": "https://www.ignathedev.com/#person",
+    "name": "{frontmatter.author}",
+    "url": "https://www.ignathedev.com"
+  },
+  "publisher": {
+    "@type": "Person",
+    "@id": "https://www.ignathedev.com/#person",
+    "name": "Ignacio Amat Urbina",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.ignathedev.com/img/profile_picture.jpg"
+    }
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://www.ignathedev.com{Astro.url.pathname}"
-  }
+  },
+  "keywords": "{frontmatter.tags.join(', ')}",
+  "articleSection": "Web Development",
+  "inLanguage": "es-ES"
 }
 </script>

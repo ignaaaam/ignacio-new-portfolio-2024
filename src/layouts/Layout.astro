@@ -47,7 +47,10 @@ const siteName = "Ignacio Amat Urbina - Desarrollador Web Full Stack & Laravel E
 
 const pageTitle = title || "Ignacio Amat - Full Stack Developer";
 const metaTitle = `${pageTitle} | PHP & Laravel Expert`.substring(0, 60);
-const metaDescription = (description || "Full Stack Web Developer specializing in PHP, Laravel, Vue.js, and modern web technologies. Available for remote projects worldwide.").substring(0, 155);
+const rawDescription = description || "Full Stack Web Developer specializing in PHP, Laravel, Vue.js, and modern web technologies. Available for remote projects worldwide.";
+const metaDescription = rawDescription.length > 155 ? 
+  rawDescription.substring(0, 152) + "..." : 
+  rawDescription;
 
 // Add more specific meta information for better SEO
 const targetLocations = lang === 'es' 
@@ -93,7 +96,7 @@ const technologies = lang === 'es'
     };
 
 // Generate technology-based keywords
-const techKeywords = Object.entries(technologies).flatMap(([category, techs]) => {
+const techKeywords = Object.entries(technologies).flatMap(([_, techs]) => {
   return techs.flatMap(tech => {
     const prefixes = lang === 'es'
       ? [

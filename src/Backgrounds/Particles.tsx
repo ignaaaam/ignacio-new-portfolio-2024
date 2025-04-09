@@ -37,7 +37,6 @@ export default function Particles({
   const canvasContainerRef = useRef<HTMLDivElement>(null);
   const context = useRef<CanvasRenderingContext2D | null>(null);
   const circles = useRef<any[]>([]);
-  const mousePosition = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
@@ -113,9 +112,9 @@ export default function Particles({
     
     let finalColor = color;
     if (alphaParticles && color.startsWith('#')) {
-      const r = parseInt(color.substr(1, 2), 16);
-      const g = parseInt(color.substr(3, 2), 16);
-      const b = parseInt(color.substr(5, 2), 16);
+      const r = parseInt(color.substring(1, 3), 16);
+      const g = parseInt(color.substring(3, 5), 16);
+      const b = parseInt(color.substring(5, 7), 16);
       finalColor = `rgba(${r}, ${g}, ${b}, ${opacity})`;
     } else if (alphaParticles && color.startsWith('rgb')) {
       finalColor = color.replace(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*[\d.]+)?\)/, `rgba($1, $2, $3, ${opacity})`);
@@ -152,7 +151,7 @@ export default function Particles({
         canvasSize.current.h
       );
       
-      circles.current.forEach((circle: any, i: number) => {
+      circles.current.forEach((circle: any) => {
         if (moveParticlesOnHover) {
           circle.x +=
             (mouse.current.x - circle.x) / (staticity + (circle.size * particleSpread));
@@ -211,13 +210,9 @@ export default function Particles({
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (canvasContainerRef.current && moveParticlesOnHover) {
       const rect = canvasContainerRef.current.getBoundingClientRect();
-      const { w, h } = canvasSize.current;
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
-      
       mouse.current = {
-        x: x,
-        y: y,
+        x: event.clientX - rect.left,
+        y: event.clientY - rect.top,
       };
     }
   };
@@ -227,12 +222,9 @@ export default function Particles({
     if (canvasContainerRef.current && moveParticlesOnHover && event.touches.length > 0) {
       const rect = canvasContainerRef.current.getBoundingClientRect();
       const touch = event.touches[0];
-      const x = touch.clientX - rect.left;
-      const y = touch.clientY - rect.top;
-      
       mouse.current = {
-        x: x,
-        y: y,
+        x: touch.clientX - rect.left,
+        y: touch.clientY - rect.top,
       };
     }
   };
