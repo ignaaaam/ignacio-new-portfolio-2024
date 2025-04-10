@@ -8,6 +8,7 @@ import "@fontsource-variable/onest";
 import "@fontsource-variable/overpass";
 import { getLangFromUrl } from '../i18n/utils';
 import { AstroSeo } from '@astrolib/seo';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 interface Props {
   title: string;
@@ -237,6 +238,13 @@ const metaKeywords = lang === 'es'
     <meta property="article:author" content="Ignacio Amat Urbina" />
     <meta property="article:published_time" content={new Date().toISOString()} />
     <meta name="keywords" content={metaKeywords} />
+    
+    <script is:inline>
+      function speedInsightsBeforeSend(data){
+        return data;
+      }
+    </script>
+    <SpeedInsights />
     
     <AstroSeo
       title={metaTitle}
