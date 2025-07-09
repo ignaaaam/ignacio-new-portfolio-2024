@@ -5,7 +5,7 @@ const downloadTracker = new Map();
 // Set download limits
 const DOWNLOAD_LIMIT = 4;         // Downloads allowed
 const TIME_WINDOW = 60 * 60 * 1000; // 1 hour in milliseconds
-const CV_PATH = '/CV-UPDATED-JUL-2025.pdf';
+const CV_PATH = '/CV-Ignacio-new-design.pdf';
 
 export const onRequest = defineMiddleware((context, next) => {
   const { pathname } = new URL(context.request.url);
