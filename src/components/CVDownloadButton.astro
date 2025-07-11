@@ -93,10 +93,10 @@ import DocumentIcon from "./icons/DocumentIcon.astro";
     font-size: 0.75rem;
     
     /* Special styling for CV button */
-    background: linear-gradient(135deg, #ffdc64, #ff9a3d);
-    border: 2px solid rgba(255, 220, 100, 0.6);
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border: 2px solid rgba(59, 130, 246, 0.6);
     font-weight: 600;
-    color: #000;
+    color: white;
     animation: pulse-cv 2.5s infinite;
     position: relative;
     overflow: hidden;
@@ -115,8 +115,8 @@ import DocumentIcon from "./icons/DocumentIcon.astro";
   
   .cv-download-btn:hover {
     transform: translateY(-3px) scale(1.05);
-    background: linear-gradient(135deg, #ffea94, #ffb06d);
-    box-shadow: 0 7px 14px rgba(255, 220, 100, 0.3);
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    box-shadow: 0 7px 14px rgba(59, 130, 246, 0.3);
   }
   
   .cv-download-btn::before {
@@ -127,7 +127,7 @@ import DocumentIcon from "./icons/DocumentIcon.astro";
     right: -2px;
     bottom: -2px;
     z-index: -1;
-    background: linear-gradient(90deg, #ffdc64, #ff9a3d, #ffdc64);
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8, #3b82f6);
     background-size: 200% 100%;
     animation: gradientMove 3s linear infinite;
     opacity: 0.7;
@@ -136,15 +136,15 @@ import DocumentIcon from "./icons/DocumentIcon.astro";
   
   @keyframes pulse-cv {
     0% {
-      box-shadow: 0 0 0 0 rgba(255, 220, 100, 0.7);
+      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
     }
     
     70% {
-      box-shadow: 0 0 0 8px rgba(255, 220, 100, 0);
+      box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
     }
     
     100% {
-      box-shadow: 0 0 0 0 rgba(255, 220, 100, 0);
+      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
     }
   }
   

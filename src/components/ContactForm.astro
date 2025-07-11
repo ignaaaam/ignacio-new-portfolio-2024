@@ -23,11 +23,11 @@ const lang = getLangFromUrl(Astro.url);
     method="POST"
     action="/api/contact"
     id="contact-form"
-    class="contact-form-container space-y-6 backdrop-blur-sm bg-white/5 p-8 rounded-xl border border-white/10 shadow-2xl transition-all duration-300"
+    class="contact-form-container space-y-6 bg-white p-8 rounded-xl border border-gray-200 shadow-xl transition-all duration-300"
   >
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
       <div>
-        <label for="name" class="block text-sm font-medium text-white">
+        <label for="name" class="block text-sm font-medium text-gray-700">
           {lang === 'es' ? 'Nombre' : 'Name'}
         </label>
         <input
@@ -36,32 +36,32 @@ const lang = getLangFromUrl(Astro.url);
           id="name"
           required
           minlength="2"
-          class="form-input mt-1 block w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2 text-white shadow-sm backdrop-blur-sm focus:border-yellow-200 focus:ring-2 focus:ring-yellow-200/50"
+          class="form-input mt-1 block w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-colors"
           placeholder={lang === 'es' ? 'Tu nombre' : 'Your name'}
         />
       </div>
       <div>
-        <label for="email" class="block text-sm font-medium text-white">Email</label>
+        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
         <input
           type="email"
           name="email"
           id="email"
           required
-          class="form-input mt-1 block w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2 text-white shadow-sm backdrop-blur-sm focus:border-yellow-200 focus:ring-2 focus:ring-yellow-200/50"
+          class="form-input mt-1 block w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-colors"
           placeholder={lang === 'es' ? 'tu@email.com' : 'your@email.com'}
         />
       </div>
     </div>
 
     <div>
-      <label for="project_type" class="block text-sm font-medium text-white">
+      <label for="project_type" class="block text-sm font-medium text-gray-700">
         {lang === 'es' ? 'Tipo de proyecto' : 'Project type'}
       </label>
       <select
         id="project_type"
         name="project_type"
         required
-        class="form-select mt-1 block w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2 text-white shadow-sm backdrop-blur-sm focus:border-yellow-200 focus:ring-2 focus:ring-yellow-200/50"
+        class="form-select mt-1 block w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-colors"
       >
         <option value="">{lang === 'es' ? 'Selecciona una opción' : 'Select an option'}</option>
         <option value="landing">Landing Page</option>
@@ -72,14 +72,14 @@ const lang = getLangFromUrl(Astro.url);
     </div>
 
     <div>
-      <label for="budget" class="block text-sm font-medium text-white">
+      <label for="budget" class="block text-sm font-medium text-gray-700">
         {lang === 'es' ? 'Presupuesto aproximado' : 'Approximate budget'}
       </label>
       <select
         id="budget"
         name="budget"
         required
-        class="form-select mt-1 block w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2 text-white shadow-sm backdrop-blur-sm focus:border-yellow-200 focus:ring-2 focus:ring-yellow-200/50"
+        class="form-select mt-1 block w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-colors"
       >
         <option value="">{lang === 'es' ? 'Selecciona un rango' : 'Select a range'}</option>
         <option value="500-1000">500€ - 1.000€</option>
@@ -90,7 +90,7 @@ const lang = getLangFromUrl(Astro.url);
     </div>
 
     <div>
-      <label for="message" class="block text-sm font-medium text-white">
+      <label for="message" class="block text-sm font-medium text-gray-700">
         {lang === 'es' ? 'Mensaje' : 'Message'}
       </label>
       <div class="relative">
@@ -101,10 +101,10 @@ const lang = getLangFromUrl(Astro.url);
           required
           minlength="10"
           maxlength="500"
-          class="form-textarea mt-1 block w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2 text-white shadow-sm backdrop-blur-sm focus:border-yellow-200 focus:ring-2 focus:ring-yellow-200/50"
+          class="form-textarea mt-1 block w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-colors"
           placeholder={lang === 'es' ? 'Cuéntame sobre tu proyecto...' : 'Tell me about your project...'}
         ></textarea>
-        <div class="absolute bottom-2 right-2 text-xs text-gray-400">
+        <div class="absolute bottom-2 right-2 text-xs text-gray-500">
           <span id="charCount">0</span>/500
         </div>
       </div>
@@ -113,13 +113,12 @@ const lang = getLangFromUrl(Astro.url);
     <div class="flex justify-center">
       <button
         type="submit"
-        class="group relative inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ease-out bg-gradient-to-r from-purple-500 via-fuchsia-500 to-yellow-500 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:scale-100 disabled:cursor-not-allowed"
+        class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 disabled:opacity-70 disabled:scale-100 disabled:cursor-not-allowed"
       >
-        <span class="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 via-fuchsia-500 to-yellow-500 blur-md opacity-60 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="relative inline-flex items-center gap-2 text-white/90 group-hover:text-white">
+        <span class="relative inline-flex items-center gap-2">
           {lang === 'es' ? 'Enviar mensaje' : 'Send message'}
           <svg 
-            class="w-4 h-4 transition-transform duration-300 ease-out group-hover:translate-x-1" 
+            class="w-5 h-5 transition-transform duration-300 ease-out group-hover:translate-x-1" 
             viewBox="0 0 24 24" 
             fill="none" 
             stroke="currentColor"
@@ -154,9 +153,9 @@ const lang = getLangFromUrl(Astro.url);
     appearance: none !important;
     border-radius: 0.5rem !important;
     font-size: 16px !important;
-    background-color: rgba(17, 24, 39, 0.5) !important;
-    color: white !important;
-    border: 1px solid rgb(55, 65, 81) !important;
+    background-color: white !important;
+    color: #1f2937 !important;
+    border: 1px solid #d1d5db !important;
   }
 
   /* Reset all form control styles first */
@@ -175,15 +174,15 @@ const lang = getLangFromUrl(Astro.url);
   .contact-form-container textarea {
     display: block;
     width: 100%;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1rem;
     font-size: 16px;
     line-height: 1.5;
     border-radius: 0.5rem;
-    border: 1px solid rgb(55, 65, 81);
-    background-color: rgba(17, 24, 39, 0.5);
-    color: white;
+    border: 1px solid #d1d5db;
+    background-color: white;
+    color: #1f2937;
     margin-top: 0.25rem;
-    backdrop-filter: blur(4px);
+    transition: border-color 0.2s, box-shadow 0.2s;
   }
 
   /* Apply specific select styling */
@@ -200,8 +199,8 @@ const lang = getLangFromUrl(Astro.url);
   .contact-form-container select:focus,
   .contact-form-container textarea:focus {
     outline: none;
-    border-color: rgb(250, 204, 21);
-    box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.5);
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
   }
 
   /* iOS specific fixes */
@@ -264,12 +263,6 @@ const lang = getLangFromUrl(Astro.url);
     }
   }
 
-  /* iOS focus state */
-  .ios-focus {
-    background-color: rgba(17, 24, 39, 0.5) !important;
-    color: white !important;
-    border-color: rgb(250, 204, 21) !important;
-  }
   
   /* Body class when iOS keyboard is open */
   :global(body.ios-keyboard-open) {
@@ -291,11 +284,10 @@ const lang = getLangFromUrl(Astro.url);
     font-size: 16px !important; /* Force 16px to prevent zoom on iOS */
     line-height: 1.5;
     border-radius: 0.5rem;
-    border: 1px solid rgb(55, 65, 81);
-    background-color: rgba(17, 24, 39, 0.5) !important;
-    color: white !important;
+    border: 1px solid #d1d5db;
+    background-color: white !important;
+    color: #1f2937 !important;
     margin-top: 0.25rem;
-    backdrop-filter: blur(4px);
     transform: translateZ(0); /* Fix for mobile webkit rendering */
   }
 
@@ -313,9 +305,9 @@ const lang = getLangFromUrl(Astro.url);
   .contact-form-container select:focus,
   .contact-form-container textarea:focus {
     outline: none !important;
-    border-color: rgb(250, 204, 21) !important;
-    box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.5) !important;
-    -webkit-box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.5) !important;
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5) !important;
+    -webkit-box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5) !important;
   }
 
   /* Remove button styling */
@@ -327,14 +319,11 @@ const lang = getLangFromUrl(Astro.url);
     outline: none !important;
   }
 
-  /* Fix for iOS dark mode */
-  @media (prefers-color-scheme: dark) {
-    .contact-form-container input,
-    .contact-form-container select,
-    .contact-form-container textarea {
-      background-color: rgba(17, 24, 39, 0.5) !important;
-      color: white !important;
-    }
+  /* iOS focus state */
+  .ios-focus {
+    background-color: white !important;
+    color: #1f2937 !important;
+    border-color: #3b82f6 !important;
   }
 </style>
 

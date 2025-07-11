@@ -14,7 +14,7 @@ import EnglishFlag from "../components/icons/EnglishFlag.astro";
     lang === "es" ? (
       <button
       type="button" data-dropdown-toggle="language-dropdown-menu"
-        class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg cursor-pointer dark:text-black hover:bg-slate-500 dark:hover:bg-gray-700 dark:hover:text-black"
+        class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 rounded-lg cursor-pointer hover:bg-gray-100 hover:text-gray-900 transition-colors"
       >
         <SpanishFlag />
         Spanish (ES)
@@ -22,7 +22,7 @@ import EnglishFlag from "../components/icons/EnglishFlag.astro";
     ) : (
       <a data-astro-reload
         data-dropdown-toggle="language-dropdown-menu"
-        class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg cursor-pointer dark:text-black hover:bg-slate-500 dark:hover:bg-gray-700 dark:hover:text-black"
+        class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 rounded-lg cursor-pointer hover:bg-gray-100 hover:text-gray-900 transition-colors"
         role="menuitem"
       >
         <div class="inline-flex items-center">
@@ -34,7 +34,7 @@ import EnglishFlag from "../components/icons/EnglishFlag.astro";
   }
 
   <div
-    class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700"
+    class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-lg border border-gray-200"
     id="language-dropdown-menu"
   >
     <ul
@@ -46,10 +46,10 @@ import EnglishFlag from "../components/icons/EnglishFlag.astro";
           lang === "es" ? (
             <a data-astro-reload
               href="/en"
-              class="block px-4 py-2 text-sm text-black hover:bg-gray-100 dark:text-black dark:hover:bg-gray-600 dark:hover:text-black"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
               role="menuitem"
             >
-              <div class="inline-flex items-center">
+              <div class="inline-flex items-center gap-2">
                 <EnglishFlag />
                 English (US)
               </div>
@@ -57,10 +57,10 @@ import EnglishFlag from "../components/icons/EnglishFlag.astro";
           ) : (
             <a data-astro-reload
               href="/"
-              class="block px-4 py-2 text-sm text-black hover:bg-gray-100 dark:text-black dark:hover:bg-gray-600 dark:hover:text-black"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
               role="menuitem"
             >
-              <div class="inline-flex items-center">
+              <div class="inline-flex items-center gap-2">
                 <SpanishFlag />
                 Spanish (ES)
               </div>

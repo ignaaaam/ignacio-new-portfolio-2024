@@ -4,7 +4,7 @@ const isExternalLink = !href.startsWith('#')
 ---
 
 <a
-  class="social-pill rounded-full border border-white/10 flex justify-center items-center gap-x-2 py-1 px-4 md:py-2 md:px-4 text-xs md:text-sm transition bg-white/5 hover:scale-110 hover:bg-white/10"
+  class="social-pill rounded-full border border-gray-200 flex justify-center items-center gap-x-2 py-2 px-4 text-sm transition bg-white hover:bg-gray-50 hover:border-gray-300 text-gray-700 hover:text-gray-900 shadow-sm hover:shadow-md"
   href={href}
   target={isExternalLink ? "_blank" : undefined}
   rel={isExternalLink ? "noopener noreferrer" : undefined}
