@@ -64,12 +64,14 @@ const CERTIFICATION = [
   },
 ];
 ---
-<ol class="relative border-s border-gray-200 ml-4">
-    {
-        CERTIFICATION.map((certification) => (
-            <li class="mb-10 ms-4">
-                <CertificationItem {...certification} />
-            </li>
-        ))
-    }
-</ol>
+<div class="max-w-4xl mx-auto flex justify-center">
+    <ol class="relative border-s border-gray-200 dark:border-gray-700 pl-8 z-0">
+        {
+            CERTIFICATION.map((certification) => (
+                <li class="mb-10 relative">
+                    <CertificationItem {...certification} />
+                </li>
+            ))
+        }
+    </ol>
+</div>
