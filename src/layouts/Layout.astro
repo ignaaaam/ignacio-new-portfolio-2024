@@ -3,7 +3,6 @@ import Header from "../components/Header.astro";
 import HeaderEnglish from "../pages/en/Header.astro";
 import Footer from "../components/Footer.astro";
 import FooterEnglish from "../pages/en/Footer.astro";
-import Particles from "../Backgrounds/Particles.tsx";
 import "@fontsource-variable/onest";
 import "@fontsource-variable/overpass";
 import { getLangFromUrl } from '../i18n/utils';
@@ -274,6 +273,15 @@ const metaKeywords = lang === 'es'
 
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
 
+    <!-- Dark mode initialization script -->
+    <script is:inline>
+      if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+
 
   <!-- Facebook Meta Tags -->
   <!-- <meta property="og:url" content="https://www.ignathedev.com/"> -->
@@ -466,17 +474,8 @@ const metaKeywords = lang === 'es'
       }
     </script>
   </head>
-  <body class="bg-neutral-950">
-    <div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
-    <Particles client:load 
-    particleColors={['#818cf8', '#6366f1', '#4f46e5', '#a855f7', '#8b5cf6', '#3b82f6']}
-    particleCount={40}
-    particleSpread={120}
-    speed={0.2}
-    particleBaseSize={2.5}
-    moveParticlesOnHover={true}
-    alphaParticles={true}
-    disableRotation={false} />
+  <body class="bg-white dark:bg-gray-900">
+    <div class="absolute top-0 z-[-2] h-screen w-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"></div>
 
     <div class="relative min-h-screen flex flex-col z-10">
       {lang === 'es' ? (
@@ -520,7 +519,7 @@ const metaKeywords = lang === 'es'
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background-color: rgb(10, 10, 10);
+    background-color: white;
     min-height: 100vh;
     position: relative;
   }
@@ -564,7 +563,7 @@ const metaKeywords = lang === 'es'
       font-size: 1.25rem !important;
     }
     .hero-section {
-      padding-bottom: 5rem; /* Extra space for the scroll indicator on mobile */
+      padding-bottom: 5rem;
     }
   }
 
@@ -574,14 +573,12 @@ const metaKeywords = lang === 'es'
     scroll-margin-top: 2rem;
   }
 
-  .dark-section {
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 16px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-
   main {
     position: relative;
+  }
+
+  /* Center all main content */
+  main {
+    width: 100%;
   }
 </style>
