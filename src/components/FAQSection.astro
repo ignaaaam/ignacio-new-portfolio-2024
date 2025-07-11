@@ -77,29 +77,29 @@ const faqItems = questions.map(item => ({
 
 <div class="py-16">
   <div class="text-center mb-12">
-    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">{title}</h2>
-    <p class="text-lg text-gray-300">{description}</p>
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">{title}</h2>
+    <p class="text-lg text-gray-600 dark:text-gray-300">{description}</p>
   </div>
   
   <FAQSchema items={faqItems} />
   
   <div class="space-y-3 md:space-y-4 max-w-4xl mx-auto px-4 md:px-0">
     {questions.map((item) => (
-      <div class="border border-gray-700 rounded-lg overflow-hidden">
+      <div class="border border-gray-300 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-gray-800 shadow-sm">
         <details class="group">
-          <summary class="flex items-center justify-between px-3 md:px-4 py-4 md:py-5 cursor-pointer bg-gray-800 hover:bg-gray-700 transition-colors">
-            <h3 class="text-base md:text-lg font-medium text-white pr-2">{item.question}</h3>
+          <summary class="flex items-center justify-between px-3 md:px-4 py-4 md:py-5 cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+            <h3 class="text-base md:text-lg font-medium text-gray-900 dark:text-white pr-2">{item.question}</h3>
             <span class="relative ml-1.5 flex-shrink-0 w-5 h-5">
-              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 transition-opacity text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 transition-opacity text-gray-700 dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
               </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100 transition-opacity text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100 transition-opacity text-gray-700 dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
               </svg>
             </span>
           </summary>
-          <div class="px-3 md:px-4 py-4 md:py-5 border-t border-gray-700 bg-gray-800 transition-all duration-300 overflow-hidden">
-            <p class="text-gray-300 text-sm md:text-base leading-relaxed">{item.answer}</p>
+          <div class="px-3 md:px-4 py-4 md:py-5 border-t border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 transition-all duration-300 overflow-hidden">
+            <p class="text-gray-700 dark:text-gray-300 text-sm md:text-base leading-relaxed">{item.answer}</p>
           </div>
         </details>
       </div>

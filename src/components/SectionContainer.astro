@@ -1,14 +1,18 @@
 ---
     const { class: className, id, wide = false } = Astro.props;
-    const containerWidth = wide ? 'lg:w-[960px] xl:w-[1100px]' : 'lg:w-[740px]';
+    const containerWidth = wide ? 'max-w-7xl' : 'max-w-6xl';
 ---
 <section 
     id={id} 
     class:list={[
         `${className}`,
-        'w-full mx-auto pb-24',
-        containerWidth
+        'w-full'
     ]}
 >
-    <slot />
+    <div class:list={[
+        'mx-auto px-4 sm:px-6 lg:px-8',
+        containerWidth
+    ]}>
+        <slot />
+    </div>
 </section>

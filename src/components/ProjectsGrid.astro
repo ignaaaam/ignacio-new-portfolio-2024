@@ -192,7 +192,7 @@ const projects = PROJECTS.map(project => ({
 }));
 ---
 
-<div class="projects-component">
+<div class="projects-component max-w-6xl mx-auto">
   <div class="filter-container mb-12">
     <h3 class="filter-heading">{t.filterByTech}</h3>
     <div class="filter-buttons">
@@ -406,30 +406,47 @@ const projects = PROJECTS.map(project => ({
     gap: 1rem;
     margin-bottom: 1rem;
     opacity: 0.9;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+  
+  :global(.dark) .filter-heading {
+    color: #f9fafb;
   }
   
   .filter-title {
     font-size: 1.1rem;
     font-weight: 500;
-    color: rgba(255, 220, 100, 0.9);
+    color: #1f2937;
     white-space: nowrap;
+  }
+  
+  :global(.dark) .filter-title {
+    color: #f9fafb;
   }
   
   .filter-line {
     flex-grow: 1;
     height: 1px;
-    background: linear-gradient(to right, rgba(255, 220, 100, 0.5), rgba(255, 255, 255, 0.1));
+    background: linear-gradient(to right, #d1d5db, rgba(209, 213, 219, 0.3));
   }
   
   .filter-buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    padding: 0.7rem 1rem;
-    background: rgba(20, 20, 30, 0.4);
+    padding: 1rem;
+    background: white;
     border-radius: 0.75rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  :global(.dark) .filter-buttons {
+    background: #1f2937;
+    border-color: #374151;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
   
   .filter-btn {
@@ -438,25 +455,37 @@ const projects = PROJECTS.map(project => ({
     gap: 0.5rem;
     padding: 0.5rem 1rem;
     border-radius: 9999px;
-    background: rgba(40, 40, 50, 0.5);
-    color: white;
+    background: #f9fafb;
+    color: #374151;
     font-size: 0.9rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid #e5e7eb;
     cursor: pointer;
     transition: all 0.3s ease;
   }
   
+  :global(.dark) .filter-btn {
+    background: #374151;
+    color: #d1d5db;
+    border-color: #4b5563;
+  }
+  
   .filter-btn:hover {
-    background: rgba(60, 60, 70, 0.7);
+    background: #f3f4f6;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-color: #d1d5db;
+  }
+  
+  :global(.dark) .filter-btn:hover {
+    background: #4b5563;
+    border-color: #6b7280;
   }
   
   .filter-btn.active {
-    background: linear-gradient(135deg, rgba(255, 220, 100, 0.2), rgba(255, 154, 61, 0.3));
-    border-color: rgba(255, 220, 100, 0.5);
-    color: rgba(255, 220, 100, 1);
-    box-shadow: 0 0 15px rgba(255, 220, 100, 0.2);
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: white;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
   }
   
   .filter-icon {
@@ -482,16 +511,22 @@ const projects = PROJECTS.map(project => ({
     grid-template-columns: 1fr;
     gap: 2rem;
     margin-bottom: 3rem;
-    background: rgba(20, 20, 30, 0.4);
+    background: white;
     border-radius: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 2rem;
+    border: 1px solid #e5e7eb;
+    padding: 2.5rem;
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
+  }
+  
+  :global(.dark) .featured-project {
+    background: #1f2937;
+    border-color: #374151;
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.3);
   }
   
   .featured-project::before {
@@ -501,7 +536,7 @@ const projects = PROJECTS.map(project => ({
     left: 0;
     width: 100%;
     height: 3px;
-    background: linear-gradient(90deg, #ffdc64, #ff9a3d, rgba(255, 255, 255, 0.1));
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
   }
   
   @media (min-width: 768px) {
@@ -518,29 +553,37 @@ const projects = PROJECTS.map(project => ({
   
   .featured-badge {
     display: inline-block;
-    background: linear-gradient(135deg, #ffdc64, #ff9a3d);
-    color: #000;
+    background: #3b82f6;
+    color: white;
     font-size: 0.8rem;
     font-weight: bold;
     padding: 0.25rem 0.75rem;
     border-radius: 9999px;
     margin-bottom: 0.75rem;
-    box-shadow: 0 2px 6px rgba(255, 220, 100, 0.3);
+    box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);
   }
   
   .project-title {
     font-size: 1.75rem;
     font-weight: bold;
-    color: #ffdc64;
+    color: #1f2937;
     margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
   }
   
+  :global(.dark) .project-title {
+    color: #f9fafb;
+  }
+  
   .project-description {
     margin-bottom: 1.5rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
+    color: #6b7280;
+  }
+  
+  :global(.dark) .project-description {
+    color: #d1d5db;
   }
   
   .tags-list {
@@ -737,17 +780,23 @@ const projects = PROJECTS.map(project => ({
   }
   
   .project-card {
-    background: rgba(20, 20, 30, 0.4);
+    background: white;
     border-radius: 0.75rem;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid #e5e7eb;
     transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
-    box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.1);
     height: 100%;
     display: flex;
     flex-direction: column;
+  }
+  
+  :global(.dark) .project-card {
+    background: #1f2937;
+    border-color: #374151;
+    box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.3);
   }
   
   .project-card.show {
@@ -758,8 +807,8 @@ const projects = PROJECTS.map(project => ({
   .project-card:hover,
   .project-card.hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.5);
-    border-color: rgba(255, 220, 100, 0.3);
+    box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.15);
+    border-color: #3b82f6;
   }
   
   .card-image-container {
@@ -864,16 +913,24 @@ const projects = PROJECTS.map(project => ({
   .card-title {
     font-size: 1.25rem;
     font-weight: 600;
-    padding: 1rem 1rem 0.5rem 1rem;
-    color: #ffdc64;
+    padding: 1.25rem 1.25rem 0.75rem 1.25rem;
+    color: #1f2937;
+  }
+  
+  :global(.dark) .card-title {
+    color: #f9fafb;
   }
   
   .card-description {
-    padding: 0 1rem 1.5rem 1rem;
+    padding: 0 1.25rem 1.5rem 1.25rem;
     font-size: 0.9rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.8);
+    color: #6b7280;
     flex: 1;
+  }
+  
+  :global(.dark) .card-description {
+    color: #d1d5db;
   }
   
   /* GitHub CTA */
@@ -881,18 +938,27 @@ const projects = PROJECTS.map(project => ({
     text-align: center;
     margin-top: 2rem;
     padding: 2rem;
-    background: rgba(20, 20, 30, 0.3);
+    background: #f9fafb;
     border-radius: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid #e5e7eb;
+  }
+  
+  :global(.dark) .github-cta {
+    background: #1f2937;
+    border-color: #374151;
   }
   
   .github-cta-text {
     margin-bottom: 1.5rem;
     font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: #6b7280;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+  }
+  
+  :global(.dark) .github-cta-text {
+    color: #d1d5db;
   }
   
   .github-cta-link {
@@ -965,7 +1031,15 @@ const projects = PROJECTS.map(project => ({
     }
     
     .featured-project {
-      padding: 1.5rem;
+      padding: 1.75rem;
+    }
+    
+    .card-title {
+      padding: 1rem 1rem 0.5rem 1rem;
+    }
+    
+    .card-description {
+      padding: 0 1rem 1.25rem 1rem;
     }
     
     .project-links {

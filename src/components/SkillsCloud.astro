@@ -59,105 +59,83 @@ function getSkillUrl(skill: string) {
 }
 ---
 
-<div class="mt-12 pt-16 relative">
-  <!-- Visual separator at the top of the section -->
-  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-purple-500 to-transparent rounded-full opacity-60"></div>
-  
-  <h3 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-purple-400 to-yellow-200 bg-clip-text text-transparent">
-    {t.skillsTitle}
-  </h3>
-  
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <!-- Backend Card -->
-    <PixelCard client:load variant="backend" className="hover:border-purple-300/60">
-      <h4 class="text-xl font-bold mb-4 flex items-center gap-2 text-purple-300">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M11 16h.01"></path>
-        </svg>
-        {t.backendTitle}
-      </h4>
-      <div class="flex flex-wrap gap-2">
-        {t.backendSkills.map(skill => {
-          const url = getSkillUrl(skill);
-          return (
-            <a 
-              href={url} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              class="px-2.5 py-0.5 text-xs font-medium bg-purple-900/30 rounded-md border border-purple-500/20 hover:bg-purple-800/50 hover:border-purple-400/40 hover:-translate-y-0.5 transition-all duration-200 shadow-sm shadow-purple-900/20 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:ring-offset-1 focus:ring-offset-purple-900/30"
-            >
-              <ShinyText
-              client:load
-                text={skill}
-                speed={2.2}
-                className="text-purple-200 hover:text-white"
-              />
-            </a>
-          );
-        })}
-      </div>
-    </PixelCard>
-
-    <!-- Frontend Card -->
-    <PixelCard client:load variant="frontend" className="hover:border-blue-300/60">
-      <h4 class="text-xl font-bold mb-4 flex items-center gap-2 text-blue-300">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-        </svg>
-        {t.frontendTitle}
-      </h4>
-      <div class="flex flex-wrap gap-2">
-        {t.frontendSkills.map(skill => {
-          const url = getSkillUrl(skill);
-          return (
-            <a 
-              href={url} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              class="px-2.5 py-0.5 text-xs font-medium bg-blue-900/30 rounded-md border border-blue-500/20 hover:bg-blue-800/50 hover:border-blue-400/40 hover:-translate-y-0.5 transition-all duration-200 shadow-sm shadow-blue-900/20 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:ring-offset-1 focus:ring-offset-blue-900/30"
-            >
-              <ShinyText
-              client:load
-                text={skill}
-                speed={2.2}
-                className="text-blue-200 hover:text-white"
-              />
-            </a>
-          );
-        })}
-      </div>
-    </PixelCard>
-
-    <!-- DevOps Card -->
-    <PixelCard client:load variant="devops" className="hover:border-green-300/60">
-      <h4 class="text-xl font-bold mb-4 flex items-center gap-2 text-green-300">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-        </svg>
-        {t.devopsTitle}
-      </h4>
-      <div class="flex flex-wrap gap-2">
-        {t.devopsSkills.map(skill => {
-          const url = getSkillUrl(skill);
-          return (
-            <a 
-              href={url} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              class="px-2.5 py-0.5 text-xs font-medium bg-green-900/30 rounded-md border border-green-500/20 hover:bg-green-800/50 hover:border-green-400/40 hover:-translate-y-0.5 transition-all duration-200 shadow-sm shadow-green-900/20 focus:outline-none focus:ring-2 focus:ring-green-400/50 focus:ring-offset-1 focus:ring-offset-green-900/30"
-            >
-              <ShinyText
-              client:load
-                text={skill}
-                speed={2.2}
-                className="text-green-200 hover:text-white"
-              />
-            </a>
-          );
-        })}
-      </div>
-    </PixelCard>
+<div class="max-w-6xl mx-auto">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  <!-- Backend Card -->
+  <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group">
+    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
+      <svg class="w-8 h-8 text-blue-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M11 16h.01"></path>
+      </svg>
+    </div>
+    <h4 class="text-2xl font-bold mb-6 text-gray-900">{t.backendTitle}</h4>
+    <div class="flex flex-wrap gap-2">
+      {t.backendSkills.map(skill => {
+        const url = getSkillUrl(skill);
+        return (
+          <a 
+            href={url} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="px-3 py-2 text-sm font-medium bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 hover:text-blue-800 transition-all duration-200"
+          >
+            {skill}
+          </a>
+        );
+      })}
+    </div>
   </div>
+
+  <!-- Frontend Card -->
+  <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group">
+    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors duration-300">
+      <svg class="w-8 h-8 text-green-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+      </svg>
+    </div>
+    <h4 class="text-2xl font-bold mb-6 text-gray-900">{t.frontendTitle}</h4>
+    <div class="flex flex-wrap gap-2">
+      {t.frontendSkills.map(skill => {
+        const url = getSkillUrl(skill);
+        return (
+          <a 
+            href={url} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="px-3 py-2 text-sm font-medium bg-green-50 text-green-700 rounded-lg hover:bg-green-100 hover:text-green-800 transition-all duration-200"
+          >
+            {skill}
+          </a>
+        );
+      })}
+    </div>
+  </div>
+
+  <!-- DevOps Card -->
+  <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group">
+    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-colors duration-300">
+      <svg class="w-8 h-8 text-purple-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+      </svg>
+    </div>
+    <h4 class="text-2xl font-bold mb-6 text-gray-900">{t.devopsTitle}</h4>
+    <div class="flex flex-wrap gap-2">
+      {t.devopsSkills.map(skill => {
+        const url = getSkillUrl(skill);
+        return (
+          <a 
+            href={url} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="px-3 py-2 text-sm font-medium bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 hover:text-purple-800 transition-all duration-200"
+          >
+            {skill}
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</div>
 </div>
 
 <style>
