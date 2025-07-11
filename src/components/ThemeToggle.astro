@@ -23,10 +23,10 @@
       clip-rule="evenodd"
     ></path>
   </svg>
-  <!-- Moon Icon (Dark Mode) -->
+  <!-- Moon Icon (Dark Mode) - Visible by default -->
   <svg
     id="theme-toggle-dark-icon"
-    class="hidden w-5 h-5"
+    class="w-5 h-5"
     fill="currentColor"
     viewBox="0 0 20 20"
     xmlns="http://www.w3.org/2000/svg"
@@ -37,72 +37,79 @@
 
 <script>
   function initThemeToggle() {
-    const themeToggleLightIcon = document.querySelector('#theme-toggle-light-icon');
-    const themeToggleDarkIcon = document.querySelector('#theme-toggle-dark-icon');
-    const themeToggleBtn = document.querySelector('#theme-toggle');
+    // Add a small delay to ensure DOM is fully ready
+    setTimeout(() => {
+      const themeToggleLightIcon = document.querySelector('#theme-toggle-light-icon');
+      const themeToggleDarkIcon = document.querySelector('#theme-toggle-dark-icon');
+      const themeToggleBtn = document.querySelector('#theme-toggle');
 
-    console.log('Theme toggle initialization:', {
-      lightIcon: !!themeToggleLightIcon,
-      darkIcon: !!themeToggleDarkIcon,
-      button: !!themeToggleBtn
-    });
-
-    if (!themeToggleLightIcon || !themeToggleDarkIcon || !themeToggleBtn) {
-      console.error('Theme toggle elements not found');
-      return;
-    }
-
-    // Check if dark mode is enabled
-    function isDarkMode() {
-      return localStorage.getItem('color-theme') === 'dark' || 
-             (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    }
-
-    // Set theme icons visibility
-    function setThemeIcons() {
-      const darkMode = isDarkMode();
-      console.log('Setting theme icons, dark mode:', darkMode);
-      
-      if (darkMode) {
-        themeToggleLightIcon.classList.remove('hidden');
-        themeToggleDarkIcon.classList.add('hidden');
-        document.documentElement.classList.add('dark');
-      } else {
-        themeToggleLightIcon.classList.add('hidden');
-        themeToggleDarkIcon.classList.remove('hidden');
-        document.documentElement.classList.remove('dark');
+      if (!themeToggleLightIcon || !themeToggleDarkIcon || !themeToggleBtn) {
+        console.warn('Theme toggle elements not found, retrying...');
+        return;
       }
-    }
 
-    // Initialize theme
-    setThemeIcons();
-
-    // Add click event listener
-    themeToggleBtn.addEventListener('click', function() {
-      console.log('Theme toggle clicked');
-      if (isDarkMode()) {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('color-theme', 'light');
-        console.log('Switched to light mode');
-      } else {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('color-theme', 'dark');
-        console.log('Switched to dark mode');
+      // Check if dark mode is enabled
+      function isDarkMode() {
+        return localStorage.getItem('color-theme') === 'dark' || 
+               (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
       }
+
+      // Set theme icons visibility
+      function setThemeIcons() {
+        const darkMode = isDarkMode();
+        
+        if (darkMode) {
+          themeToggleLightIcon.classList.remove('hidden');
+          themeToggleDarkIcon.classList.add('hidden');
+          document.documentElement.classList.add('dark');
+        } else {
+          themeToggleLightIcon.classList.add('hidden');
+          themeToggleDarkIcon.classList.remove('hidden');
+          document.documentElement.classList.remove('dark');
+        }
+      }
+
+      // Initialize theme icons
       setThemeIcons();
-    });
+
+      // Remove any existing event listeners to prevent duplicates
+      const newButton = themeToggleBtn.cloneNode(true);
+      themeToggleBtn.parentNode.replaceChild(newButton, themeToggleBtn);
+
+      // Add click event listener to the new button
+      newButton.addEventListener('click', function() {
+        if (isDarkMode()) {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('color-theme', 'light');
+        } else {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('color-theme', 'dark');
+        }
+        // Re-query elements after replacement
+        const lightIcon = document.querySelector('#theme-toggle-light-icon');
+        const darkIcon = document.querySelector('#theme-toggle-dark-icon');
+        
+        if (lightIcon && darkIcon) {
+          const newDarkMode = isDarkMode();
+          if (newDarkMode) {
+            lightIcon.classList.remove('hidden');
+            darkIcon.classList.add('hidden');
+          } else {
+            lightIcon.classList.add('hidden');
+            darkIcon.classList.remove('hidden');
+          }
+        }
+      });
+    }, 100);
   }
 
-  // Initialize on page load
-  document.addEventListener('DOMContentLoaded', initThemeToggle);
-  
-  // Re-initialize on Astro page transitions
-  document.addEventListener('astro:after-swap', initThemeToggle);
-  
-  // Initialize immediately if DOM is already loaded
+  // Initialize when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initThemeToggle);
   } else {
     initThemeToggle();
   }
+  
+  // Re-initialize on Astro page transitions
+  document.addEventListener('astro:after-swap', initThemeToggle);
 </script>

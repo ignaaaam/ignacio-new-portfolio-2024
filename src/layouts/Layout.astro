@@ -273,13 +273,21 @@ const metaKeywords = lang === 'es'
 
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
 
-    <!-- Dark mode initialization script -->
+    <!-- Enhanced dark mode initialization script -->
     <script is:inline>
-      if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
+      function initializeTheme() {
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
       }
+      
+      // Initialize theme immediately
+      initializeTheme();
+      
+      // Re-initialize on page transitions
+      document.addEventListener('astro:after-swap', initializeTheme);
     </script>
 
 
