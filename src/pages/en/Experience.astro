@@ -28,12 +28,14 @@ const EXPERIENCE = [
     },
 ];
 ---
-<ol class="relative ml-4 border-gray-200 border-s">
-    {
-        EXPERIENCE.map((experience) => (
-            <li class="mb-10 ms-4">
-                <ExperienceItem {...experience} />
-            </li>
-        ))
-    }
-</ol>
+<div class="max-w-4xl mx-auto flex justify-center">
+    <ol class="relative ml-4 border-gray-200 border-s">
+        {
+            EXPERIENCE.map((experience) => (
+                <li class="mb-10 ms-4">
+                    <ExperienceItem {...experience} />
+                </li>
+            ))
+        }
+    </ol>
+</div>

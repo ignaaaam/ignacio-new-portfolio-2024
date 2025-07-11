@@ -31,12 +31,14 @@ const STUDIES = [
 ];
 ---
 
-<ol class="relative border-s border-gray-200 ml-4">
-  {
-    STUDIES.map((study) => (
-      <li class="mb-10 ms-4">
-        <StudiesItem {...study} />
-      </li>
-    ))
-  }
-</ol>
+<div class="max-w-4xl mx-auto flex justify-center">
+  <ol class="relative border-s border-gray-200 dark:border-gray-700 pl-8 z-0">
+    {
+      STUDIES.map((study) => (
+        <li class="mb-10 relative">
+          <StudiesItem {...study} />
+        </li>
+      ))
+    }
+  </ol>
+</div>

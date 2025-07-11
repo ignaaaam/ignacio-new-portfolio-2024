@@ -27,37 +27,15 @@ const EXPERIENCE = [
         link: 'https://www.upwork.com/',
     },
 ];
-
-// const STUDIES = [
-//     {
-//         title: 'Desarrollador De Aplicaciones Web',
-//         institution: 'Academia Nuria',
-//         location: 'Spain, Barcelona - Academia Nuria',
-//         date: '2018 - 2022',
-//         link: 'https://www.escolesnuria.cat/es/',
-//     },
-//     {
-//         title: 'Freelance Web Developer',
-//         institution: 'Upwork',
-//         location: 'Remote - Worldwide',
-//         date: '2019 - 2020',
-//         link: 'https://www.escolesnuria.cat/es/',
-//     },
-//     {
-//         title: 'Sistemas y Redes Informáticas',
-//         institution: 'Academia Nuria',
-//         location: 'Spain, Barcelona - Academia Nuria',
-//         date: '2014 - 2016',
-//         link: 'https://www.escolesnuria.cat/es/',
-//     },
-// ];
 ---
-<ol class="relative ml-4 border-gray-200 border-s">
-    {
-        EXPERIENCE.map((experience) => (
-            <li class="mb-10 ms-4">
-                <ExperienceItem {...experience} />
-            </li>
-        ))
-    }
-</ol>
+<div class="max-w-4xl mx-auto flex justify-center">
+    <ol class="relative ml-4 border-gray-200 border-s">
+        {
+            EXPERIENCE.map((experience) => (
+                <li class="mb-10 ms-4">
+                    <ExperienceItem {...experience} />
+                </li>
+            ))
+        }
+    </ol>
+</div>
