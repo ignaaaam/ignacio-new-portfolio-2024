@@ -1,73 +1,210 @@
 ---
 import { getLangFromUrl } from "../i18n/utils";
+import SpanishFlag from "./icons/SpanishFlag.astro";
+import EnglishFlag from "./icons/EnglishFlag.astro";
 
 const lang = getLangFromUrl(Astro.url);
-
-import SpanishFlag from "../components/icons/SpanishFlag.astro";
-import EnglishFlag from "../components/icons/EnglishFlag.astro";
+const { class: className = "" } = Astro.props;
 ---
 
-<div
-  class="flex items-center space-x-1 md:mt-0 md:order-2 md:space-x-0 rtl:space-x-reverse"
->
-  {
-    lang === "es" ? (
-      <button
-      type="button" data-dropdown-toggle="language-dropdown-menu"
-        class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-colors"
+<div class={`relative inline-block text-left ${className}`}>
+  <!-- Dropdown Button -->
+  <button
+    id="language-dropdown-button"
+    type="button"
+    class="inline-flex items-center justify-center px-3 py-2 sm:px-4 sm:py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-all duration-200 border border-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 min-w-[44px] min-h-[44px]"
+    aria-expanded="false"
+    aria-haspopup="true"
+    aria-label="Select language"
+  >
+    <!-- Current Language Display -->
+    <div class="flex items-center gap-2">
+      {lang === "es" ? <SpanishFlag /> : <EnglishFlag />}
+      <span class="hidden sm:inline">
+        {lang === "es" ? "Español" : "English"}
+      </span>
+    </div>
+    
+    <!-- Dropdown Arrow -->
+    <svg
+      class="w-4 h-4 ml-2 transition-transform duration-200"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"
+      ></path>
+    </svg>
+  </button>
+
+  <!-- Dropdown Menu -->
+  <div
+    id="language-dropdown-menu"
+    class="absolute right-0 mt-2 w-48 sm:w-56 origin-top-right bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600 opacity-0 invisible scale-95 transition-all duration-200 z-50"
+    role="menu"
+    aria-orientation="vertical"
+    aria-labelledby="language-dropdown-button"
+  >
+    <div class="py-1" role="none">
+      <!-- Spanish Option -->
+      <a
+        href="/"
+        data-astro-reload
+        class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-colors duration-150 cursor-pointer"
+        role="menuitem"
+        tabindex="-1"
       >
         <SpanishFlag />
-        Spanish (ES)
-      </button>
-    ) : (
-      <a data-astro-reload
-        data-dropdown-toggle="language-dropdown-menu"
-        class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-colors"
-        role="menuitem"
-      >
-        <div class="inline-flex items-center">
-          <EnglishFlag />
-          English (US)
+        <div class="flex flex-col">
+          <span class="font-medium">Español</span>
+          <span class="text-xs text-gray-500 dark:text-gray-400">Spanish</span>
         </div>
       </a>
-    )
-  }
-
-  <div
-    class="z-50 hidden my-4 text-base list-none bg-white dark:bg-gray-800 divide-y divide-gray-100 dark:divide-gray-700 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600"
-    id="language-dropdown-menu"
-  >
-    <ul
-      class="py-2 font-medium"
-      role="none"
-    >
-      <li>
-        {
-          lang === "es" ? (
-            <a data-astro-reload
-              href="/en"
-              class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-colors"
-              role="menuitem"
-            >
-              <div class="inline-flex items-center gap-2">
-                <EnglishFlag />
-                English (US)
-              </div>
-            </a>
-          ) : (
-            <a data-astro-reload
-              href="/"
-              class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-colors"
-              role="menuitem"
-            >
-              <div class="inline-flex items-center gap-2">
-                <SpanishFlag />
-                Spanish (ES)
-              </div>
-            </a>
-          )
-        }
-      </li>
-    </ul>
+      
+      <!-- English Option -->
+      <a
+        href="/en"
+        data-astro-reload
+        class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-colors duration-150 cursor-pointer"
+        role="menuitem"
+        tabindex="-1"
+      >
+        <EnglishFlag />
+        <div class="flex flex-col">
+          <span class="font-medium">English</span>
+          <span class="text-xs text-gray-500 dark:text-gray-400">Inglés</span>
+        </div>
+      </a>
+    </div>
   </div>
 </div>
+
+<script>
+  class LanguageDropdown {
+    constructor() {
+      this.button = null;
+      this.menu = null;
+      this.arrow = null;
+      this.isOpen = false;
+      this.isInitialized = false;
+      
+      this.init();
+    }
+
+    init() {
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => this.setup());
+      } else {
+        this.setup();
+      }
+    }
+
+    setup() {
+      this.button = document.getElementById('language-dropdown-button');
+      this.menu = document.getElementById('language-dropdown-menu');
+      this.arrow = this.button?.querySelector('svg');
+
+      if (!this.button || !this.menu) {
+        console.warn('Language dropdown elements not found');
+        return;
+      }
+
+      // Add event listeners
+      this.button.addEventListener('click', (e) => this.toggleDropdown(e));
+      this.button.addEventListener('keydown', (e) => this.handleKeydown(e));
+      
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => this.handleOutsideClick(e));
+      
+      // Close dropdown on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && this.isOpen) {
+          this.closeDropdown();
+        }
+      });
+
+      this.isInitialized = true;
+    }
+
+    toggleDropdown(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      if (this.isOpen) {
+        this.closeDropdown();
+      } else {
+        this.openDropdown();
+      }
+    }
+
+    openDropdown() {
+      this.isOpen = true;
+      this.menu.classList.remove('opacity-0', 'invisible', 'scale-95');
+      this.menu.classList.add('opacity-100', 'visible', 'scale-100');
+      this.arrow?.classList.add('rotate-180');
+      this.button?.setAttribute('aria-expanded', 'true');
+      
+      // Focus first menu item
+      const firstItem = this.menu.querySelector('[role="menuitem"]');
+      if (firstItem) {
+        setTimeout(() => firstItem.focus(), 100);
+      }
+    }
+
+    closeDropdown() {
+      this.isOpen = false;
+      this.menu.classList.add('opacity-0', 'invisible', 'scale-95');
+      this.menu.classList.remove('opacity-100', 'visible', 'scale-100');
+      this.arrow?.classList.remove('rotate-180');
+      this.button?.setAttribute('aria-expanded', 'false');
+      this.button?.focus();
+    }
+
+    handleKeydown(e) {
+      if (!this.isOpen) return;
+
+      const menuItems = Array.from(this.menu.querySelectorAll('[role="menuitem"]'));
+      const currentIndex = menuItems.findIndex(item => item === document.activeElement);
+
+      switch (e.key) {
+        case 'ArrowDown':
+          e.preventDefault();
+          const nextIndex = (currentIndex + 1) % menuItems.length;
+          menuItems[nextIndex]?.focus();
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          const prevIndex = currentIndex <= 0 ? menuItems.length - 1 : currentIndex - 1;
+          menuItems[prevIndex]?.focus();
+          break;
+        case 'Enter':
+        case ' ':
+          e.preventDefault();
+          document.activeElement?.click();
+          break;
+      }
+    }
+
+    handleOutsideClick(e) {
+      if (!this.button?.contains(e.target) && !this.menu?.contains(e.target)) {
+        this.closeDropdown();
+      }
+    }
+  }
+
+  // Initialize language dropdown
+  const languageDropdown = new LanguageDropdown();
+
+  // Re-initialize on Astro page transitions
+  document.addEventListener('astro:after-swap', () => {
+    if (!languageDropdown.isInitialized) {
+      languageDropdown.init();
+    }
+  });
+</script>

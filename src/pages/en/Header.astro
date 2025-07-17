@@ -5,44 +5,30 @@ const pathname = Astro.url.pathname;
 ---
 
 <header
-  class={`flex flex-col lg:flex-row items-center w-full py-4 lg:py-6 mx-auto px-4 lg:px-8 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50`}
+  class={`flex items-center justify-between w-full py-4 lg:py-6 mx-auto px-4 lg:px-8 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50`}
 >
-  <!-- Top row: Logo and controls -->
-  <div class="flex items-center justify-between w-full lg:w-auto">
-    <div class="flex items-center gap-3">
-      <a href="/en" class="flex items-center gap-3">
-        <img
-          class="flex rounded-full size-10 md:size-12 ring-2 ring-blue-500/20"
-          src="/img/profile_picture.jpg"
-          alt="ignathedev photo"
-        />
-        <div class="hidden sm:block">
-          <h1 class="text-lg font-semibold text-gray-900 dark:text-white">Ignacio Amat</h1>
-          <p class="text-sm text-gray-600 dark:text-gray-300">Full Stack Developer</p>
-        </div>
-      </a>
-    </div>
-
-    <div class="flex items-center gap-2 lg:hidden">
-      <a
-        class="bg-blue-600 text-white transition rounded-lg hover:bg-blue-700 px-3 py-1.5 text-sm font-medium"
-        href="/en/blog"
-        rel="noopener noreferrer"
-      >
-        Blog
-      </a>
-      <ThemeToggle />
-      <Dropdown class="flex" />
-    </div>
+  <!-- Logo -->
+  <div class="flex items-center gap-3">
+    <a href="/en" class="flex items-center gap-3">
+      <img
+        class="flex rounded-full size-10 md:size-12 ring-2 ring-blue-500/20"
+        src="/img/profile_picture.jpg"
+        alt="ignathedev photo"
+      />
+      <div class="hidden sm:block">
+        <h1 class="text-lg font-semibold text-gray-900 dark:text-white">Ignacio Amat</h1>
+        <p class="text-sm text-gray-600 dark:text-gray-300">Full Stack Developer</p>
+      </div>
+    </a>
   </div>
 
-  <!-- Navigation row -->
-  <div class="flex-1 flex justify-center w-full lg:w-auto mt-3 lg:mt-0">
-    <nav class="flex flex-wrap items-center justify-center gap-1 sm:gap-2 lg:gap-4 text-sm lg:text-base w-full lg:w-auto">
+  <!-- Navigation -->
+  <div class="flex-1 flex justify-center mx-4">
+    <nav class="flex flex-wrap items-center justify-center gap-1 sm:gap-2 lg:gap-4 text-sm lg:text-base">
       {
         pathname !== "/en" ? 
           <a
-            class="text-gray-700 dark:text-gray-300 transition rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-700 dark:hover:text-blue-400 px-2 sm:px-3 py-2 font-medium text-center flex-1 sm:flex-initial"
+            class="text-gray-700 dark:text-gray-300 transition rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-700 dark:hover:text-blue-400 px-2 sm:px-3 py-2 font-medium text-center"
             href="/en"
           >
             Home
@@ -50,25 +36,25 @@ const pathname = Astro.url.pathname;
          : 
           <>
             <a
-              class="text-gray-700 dark:text-gray-300 transition rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-700 dark:hover:text-blue-400 px-2 sm:px-3 py-2 font-medium text-center flex-1 sm:flex-initial"
+              class="text-gray-700 dark:text-gray-300 transition rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-700 dark:hover:text-blue-400 px-2 sm:px-3 py-2 font-medium text-center"
               href="#services"
             >
               Services
             </a>
             <a
-              class="text-gray-700 dark:text-gray-300 transition rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-700 dark:hover:text-blue-400 px-2 sm:px-3 py-2 font-medium text-center flex-1 sm:flex-initial"
+              class="text-gray-700 dark:text-gray-300 transition rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-700 dark:hover:text-blue-400 px-2 sm:px-3 py-2 font-medium text-center"
               href="#experience"
             >
               Experience
             </a>
             <a
-              class="text-gray-700 dark:text-gray-300 transition rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-700 dark:hover:text-blue-400 px-2 sm:px-3 py-2 font-medium text-center flex-1 sm:flex-initial"
+              class="text-gray-700 dark:text-gray-300 transition rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-700 dark:hover:text-blue-400 px-2 sm:px-3 py-2 font-medium text-center"
               href="#projects"
             >
               Projects
             </a>
             <a
-              class="text-gray-700 dark:text-gray-300 transition rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-700 dark:hover:text-blue-400 px-2 sm:px-3 py-2 font-medium text-center flex-1 sm:flex-initial"
+              class="text-gray-700 dark:text-gray-300 transition rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-700 dark:hover:text-blue-400 px-2 sm:px-3 py-2 font-medium text-center"
               href="#contact"
             >
               Contact
@@ -78,10 +64,10 @@ const pathname = Astro.url.pathname;
     </nav>
   </div>
 
-  <!-- Desktop controls -->
-  <div class="hidden lg:flex items-center gap-3">
+  <!-- Controls -->
+  <div class="flex items-center gap-2">
     <a
-      class="bg-blue-600 text-white transition rounded-lg hover:bg-blue-700 px-4 py-2 text-sm font-medium"
+      class="bg-blue-600 text-white transition rounded-lg hover:bg-blue-700 px-3 py-1.5 text-sm font-medium"
       href="/en/blog"
       rel="noopener noreferrer"
     >
