@@ -1,9 +1,15 @@
 ---
 import DocumentIcon from "./icons/DocumentIcon.astro";
+
+export interface Props {
+  isEnglish?: boolean;
+}
+
+const { isEnglish = false } = Astro.props;
 ---
 
 <div class="cv-button-wrapper">
-  <button id="cv-download-btn" class="cv-download-btn">
+  <button id="cv-download-btn" class="cv-download-btn" data-is-english={isEnglish.toString()}>
     <DocumentIcon class="size-4 md:size-6" />
     <span class="cv-btn-text">
       <slot>Download CV</slot>
@@ -39,9 +45,13 @@ import DocumentIcon from "./icons/DocumentIcon.astro";
         // Two options for downloading:
         
         // OPTION 1: Direct download (simpler)
+        const isEnglish = downloadBtn.getAttribute('data-is-english') === 'true';
+        const cvFileName = isEnglish ? 'CV-Ignacio-new-design-english.pdf' : 'CV-Ignacio-new-design.pdf';
+        const downloadName = isEnglish ? 'ignacio-cv-english-2025.pdf' : 'ignacio-cv-2025.pdf';
+        
         const link = document.createElement('a');
-        link.href = '/CV-Ignacio-new-design.pdf';
-        link.download = 'ignacio-cv-2025.pdf';
+        link.href = `/${cvFileName}`;
+        link.download = downloadName;
         link.click();
         
         // OPTION 2: Use API endpoint (if you implement the server-side approach)

@@ -36,7 +36,7 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
     <SectionContainer class="hero-section -mt-6 pt-2 pb-14 md:pt-4 md:pb-16 lg:py-32 min-h-[92vh] md:min-h-[95vh] lg:min-h-screen flex flex-col justify-center relative">
       <div class="max-w-4xl mx-auto text-center">
         <div class="flex items-center justify-center gap-3 mb-6">
-          <Badge class="bg-blue-400/80 text-blue-950 hover:bg-blue-400 transition-colors">
+          <Badge class="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800 transition-colors">
             Open for offers
           </Badge>
         </div>
@@ -95,7 +95,7 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
             <LaracastsIcon class="size-5" />
             Laracasts
           </SocialPill>
-          <CVDownloadButton />
+          <CVDownloadButton isEnglish={true}>Download CV</CVDownloadButton>
         </nav>
         
         <!-- Contact info -->

@@ -31,10 +31,8 @@ import FAQSection from "../components/FAQSection.astro";
   description="Desarrollador web full stack en Barcelona especializado en crear aplicaciones web a medida con PHP, Laravel, Vue y tecnologías modernas. Ofrezco soluciones web de alto rendimiento para empresas y sitios web profesionales optimizados para SEO."
 >
   <main>
-    <SectionContainer
-      class="hero-section pt-16 pb-20 md:pt-20 md:pb-24 lg:pt-24 lg:pb-32 min-h-[80vh] flex flex-col justify-center relative"
-    >
-      <div class="max-w-4xl mx-auto text-center px-4">
+    <SectionContainer class="hero-section -mt-6 pt-2 pb-14 md:pt-4 md:pb-16 lg:py-32 min-h-[92vh] md:min-h-[95vh] lg:min-h-screen flex flex-col justify-center relative">
+      <div class="max-w-4xl mx-auto text-center">
         <div class="flex items-center justify-center gap-3 mb-6">
           <Badge class="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800 transition-colors">
             Disponible para proyectos
@@ -45,10 +43,12 @@ import FAQSection from "../components/FAQSection.astro";
           Hola, soy <span class="text-blue-600 dark:text-blue-400">Ignacio Amat</span>
         </h1>
         
-        <h2 class="text-xl md:text-2xl lg:text-3xl text-gray-700 dark:text-gray-300 mb-8 font-medium leading-relaxed">
-          <span class="text-blue-600 dark:text-blue-400 font-semibold">Desarrollador Web Full Stack</span> 
-          con <span class="font-semibold">+4 años de experiencia</span> especializado en crear 
-          aplicaciones web modernas y de alto rendimiento
+        <h2 class="text-xl lg:text-2xl text-gray-700 dark:text-gray-200 mb-4 font-medium leading-relaxed max-w-2xl mx-auto">
+          <span class="font-semibold">+4 años de experiencia.</span> <span class="font-bold text-blue-600 dark:text-yellow-200">Desarrollador Web Full Stack</span> de <span class="text-red-600 dark:text-red-200 font-bold">Barcelona, España.</span>
+        </h2>
+        
+        <h2 class="text-xl lg:text-2xl text-gray-700 dark:text-gray-200 mb-8 font-medium leading-relaxed max-w-2xl mx-auto">
+          Especializado en crear aplicaciones web y sitios web de alto rendimiento con tecnologías modernas.
         </h2>
         
         <div class="flex flex-wrap justify-center gap-3 mb-8">
@@ -59,11 +59,15 @@ import FAQSection from "../components/FAQSection.astro";
           <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-4 py-2 rounded-lg font-medium">TailwindCSS</span>
         </div>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-          <a href="#services" class="px-8 py-4 text-lg font-semibold text-white bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+        <!-- Call to Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+          <a href="#services" class="px-8 py-5 text-xl font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center gap-2">
             Ver mis servicios
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
           </a>
-          <a href="#contact" class="px-8 py-4 text-lg font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-800 transition-all duration-300">
+          <a href="#contact" class="px-8 py-5 text-xl font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-800 transition-all duration-300">
             Contactar ahora
           </a>
         </div>
@@ -75,29 +79,43 @@ import FAQSection from "../components/FAQSection.astro";
           </SocialPill>
           <SocialPill href="https://www.github.com/ignaaaam">
             <GithubIcon class="size-5" />
-            Github
+            GitHub
           </SocialPill>
-          <SocialPill href="https://www.behance.net/igna21df">
+          <SocialPill href="https://www.behance.net/ignathedev">
             <BehanceIcon class="size-5" />
             Behance
           </SocialPill>
-          <CVDownloadButton> Descargar CV </CVDownloadButton>
+          <SocialPill href="https://stackoverflow.com/users/13370846/ignacio-amat-urbina">
+            <StackOverflowIcon class="size-5" />
+            Stack Overflow
+          </SocialPill>
+          <SocialPill href="https://laracasts.com/@ignacio-amat-urbina">
+            <LaracastsIcon class="size-5" />
+            Laracasts
+          </SocialPill>
+          <CVDownloadButton isEnglish={false}>Descargar CV</CVDownloadButton>
         </nav>
         
-        <div class="flex items-center justify-center gap-2 text-gray-600 dark:text-gray-400">
-          <MailIcon class="size-5" />
-          <span>ignacioamat@ignathedev.com</span>
+        <!-- Contact info -->
+        <div class="flex flex-col items-center justify-center gap-2 mb-8">
+          <SocialPill href="#contact" class="min-w-[16rem] md:min-w-[18rem]">
+            <MailIcon class="size-4 md:size-6" />
+            ignacioamat@ignathedev.com
+          </SocialPill>
+          <span class="text-xs text-gray-500 dark:text-gray-400 italic">Contáctame por email</span>
         </div>
+        
+        <!-- Scroll indicator -->
+        <ScrollIndicator class="!bottom-2 md:!bottom-16 lg:!bottom-24" />
       </div>
     </SectionContainer>
 
-    <!-- Services section with clean design -->
-    <div class="w-full bg-gray-50 dark:bg-gray-900">
-      <SectionContainer id="services" class="py-20 md:py-28">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-            Mis Servicios
-          </h2>
+    <!-- Services section with improved design -->
+    <SectionContainer id="services" class="py-20 md:py-28">
+      <div class="text-center mb-20">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+          Mis Servicios
+        </h2>
           <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Soluciones web a medida: desde páginas de aterrizaje optimizadas hasta aplicaciones complejas, enfocadas en rendimiento, usabilidad y resultados.
           </p>
