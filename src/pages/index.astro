@@ -31,49 +31,102 @@ import FAQSection from "../components/FAQSection.astro";
   description="Desarrollador web full stack en Barcelona especializado en crear aplicaciones web a medida con PHP, Laravel, Vue y tecnologías modernas. Ofrezco soluciones web de alto rendimiento para empresas y sitios web profesionales optimizados para SEO."
 >
   <main>
-    <SectionContainer class="hero-section -mt-6 pt-2 pb-14 md:pt-4 md:pb-16 lg:py-32 min-h-[92vh] md:min-h-[95vh] lg:min-h-screen flex flex-col justify-center relative">
+    <SectionContainer
+      class="hero-section -mt-6 pt-2 pb-32 md:pt-4 md:pb-32 lg:py-32 lg:pb-40 min-h-[92vh] md:min-h-[95vh] lg:min-h-screen flex flex-col justify-center relative"
+    >
       <div class="max-w-4xl mx-auto text-center">
-        <div class="flex items-center justify-center gap-3 mb-6">
-          <Badge class="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800 transition-colors">
+        <div class="flex items-center justify-center gap-3 mb-8 mt-4 md:mt-0">
+          <Badge
+            class="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800 transition-colors"
+          >
             Disponible para proyectos
           </Badge>
         </div>
-        
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-          Hola, soy <span class="text-blue-600 dark:text-blue-400">Ignacio Amat</span>
+
+        <h1
+          class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
+        >
+          Hola, soy <span class="text-blue-600 dark:text-blue-400"
+            >Ignacio Amat</span
+          >
         </h1>
-        
-        <h2 class="text-xl lg:text-2xl text-gray-700 dark:text-gray-200 mb-4 font-medium leading-relaxed max-w-2xl mx-auto">
-          <span class="font-semibold">+4 años de experiencia.</span> <span class="font-bold text-blue-600 dark:text-yellow-200">Desarrollador Web Full Stack</span> de <span class="text-red-600 dark:text-red-200 font-bold">Barcelona, España.</span>
+
+        <h2
+          class="text-xl lg:text-2xl text-gray-700 dark:text-gray-200 mb-4 font-medium leading-relaxed max-w-2xl mx-auto"
+        >
+          <span class="font-semibold">+4 años de experiencia.</span>
+          <span class="font-bold text-blue-600 dark:text-yellow-200"
+            >Desarrollador Web Full Stack</span
+          > de <span class="text-red-600 dark:text-red-200 font-bold"
+            >Barcelona, España.</span
+          >
         </h2>
-        
-        <h2 class="text-xl lg:text-2xl text-gray-700 dark:text-gray-200 mb-8 font-medium leading-relaxed max-w-2xl mx-auto">
-          Especializado en crear aplicaciones web y sitios web de alto rendimiento con tecnologías modernas.
+
+        <h2
+          class="text-xl lg:text-2xl text-gray-700 dark:text-gray-200 mb-8 font-medium leading-relaxed max-w-2xl mx-auto"
+        >
+          Especializado en crear aplicaciones web y sitios web de alto
+          rendimiento con tecnologías modernas.
         </h2>
-        
+
         <div class="flex flex-wrap justify-center gap-3 mb-8">
-          <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-lg font-medium">PHP</span>
-          <span class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-4 py-2 rounded-lg font-medium">Laravel</span>
-          <span class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-4 py-2 rounded-lg font-medium">Vue.js</span>
-          <span class="bg-purple-50 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 px-4 py-2 rounded-lg font-medium">JavaScript</span>
-          <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-4 py-2 rounded-lg font-medium">TailwindCSS</span>
+          <span
+            class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-lg font-medium"
+            >PHP</span
+          >
+          <span
+            class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-4 py-2 rounded-lg font-medium"
+            >Laravel</span
+          >
+          <span
+            class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-4 py-2 rounded-lg font-medium"
+            >Vue.js</span
+          >
+          <span
+            class="bg-purple-50 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 px-4 py-2 rounded-lg font-medium"
+            >JavaScript</span
+          >
+          <span
+            class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-4 py-2 rounded-lg font-medium"
+            >TailwindCSS</span
+          >
         </div>
 
         <!-- Call to Action Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <a href="#services" class="px-8 py-5 text-xl font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center gap-2">
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+        >
+          <a
+            href="#services"
+            class="px-8 py-5 text-xl font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center gap-2"
+          >
             Ver mis servicios
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              ></path>
             </svg>
           </a>
-          <a href="#contact" class="px-8 py-5 text-xl font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-800 transition-all duration-300">
+          <a
+            href="#contact"
+            class="px-8 py-5 text-xl font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-800 transition-all duration-300"
+          >
             Contactar ahora
           </a>
         </div>
-        
+
         <nav class="flex flex-wrap justify-center gap-4 mb-8">
-          <SocialPill href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223">
+          <SocialPill
+            href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223"
+          >
             <LinkedinIcon class="size-5" />
             LinkedIn
           </SocialPill>
@@ -85,7 +138,9 @@ import FAQSection from "../components/FAQSection.astro";
             <BehanceIcon class="size-5" />
             Behance
           </SocialPill>
-          <SocialPill href="https://stackoverflow.com/users/13370846/ignacio-amat-urbina">
+          <SocialPill
+            href="https://stackoverflow.com/users/13370846/ignacio-amat-urbina"
+          >
             <StackOverflowIcon class="size-5" />
             Stack Overflow
           </SocialPill>
@@ -95,260 +150,446 @@ import FAQSection from "../components/FAQSection.astro";
           </SocialPill>
           <CVDownloadButton isEnglish={false}>Descargar CV</CVDownloadButton>
         </nav>
-        
+
         <!-- Contact info -->
-        <div class="flex flex-col items-center justify-center gap-2 mb-8">
-          <SocialPill href="#contact" class="min-w-[16rem] md:min-w-[18rem]">
+        <div
+          class="flex flex-col items-center justify-center gap-2 mb-16 mt-[-1rem] md:mt-0"
+        >
+          <SocialPill
+            href="#contact"
+            class="min-w-[16rem] md:min-w-[18rem]"
+          >
             <MailIcon class="size-4 md:size-6" />
             ignacioamat@ignathedev.com
           </SocialPill>
-          <span class="text-xs text-gray-500 dark:text-gray-400 italic">Contáctame por email</span>
+          <span class="text-xs text-gray-500 dark:text-gray-400 italic"
+            >Contáctame por email</span
+          >
         </div>
-        
+
         <!-- Scroll indicator -->
-        <ScrollIndicator class="!bottom-2 md:!bottom-16 lg:!bottom-24" />
+        <ScrollIndicator class="!bottom-8 md:!bottom-8 lg:!bottom-12" />
       </div>
     </SectionContainer>
 
     <!-- Services section with improved design -->
-    <SectionContainer id="services" class="py-20 md:py-28">
+    <SectionContainer
+      id="services"
+      class="pt-20 md:pt-28 pb-20 md:pb-28"
+    >
       <div class="text-center mb-20">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+        <h2
+          class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white"
+        >
           Mis Servicios
         </h2>
-          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Soluciones web a medida: desde páginas de aterrizaje optimizadas hasta aplicaciones complejas, enfocadas en rendimiento, usabilidad y resultados.
-          </p>
-        </div>
+        <p
+          class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+        >
+          Soluciones web a medida: desde páginas de aterrizaje optimizadas hasta
+          aplicaciones complejas, enfocadas en rendimiento, usabilidad y
+          resultados.
+        </p>
+      </div>
 
       <!-- Main services grid -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
         <!-- Desarrollo Web Integral -->
-        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-700">
-          <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 dark:text-blue-400 group-hover:text-white transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        <div
+          class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-700"
+        >
+          <div
+            class="w-16 h-16 bg-blue-100 dark:bg-blue-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8 text-blue-600 dark:text-blue-400 group-hover:text-white transition-colors duration-300"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              ></path>
             </svg>
           </div>
-          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Desarrollo Web Integral</h3>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+            Desarrollo Web Integral
+          </h3>
           <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-            Creo soluciones web completas y personalizadas, desde sitios web estáticos y landing pages hasta aplicaciones dinámicas complejas, adaptadas a tus objetivos.
+            Creo soluciones web completas y personalizadas, desde sitios web
+            estáticos y landing pages hasta aplicaciones dinámicas complejas,
+            adaptadas a tus objetivos.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium">PHP</span>
-            <span class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium">Laravel</span>
-            <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium">Astro</span>
-            <span class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-lg text-sm font-medium">Vue.js</span>
+            <span
+              class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium"
+              >PHP</span
+            >
+            <span
+              class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium"
+              >Laravel</span
+            >
+            <span
+              class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium"
+              >Astro</span
+            >
+            <span
+              class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-lg text-sm font-medium"
+              >Vue.js</span
+            >
           </div>
         </div>
 
         <!-- Back-End Robusto -->
-        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-700">
-          <div class="w-16 h-16 bg-green-100 dark:bg-green-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600 dark:text-green-400 group-hover:text-white transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        <div
+          class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-700"
+        >
+          <div
+            class="w-16 h-16 bg-green-100 dark:bg-green-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8 text-green-600 dark:text-green-400 group-hover:text-white transition-colors duration-300"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+              ></path>
             </svg>
           </div>
-          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Back-End Robusto</h3>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+            Back-End Robusto
+          </h3>
           <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-            Construyo la lógica y la base de datos de tus aplicaciones web asegurando rendimiento, seguridad y escalabilidad. Experiencia en PHP y Laravel para APIs y sistemas complejos.
+            Construyo la lógica y la base de datos de tus aplicaciones web
+            asegurando rendimiento, seguridad y escalabilidad. Experiencia en
+            PHP y Laravel para APIs y sistemas complejos.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium">PHP</span>
-            <span class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium">Laravel</span>
-            <span class="bg-cyan-50 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 px-3 py-1 rounded-lg text-sm font-medium">MySQL</span>
-            <span class="bg-purple-50 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 px-3 py-1 rounded-lg text-sm font-medium">API REST</span>
+            <span
+              class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium"
+              >PHP</span
+            >
+            <span
+              class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium"
+              >Laravel</span
+            >
+            <span
+              class="bg-cyan-50 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 px-3 py-1 rounded-lg text-sm font-medium"
+              >MySQL</span
+            >
+            <span
+              class="bg-purple-50 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 px-3 py-1 rounded-lg text-sm font-medium"
+              >API REST</span
+            >
           </div>
         </div>
 
         <!-- Interfaces Modernas -->
-        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-700">
-          <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-colors duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-600 dark:text-purple-400 group-hover:text-white transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        <div
+          class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-700"
+        >
+          <div
+            class="w-16 h-16 bg-purple-100 dark:bg-purple-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-colors duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8 text-purple-600 dark:text-purple-400 group-hover:text-white transition-colors duration-300"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+              ></path>
             </svg>
           </div>
-          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Interfaces Modernas</h3>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+            Interfaces Modernas
+          </h3>
           <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-            Desarrollo interfaces de usuario modernas, responsivas y atractivas que proporcionan una experiencia excepcional del usuario en todos los dispositivos y navegadores.
+            Desarrollo interfaces de usuario modernas, responsivas y atractivas
+            que proporcionan una experiencia excepcional del usuario en todos
+            los dispositivos y navegadores.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-lg text-sm font-medium">Vue.js</span>
-            <span class="bg-yellow-50 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-lg text-sm font-medium">JavaScript</span>
-            <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium">TailwindCSS</span>
+            <span
+              class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-lg text-sm font-medium"
+              >Vue.js</span
+            >
+            <span
+              class="bg-yellow-50 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-lg text-sm font-medium"
+              >JavaScript</span
+            >
+            <span
+              class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium"
+              >TailwindCSS</span
+            >
           </div>
         </div>
       </div>
 
       <!-- Call to Action -->
       <div class="text-center">
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-          <a href="#projects" class="px-8 py-4 text-lg font-semibold text-white bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6"
+        >
+          <a
+            href="#projects"
+            class="px-8 py-4 text-lg font-semibold text-white bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105"
+          >
             Ver mis proyectos
           </a>
-          <a href="#contact" class="px-8 py-4 text-lg font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-800 transition-all duration-300">
+          <a
+            href="#contact"
+            class="px-8 py-4 text-lg font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-800 transition-all duration-300"
+          >
             Solicitar presupuesto
           </a>
         </div>
-        <p class="text-gray-500 dark:text-gray-400 text-sm">Sin compromiso • Respuesta en 24-48h</p>
-      </div>
-      </SectionContainer>
-    </div>
-
-    <SectionContainer
-      id="expertise"
-      class="py-20 md:py-28"
-    >
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-          Tecnologías
-        </h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          Domino las tecnologías más demandadas del mercado para crear soluciones web robustas y escalables
+        <p class="text-gray-500 dark:text-gray-400 text-sm">
+          Sin compromiso • Respuesta en 24-48h
         </p>
       </div>
-      <SkillsCloud lang="es" />
-    </SectionContainer>
-
-    <FullSectionContainer
-      id="landingPage"
-      class="relative py-20 bg-blue-600 dark:bg-blue-800"
-    >
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="mb-6 text-4xl lg:text-5xl font-bold text-white">
-          ¿Necesitas una página web profesional?
-        </h2>
-        <div class="space-y-6 mb-12">
-          <h3 class="text-2xl lg:text-3xl font-medium text-blue-100 dark:text-blue-200">
-            Desarrollo web personalizado para tu negocio
-          </h3>
-          <div class="flex flex-wrap justify-center gap-6 text-lg">
-            <span class="flex items-center gap-2 text-white">
-              <svg class="w-6 h-6 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              Landing Pages
-            </span>
-            <span class="flex items-center gap-2 text-white">
-              <svg class="w-6 h-6 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              E-commerce
-            </span>
-            <span class="flex items-center gap-2 text-white">
-              <svg class="w-6 h-6 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              Aplicaciones Web
-            </span>
-          </div>
-          <p class="text-xl text-blue-100 dark:text-blue-200 max-w-2xl mx-auto">
-            Diseño y desarrollo sitios web optimizados, rápidos y efectivos que
-            ayudan a tu negocio a crecer online.
-          </p>
-        </div>
-
-        <a href="#contact" class="inline-block px-8 py-4 text-lg font-semibold text-blue-600 bg-white rounded-lg hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 shadow-lg">
-          ¿Hablamos de tu proyecto?
-        </a>
-      </div>
-    </FullSectionContainer>
-    <div class="w-full bg-gray-50 dark:bg-gray-900">
-      <SectionContainer
-        id="experience"
-        class="py-20 md:py-28"
-      >
-        <div class="text-center mb-16">
-          <h2 class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white">
-            <BriefCaseIcon class="size-12" />
-            Experiencia Laboral
-          </h2>
-          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            +4 años desarrollando soluciones web innovadoras para empresas y startups
-          </p>
-        </div>
-        <Experience />
-      </SectionContainer>
-    </div>
-
-    <SectionContainer
-      id="academics"
-      class="py-20 md:py-28"
-    >
-      <div class="text-center mb-16">
-        <h2 class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white">
-          <LearningIcon class="size-12" />
-          Formación Académica
-        </h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          Formación continua en las últimas tecnologías web y mejores prácticas
-        </p>
-      </div>
-      <Studies />
-    </SectionContainer>
-    
-    <div class="w-full bg-gray-50 dark:bg-gray-900">
-      <SectionContainer
-        id="certifications"
-        class="py-20 md:py-28"
-      >
-        <div class="text-center mb-16">
-          <h2 class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white">
-            <CertificationIcon class="size-12" />
-            Certificaciones
-          </h2>
-          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Certificaciones profesionales que validan mi experiencia técnica
-          </p>
-        </div>
-        <Certification />
-      </SectionContainer>
-    </div>
-
-    <SectionContainer
-      id="projects"
-      class="py-20 md:py-28"
-    >
-      <div class="text-center mb-16">
-        <h2 class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white">
-          <CodeIcon class="size-12" />
-          Proyectos Destacados
-        </h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          Una selección de mis proyectos más relevantes y exitosos
-        </p>
-      </div>
-      <Projects />
-    </SectionContainer>
-
-    <!-- FAQ Section -->
-    <div class="w-full bg-gray-50 dark:bg-gray-900">
-      <SectionContainer id="faq" class="py-20 md:py-28">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-            Preguntas Frecuentes
-          </h2>
-          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Resuelvo las dudas más comunes sobre mis servicios de desarrollo web
-          </p>
-        </div>
-        <FAQSection />
-      </SectionContainer>
-    </div>
-
-    <SectionContainer id="contact" class="py-20 md:py-28">
-      <div class="text-center mb-16">
-        <h2 class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white">
-          <MailIcon class="size-12" />
-          Contacto
-        </h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          ¿Tienes un proyecto en mente? Hablemos y hagámoslo realidad
-        </p>
-      </div>
-      <ContactForm />
     </SectionContainer>
   </main>
+
+  <SectionContainer
+    id="expertise"
+    class="py-20 md:py-28"
+  >
+    <div class="text-center mb-16">
+      <h2
+        class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white"
+      >
+        Tecnologías
+      </h2>
+      <p
+        class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+      >
+        Domino las tecnologías más demandadas del mercado para crear soluciones
+        web robustas y escalables
+      </p>
+    </div>
+    <SkillsCloud lang="es" />
+  </SectionContainer>
+
+  <FullSectionContainer
+    id="landingPage"
+    class="relative py-20 bg-blue-600 dark:bg-blue-800"
+  >
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="mb-6 text-4xl lg:text-5xl font-bold text-white">
+        ¿Necesitas una página web profesional?
+      </h2>
+      <div class="space-y-6 mb-12">
+        <h3
+          class="text-2xl lg:text-3xl font-medium text-blue-100 dark:text-blue-200"
+        >
+          Desarrollo web personalizado para tu negocio
+        </h3>
+        <div class="flex flex-wrap justify-center gap-6 text-lg">
+          <span class="flex items-center gap-2 text-white">
+            <svg
+              class="w-6 h-6 text-green-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              ></path>
+            </svg>
+            Landing Pages
+          </span>
+          <span class="flex items-center gap-2 text-white">
+            <svg
+              class="w-6 h-6 text-green-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              ></path>
+            </svg>
+            E-commerce
+          </span>
+          <span class="flex items-center gap-2 text-white">
+            <svg
+              class="w-6 h-6 text-green-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              ></path>
+            </svg>
+            Aplicaciones Web
+          </span>
+        </div>
+        <p class="text-xl text-blue-100 dark:text-blue-200 max-w-2xl mx-auto">
+          Diseño y desarrollo sitios web optimizados, rápidos y efectivos que
+          ayudan a tu negocio a crecer online.
+        </p>
+      </div>
+
+      <a
+        href="#contact"
+        class="inline-block px-8 py-4 text-lg font-semibold text-blue-600 bg-white rounded-lg hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 shadow-lg"
+      >
+        ¿Hablamos de tu proyecto?
+      </a>
+    </div>
+  </FullSectionContainer>
+  <div class="w-full bg-gray-50 dark:bg-gray-900">
+    <SectionContainer
+      id="experience"
+      class="py-20 md:py-28"
+    >
+      <div class="text-center mb-16">
+        <h2
+          class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white"
+        >
+          <BriefCaseIcon class="size-12" />
+          Experiencia Laboral
+        </h2>
+        <p
+          class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+        >
+          +4 años desarrollando soluciones web innovadoras para empresas y
+          startups
+        </p>
+      </div>
+      <Experience />
+    </SectionContainer>
+  </div>
+
+  <SectionContainer
+    id="academics"
+    class="py-20 md:py-28"
+  >
+    <div class="text-center mb-16">
+      <h2
+        class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white"
+      >
+        <LearningIcon class="size-12" />
+        Formación Académica
+      </h2>
+      <p
+        class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+      >
+        Formación continua en las últimas tecnologías web y mejores prácticas
+      </p>
+    </div>
+    <Studies />
+  </SectionContainer>
+
+  <div class="w-full bg-gray-50 dark:bg-gray-900">
+    <SectionContainer
+      id="certifications"
+      class="py-20 md:py-28"
+    >
+      <div class="text-center mb-16">
+        <h2
+          class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white"
+        >
+          <CertificationIcon class="size-12" />
+          Certificaciones
+        </h2>
+        <p
+          class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+        >
+          Certificaciones profesionales que validan mi experiencia técnica
+        </p>
+      </div>
+      <Certification />
+    </SectionContainer>
+  </div>
+
+  <SectionContainer
+    id="projects"
+    class="py-20 md:py-28"
+  >
+    <div class="text-center mb-16">
+      <h2
+        class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white"
+      >
+        <CodeIcon class="size-12" />
+        Proyectos Destacados
+      </h2>
+      <p
+        class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+      >
+        Una selección de mis proyectos más relevantes y exitosos
+      </p>
+    </div>
+    <Projects />
+  </SectionContainer>
+
+  <!-- FAQ Section -->
+  <div class="w-full bg-gray-50 dark:bg-gray-900">
+    <SectionContainer
+      id="faq"
+      class="py-20 md:py-28"
+    >
+      <div class="text-center mb-16">
+        <h2
+          class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white"
+        >
+          Preguntas Frecuentes
+        </h2>
+        <p
+          class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+        >
+          Resuelvo las dudas más comunes sobre mis servicios de desarrollo web
+        </p>
+      </div>
+      <FAQSection />
+    </SectionContainer>
+  </div>
+
+  <SectionContainer
+    id="contact"
+    class="py-20 md:py-28"
+  >
+    <div class="text-center mb-16">
+      <h2
+        class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white"
+      >
+        <MailIcon class="size-12" />
+        Contacto
+      </h2>
+      <p
+        class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+      >
+        ¿Tienes un proyecto en mente? Hablemos y hagámoslo realidad
+      </p>
+    </div>
+    <ContactForm />
+  </SectionContainer>
 </Layout>
 
 <style>
@@ -373,11 +614,22 @@ import FAQSection from "../components/FAQSection.astro";
     main {
       font-size: 14px;
     }
-    
+
     .hero-section {
       min-height: 70vh;
-      padding-bottom: 3rem;
+      padding-bottom: 8rem;
+    }
+  }
+
+  @media (min-width: 641px) and (max-width: 1023px) {
+    .hero-section {
+      padding-bottom: 8rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-section {
+      padding-bottom: 10rem;
     }
   }
 </style>
-

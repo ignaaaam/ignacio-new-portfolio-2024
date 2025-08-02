@@ -8,7 +8,10 @@ const { class: className = "", targetId = "expertise" } = Astro.props;
 ---
 
 <div class={`scroll-indicator-container ${className}`}>
-  <div class="scroll-indicator" data-target={targetId}>
+  <div
+    class="scroll-indicator"
+    data-target={targetId}
+  >
     <div class="chevron"></div>
     <div class="chevron"></div>
     <div class="chevron"></div>
@@ -17,18 +20,18 @@ const { class: className = "", targetId = "expertise" } = Astro.props;
 
 <script>
   // Add click event to scroll indicators
-  document.addEventListener('DOMContentLoaded', () => {
-    const scrollIndicators = document.querySelectorAll('.scroll-indicator');
-    
-    scrollIndicators.forEach(indicator => {
-      indicator.addEventListener('click', () => {
-        const targetId = indicator.getAttribute('data-target');
+  document.addEventListener("DOMContentLoaded", () => {
+    const scrollIndicators = document.querySelectorAll(".scroll-indicator");
+
+    scrollIndicators.forEach((indicator) => {
+      indicator.addEventListener("click", () => {
+        const targetId = indicator.getAttribute("data-target");
         const targetElement = document.getElementById(targetId);
-        
+
         if (targetElement) {
-          targetElement.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
+          targetElement.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
           });
         }
       });
@@ -41,23 +44,23 @@ const { class: className = "", targetId = "expertise" } = Astro.props;
     display: flex;
     justify-content: center;
     position: absolute;
-    bottom: 50px; /* Default for mobile */
+    bottom: 20px; /* Default for mobile */
     width: 100%;
     left: 0;
     z-index: 10;
   }
-  
+
   /* Tablet positioning */
   @media (min-width: 768px) {
     .scroll-indicator-container:not([class*="!bottom-"]) {
-      bottom: 100px;
+      bottom: 40px;
     }
   }
-  
+
   /* Desktop positioning */
   @media (min-width: 1024px) {
     .scroll-indicator-container:not([class*="!bottom-"]) {
-      bottom: 150px;
+      bottom: 60px;
     }
   }
 
@@ -71,7 +74,7 @@ const { class: className = "", targetId = "expertise" } = Astro.props;
     cursor: pointer;
     filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
   }
-  
+
   @media (max-width: 767px) {
     .scroll-indicator {
       transform: scale(0.8);
@@ -102,7 +105,7 @@ const { class: className = "", targetId = "expertise" } = Astro.props;
 
   .chevron:before,
   .chevron:after {
-    content: ' ';
+    content: " ";
     position: absolute;
     top: 0;
     height: 100%;
@@ -150,10 +153,11 @@ const { class: className = "", targetId = "expertise" } = Astro.props;
       animation: none;
       opacity: 0.7;
     }
-    
+
     .scroll-indicator {
       opacity: 0.7;
       animation: none;
     }
   }
-</style> 
+</style>
+
