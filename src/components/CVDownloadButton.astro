@@ -9,7 +9,11 @@ const { isEnglish = false } = Astro.props;
 ---
 
 <div class="cv-button-wrapper">
-  <button id="cv-download-btn" class="cv-download-btn" data-is-english={isEnglish.toString()}>
+  <button
+    id="cv-download-btn"
+    class="cv-download-btn"
+    data-is-english={isEnglish.toString()}
+  >
     <DocumentIcon class="size-4 md:size-6" />
     <span class="cv-btn-text">
       <slot>Download CV</slot>
@@ -19,41 +23,50 @@ const { isEnglish = false } = Astro.props;
 
 <script>
   // Simple client-side rate limiting
-  document.addEventListener('DOMContentLoaded', () => {
-    const downloadBtn = document.getElementById('cv-download-btn');
-    
+  document.addEventListener("DOMContentLoaded", () => {
+    const downloadBtn = document.getElementById("cv-download-btn");
+
     if (downloadBtn) {
-      downloadBtn.addEventListener('click', async (e) => {
+      downloadBtn.addEventListener("click", async (e) => {
         e.preventDefault();
-        
+
         // Check local storage for download count
         const now = Date.now();
         const ONE_HOUR = 60 * 60 * 1000;
-        
+
         // Get download history from localStorage
-        const downloadHistory = JSON.parse(localStorage.getItem('cv_downloads') || '[]') as number[];
-        
+        const downloadHistory = JSON.parse(
+          localStorage.getItem("cv_downloads") || "[]",
+        ) as number[];
+
         // Clean old downloads outside the 1-hour window
-        const recentDownloads = downloadHistory.filter((time: number) => (now - time) < ONE_HOUR);
-        
+        const recentDownloads = downloadHistory.filter(
+          (time: number) => now - time < ONE_HOUR,
+        );
+
         if (recentDownloads.length >= 3) {
           // Too many downloads
-          alert('You have reached the download limit. Please try again later.');
+          alert("You have reached the download limit. Please try again later.");
           return;
         }
-        
+
         // Two options for downloading:
-        
+
         // OPTION 1: Direct download (simpler)
-        const isEnglish = downloadBtn.getAttribute('data-is-english') === 'true';
-        const cvFileName = isEnglish ? 'CV-Ignacio-new-design-english.pdf' : 'CV-Ignacio-new-design.pdf';
-        const downloadName = isEnglish ? 'ignacio-cv-english-2025.pdf' : 'ignacio-cv-2025.pdf';
-        
-        const link = document.createElement('a');
+        const isEnglish =
+          downloadBtn.getAttribute("data-is-english") === "true";
+        const cvFileName = isEnglish
+          ? "CV-Ignacio-new-design-english.pdf"
+          : "CV-Ignacio-new-design.pdf";
+        const downloadName = isEnglish
+          ? "ignacio-cv-english-2025.pdf"
+          : "ignacio-cv-2025.pdf";
+
+        const link = document.createElement("a");
         link.href = `/${cvFileName}`;
         link.download = downloadName;
         link.click();
-        
+
         // OPTION 2: Use API endpoint (if you implement the server-side approach)
         /* 
         try {
@@ -74,10 +87,10 @@ const { isEnglish = false } = Astro.props;
           return;
         }
         */
-        
+
         // Update download history
         recentDownloads.push(now);
-        localStorage.setItem('cv_downloads', JSON.stringify(recentDownloads));
+        localStorage.setItem("cv_downloads", JSON.stringify(recentDownloads));
       });
     }
   });
@@ -95,16 +108,16 @@ const { isEnglish = false } = Astro.props;
     transition-duration: 0.3s;
     transition-timing-function: ease;
     white-space: nowrap;
-    
+
     /* Match sizing with social pills */
     min-width: 7rem;
     height: 2rem;
     padding: 0.25rem 0.75rem;
     font-size: 0.75rem;
-    
-    /* Special styling for CV button */
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-    border: 2px solid rgba(59, 130, 246, 0.6);
+
+    /* Yellow gradient styling */
+    background: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706);
+    border: 2px solid rgba(245, 158, 11, 0.6);
     font-weight: 600;
     color: white;
     animation: pulse-cv 2.5s infinite;
@@ -112,7 +125,7 @@ const { isEnglish = false } = Astro.props;
     overflow: hidden;
     z-index: 1;
   }
-  
+
   /* Responsive adjustments to match social pills */
   @media (min-width: 768px) {
     .cv-download-btn {
@@ -122,42 +135,43 @@ const { isEnglish = false } = Astro.props;
       font-size: 0.875rem;
     }
   }
-  
+
   .cv-download-btn:hover {
     transform: translateY(-3px) scale(1.05);
-    background: linear-gradient(135deg, #60a5fa, #3b82f6);
-    box-shadow: 0 7px 14px rgba(59, 130, 246, 0.3);
+    background: linear-gradient(135deg, #f59e0b, #d97706, #b45309);
+    box-shadow: 0 7px 14px rgba(245, 158, 11, 0.4);
   }
-  
+
   .cv-download-btn::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -2px;
     left: -2px;
     right: -2px;
     bottom: -2px;
     z-index: -1;
-    background: linear-gradient(90deg, #3b82f6, #1d4ed8, #3b82f6);
+    background: linear-gradient(90deg, #f59e0b, #d97706, #f59e0b);
     background-size: 200% 100%;
     animation: gradientMove 3s linear infinite;
     opacity: 0.7;
     border-radius: 9999px;
   }
-  
+
+
   @keyframes pulse-cv {
     0% {
-      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+      box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
     }
-    
+
     70% {
-      box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
+      box-shadow: 0 0 0 8px rgba(245, 158, 11, 0);
     }
-    
+
     100% {
-      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+      box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
     }
   }
-  
+
   @keyframes gradientMove {
     0% {
       background-position: 0% 50%;
@@ -169,10 +183,10 @@ const { isEnglish = false } = Astro.props;
       background-position: 0% 50%;
     }
   }
-  
+
   /* Make the CV button stand out just a little with scale */
   .cv-button-wrapper {
     display: inline-block;
     transform: scale(1.05);
   }
-</style> 
+</style>

@@ -18,6 +18,13 @@ import CVDownloadButton from "../../components/CVDownloadButton.astro";
 import ScrollIndicator from "../../components/ScrollIndicator.astro";
 import FAQSection from "../../components/FAQSection.astro";
 
+import PHPIcon from "../../components/icons/PHPIcon.astro";
+import LaravelIcon from "../../components/icons/LaravelIcon.astro";
+import VueIcon from "../../components/icons/VueIcon.astro";
+import JavascriptIcon from "../../components/icons/JavascriptIcon.astro";
+import TailwindIcon from "../../components/icons/TailwindIcon.astro";
+import ThunderIcon from "../../components/icons/ThunderIcon.astro";
+
 import FullSectionContainer from "../../components/FullSectionContainer.astro";
 
 import Experience from "./Experience.astro";
@@ -54,11 +61,27 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
         </h2>
         
         <div class="flex flex-wrap justify-center gap-3 mb-8">
-          <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-lg font-medium">PHP</span>
-          <span class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-4 py-2 rounded-lg font-medium">Laravel</span>
-          <span class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-4 py-2 rounded-lg font-medium">Vue.js</span>
-          <span class="bg-purple-50 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 px-4 py-2 rounded-lg font-medium">JavaScript</span>
-          <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-4 py-2 rounded-lg font-medium">TailwindCSS</span>
+          <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
+            <PHPIcon class="w-5 h-5" />
+            PHP
+          </span>
+          <span class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
+            <LaravelIcon class="w-5 h-5" />
+            Laravel
+          </span>
+          <span class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
+            <VueIcon class="w-5 h-5" />
+            Vue.js
+          </span>
+          <span class="bg-yellow-50 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
+            <JavascriptIcon class="w-5 h-5" />
+            JavaScript
+            <ThunderIcon class="w-4 h-4 text-yellow-500" />
+          </span>
+          <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
+            <TailwindIcon class="w-5 h-5" />
+            TailwindCSS
+          </span>
         </div>
 
         <!-- Call to Action Buttons -->
@@ -173,9 +196,19 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
             Modern, responsive, and attractive user interfaces that provide an exceptional user experience across all devices and browsers.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-lg text-sm font-medium">Vue.js</span>
-            <span class="bg-yellow-50 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-lg text-sm font-medium">JavaScript</span>
-            <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium">TailwindCSS</span>
+            <span class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              <VueIcon class="w-4 h-4" />
+              Vue.js
+            </span>
+            <span class="bg-yellow-50 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              <JavascriptIcon class="w-4 h-4" />
+              JavaScript
+              <ThunderIcon class="w-3 h-3 text-yellow-500" />
+            </span>
+            <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              <TailwindIcon class="w-4 h-4" />
+              TailwindCSS
+            </span>
           </div>
         </div>
       </div>

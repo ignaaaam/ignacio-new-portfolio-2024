@@ -17,6 +17,14 @@ import CertificationIcon from "../components/icons/CertificationIcon.astro";
 import CVDownloadButton from "../components/CVDownloadButton.astro";
 import ScrollIndicator from "../components/ScrollIndicator.astro";
 
+import PHPIcon from "../components/icons/PHPIcon.astro";
+import LaravelIcon from "../components/icons/LaravelIcon.astro";
+import VueIcon from "../components/icons/VueIcon.astro";
+import JavascriptIcon from "../components/icons/JavascriptIcon.astro";
+import TailwindIcon from "../components/icons/TailwindIcon.astro";
+import AstroIcon from "../components/icons/AstroIcon.astro";
+import ThunderIcon from "../components/icons/ThunderIcon.astro";
+
 import Experience from "../components/Experience.astro";
 import Certification from "../components/Certification.astro";
 import Studies from "../components/Studies.astro";
@@ -70,26 +78,27 @@ import FAQSection from "../components/FAQSection.astro";
         </h2>
 
         <div class="flex flex-wrap justify-center gap-3 mb-8">
-          <span
-            class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-lg font-medium"
-            >PHP</span
-          >
-          <span
-            class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-4 py-2 rounded-lg font-medium"
-            >Laravel</span
-          >
-          <span
-            class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-4 py-2 rounded-lg font-medium"
-            >Vue.js</span
-          >
-          <span
-            class="bg-purple-50 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 px-4 py-2 rounded-lg font-medium"
-            >JavaScript</span
-          >
-          <span
-            class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-4 py-2 rounded-lg font-medium"
-            >TailwindCSS</span
-          >
+          <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
+            <PHPIcon class="w-5 h-5" />
+            PHP
+          </span>
+          <span class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
+            <LaravelIcon class="w-5 h-5" />
+            Laravel
+          </span>
+          <span class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
+            <VueIcon class="w-5 h-5" />
+            Vue.js
+          </span>
+          <span class="bg-yellow-50 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
+            <JavascriptIcon class="w-5 h-5" />
+            JavaScript
+            <ThunderIcon class="w-4 h-4 text-yellow-500" />
+          </span>
+          <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
+            <TailwindIcon class="w-5 h-5" />
+            TailwindCSS
+          </span>
         </div>
 
         <!-- Call to Action Buttons -->
@@ -183,9 +192,7 @@ import FAQSection from "../components/FAQSection.astro";
         >
           Mis Servicios
         </h2>
-        <p
-          class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
-        >
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
           Soluciones web a medida: desde páginas de aterrizaje optimizadas hasta
           aplicaciones complejas, enfocadas en rendimiento, usabilidad y
           resultados.
@@ -193,7 +200,7 @@ import FAQSection from "../components/FAQSection.astro";
       </div>
 
       <!-- Main services grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
         <!-- Desarrollo Web Integral -->
         <div
           class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-700"
@@ -203,7 +210,7 @@ import FAQSection from "../components/FAQSection.astro";
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-8 w-8 text-blue-600 dark:text-blue-400 group-hover:text-white transition-colors duration-300"
+              class="h-6 w-6 text-blue-600 dark:text-blue-400 group-hover:text-white"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -219,28 +226,28 @@ import FAQSection from "../components/FAQSection.astro";
           <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
             Desarrollo Web Integral
           </h3>
-          <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+          <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow">
             Creo soluciones web completas y personalizadas, desde sitios web
             estáticos y landing pages hasta aplicaciones dinámicas complejas,
             adaptadas a tus objetivos.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span
-              class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium"
-              >PHP</span
-            >
-            <span
-              class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium"
-              >Laravel</span
-            >
-            <span
-              class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium"
-              >Astro</span
-            >
-            <span
-              class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-lg text-sm font-medium"
-              >Vue.js</span
-            >
+            <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              <PHPIcon class="w-4 h-4" />
+              PHP
+            </span>
+            <span class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              <LaravelIcon class="w-4 h-4" />
+              Laravel
+            </span>
+            <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              <AstroIcon class="w-4 h-4" />
+              Astro
+            </span>
+            <span class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              <VueIcon class="w-4 h-4" />
+              Vue.js
+            </span>
           </div>
         </div>
 
@@ -253,7 +260,7 @@ import FAQSection from "../components/FAQSection.astro";
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-8 w-8 text-green-600 dark:text-green-400 group-hover:text-white transition-colors duration-300"
+              class="h-6 w-6 text-green-600 dark:text-green-400 group-hover:text-white"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -269,28 +276,26 @@ import FAQSection from "../components/FAQSection.astro";
           <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
             Back-End Robusto
           </h3>
-          <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+          <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow">
             Construyo la lógica y la base de datos de tus aplicaciones web
             asegurando rendimiento, seguridad y escalabilidad. Experiencia en
             PHP y Laravel para APIs y sistemas complejos.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span
-              class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium"
-              >PHP</span
-            >
-            <span
-              class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium"
-              >Laravel</span
-            >
-            <span
-              class="bg-cyan-50 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 px-3 py-1 rounded-lg text-sm font-medium"
-              >MySQL</span
-            >
-            <span
-              class="bg-purple-50 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 px-3 py-1 rounded-lg text-sm font-medium"
-              >API REST</span
-            >
+            <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              <PHPIcon class="w-4 h-4" />
+              PHP
+            </span>
+            <span class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              <LaravelIcon class="w-4 h-4" />
+              Laravel
+            </span>
+            <span class="bg-cyan-50 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              MySQL
+            </span>
+            <span class="bg-purple-50 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              API REST
+            </span>
           </div>
         </div>
 
@@ -303,7 +308,7 @@ import FAQSection from "../components/FAQSection.astro";
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-8 w-8 text-purple-600 dark:text-purple-400 group-hover:text-white transition-colors duration-300"
+              class="h-6 w-6 text-purple-600 dark:text-purple-400 group-hover:text-white"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -319,24 +324,25 @@ import FAQSection from "../components/FAQSection.astro";
           <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
             Interfaces Modernas
           </h3>
-          <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+          <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow">
             Desarrollo interfaces de usuario modernas, responsivas y atractivas
             que proporcionan una experiencia excepcional del usuario en todos
             los dispositivos y navegadores.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span
-              class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-lg text-sm font-medium"
-              >Vue.js</span
-            >
-            <span
-              class="bg-yellow-50 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-lg text-sm font-medium"
-              >JavaScript</span
-            >
-            <span
-              class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium"
-              >TailwindCSS</span
-            >
+            <span class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              <VueIcon class="w-4 h-4" />
+              Vue.js
+            </span>
+            <span class="bg-yellow-50 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              <JavascriptIcon class="w-4 h-4" />
+              JavaScript
+              <ThunderIcon class="w-3 h-3 text-yellow-500" />
+            </span>
+            <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              <TailwindIcon class="w-4 h-4" />
+              TailwindCSS
+            </span>
           </div>
         </div>
       </div>
