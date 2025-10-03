@@ -10,15 +10,22 @@ const pathname = Astro.url.pathname;
 >
   <!-- Logo -->
   <div class="flex items-center gap-3">
-    <a href="/en" class="flex items-center gap-3">
+    <a
+      href="/en"
+      class="flex items-center gap-3"
+    >
       <img
         class="flex rounded-full size-10 md:size-12 ring-2 ring-blue-500/20"
         src="/img/profile_picture.jpg"
         alt="ignathedev photo"
       />
       <div class="hidden sm:block">
-        <h1 class="text-lg font-semibold text-gray-900 dark:text-white">Ignacio Amat</h1>
-        <p class="text-sm text-gray-600 dark:text-gray-300">Full Stack Developer</p>
+        <h1 class="text-lg font-semibold text-gray-900 dark:text-white">
+          Ignacio Amat
+        </h1>
+        <p class="text-sm text-gray-600 dark:text-gray-300">
+          Full Stack Developer
+        </p>
       </div>
     </a>
   </div>
@@ -27,14 +34,14 @@ const pathname = Astro.url.pathname;
   <div class="hidden lg:flex flex-1 justify-center mx-4">
     <nav class="flex items-center gap-4 text-base">
       {
-        pathname !== "/en" ? 
+        pathname !== "/en" ? (
           <a
             class="text-gray-700 dark:text-gray-300 transition rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-700 dark:hover:text-blue-400 px-3 py-2 font-medium"
             href="/en"
           >
             Home
           </a>
-         : 
+        ) : (
           <>
             <a
               class="text-gray-700 dark:text-gray-300 transition rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-700 dark:hover:text-blue-400 px-3 py-2 font-medium"
@@ -61,6 +68,7 @@ const pathname = Astro.url.pathname;
               Contact
             </a>
           </>
+        )
       }
     </nav>
   </div>
@@ -68,7 +76,7 @@ const pathname = Astro.url.pathname;
   <!-- Controls -->
   <div class="flex items-center gap-2">
     <a
-      class="hidden lg:inline-flex bg-blue-600 text-white transition rounded-lg hover:bg-blue-700 px-3 py-1.5 text-sm font-medium"
+      class="inline-flex bg-blue-600 text-white transition rounded-lg hover:bg-blue-700 px-3 py-1.5 text-sm font-medium"
       href="/en/blog"
       rel="noopener noreferrer"
     >
@@ -76,6 +84,9 @@ const pathname = Astro.url.pathname;
     </a>
     <ThemeToggle />
     <Dropdown class="hidden lg:flex" />
-    <MobileNav isEnglish={true} pathname={pathname} />
+    <MobileNav
+      isEnglish={true}
+      pathname={pathname}
+    />
   </div>
 </header>
