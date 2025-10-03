@@ -54,13 +54,12 @@ import FAQSection from "../components/FAQSection.astro";
         <h1
           class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
         >
-          Hola, soy <span class="text-blue-600 dark:text-blue-400"
-            >Ignacio Amat</span
+          Hola, soy <span class="text-blue-600 dark:text-blue-400">Ignacio</span
           >
         </h1>
 
         <h2
-          class="text-xl lg:text-2xl text-gray-700 dark:text-gray-200 mb-4 font-medium leading-relaxed max-w-2xl mx-auto"
+          class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-4 font-medium leading-relaxed max-w-2xl mx-auto"
         >
           <span class="font-semibold">+4 años de experiencia.</span>
           <span class="font-bold text-blue-600 dark:text-yellow-200"
@@ -71,32 +70,42 @@ import FAQSection from "../components/FAQSection.astro";
         </h2>
 
         <h2
-          class="text-xl lg:text-2xl text-gray-700 dark:text-gray-200 mb-8 font-medium leading-relaxed max-w-2xl mx-auto"
+          class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-8 font-medium leading-relaxed max-w-2xl mx-auto"
         >
           Especializado en crear aplicaciones web y sitios web de alto
           rendimiento con tecnologías modernas.
         </h2>
 
-        <div class="flex flex-wrap justify-center gap-3 mb-8">
-          <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
-            <PHPIcon class="w-5 h-5" />
+        <div class="flex flex-wrap justify-center gap-1.5 mb-8">
+          <span
+            class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2"
+          >
+            <PHPIcon class="w-4 h-4" />
             PHP
           </span>
-          <span class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
-            <LaravelIcon class="w-5 h-5" />
+          <span
+            class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2"
+          >
+            <LaravelIcon class="w-4 h-4" />
             Laravel
           </span>
-          <span class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
-            <VueIcon class="w-5 h-5" />
+          <span
+            class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2"
+          >
+            <VueIcon class="w-4 h-4" />
             Vue.js
           </span>
-          <span class="bg-yellow-50 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
-            <JavascriptIcon class="w-5 h-5" />
+          <span
+            class="bg-yellow-50 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2"
+          >
+            <JavascriptIcon class="w-4 h-4" />
             JavaScript
-            <ThunderIcon class="w-4 h-4 text-yellow-500" />
+            <ThunderIcon class="w-3 h-3 text-yellow-500" />
           </span>
-          <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
-            <TailwindIcon class="w-5 h-5" />
+          <span
+            class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2"
+          >
+            <TailwindIcon class="w-4 h-4" />
             TailwindCSS
           </span>
         </div>
@@ -107,7 +116,7 @@ import FAQSection from "../components/FAQSection.astro";
         >
           <a
             href="#services"
-            class="px-8 py-5 text-xl font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center gap-2"
+            class="px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center gap-2"
           >
             Ver mis servicios
             <svg
@@ -126,7 +135,7 @@ import FAQSection from "../components/FAQSection.astro";
           </a>
           <a
             href="#contact"
-            class="px-8 py-5 text-xl font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-800 transition-all duration-300"
+            class="px-8 py-4 text-lg font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-800 transition-all duration-300"
           >
             Contactar ahora
           </a>
@@ -192,7 +201,9 @@ import FAQSection from "../components/FAQSection.astro";
         >
           Mis Servicios
         </h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+        <p
+          class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
+        >
           Soluciones web a medida: desde páginas de aterrizaje optimizadas hasta
           aplicaciones complejas, enfocadas en rendimiento, usabilidad y
           resultados.
@@ -226,25 +237,35 @@ import FAQSection from "../components/FAQSection.astro";
           <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
             Desarrollo Web Integral
           </h3>
-          <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow">
+          <p
+            class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow"
+          >
             Creo soluciones web completas y personalizadas, desde sitios web
             estáticos y landing pages hasta aplicaciones dinámicas complejas,
             adaptadas a tus objetivos.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+            <span
+              class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1"
+            >
               <PHPIcon class="w-4 h-4" />
               PHP
             </span>
-            <span class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+            <span
+              class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1"
+            >
               <LaravelIcon class="w-4 h-4" />
               Laravel
             </span>
-            <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+            <span
+              class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1"
+            >
               <AstroIcon class="w-4 h-4" />
               Astro
             </span>
-            <span class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+            <span
+              class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1"
+            >
               <VueIcon class="w-4 h-4" />
               Vue.js
             </span>
@@ -276,24 +297,34 @@ import FAQSection from "../components/FAQSection.astro";
           <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
             Back-End Robusto
           </h3>
-          <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow">
+          <p
+            class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow"
+          >
             Construyo la lógica y la base de datos de tus aplicaciones web
             asegurando rendimiento, seguridad y escalabilidad. Experiencia en
             PHP y Laravel para APIs y sistemas complejos.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+            <span
+              class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1"
+            >
               <PHPIcon class="w-4 h-4" />
               PHP
             </span>
-            <span class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+            <span
+              class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1"
+            >
               <LaravelIcon class="w-4 h-4" />
               Laravel
             </span>
-            <span class="bg-cyan-50 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+            <span
+              class="bg-cyan-50 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1"
+            >
               MySQL
             </span>
-            <span class="bg-purple-50 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+            <span
+              class="bg-purple-50 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1"
+            >
               API REST
             </span>
           </div>
@@ -324,22 +355,30 @@ import FAQSection from "../components/FAQSection.astro";
           <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
             Interfaces Modernas
           </h3>
-          <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow">
+          <p
+            class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow"
+          >
             Desarrollo interfaces de usuario modernas, responsivas y atractivas
             que proporcionan una experiencia excepcional del usuario en todos
             los dispositivos y navegadores.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+            <span
+              class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1"
+            >
               <VueIcon class="w-4 h-4" />
               Vue.js
             </span>
-            <span class="bg-yellow-50 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+            <span
+              class="bg-yellow-50 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1"
+            >
               <JavascriptIcon class="w-4 h-4" />
               JavaScript
               <ThunderIcon class="w-3 h-3 text-yellow-500" />
             </span>
-            <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+            <span
+              class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1"
+            >
               <TailwindIcon class="w-4 h-4" />
               TailwindCSS
             </span>

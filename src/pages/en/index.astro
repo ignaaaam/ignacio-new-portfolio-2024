@@ -40,65 +40,111 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
   description="Professional full stack web developer in Spain offering custom web development services. Specialized in creating high-performance websites and applications with PHP, Laravel, and modern front-end technologies."
 >
   <main>
-    <SectionContainer class="hero-section -mt-6 pt-2 pb-14 md:pt-4 md:pb-16 lg:py-32 min-h-[92vh] md:min-h-[95vh] lg:min-h-screen flex flex-col justify-center relative">
+    <SectionContainer
+      class="hero-section -mt-6 pt-2 pb-32 md:pt-4 md:pb-32 lg:py-32 lg:pb-40 min-h-[92vh] md:min-h-[95vh] lg:min-h-screen flex flex-col justify-center relative"
+    >
       <div class="max-w-4xl mx-auto text-center">
-        <div class="flex items-center justify-center gap-3 mb-6">
-          <Badge class="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800 transition-colors">
+        <div class="flex items-center justify-center gap-3 mb-8 mt-4 md:mt-0">
+          <Badge
+            class="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800 transition-colors"
+          >
             Open for offers
           </Badge>
         </div>
-        
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+
+        <h1
+          class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
+        >
           Hey, I'm <span class="text-blue-600 dark:text-blue-400">Ignacio</span>
         </h1>
-        
-        <h2 class="text-xl lg:text-2xl text-gray-700 dark:text-gray-200 mb-4 font-medium leading-relaxed max-w-2xl mx-auto">
-          <span class="font-semibold">+4 years of experience.</span> <span class="font-bold text-blue-600 dark:text-yellow-200">Full Stack Web Developer</span> from <span class="text-red-600 dark:text-red-200 font-bold">Barcelona, Spain.</span>
+
+        <h2
+          class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-4 font-medium leading-relaxed max-w-2xl mx-auto"
+        >
+          <span class="font-semibold">+4 years of experience.</span>
+          <span class="font-bold text-blue-600 dark:text-yellow-200"
+            >Full Stack Web Developer</span
+          > from <span class="text-red-600 dark:text-red-200 font-bold"
+            >Barcelona, Spain.</span
+          >
         </h2>
-        
-        <h2 class="text-xl lg:text-2xl text-gray-700 dark:text-gray-200 mb-8 font-medium leading-relaxed max-w-2xl mx-auto">
-          Specialized in creating high-performance web apps and websites with modern technologies.
+
+        <h2
+          class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-8 font-medium leading-relaxed max-w-2xl mx-auto"
+        >
+          Specialized in creating high-performance web apps and websites with
+          modern technologies.
         </h2>
-        
-        <div class="flex flex-wrap justify-center gap-3 mb-8">
-          <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
-            <PHPIcon class="w-5 h-5" />
+
+        <div class="flex flex-wrap justify-center gap-1.5 mb-8">
+          <span
+            class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2"
+          >
+            <PHPIcon class="w-4 h-4" />
             PHP
           </span>
-          <span class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
-            <LaravelIcon class="w-5 h-5" />
+          <span
+            class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2"
+          >
+            <LaravelIcon class="w-4 h-4" />
             Laravel
           </span>
-          <span class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
-            <VueIcon class="w-5 h-5" />
+          <span
+            class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2"
+          >
+            <VueIcon class="w-4 h-4" />
             Vue.js
           </span>
-          <span class="bg-yellow-50 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
-            <JavascriptIcon class="w-5 h-5" />
+          <span
+            class="bg-yellow-50 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2"
+          >
+            <JavascriptIcon class="w-4 h-4" />
             JavaScript
-            <ThunderIcon class="w-4 h-4 text-yellow-500" />
+            <ThunderIcon class="w-3 h-3 text-yellow-500" />
           </span>
-          <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-4 py-2 rounded-lg font-medium flex items-center gap-2">
-            <TailwindIcon class="w-5 h-5" />
+          <span
+            class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2"
+          >
+            <TailwindIcon class="w-4 h-4" />
             TailwindCSS
           </span>
         </div>
 
         <!-- Call to Action Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <a href="#services" class="px-8 py-5 text-xl font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center gap-2">
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+        >
+          <a
+            href="#services"
+            class="px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-lg shadow-lg hover:from-indigo-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center gap-2"
+          >
             View my services
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              ></path>
             </svg>
           </a>
-          <a href="#contact" class="px-8 py-5 text-xl font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-800 transition-all duration-300">
+          <a
+            href="#contact"
+            class="px-8 py-4 text-lg font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-800 transition-all duration-300"
+          >
             Contact me now
           </a>
         </div>
 
         <nav class="flex flex-wrap justify-center gap-4 mb-8">
-          <SocialPill href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223">
+          <SocialPill
+            href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223"
+          >
             <LinkedinIcon class="size-5" />
             LinkedIn
           </SocialPill>
@@ -110,7 +156,9 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
             <BehanceIcon class="size-5" />
             Behance
           </SocialPill>
-          <SocialPill href="https://stackoverflow.com/users/13370846/ignacio-amat-urbina">
+          <SocialPill
+            href="https://stackoverflow.com/users/13370846/ignacio-amat-urbina"
+          >
             <StackOverflowIcon class="size-5" />
             Stack Overflow
           </SocialPill>
@@ -120,92 +168,191 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
           </SocialPill>
           <CVDownloadButton isEnglish={true}>Download CV</CVDownloadButton>
         </nav>
-        
+
         <!-- Contact info -->
         <div class="flex flex-col items-center justify-center gap-2 mb-8">
-          <SocialPill href="#contact" class="min-w-[16rem] md:min-w-[18rem]">
+          <SocialPill
+            href="#contact"
+            class="min-w-[16rem] md:min-w-[18rem]"
+          >
             <MailIcon class="size-4 md:size-6" />
             ignacioamat@ignathedev.com
           </SocialPill>
-          <span class="text-xs text-gray-500 dark:text-gray-400 italic">Contact me by email</span>
+          <span class="text-xs text-gray-500 dark:text-gray-400 italic"
+            >Contact me by email</span
+          >
         </div>
-        
+
         <!-- Scroll indicator -->
         <ScrollIndicator class="!bottom-2 md:!bottom-16 lg:!bottom-24" />
       </div>
     </SectionContainer>
 
     <!-- Services section with improved design -->
-    <SectionContainer id="services" class="py-20 md:py-28">
+    <SectionContainer
+      id="services"
+      class="py-20 md:py-28"
+    >
       <div class="text-center mb-20">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+        <h2
+          class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white"
+        >
           My Services
         </h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-          Custom web solutions: from optimized landing pages to complex applications, focused on performance, usability, and results.
+        <p
+          class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
+        >
+          Custom web solutions: from optimized landing pages to complex
+          applications, focused on performance, usability, and results.
         </p>
       </div>
 
       <!-- Service Cards -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
         <!-- Web Development Card -->
-        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-700">
-          <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 dark:text-blue-400 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        <div
+          class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-700"
+        >
+          <div
+            class="w-16 h-16 bg-blue-100 dark:bg-blue-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 text-blue-600 dark:text-blue-400 group-hover:text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              ></path>
             </svg>
           </div>
-          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Web Development</h3>
-          <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow">
-            I create complete and customized web solutions, from static websites and landing pages to complex dynamic applications, tailored to your objectives.
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+            Web Development
+          </h3>
+          <p
+            class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow"
+          >
+            I create complete and customized web solutions, from static websites
+            and landing pages to complex dynamic applications, tailored to your
+            objectives.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium">PHP</span>
-            <span class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium">Laravel</span>
-            <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium">Astro</span>
+            <span
+              class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium"
+              >PHP</span
+            >
+            <span
+              class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium"
+              >Laravel</span
+            >
+            <span
+              class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium"
+              >Astro</span
+            >
           </div>
         </div>
 
         <!-- Backend Development Card -->
-        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-700">
-          <div class="w-16 h-16 bg-green-100 dark:bg-green-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600 dark:text-green-400 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.40A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        <div
+          class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-700"
+        >
+          <div
+            class="w-16 h-16 bg-green-100 dark:bg-green-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 text-green-600 dark:text-green-400 group-hover:text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.40A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+              ></path>
             </svg>
           </div>
-          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Backend Development</h3>
-          <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow">
-            I build the logic and database for your web applications ensuring performance, security, and scalability. Experience in PHP and Laravel for APIs and complex systems.
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+            Backend Development
+          </h3>
+          <p
+            class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow"
+          >
+            I build the logic and database for your web applications ensuring
+            performance, security, and scalability. Experience in PHP and
+            Laravel for APIs and complex systems.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium">PHP</span>
-            <span class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium">Laravel</span>
-            <span class="bg-cyan-50 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 px-3 py-1 rounded-lg text-sm font-medium">MySQL</span>
+            <span
+              class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium"
+              >PHP</span
+            >
+            <span
+              class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium"
+              >Laravel</span
+            >
+            <span
+              class="bg-cyan-50 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 px-3 py-1 rounded-lg text-sm font-medium"
+              >MySQL</span
+            >
           </div>
         </div>
 
         <!-- Frontend Development Card -->
-        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-700">
-          <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-colors duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600 dark:text-purple-400 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        <div
+          class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-700"
+        >
+          <div
+            class="w-16 h-16 bg-purple-100 dark:bg-purple-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-colors duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 text-purple-600 dark:text-purple-400 group-hover:text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+              ></path>
             </svg>
           </div>
-          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Frontend Development</h3>
-          <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow">
-            Modern, responsive, and attractive user interfaces that provide an exceptional user experience across all devices and browsers.
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+            Frontend Development
+          </h3>
+          <p
+            class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow"
+          >
+            Modern, responsive, and attractive user interfaces that provide an
+            exceptional user experience across all devices and browsers.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+            <span
+              class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1"
+            >
               <VueIcon class="w-4 h-4" />
               Vue.js
             </span>
-            <span class="bg-yellow-50 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+            <span
+              class="bg-yellow-50 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1"
+            >
               <JavascriptIcon class="w-4 h-4" />
               JavaScript
               <ThunderIcon class="w-3 h-3 text-yellow-500" />
             </span>
-            <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+            <span
+              class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1"
+            >
               <TailwindIcon class="w-4 h-4" />
               TailwindCSS
             </span>
@@ -215,150 +362,304 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
 
       <!-- Why Choose Me Section -->
       <div class="text-center mb-16">
-        <h3 class="text-3xl font-bold mb-12 text-gray-900 dark:text-white">Why Choose Me?</h3>
+        <h3 class="text-3xl font-bold mb-12 text-gray-900 dark:text-white">
+          Why Choose Me?
+        </h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="text-center">
-            <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/50 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <div
+              class="w-16 h-16 bg-blue-100 dark:bg-blue-900/50 rounded-2xl flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-10 w-10 text-blue-600 dark:text-blue-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
               </svg>
             </div>
-            <h4 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Quality Code</h4>
-            <p class="text-gray-600 dark:text-gray-300 leading-relaxed max-w-sm mx-auto">Clean, maintainable, and tested code following industry best practices.</p>
+            <h4 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+              Quality Code
+            </h4>
+            <p
+              class="text-gray-600 dark:text-gray-300 leading-relaxed max-w-sm mx-auto"
+            >
+              Clean, maintainable, and tested code following industry best
+              practices.
+            </p>
           </div>
           <div class="text-center">
-            <div class="w-16 h-16 bg-green-100 dark:bg-green-900/50 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            <div
+              class="w-16 h-16 bg-green-100 dark:bg-green-900/50 rounded-2xl flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-10 w-10 text-green-600 dark:text-green-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                ></path>
               </svg>
             </div>
-            <h4 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Performance</h4>
-            <p class="text-gray-600 dark:text-gray-300 leading-relaxed max-w-sm mx-auto">Fast websites and applications, optimized for speed and a better user experience.</p>
+            <h4 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+              Performance
+            </h4>
+            <p
+              class="text-gray-600 dark:text-gray-300 leading-relaxed max-w-sm mx-auto"
+            >
+              Fast websites and applications, optimized for speed and a better
+              user experience.
+            </p>
           </div>
           <div class="text-center">
-            <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900/50 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            <div
+              class="w-16 h-16 bg-purple-100 dark:bg-purple-900/50 rounded-2xl flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-10 w-10 text-purple-600 dark:text-purple-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                ></path>
               </svg>
             </div>
-            <h4 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Innovation</h4>
-            <p class="text-gray-600 dark:text-gray-300 leading-relaxed max-w-sm mx-auto">Using the latest technologies and frameworks to build scalable, secure, and future-proof solutions.</p>
+            <h4 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+              Innovation
+            </h4>
+            <p
+              class="text-gray-600 dark:text-gray-300 leading-relaxed max-w-sm mx-auto"
+            >
+              Using the latest technologies and frameworks to build scalable,
+              secure, and future-proof solutions.
+            </p>
           </div>
         </div>
       </div>
 
       <!-- Call to Action -->
       <div class="text-center">
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-          <a href="#projects" class="group relative px-10 py-5 text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl shadow-xl hover:from-blue-700 hover:to-indigo-800 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25">
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
+        >
+          <a
+            href="#projects"
+            class="group relative px-10 py-5 text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl shadow-xl hover:from-blue-700 hover:to-indigo-800 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25"
+          >
             View My Projects
           </a>
-          <a href="#contact" class="group relative px-10 py-5 text-lg font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-2xl shadow-xl hover:from-indigo-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25">
+          <a
+            href="#contact"
+            class="group relative px-10 py-5 text-lg font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-2xl shadow-xl hover:from-indigo-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25"
+          >
             Contact Me Now
           </a>
         </div>
-        <p class="text-gray-500 dark:text-gray-400 text-sm font-medium">No commitment • Response within 24-48h</p>
+        <p class="text-gray-500 dark:text-gray-400 text-sm font-medium">
+          No commitment • Response within 24-48h
+        </p>
       </div>
     </SectionContainer>
 
-    <SectionContainer id="expertise" class="py-20 md:py-28">
+    <SectionContainer
+      id="expertise"
+      class="py-20 md:py-28"
+    >
       <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+        <h2
+          class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white"
+        >
           Technologies
         </h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          I master the most in-demand technologies in the market to create robust and scalable web solutions
+        <p
+          class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+        >
+          I master the most in-demand technologies in the market to create
+          robust and scalable web solutions
         </p>
       </div>
       <SkillsCloud lang="en" />
     </SectionContainer>
 
-    <FullSectionContainer id="landingPage" class="relative py-20 bg-gradient-to-b from-blue-50/50 via-purple-50/30 to-blue-50/50 dark:from-transparent dark:via-purple-900/10 dark:to-transparent">
+    <FullSectionContainer
+      id="landingPage"
+      class="relative py-20 bg-gradient-to-b from-blue-50/50 via-purple-50/30 to-blue-50/50 dark:from-transparent dark:via-purple-900/10 dark:to-transparent"
+    >
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="mb-6 text-5xl lg:text-6xl font-bold text-gray-900 dark:text-yellow-200 dark:text-glow gap-x-3">
+        <h2
+          class="mb-6 text-5xl lg:text-6xl font-bold text-gray-900 dark:text-yellow-200 dark:text-glow gap-x-3"
+        >
           Need a professional website?
         </h2>
         <div class="space-y-6 mb-12">
-          <h3 class="text-3xl lg:text-4xl font-bold text-blue-600 dark:text-yellow-200">
+          <h3
+            class="text-3xl lg:text-4xl font-bold text-blue-600 dark:text-yellow-200"
+          >
             Custom web development for your business
           </h3>
-          <div class="flex flex-wrap justify-center gap-4 text-lg text-gray-700 dark:text-gray-200">
+          <div
+            class="flex flex-wrap justify-center gap-4 text-lg text-gray-700 dark:text-gray-200"
+          >
             <span class="flex items-center gap-2">
-              <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              <svg
+                class="w-6 h-6 text-green-600 dark:text-green-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
               </svg>
               Landing Pages
             </span>
             <span class="flex items-center gap-2">
-              <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              <svg
+                class="w-6 h-6 text-green-600 dark:text-green-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
               </svg>
               E-commerce
             </span>
             <span class="flex items-center gap-2">
-              <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              <svg
+                class="w-6 h-6 text-green-600 dark:text-green-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
               </svg>
               Web Applications
             </span>
           </div>
-          <p class="text-xl text-gray-600 dark:text-gray-300 dark:opacity-90 max-w-2xl mx-auto">
-            I design and develop optimized, fast, and effective websites that help your business grow online.
+          <p
+            class="text-xl text-gray-600 dark:text-gray-300 dark:opacity-90 max-w-2xl mx-auto"
+          >
+            I design and develop optimized, fast, and effective websites that
+            help your business grow online.
           </p>
         </div>
 
-        <a href="#contact" class="inline-block px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-purple-600 dark:to-purple-800 dark:hover:from-purple-700 dark:hover:to-purple-900 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+        <a
+          href="#contact"
+          class="inline-block px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-purple-600 dark:to-purple-800 dark:hover:from-purple-700 dark:hover:to-purple-900 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+        >
           Let's discuss your project
         </a>
       </div>
     </FullSectionContainer>
 
-    <SectionContainer id="experience" class="py-20 md:py-28">
+    <SectionContainer
+      id="experience"
+      class="py-20 md:py-28"
+    >
       <div class="text-center mb-16">
-        <h2 class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white">
+        <h2
+          class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white"
+        >
           <BriefCaseIcon class="size-12" />
           Work Experience
         </h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          +4 years developing innovative web solutions for companies and startups
+        <p
+          class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+        >
+          +4 years developing innovative web solutions for companies and
+          startups
         </p>
       </div>
       <Experience />
     </SectionContainer>
 
-    <SectionContainer id="academics" class="py-20 md:py-28">
+    <SectionContainer
+      id="academics"
+      class="py-20 md:py-28"
+    >
       <div class="text-center mb-16">
-        <h2 class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white">
+        <h2
+          class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white"
+        >
           <LearningIcon class="size-12" />
           Academic Experience
         </h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        <p
+          class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+        >
           Continuous training in the latest web technologies and best practices
         </p>
       </div>
       <Studies />
     </SectionContainer>
 
-    <SectionContainer id="certifications" class="py-20 md:py-28">
+    <SectionContainer
+      id="certifications"
+      class="py-20 md:py-28"
+    >
       <div class="text-center mb-16">
-        <h2 class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white">
+        <h2
+          class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white"
+        >
           <CertificationIcon class="size-12" />
           Certifications
         </h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        <p
+          class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+        >
           Professional certifications that validate my technical expertise
         </p>
       </div>
       <Certification />
     </SectionContainer>
 
-    <SectionContainer id="projects" class="py-20 md:py-28">
+    <SectionContainer
+      id="projects"
+      class="py-20 md:py-28"
+    >
       <div class="text-center mb-16">
-        <h2 class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white">
+        <h2
+          class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white"
+        >
           <CodeIcon class="size-12" />
           Featured Projects
         </h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        <p
+          class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+        >
           A selection of my most relevant and successful projects
         </p>
       </div>
@@ -366,25 +667,40 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
     </SectionContainer>
 
     <!-- FAQ Section -->
-    <SectionContainer id="faq" class="py-20 md:py-28">
+    <SectionContainer
+      id="faq"
+      class="py-20 md:py-28"
+    >
       <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+        <h2
+          class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white"
+        >
           Frequently Asked Questions
         </h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          Find answers to common questions about my services, process, and expertise
+        <p
+          class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+        >
+          Find answers to common questions about my services, process, and
+          expertise
         </p>
       </div>
       <FAQSection />
     </SectionContainer>
 
-    <SectionContainer id="contact" class="py-20 md:py-28">
+    <SectionContainer
+      id="contact"
+      class="py-20 md:py-28"
+    >
       <div class="text-center mb-16">
-        <h2 class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white">
+        <h2
+          class="flex items-center justify-center mb-6 text-4xl md:text-5xl font-bold gap-x-4 text-gray-900 dark:text-white"
+        >
           <MailIcon class="size-12" />
           Contact
         </h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        <p
+          class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+        >
           Do you have a project in mind? Let's talk and make it happen
         </p>
       </div>
@@ -477,11 +793,11 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
     0% {
       box-shadow: 0 0 0 0 rgba(255, 220, 100, 0.7);
     }
-    
+
     70% {
       box-shadow: 0 0 0 8px rgba(255, 220, 100, 0);
     }
-    
+
     100% {
       box-shadow: 0 0 0 0 rgba(255, 220, 100, 0);
     }
@@ -498,15 +814,15 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
     overflow: hidden;
     z-index: 1;
   }
-  
+
   .cv-button-wrapper a:hover {
     transform: translateY(-3px);
     background: linear-gradient(135deg, #ffea94, #ffb06d) !important;
     box-shadow: 0 7px 14px rgba(255, 220, 100, 0.3);
   }
-  
+
   .cv-button-wrapper a::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -2px;
     left: -2px;
@@ -519,7 +835,7 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
     opacity: 0.7;
     border-radius: 9999px;
   }
-  
+
   @keyframes gradientMove {
     0% {
       background-position: 0% 50%;
@@ -554,14 +870,18 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
 
   /* Add text glow effect for better visibility on mobile */
   .text-glow {
-    text-shadow: 0 0 10px rgba(255, 240, 107, 0.7), 0 0 20px rgba(255, 240, 107, 0.4);
+    text-shadow:
+      0 0 10px rgba(255, 240, 107, 0.7),
+      0 0 20px rgba(255, 240, 107, 0.4);
     position: relative;
     z-index: 1;
   }
-  
+
   @media (max-width: 640px) {
     .text-glow {
-      text-shadow: 0 0 15px rgba(255, 240, 107, 0.8), 0 0 25px rgba(255, 240, 107, 0.5);
+      text-shadow:
+        0 0 15px rgba(255, 240, 107, 0.8),
+        0 0 25px rgba(255, 240, 107, 0.5);
     }
   }
 
