@@ -57,10 +57,10 @@ const { isEnglish = false } = Astro.props;
           downloadBtn.getAttribute("data-is-english") === "true";
         const cvFileName = isEnglish
           ? "CV-Ignacio-new-design-english.pdf"
-          : "CV-Ignacio-new-design.pdf";
+          : "CV-Ignacio-new-design-spanish.pdf";
         const downloadName = isEnglish
           ? "ignacio-cv-english-2025.pdf"
-          : "ignacio-cv-2025.pdf";
+          : "ignacio-cv-spanish-2025.pdf";
 
         const link = document.createElement("a");
         link.href = `/${cvFileName}`;
@@ -156,7 +156,6 @@ const { isEnglish = false } = Astro.props;
     opacity: 0.7;
     border-radius: 9999px;
   }
-
 
   @keyframes pulse-cv {
     0% {
