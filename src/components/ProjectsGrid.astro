@@ -455,17 +455,18 @@ const projects = PROJECTS.map(project => ({
     gap: 0.5rem;
     padding: 0.5rem 1rem;
     border-radius: 9999px;
-    background: #f9fafb;
-    color: #374151;
+    background: #f3f4f6;
+    color: #111827;
     font-size: 0.9rem;
+    font-weight: 500;
     border: 1px solid #e5e7eb;
     cursor: pointer;
     transition: all 0.3s ease;
   }
-  
+
   :global(.dark) .filter-btn {
     background: #374151;
-    color: #d1d5db;
+    color: #f3f4f6;
     border-color: #4b5563;
   }
   
@@ -482,10 +483,17 @@ const projects = PROJECTS.map(project => ({
   }
   
   .filter-btn.active {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+  }
+
+  :global(.dark) .filter-btn.active {
     background: #3b82f6;
     border-color: #3b82f6;
-    color: white;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    color: #ffffff;
   }
   
   .filter-icon {
@@ -553,14 +561,19 @@ const projects = PROJECTS.map(project => ({
   
   .featured-badge {
     display: inline-block;
-    background: #3b82f6;
-    color: white;
+    background: #1e40af;
+    color: #ffffff;
     font-size: 0.8rem;
     font-weight: bold;
     padding: 0.25rem 0.75rem;
     border-radius: 9999px;
     margin-bottom: 0.75rem;
-    box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 2px 6px rgba(30, 64, 175, 0.4);
+  }
+
+  :global(.dark) .featured-badge {
+    background: #2563eb;
+    color: #ffffff;
   }
   
   .project-title {

@@ -63,7 +63,7 @@ const { class: className = "" } = Astro.props;
         <SpanishFlag />
         <div class="flex flex-col">
           <span class="font-medium">Español</span>
-          <span class="text-xs text-gray-500 dark:text-gray-400">Spanish</span>
+          <span class="text-xs text-gray-600 dark:text-gray-400">Spanish</span>
         </div>
       </a>
       
@@ -78,7 +78,7 @@ const { class: className = "" } = Astro.props;
         <EnglishFlag />
         <div class="flex flex-col">
           <span class="font-medium">English</span>
-          <span class="text-xs text-gray-500 dark:text-gray-400">Inglés</span>
+          <span class="text-xs text-gray-600 dark:text-gray-400">Inglés</span>
         </div>
       </a>
     </div>
@@ -125,7 +125,7 @@ const { class: className = "" } = Astro.props;
       // Close dropdown on escape key
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && this.isOpen) {
-          this.closeDropdown();
+          this.closeDropdown(true); // Return focus when closing via keyboard
         }
       });
 
@@ -157,13 +157,17 @@ const { class: className = "" } = Astro.props;
       }
     }
 
-    closeDropdown() {
+    closeDropdown(returnFocus = false) {
       this.isOpen = false;
       this.menu.classList.add('opacity-0', 'invisible', 'scale-95');
       this.menu.classList.remove('opacity-100', 'visible', 'scale-100');
       this.arrow?.classList.remove('rotate-180');
       this.button?.setAttribute('aria-expanded', 'false');
-      this.button?.focus();
+
+      // Only return focus when closed via keyboard, not when clicking outside
+      if (returnFocus) {
+        this.button?.focus();
+      }
     }
 
     handleKeydown(e) {

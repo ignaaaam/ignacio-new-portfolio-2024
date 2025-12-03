@@ -83,7 +83,11 @@ const url = `https://www.ignathedev.com${Astro.url.pathname}`;
             >
               <img
                 class="aspect-square h-full w-full"
-                src="/img/profile_picture.jpg"
+                src="/img/optimized/profile_picture.webp"
+                width="32"
+                height="32"
+                loading="lazy"
+                alt="Author profile picture"
               />
             </span>
             <span class="font-medium">{frontmatter.author}</span>
@@ -233,7 +237,7 @@ const url = `https://www.ignathedev.com${Astro.url.pathname}`;
     "name": "Ignacio Amat Urbina",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.ignathedev.com/img/profile_picture.jpg"
+      "url": "https://www.ignathedev.com/img/optimized/profile_picture.webp"
     }
   },
   "mainEntityOfPage": {

@@ -104,7 +104,7 @@ const lang = getLangFromUrl(Astro.url);
           class="form-textarea mt-1 block w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition-colors"
           placeholder={lang === 'es' ? 'Cuéntame sobre tu proyecto...' : 'Tell me about your project...'}
         ></textarea>
-        <div class="absolute bottom-2 right-2 text-xs text-gray-500">
+        <div class="absolute bottom-2 right-2 text-xs text-gray-600 dark:text-gray-400" aria-live="polite" aria-atomic="true">
           <span id="charCount">0</span>/500
         </div>
       </div>
@@ -451,23 +451,3 @@ const lang = getLangFromUrl(Astro.url);
   }
 </script>
 
-<!-- Add this script at the end of your existing scripts -->
-<script>
-  // Prevent zoom on focus for iOS devices
-  const addMaximumScaleToMetaViewport = () => {
-    const el = document.querySelector('meta[name=viewport]');
-    if (el !== null) {
-      let content = el.getAttribute('content');
-      let re = /maximum\-scale=[0-9\.]+/g;
-      if (re.test(content)) {
-          content = content.replace(re, 'maximum-scale=1.0');
-      } else {
-          content = [content, 'maximum-scale=1.0'].join(', ')
-      }
-      el.setAttribute('content', content);
-    }
-  };
-  
-  // Apply on page load
-  addMaximumScaleToMetaViewport();
-</script>
