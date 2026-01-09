@@ -1,10 +1,18 @@
 User-agent: *
 Allow: /
-Crawl-delay: 10
 
 # Prevent crawling of certain paths
 Disallow: /api/
 Disallow: /admin/
 Disallow: /private/
+Disallow: /_astro/
 
-Sitemap: https://ignathedev.com/sitemap-index.xml
+# Allow important resources
+Allow: /img/
+Allow: /fonts/
+
+# Sitemaps
+Sitemap: https://www.ignathedev.com/sitemap-index.xml
+
+# Host directive for canonical domain
+Host: https://www.ignathedev.com

@@ -44,7 +44,19 @@ export default defineConfig({
         "https://www.googletagmanager.com",
       ],
     }
-  }), sitemap(), react(), db(), webVitals(), tailwind()],
+  }), sitemap({
+    i18n: {
+      defaultLocale: 'es',
+      locales: {
+        es: 'es-ES',
+        en: 'en-US',
+      },
+    },
+    changefreq: 'weekly',
+    priority: 0.7,
+    lastmod: new Date(),
+    filter: (page) => !page.includes('/api/') && !page.includes('/admin/'),
+  }), react(), db(), webVitals(), tailwind()],
   adapter: vercel({
     webAnalytics: {
       enabled: true

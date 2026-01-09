@@ -233,11 +233,21 @@ const metaKeywords = lang === 'es'
     <!-- Direct meta tags instead of using additionalMetaTags -->
     <meta name="description" content={metaDescription} />
     <meta name="author" content="Ignacio Amat Urbina" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="theme-color" content="#0a0a0a" />
-    <meta property="article:author" content="Ignacio Amat Urbina" />
-    <meta property="article:published_time" content={new Date().toISOString()} />
     <meta name="keywords" content={metaKeywords} />
+
+    <!-- Geographic SEO for local targeting -->
+    <meta name="geo.region" content="ES" />
+    <meta name="geo.placename" content="Spain" />
+    <meta name="geo.position" content="40.4168;-3.7038" />
+    <meta name="ICBM" content="40.4168, -3.7038" />
+
+    <!-- Additional SEO meta tags -->
+    <meta name="rating" content="general" />
+    <meta name="distribution" content="global" />
+    <meta name="revisit-after" content="7 days" />
+    <meta http-equiv="content-language" content={lang === 'es' ? 'es-ES' : 'en-US'} />
     
     <script is:inline>
       function speedInsightsBeforeSend(data){
@@ -251,7 +261,7 @@ const metaKeywords = lang === 'es'
       description={metaDescription}
       canonical={`https://www.ignathedev.com${Astro.url.pathname}`}
       openGraph={{
-        url: url,
+        url: `https://www.ignathedev.com${Astro.url.pathname}`,
         title: metaTitle,
         type: "website",
         description: metaDescription,
@@ -259,11 +269,11 @@ const metaKeywords = lang === 'es'
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: 'Profile picture of Ignacio Amat Urbina',
+          alt: lang === 'es' ? 'Foto de perfil de Ignacio Amat Urbina - Desarrollador Web Full Stack' : 'Profile picture of Ignacio Amat Urbina - Full Stack Web Developer',
           type: 'image/jpeg',
         }],
         site_name: siteName,
-        locale: lang === 'es' ? 'es-ES' : 'en-US',
+        locale: lang === 'es' ? 'es_ES' : 'en_US',
       }}
       twitter={{
         handle: '@ignathedev',
@@ -347,8 +357,11 @@ const metaKeywords = lang === 'es'
             "jobTitle": "Full Stack Developer",
             "description": lang === 'es' ? "Experto en PHP y Laravel. Desarrollo sitios web de alto rendimiento" : "PHP & Laravel Expert. I develop high-performance websites",
             "sameAs": [
-              "https://linkedin.com/in/...",
-              "https://github.com/..."
+              "https://linkedin.com/in/ignacio-amat-urbina-789244223",
+              "https://github.com/ignaaaam",
+              "https://www.behance.net/igna21df",
+              "https://stackoverflow.com/users/18973790/ignacio",
+              "https://laracasts.com/@ignaaaam"
             ],
             "knowsAbout": ["PHP", "Laravel", "Vue.js", "TailwindCSS", "Full Stack Development", "Web Application Development", "High-Performance Websites", "SEO Optimization"],
             "worksFor": {
@@ -383,9 +396,9 @@ const metaKeywords = lang === 'es'
         ]
       }
     </script>
-    <link rel="alternate" hreflang="es-ES" href={`https://www.ignathedev.com/es${Astro.url.pathname}`} />
-    <link rel="alternate" hreflang="en-US" href={`https://www.ignathedev.com/en${Astro.url.pathname}`} />
-    <link rel="alternate" hreflang="x-default" href={`https://www.ignathedev.com${Astro.url.pathname}`} />
+    <link rel="alternate" hreflang="es-ES" href={lang === 'es' ? `https://www.ignathedev.com${Astro.url.pathname}` : `https://www.ignathedev.com${Astro.url.pathname.replace('/en', '')}`} />
+    <link rel="alternate" hreflang="en-US" href={lang === 'en' ? `https://www.ignathedev.com${Astro.url.pathname}` : `https://www.ignathedev.com/en${Astro.url.pathname}`} />
+    <link rel="alternate" hreflang="x-default" href={lang === 'es' ? `https://www.ignathedev.com${Astro.url.pathname}` : `https://www.ignathedev.com${Astro.url.pathname.replace('/en', '')}`} />
 
     <!-- Preload critical fonts -->
     <link rel="preload" href="/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin />

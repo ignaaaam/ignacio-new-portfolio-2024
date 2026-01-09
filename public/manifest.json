@@ -1,27 +1,66 @@
 {
-  "name": "Ignacio Amat - Full Stack Developer",
+  "name": "Ignacio Amat Urbina - Full Stack Developer",
   "short_name": "IgnaTheDev",
-  "description": "Full Stack Web Developer specializing in PHP, Laravel, Vue, and modern web technologies",
+  "description": "Full Stack Web Developer specializing in PHP, Laravel, Vue.js and modern web technologies. Professional web development services.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#0a0a0a",
-  "theme_color": "#ffffff",
+  "theme_color": "#0a0a0a",
   "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
     {
       "src": "/favicon.ico",
       "sizes": "64x64",
       "type": "image/x-icon"
     },
     {
-      "src": "/img/profile_picture_og-upscaled.jpg",
-      "sizes": "1200x630",
-      "type": "image/jpeg",
-      "purpose": "any"
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "apple touch icon"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "lang": "es",
   "dir": "ltr",
-  "orientation": "any",
-  "categories": ["development", "web"],
-  "prefer_related_applications": false
-} 
+  "orientation": "portrait-primary",
+  "categories": ["business", "development", "productivity"],
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "description": "Read technical articles and tutorials",
+      "url": "/blog",
+      "icons": [{"src": "/android-chrome-192x192.png", "sizes": "192x192"}]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Get in touch",
+      "url": "/#contact",
+      "icons": [{"src": "/android-chrome-192x192.png", "sizes": "192x192"}]
+    }
+  ]
+}

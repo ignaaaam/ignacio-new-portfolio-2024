@@ -216,19 +216,24 @@ const url = `https://www.ignathedev.com${Astro.url.pathname}`;
   }
 </style>
 
-<script type="application/ld+json" is:inline>
-{
+<script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "{frontmatter.title}",
-  "description": "{frontmatter.description}",
-  "image": "{frontmatter.image.url}",
-  "datePublished": "{new Date(frontmatter.publish_date).toISOString()}",
-  "dateModified": "{new Date(frontmatter.publish_date).toISOString()}",
+  "headline": frontmatter.title,
+  "description": frontmatter.description,
+  "image": `https://www.ignathedev.com${frontmatter.image.url}`,
+  "datePublished": (() => {
+    const parts = frontmatter.publish_date.split('/');
+    return new Date(`${parts[2]}-${parts[1]}-${parts[0]}`).toISOString();
+  })(),
+  "dateModified": (() => {
+    const parts = frontmatter.publish_date.split('/');
+    return new Date(`${parts[2]}-${parts[1]}-${parts[0]}`).toISOString();
+  })(),
   "author": {
     "@type": "Person",
     "@id": "https://www.ignathedev.com/#person",
-    "name": "{frontmatter.author}",
+    "name": frontmatter.author,
     "url": "https://www.ignathedev.com"
   },
   "publisher": {
@@ -242,10 +247,11 @@ const url = `https://www.ignathedev.com${Astro.url.pathname}`;
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://www.ignathedev.com{Astro.url.pathname}"
+    "@id": `https://www.ignathedev.com${Astro.url.pathname}`
   },
-  "keywords": "{frontmatter.tags.join(', ')}",
+  "keywords": frontmatter.tags.join(', '),
   "articleSection": "Web Development",
-  "inLanguage": "es-ES"
-}
-</script>
+  "inLanguage": "es-ES",
+  "wordCount": 500,
+  "isAccessibleForFree": true
+})}></script>
