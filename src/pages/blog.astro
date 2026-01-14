@@ -76,66 +76,88 @@ const postsArray = Array.from(postsMap.values());
     title="Blog de Desarrollo Web - Ignacio Amat Urbina | Tutoriales PHP, Laravel, Vue.js"
     description="Blog técnico de Ignacio Amat Urbina - Artículos, tutoriales y guías sobre desarrollo web, PHP, Laravel, Vue.js, JavaScript y tecnologías modernas. Aprende las mejores prácticas de programación.">
     <main class="min-h-screen">
-        <div class="max-w-6xl mx-auto px-6 py-8">
-          <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">
-                Últimas Noticias
+        <div class="max-w-6xl mx-auto px-6 py-12">
+          <!-- Hero Section -->
+          <div class="text-center mb-16">
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 text-sm font-medium mb-6">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
+              </svg>
+              Blog Técnico
+            </span>
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                Últimas <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Publicaciones</span>
             </h1>
-            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Aquí encontrarás las últimas noticias y novedades sobre desarrollo web, programación, tecnología y mucho más.
+            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+              Artículos, tutoriales y novedades sobre desarrollo web, PHP, Laravel, Vue.js y tecnologías modernas.
             </p>
           </div>
-        <ul class="grid grid-cols-1 md:grid-cols-3 items-center gap-8 p-6 md:p-12">
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {
              postsArray.map((post) => {
-               const moreTagsCount = post.tags.length - 5;
+               const moreTagsCount = post.tags.length - 3;
                return (
-                 <div class="max-w-sm pb-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                     <a href={post.slug} class="rounded-lg overflow-hidden block">
-                         <img class="rounded-t-lg transition-transform hover:scale-125 ease-in duration-150" 
+                 <article class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 flex flex-col">
+                     <a href={post.slug} class="block overflow-hidden aspect-video">
+                         <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
                               width={400}
-                              height={400} 
+                              height={225} 
                               src={post.image.url} 
-                              alt={post.image.alt} />
+                              alt={post.image.alt}
+                              loading="lazy" />
                      </a>
-                     <div class="tags-wrapper">
-                        <div class="flex flex-wrap justify-center gap-2 py-3">
-                            {post.tags.slice(0, 5).map((tag: string) => (
-                            <span class="px-2 py-1 text-xs lg:text-sm font-medium text-white bg-blue-700 rounded-full dark:bg-blue-600">
+                     <div class="p-6 flex flex-col flex-grow">
+                        <!-- Tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            {post.tags.slice(0, 3).map((tag: string) => (
+                            <span class="px-2.5 py-1 text-xs font-medium text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-900/50 rounded-full">
                                 {tag}
                             </span>
                             ))}
                             {moreTagsCount > 0 && (
-                            <span class="px-2 py-1 text-xs lg:text-sm font-medium text-white bg-blue-500 rounded-full dark:bg-blue-500">
-                                +{moreTagsCount} más
+                            <span class="px-2.5 py-1 text-xs font-medium text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 rounded-full">
+                                +{moreTagsCount}
                             </span>
                             )}
                         </div>
-                    </div>
-                     <div class="p-4">
-                         <a href={post.url}>
-                             <h5 class="mb-2 text-2xl md:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                 {post.frontmatter.title}
-                             </h5>
-                         </a>
-                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-2">
-                             {post.frontmatter.description}
-                         </p>
-                         <a href={post.url}
-                             class="mt-4 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition">
-                             Leer más
-                             <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
-                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                     d="M1 5h12m0 0L9 1m4 4L9 9" />
-                             </svg>
-                         </a>
+                        
+                        <!-- Title -->
+                        <a href={post.url} class="block mb-3">
+                            <h2 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                                {post.frontmatter.title}
+                            </h2>
+                        </a>
+                        
+                        <!-- Description -->
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed line-clamp-3 mb-4 flex-grow">
+                            {post.frontmatter.description}
+                        </p>
+                        
+                        <!-- Read More Link -->
+                        <a href={post.url}
+                            class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors group/link">
+                            Leer artículo
+                            <svg class="w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                        </a>
                      </div>
-                 </div>
+                 </article>
                );
              })
             }
         </ul>
+        
+        <!-- Empty State -->
+        {postsArray.length === 0 && (
+          <div class="text-center py-16">
+            <svg class="w-16 h-16 mx-auto text-gray-400 dark:text-gray-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
+            </svg>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">No hay artículos todavía</h3>
+            <p class="text-gray-600 dark:text-gray-400">Pronto publicaré contenido nuevo. ¡Vuelve pronto!</p>
+          </div>
+        )}
     </div>
     </main>
 </Layout>

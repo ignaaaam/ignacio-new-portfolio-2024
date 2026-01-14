@@ -1,68 +1,121 @@
 ---
 import SocialShareButtons from './SocialShareButtons.astro';
+import LinkedinIcon from './icons/LinkedinIcon.astro';
+import GithubIcon from './icons/GithubIcon.astro';
+import MailIcon from './icons/MailIcon.astro';
 ---
 
 <footer
-  class="bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-20"
+  class="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 border-t border-gray-200 dark:border-gray-700 mt-20"
 >
-  <div
-    class="w-full max-w-screen-xl p-8 mx-auto md:flex md:items-center md:justify-between flex-wrap"
-  >
-    <span class="text-sm text-gray-600 dark:text-gray-300 sm:text-center"
-      >© {new Date().getFullYear()}
-      <a
-        href="https://ignathedev.com/"
-        class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-        >Ignacio Amat Urbina</a
-      >. Todos los derechos reservados.
-    </span>
-    <ul
-      class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-600 dark:text-gray-300 sm:mt-0"
-    >
-      <li>
-        <a
-          href="#services"
-          class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors me-4 md:me-6"
-          >Servicios</a
+  <div class="w-full max-w-screen-xl px-6 py-12 mx-auto">
+    <!-- Main Footer Content -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <!-- Brand Column -->
+      <div class="space-y-4">
+        <div class="flex items-center gap-3">
+          <img
+            class="rounded-full size-12 ring-2 ring-blue-500/20"
+            src="/img/optimized/profile_picture.webp"
+            alt="Ignacio Amat Urbina"
+            width="48"
+            height="48"
+            loading="lazy"
+          />
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white">Ignacio Amat</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Full Stack Developer</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+          Desarrollador web especializado en crear aplicaciones de alto rendimiento con PHP, Laravel y Vue.js.
+        </p>
+        <!-- Social Links -->
+        <div class="flex items-center gap-3">
+          <a href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-blue-100 dark:hover:bg-blue-900/50 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" aria-label="LinkedIn">
+            <LinkedinIcon class="size-5" />
+          </a>
+          <a href="https://github.com/ignaaaam" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" aria-label="GitHub">
+            <GithubIcon class="size-5" />
+          </a>
+          <a href="mailto:ignacioamat@ignathedev.com" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-green-100 dark:hover:bg-green-900/50 text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors" aria-label="Email">
+            <MailIcon class="size-5" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Navigation Column -->
+      <div class="space-y-4">
+        <h4 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">Navegación</h4>
+        <ul class="space-y-2">
+          <li>
+            <a href="#services" class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Servicios</a>
+          </li>
+          <li>
+            <a href="#experience" class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Experiencia</a>
+          </li>
+          <li>
+            <a href="#projects" class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Proyectos</a>
+          </li>
+          <li>
+            <a href="#certifications" class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Certificaciones</a>
+          </li>
+          <li>
+            <a href="/blog" class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Column -->
+      <div class="space-y-4">
+        <h4 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">Contacto</h4>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            <a href="mailto:ignacioamat@ignathedev.com" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">ignacioamat@ignathedev.com</a>
+          </li>
+          <li class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+            Barcelona, España
+          </li>
+          <li class="flex items-center gap-2 text-sm">
+            <span class="flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-green-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            <span class="text-green-600 dark:text-green-400 font-medium">Disponible para proyectos</span>
+          </li>
+        </ul>
+        <a 
+          href="#contact" 
+          class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
         >
-      </li>
-      <li>
-        <a
-          href="#experience"
-          class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors me-4 md:me-6"
-          >Experiencia</a
-        >
-      </li>
-      <li>
-        <a
-          href="#certifications"
-          class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors me-4 md:me-6"
-          >Certificaciones</a
-        >
-      </li>
-      <li>
-        <a
-          href="#projects"
-          class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors me-4 md:me-6"
-          >Proyectos</a
-        >
-      </li>
-      <li>
-        <a
-          href="#contact"
-          class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-          >Contacto</a
-        >
-      </li>
-    </ul>
-    
-    <div class="w-full mt-6 flex justify-center md:justify-end">
-      <SocialShareButtons 
-        url="https://ignathedev.com/" 
-        title="Ignacio Amat Urbina - Desarrollador Web Full Stack en Barcelona | Experto en PHP y Laravel" 
-        description="Desarrollador web full stack en Barcelona especializado en crear aplicaciones web a medida con PHP, Laravel, Vue y tecnologías modernas. Ofrezco soluciones web de alto rendimiento para empresas."
-        hashtags="desarrolladorweb,desarrolladorwebbarcelona,expertolaravel,phpdesarrollo,aplicacionesweb,solucioneswebpymes" 
-      />
+          Contactar ahora
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-gray-200 dark:border-gray-700 pt-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <span class="text-sm text-gray-600 dark:text-gray-400">
+          © {new Date().getFullYear()} <a href="https://ignathedev.com/" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium">Ignacio Amat Urbina</a>. Todos los derechos reservados.
+        </span>
+        <SocialShareButtons 
+          url="https://ignathedev.com/" 
+          title="Ignacio Amat Urbina - Desarrollador Web Full Stack en Barcelona | Experto en PHP y Laravel" 
+          description="Desarrollador web full stack en Barcelona especializado en crear aplicaciones web a medida con PHP, Laravel, Vue y tecnologías modernas."
+          hashtags="desarrolladorweb,desarrolladorwebbarcelona,expertolaravel,phpdesarrollo,aplicacionesweb" 
+        />
+      </div>
     </div>
   </div>
 </footer>
