@@ -1,3 +1,6 @@
+# Ignacio Amat Urbina - Full Stack Web Developer Portfolio
+# https://www.ignathedev.com
+
 User-agent: *
 Allow: /
 
@@ -6,13 +9,40 @@ Disallow: /api/
 Disallow: /admin/
 Disallow: /private/
 Disallow: /_astro/
+Disallow: /*?*
 
-# Allow important resources
+# Allow important resources for indexing
 Allow: /img/
 Allow: /fonts/
+Allow: /img/optimized/
 
-# Sitemaps
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Sitemaps - both language versions
 Sitemap: https://www.ignathedev.com/sitemap-index.xml
 
-# Host directive for canonical domain
+# Host directive for canonical domain (preferred www version)
 Host: https://www.ignathedev.com
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Specific rules for LinkedIn bot (important for professional visibility)
+User-agent: LinkedInBot
+Allow: /
+
+# Specific rules for Twitter bot
+User-agent: Twitterbot
+Allow: /
+
+# Specific rules for Facebook bot
+User-agent: facebookexternalhit
+Allow: /

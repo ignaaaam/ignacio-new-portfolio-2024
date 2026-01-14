@@ -1,12 +1,14 @@
 {
-  "name": "Ignacio Amat Urbina - Full Stack Developer",
-  "short_name": "IgnaTheDev",
-  "description": "Full Stack Web Developer specializing in PHP, Laravel, Vue.js and modern web technologies. Professional web development services.",
+  "name": "Ignacio Amat Urbina - Full Stack Web Developer | PHP & Laravel Expert",
+  "short_name": "Ignacio Amat Dev",
+  "description": "Portfolio y CV de Ignacio Amat Urbina - Desarrollador Web Full Stack especializado en PHP, Laravel, Vue.js. +5 años de experiencia. Disponible para contratación y trabajo remoto.",
   "start_url": "/",
+  "id": "/",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "browser"],
   "background_color": "#0a0a0a",
-  "theme_color": "#0a0a0a",
+  "theme_color": "#2563eb",
   "icons": [
     {
       "src": "/favicon-16x16.png",
@@ -45,22 +47,62 @@
   "lang": "es",
   "dir": "ltr",
   "orientation": "portrait-primary",
-  "categories": ["business", "development", "productivity"],
+  "categories": ["business", "development", "productivity", "education"],
   "prefer_related_applications": false,
+  "iarc_rating_id": "",
+  "screenshots": [
+    {
+      "src": "/img/profile_picture_og-upscaled.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "label": "Ignacio Amat Urbina - Full Stack Web Developer Portfolio"
+    }
+  ],
   "shortcuts": [
     {
-      "name": "Blog",
+      "name": "Ver Proyectos",
+      "short_name": "Proyectos",
+      "description": "Ver portfolio de proyectos realizados",
+      "url": "/#projects",
+      "icons": [{"src": "/android-chrome-192x192.png", "sizes": "192x192"}]
+    },
+    {
+      "name": "Experiencia Laboral",
+      "short_name": "Experiencia",
+      "description": "Ver experiencia profesional y CV",
+      "url": "/#experience",
+      "icons": [{"src": "/android-chrome-192x192.png", "sizes": "192x192"}]
+    },
+    {
+      "name": "Blog Técnico",
       "short_name": "Blog",
-      "description": "Read technical articles and tutorials",
+      "description": "Artículos y tutoriales de desarrollo web",
       "url": "/blog",
       "icons": [{"src": "/android-chrome-192x192.png", "sizes": "192x192"}]
     },
     {
-      "name": "Contact",
-      "short_name": "Contact",
-      "description": "Get in touch",
+      "name": "Contactar",
+      "short_name": "Contacto",
+      "description": "Contactar para proyectos o contratación",
       "url": "/#contact",
       "icons": [{"src": "/android-chrome-192x192.png", "sizes": "192x192"}]
+    },
+    {
+      "name": "English Version",
+      "short_name": "English",
+      "description": "View portfolio in English",
+      "url": "/en",
+      "icons": [{"src": "/android-chrome-192x192.png", "sizes": "192x192"}]
     }
-  ]
+  ],
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://www.ignathedev.com/manifest.json"
+    }
+  ],
+  "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
 }

@@ -24,7 +24,7 @@ export default defineConfig({
       }
     }
   },
-  site: 'https://ignathedev.com',
+  site: 'https://www.ignathedev.com',
   i18n: {
     defaultLocale: "es",
     locales: ["en", "es"],
@@ -56,6 +56,17 @@ export default defineConfig({
     priority: 0.7,
     lastmod: new Date(),
     filter: (page) => !page.includes('/api/') && !page.includes('/admin/'),
+    serialize: (item) => {
+      // Boost priority for important pages
+      if (item.url === 'https://www.ignathedev.com/' || item.url === 'https://www.ignathedev.com/en/') {
+        item.priority = 1.0;
+        item.changefreq = 'daily';
+      } else if (item.url.includes('/blog')) {
+        item.priority = 0.8;
+        item.changefreq = 'weekly';
+      }
+      return item;
+    },
   }), react(), db(), webVitals(), tailwind()],
   adapter: vercel({
     webAnalytics: {

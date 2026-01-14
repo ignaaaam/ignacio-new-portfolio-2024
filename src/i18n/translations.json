@@ -6,7 +6,28 @@
     "devopsTitle": "DevOps & Deployment",
     "backendSkills": ["Laravel 11", "REST APIs", "MySQL", "Livewire"],
     "frontendSkills": ["Vue 3", "JavaScript", "TailwindCSS", "HTML/CSS", "SASS"],
-    "devopsSkills": ["Laravel Forge", "DigitalOcean", "CI/CD"]
+    "devopsSkills": ["Laravel Forge", "DigitalOcean", "CI/CD"],
+    "seo": {
+      "breadcrumbHome": "Home",
+      "breadcrumbServices": "Services",
+      "breadcrumbProjects": "Projects",
+      "breadcrumbExperience": "Experience",
+      "breadcrumbContact": "Contact",
+      "breadcrumbBlog": "Blog",
+      "trustedBy": "Trusted By",
+      "performanceLabel": "Optimal Performance",
+      "availableForHire": "Available for Hire",
+      "yearsExperience": "Years of Experience",
+      "projectsCompleted": "Projects Completed",
+      "clientsSatisfied": "Satisfied Clients",
+      "metaTitleSuffix": "Full Stack Web Developer | PHP & Laravel Expert",
+      "metaDescriptionPortfolio": "Professional portfolio and resume of Ignacio Amat Urbina - Full Stack Web Developer specializing in PHP, Laravel, and Vue.js. Available for remote work.",
+      "heroTitle": "Full Stack Web Developer",
+      "heroSubtitle": "Building high-performance web applications",
+      "ctaHireMe": "Hire Me",
+      "ctaViewProjects": "View Projects",
+      "ctaDownloadCV": "Download CV"
+    }
   },
   "es": {
     "skillsTitle": "Ecosistema de Desarrollo Full Stack",
@@ -19,8 +40,23 @@
     "seo": {
       "breadcrumbHome": "Inicio",
       "breadcrumbServices": "Servicios",
+      "breadcrumbProjects": "Proyectos",
+      "breadcrumbExperience": "Experiencia",
+      "breadcrumbContact": "Contacto",
+      "breadcrumbBlog": "Blog",
       "trustedBy": "Clientes que Confían",
-      "performanceLabel": "Rendimiento Óptimo"
+      "performanceLabel": "Rendimiento Óptimo",
+      "availableForHire": "Disponible para Contratación",
+      "yearsExperience": "Años de Experiencia",
+      "projectsCompleted": "Proyectos Completados",
+      "clientsSatisfied": "Clientes Satisfechos",
+      "metaTitleSuffix": "Desarrollador Web Full Stack | Experto PHP y Laravel",
+      "metaDescriptionPortfolio": "Portfolio y curriculum de Ignacio Amat Urbina - Desarrollador Web Full Stack especializado en PHP, Laravel y Vue.js. Disponible para trabajo remoto.",
+      "heroTitle": "Desarrollador Web Full Stack",
+      "heroSubtitle": "Creando aplicaciones web de alto rendimiento",
+      "ctaHireMe": "Contrátame",
+      "ctaViewProjects": "Ver Proyectos",
+      "ctaDownloadCV": "Descargar CV"
     }
   }
 } 
