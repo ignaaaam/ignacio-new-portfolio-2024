@@ -6,11 +6,6 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<span
-  class:list={[
-    "text-xs font-medium px-2.5 py-0.5 rounded",
-    className
-  ]}
->
+<span class:list={["inline-flex items-center text-sm font-medium px-3 py-1.5 rounded-md", className]}>
   <slot />
 </span>
