@@ -5,14 +5,12 @@ import MobileNav from "./MobileNav.astro";
 const pathname = Astro.url.pathname;
 ---
 
-<header
-  class={`flex items-center justify-between w-full py-3 lg:py-4 mx-auto px-4 lg:px-8 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 sticky top-0 z-50 transition-all duration-300`}
->
+<header class={`flex items-center justify-between w-full py-3 lg:py-4 mx-auto px-4 lg:px-8 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 sticky top-0 z-50 transition-all duration-300`}>
   <!-- Logo with availability indicator -->
-  <div class="flex items-center gap-3">
+  <div class="flex items-center gap-2 sm:gap-3 min-w-0 overflow-hidden">
     <a
       href="/"
-      class="flex items-center gap-3 group"
+      class="flex items-center gap-2 sm:gap-3 group min-w-0"
     >
       <div class="relative">
         <img
@@ -29,14 +27,12 @@ const pathname = Astro.url.pathname;
           <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-green-500 border-2 border-white dark:border-gray-900"></span>
         </span>
       </div>
-      <div class="hidden sm:block">
-        <h1 class="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-          Ignacio Amat
-        </h1>
-        <p class="text-xs text-gray-600 dark:text-gray-400 flex items-center gap-1">
-          <span class="text-green-600 dark:text-green-400 font-medium">Disponible</span>
-          <span class="text-gray-400">•</span>
-          Full Stack Developer
+      <div class="min-w-0 flex-shrink">
+        <h1 class="header-logo-name text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">Ignacio Amat</h1>
+        <p class="header-logo-subtitle text-gray-600 dark:text-gray-400 flex items-center gap-1 truncate leading-tight">
+          <span class="text-green-600 dark:text-green-400 shrink-0">Disponible</span>
+          <span class="text-gray-400 shrink-0">•</span>
+          <span class="truncate">Full Stack Developer</span>
         </p>
       </div>
     </a>
@@ -86,16 +82,245 @@ const pathname = Astro.url.pathname;
   </div>
 
   <!-- Controls -->
-  <div class="flex items-center gap-2">
+  <div class="flex items-center gap-3 sm:gap-4">
     <a
-      class="inline-flex bg-blue-600 text-white transition rounded-lg hover:bg-blue-700 px-3 py-1.5 text-sm font-medium"
+      class="header-button header-button-primary"
       href="/blog"
       rel="noopener noreferrer"
+      aria-label="Ir al blog de noticias"
     >
-      Blog
+      Noticias
     </a>
     <ThemeToggle />
     <Dropdown class="hidden lg:flex" />
     <MobileNav pathname={pathname} />
   </div>
 </header>
+
+<style>
+  /* Logo text: mismo tamaño en mobile y tablet; algo más en desktop */
+  .header-logo-name {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .header-logo-subtitle {
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  @media (min-width: 768px) {
+    .header-logo-name {
+      font-size: 1.125rem;
+    }
+  }
+
+  /* Unified header button styles */
+  .header-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    min-width: 40px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.15s ease,
+      box-shadow 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+
+  /* Mobile: larger touch targets */
+  @media (max-width: 640px) {
+    .header-button {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.625rem 0.875rem;
+    }
+  }
+
+  /* Primary button (Blog/Noticias) */
+  .header-button-primary {
+    background: linear-gradient(135deg, rgb(59, 130, 246) 0%, rgb(37, 99, 235) 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+  }
+
+  @media (min-width: 640px) {
+    .header-button-primary {
+      padding: 0.5rem 1.25rem;
+    }
+  }
+
+  .header-button-primary:hover {
+    background: linear-gradient(135deg, rgb(37, 99, 235) 0%, rgb(29, 78, 216) 100%);
+    box-shadow:
+      0 4px 6px -1px rgba(59, 130, 246, 0.3),
+      0 2px 4px -1px rgba(59, 130, 246, 0.2);
+    transform: translateY(-1px);
+  }
+
+  .header-button-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .header-button-primary:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 3px rgba(59, 130, 246, 0.3),
+      0 4px 6px -1px rgba(59, 130, 246, 0.3),
+      0 2px 4px -1px rgba(59, 130, 246, 0.2);
+  }
+
+  :global(.dark) .header-button-primary {
+    box-shadow:
+      0 1px 2px 0 rgba(0, 0, 0, 0.2),
+      0 0 0 1px rgba(59, 130, 246, 0.2);
+  }
+
+  :global(.dark) .header-button-primary:hover {
+    box-shadow:
+      0 4px 6px -1px rgba(59, 130, 246, 0.4),
+      0 2px 4px -1px rgba(59, 130, 246, 0.3);
+  }
+
+  /* Secondary/Icon buttons (ThemeToggle, Dropdown) - :global so Dropdown/language button gets same styles */
+  :global(.header-button-secondary),
+  :global(.header-button-icon) {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: rgb(31, 41, 55);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  :global(.header-button-icon) {
+    padding: 0.5rem;
+  }
+
+  /* Ensure icon and text visibility in light mode (language label, arrow) */
+  :global(.header-button-icon) svg,
+  :global(.header-button-secondary) svg,
+  :global(.header-button-secondary) span {
+    opacity: 0.95;
+    color: inherit;
+  }
+
+  /* Dark theme: solid dark blue-grey, white icons/text, thin light border (reference image). Full :global so Dropdown button gets these styles. */
+  :global(.dark .header-button-secondary),
+  :global(.dark .header-button-icon) {
+    background-color: rgba(31, 41, 55, 0.95);
+    color: rgb(243, 244, 246);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+      0 1px 3px 0 rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+
+  :global(.header-button-secondary):hover,
+  :global(.header-button-icon):hover {
+    background-color: rgba(255, 255, 255, 1);
+    color: rgb(37, 99, 235);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    box-shadow:
+      0 2px 4px -1px rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgba(59, 130, 246, 0.15);
+    transform: translateY(-1px);
+  }
+
+  :global(.header-button-icon):hover svg {
+    opacity: 1;
+  }
+
+  :global(.dark .header-button-secondary:hover),
+  :global(.dark .header-button-icon:hover) {
+    background-color: rgba(55, 65, 81, 0.98);
+    color: rgb(96, 165, 250);
+    border: 1px solid rgba(96, 165, 250, 0.45);
+    box-shadow:
+      0 2px 4px -1px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(96, 165, 250, 0.25);
+  }
+
+  :global(.header-button-secondary):active,
+  :global(.header-button-icon):active {
+    transform: translateY(0);
+  }
+
+  :global(.header-button-secondary):focus-visible,
+  :global(.header-button-icon):focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    border: 1px solid rgb(59, 130, 246);
+  }
+
+  :global(.dark .header-button-secondary:focus-visible),
+  :global(.dark .header-button-icon:focus-visible) {
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25);
+    border: 1px solid rgb(96, 165, 250);
+  }
+
+  /* Icon button specific adjustments */
+  :global(.header-button-icon) {
+    min-width: 40px;
+    padding: 0.5rem;
+  }
+
+  @media (max-width: 640px) {
+    :global(.header-button-icon) {
+      min-width: 44px;
+      padding: 0.625rem;
+    }
+  }
+
+  /* Secondary button with text (language selector) */
+  :global(.header-button-secondary) {
+    padding: 0.5rem 0.875rem;
+  }
+
+  @media (min-width: 640px) {
+    :global(.header-button-secondary) {
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  /* Disable hover effects on touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    .header-button-primary:hover,
+    :global(.header-button-secondary):hover,
+    :global(.header-button-icon):hover {
+      transform: none;
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .header-button {
+      transition:
+        background-color 0.1s ease,
+        color 0.1s ease,
+        border-color 0.1s ease;
+    }
+
+    .header-button-primary:hover,
+    :global(.header-button-secondary):hover,
+    :global(.header-button-icon):hover {
+      transform: none;
+    }
+  }
+</style>

@@ -5,14 +5,14 @@
 <button
   id="theme-toggle"
   type="button"
-  class="inline-flex items-center justify-center p-2.5 sm:p-3 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 border border-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 min-w-[44px] min-h-[44px]"
+  class="header-button header-button-icon"
   aria-label="Toggle dark mode"
   title="Toggle dark/light mode"
 >
   <!-- Sun Icon (Light Mode) -->
   <svg
     id="theme-toggle-light-icon"
-    class="hidden w-5 h-5 sm:w-6 sm:h-6"
+    class="hidden w-5 h-5"
     fill="currentColor"
     viewBox="0 0 20 20"
     xmlns="http://www.w3.org/2000/svg"
@@ -24,11 +24,11 @@
       clip-rule="evenodd"
     ></path>
   </svg>
-  
+
   <!-- Moon Icon (Dark Mode) -->
   <svg
     id="theme-toggle-dark-icon"
-    class="w-5 h-5 sm:w-6 sm:h-6"
+    class="w-5 h-5"
     fill="currentColor"
     viewBox="0 0 20 20"
     xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +51,8 @@
     transform: scale(0);
     transform-origin: 0 0;
   "
-></div>
+>
+</div>
 
 <script>
   class ThemeToggle {
@@ -61,154 +62,154 @@
       this.darkIcon = null;
       this.overlay = null;
       this.isInitialized = false;
-      
+
       this.init();
     }
 
     init() {
       // Wait for DOM to be ready
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => this.setup());
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", () => this.setup());
       } else {
         this.setup();
       }
     }
 
     setup() {
-      this.button = document.getElementById('theme-toggle');
-      this.lightIcon = document.getElementById('theme-toggle-light-icon');
-      this.darkIcon = document.getElementById('theme-toggle-dark-icon');
-      this.overlay = document.getElementById('theme-transition-overlay');
+      this.button = document.getElementById("theme-toggle");
+      this.lightIcon = document.getElementById("theme-toggle-light-icon");
+      this.darkIcon = document.getElementById("theme-toggle-dark-icon");
+      this.overlay = document.getElementById("theme-transition-overlay");
 
       if (!this.button || !this.lightIcon || !this.darkIcon || !this.overlay) {
-        console.warn('Theme toggle elements not found');
+        console.warn("Theme toggle elements not found");
         return;
       }
 
       // Set initial theme
       this.setTheme(this.getCurrentTheme());
-      
+
       // Add event listener
-      this.button.addEventListener('click', () => this.toggleTheme());
-      
+      this.button.addEventListener("click", () => this.toggleTheme());
+
       // Listen for system theme changes
       this.watchSystemTheme();
-      
+
       this.isInitialized = true;
     }
 
     getCurrentTheme() {
-      const savedTheme = localStorage.getItem('color-theme');
+      const savedTheme = localStorage.getItem("color-theme");
       if (savedTheme) {
         return savedTheme;
       }
-      
+
       // Check system preference
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     }
 
     setTheme(theme, withAnimation = false) {
-      const isDark = theme === 'dark';
-      
+      const isDark = theme === "dark";
+
       if (withAnimation) {
         this.animateThemeChange(isDark);
       } else {
         // Update document class immediately
         if (isDark) {
-          document.documentElement.classList.add('dark');
+          document.documentElement.classList.add("dark");
         } else {
-          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.remove("dark");
         }
       }
-      
+
       // Update localStorage
-      localStorage.setItem('color-theme', theme);
-      
+      localStorage.setItem("color-theme", theme);
+
       // Update icons
       this.updateIcons(isDark);
     }
 
     updateIcons(isDark) {
       if (isDark) {
-        this.lightIcon.classList.remove('hidden');
-        this.darkIcon.classList.add('hidden');
+        this.lightIcon.classList.remove("hidden");
+        this.darkIcon.classList.add("hidden");
       } else {
-        this.lightIcon.classList.add('hidden');
-        this.darkIcon.classList.remove('hidden');
+        this.lightIcon.classList.add("hidden");
+        this.darkIcon.classList.remove("hidden");
       }
     }
 
     toggleTheme() {
       const currentTheme = this.getCurrentTheme();
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
       this.setTheme(newTheme, true);
     }
 
     watchSystemTheme() {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      
-      mediaQuery.addEventListener('change', (e) => {
+      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+      mediaQuery.addEventListener("change", (e) => {
         // Only update if user hasn't set a preference
-        if (!localStorage.getItem('color-theme')) {
-          this.setTheme(e.matches ? 'dark' : 'light');
+        if (!localStorage.getItem("color-theme")) {
+          this.setTheme(e.matches ? "dark" : "light");
         }
       });
     }
 
     animateThemeChange(isDark) {
       // Add CSS transition to html element for smooth theme change
-      document.documentElement.style.transition = 'background-color 0.6s ease, color 0.6s ease';
-      
+      document.documentElement.style.transition = "background-color 0.6s ease, color 0.6s ease";
+
       // Set the transition color
-      const transitionColor = isDark ? '#111827' : '#ffffff'; // dark gray-900 : white
-      this.overlay.style.setProperty('--transition-color', transitionColor);
-      
+      const transitionColor = isDark ? "#111827" : "#ffffff"; // dark gray-900 : white
+      this.overlay.style.setProperty("--transition-color", transitionColor);
+
       // Calculate the diagonal distance from top-left to bottom-right
       const maxDistance = Math.sqrt(window.innerWidth ** 2 + window.innerHeight ** 2);
       const scaleFactor = maxDistance / 100; // Scale factor to cover entire screen
-      
+
       // Reset overlay position and styling
-      this.overlay.style.top = '0';
-      this.overlay.style.left = '0';
-      this.overlay.style.width = '100%';
-      this.overlay.style.height = '100%';
-      this.overlay.style.transformOrigin = '0 0';
+      this.overlay.style.top = "0";
+      this.overlay.style.left = "0";
+      this.overlay.style.width = "100%";
+      this.overlay.style.height = "100%";
+      this.overlay.style.transformOrigin = "0 0";
       this.overlay.style.background = `radial-gradient(circle at 0px 0px, ${transitionColor} 0%, transparent 80%)`;
-      this.overlay.style.mixBlendMode = 'normal';
-      
+      this.overlay.style.mixBlendMode = "normal";
+
       // Start the animation
-      this.overlay.style.opacity = '0.85';
-      this.overlay.style.transform = 'scale(0)';
-      this.overlay.style.transition = 'none';
-      
+      this.overlay.style.opacity = "0.85";
+      this.overlay.style.transform = "scale(0)";
+      this.overlay.style.transition = "none";
+
       // Force reflow
       this.overlay.offsetHeight;
-      
+
       // Change theme early for smoother transition
       setTimeout(() => {
         if (isDark) {
-          document.documentElement.classList.add('dark');
+          document.documentElement.classList.add("dark");
         } else {
-          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.remove("dark");
         }
       }, 150);
-      
+
       // Animate the scale with smoother, longer transition
-      this.overlay.style.transition = 'transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 1.2s ease-out';
+      this.overlay.style.transition = "transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 1.2s ease-out";
       this.overlay.style.transform = `scale(${scaleFactor})`;
-      
+
       // Gradually fade out overlay as it expands
       setTimeout(() => {
-        this.overlay.style.opacity = '0';
+        this.overlay.style.opacity = "0";
       }, 600);
-      
+
       // Reset overlay after animation
       setTimeout(() => {
-        this.overlay.style.transform = 'scale(0)';
-        this.overlay.style.transition = 'none';
-        this.overlay.style.opacity = '0';
+        this.overlay.style.transform = "scale(0)";
+        this.overlay.style.transition = "none";
+        this.overlay.style.opacity = "0";
         // Remove transition from html element
-        document.documentElement.style.transition = '';
+        document.documentElement.style.transition = "";
       }, 1200);
     }
   }
@@ -217,7 +218,7 @@
   const themeToggle = new ThemeToggle();
 
   // Re-initialize on Astro page transitions
-  document.addEventListener('astro:after-swap', () => {
+  document.addEventListener("astro:after-swap", () => {
     if (!themeToggle.isInitialized) {
       themeToggle.init();
     }

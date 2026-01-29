@@ -1,10 +1,15 @@
 ---
+import SpanishFlag from "./icons/SpanishFlag.astro";
+import EnglishFlag from "./icons/EnglishFlag.astro";
+import { getLangFromUrl } from "../i18n/utils";
+
 export interface Props {
   isEnglish?: boolean;
   pathname: string;
 }
 
 const { isEnglish = false, pathname } = Astro.props;
+const lang = isEnglish ? "en" : "es";
 
 const homeUrl = isEnglish ? "/en" : "/";
 const blogUrl = isEnglish ? "/en/blog" : "/blog";
@@ -24,6 +29,8 @@ const navItems = isEnglish
     ];
 
 const homeLabel = isEnglish ? "Home" : "Inicio";
+const blogLabel = isEnglish ? "News" : "Noticias";
+const contactLabel = isEnglish ? "Contact" : "Contacto";
 const isHomePage = pathname === homeUrl;
 ---
 
@@ -31,7 +38,7 @@ const isHomePage = pathname === homeUrl;
   <!-- Hamburger Menu Button -->
   <button
     id="mobile-menu-button"
-    class="relative p-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 rounded-lg transition-colors z-50"
+    class="mobile-hamburger-button"
     aria-label="Toggle mobile menu"
     aria-expanded="false"
   >
@@ -54,35 +61,19 @@ const isHomePage = pathname === homeUrl;
   <!-- Fullscreen Mobile Menu -->
   <div
     id="mobile-menu"
-    class="fixed inset-0 bg-white dark:bg-gray-900 opacity-0 pointer-events-none transition-all duration-500 ease-in-out transform translate-y-full"
-    style="z-index: 99999 !important;"
+    class="mobile-menu-overlay"
   >
-    <!-- Multiple Solid Background Layers -->
-    <div
-      class="absolute inset-0 bg-white dark:bg-gray-900"
-      style="z-index: 1;"
-    >
-    </div>
-    <div
-      class="absolute inset-0 bg-white dark:bg-gray-900"
-      style="z-index: 2;"
-    >
-    </div>
-    <div
-      class="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-transparent to-purple-50/20 dark:from-blue-900/20 dark:via-transparent dark:to-purple-900/10"
-      style="z-index: 3;"
-    >
-    </div>
+    <!-- Background Layers -->
+    <div class="mobile-menu-background"></div>
+    <div class="mobile-menu-background"></div>
+    <div class="mobile-menu-gradient"></div>
 
     <!-- Content Container -->
-    <div
-      class="relative min-h-full flex flex-col justify-center px-6 py-16"
-      style="z-index: 10; background: inherit;"
-    >
+    <div class="mobile-menu-content">
       <!-- Close Button -->
       <button
         id="mobile-menu-close"
-        class="absolute top-4 right-4 w-12 h-12 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:text-white hover:bg-red-500 dark:hover:bg-red-600 focus:outline-none rounded-xl transition-all duration-200 border-2 border-gray-300 dark:border-gray-600 hover:border-red-500 dark:hover:border-red-600"
+        class="mobile-menu-close"
         aria-label="Close menu"
       >
         <svg
@@ -91,6 +82,7 @@ const isHomePage = pathname === homeUrl;
           stroke="currentColor"
           viewBox="0 0 24 24"
           stroke-width="2.5"
+          aria-hidden="true"
         >
           <path
             stroke-linecap="round"
@@ -101,30 +93,26 @@ const isHomePage = pathname === homeUrl;
       </button>
 
       <!-- Profile Section -->
-      <div class="text-center mb-6">
+      <div class="mobile-profile-section">
         <img
-          class="w-16 h-16 rounded-full mx-auto mb-3 ring-4 ring-blue-500/30 dark:ring-blue-400/40 shadow-xl dark:shadow-blue-900/30"
+          class="mobile-profile-image"
           src="/img/optimized/profile_picture.webp"
           alt="Ignacio Amat"
           width="64"
           height="64"
           loading="lazy"
         />
-        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-1">
-          Ignacio Amat
-        </h2>
-        <p class="text-sm text-gray-600 dark:text-gray-300">
-          Full Stack Developer
-        </p>
+        <h2 class="mobile-profile-name">Ignacio Amat</h2>
+        <p class="mobile-profile-title">Full Stack Developer</p>
       </div>
 
       <!-- Navigation Links -->
-      <nav class="space-y-2 mb-6">
+      <nav class="mobile-nav-links">
         {
           !isHomePage && (
             <a
               href={homeUrl}
-              class="block text-center py-3 px-4 text-lg font-semibold text-gray-800 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-800/50 rounded-xl transition-all duration-300 transform hover:scale-105 mobile-nav-link shadow-sm dark:shadow-gray-900/20"
+              class="mobile-nav-link"
             >
               {homeLabel}
             </a>
@@ -136,7 +124,7 @@ const isHomePage = pathname === homeUrl;
             navItems.map((item, index) => (
               <a
                 href={item.href}
-                class="block text-center py-3 px-4 text-lg font-semibold text-gray-800 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-800/50 rounded-xl transition-all duration-300 transform hover:scale-105 mobile-nav-link shadow-sm dark:shadow-gray-900/20"
+                class="mobile-nav-link"
                 style={`animation-delay: ${index * 100}ms`}
               >
                 {item.label}
@@ -146,32 +134,117 @@ const isHomePage = pathname === homeUrl;
       </nav>
 
       <!-- Action Buttons -->
-      <div class="space-y-2 mb-6">
+      <div class="mobile-action-buttons">
         <a
           href={blogUrl}
-          class="block text-center py-3 px-6 text-base font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 rounded-xl shadow-lg dark:shadow-blue-900/40 hover:shadow-xl dark:hover:shadow-blue-800/50 transform hover:scale-105 transition-all duration-300"
+          class="mobile-button-primary"
         >
-          Blog
+          {blogLabel}
         </a>
         <a
           href="#contact"
-          class="block text-center py-3 px-6 text-base font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-gray-800/60 border dark:border-gray-700 rounded-xl hover:bg-blue-100 dark:hover:bg-gray-700/70 transform hover:scale-105 transition-all duration-300 mobile-nav-link shadow-sm dark:shadow-gray-900/30"
+          class="mobile-button-secondary mobile-nav-link"
         >
-          {isEnglish ? "Contact" : "Contacto"}
+          {contactLabel}
         </a>
       </div>
 
+      <!-- Controls: Language Selector (theme toggle stays in header only) -->
+      <div class="mobile-controls">
+        <!-- Language Selector -->
+        <div class="mobile-language-selector">
+          <button
+            id="mobile-language-button"
+            type="button"
+            class="mobile-control-button mobile-language-button"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-label="Select language"
+          >
+            <div class="flex items-center gap-2">
+              {lang === "es" ? <SpanishFlag /> : <EnglishFlag />}
+              <span class="text-sm font-medium text-gray-900 dark:text-gray-100">
+                {lang === "es" ? "Español" : "English"}
+              </span>
+              <svg
+                id="mobile-language-arrow"
+                class="w-4 h-4 transition-transform duration-200 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </div>
+          </button>
+
+          <!-- Language Dropdown Menu -->
+          <div
+            id="mobile-language-menu"
+            class="mobile-language-menu"
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="mobile-language-button"
+          >
+            <div
+              class="py-1"
+              role="none"
+            >
+              <!-- Spanish Option -->
+              <a
+                href="/"
+                data-astro-reload
+                class="mobile-language-option"
+                role="menuitem"
+                tabindex="-1"
+              >
+                <SpanishFlag />
+                <div class="flex flex-col">
+                  <span class="font-medium">Español</span>
+                  <span class="text-xs text-gray-600 dark:text-gray-400">Spanish</span>
+                </div>
+              </a>
+
+              <!-- English Option -->
+              <a
+                href="/en"
+                data-astro-reload
+                class="mobile-language-option"
+                role="menuitem"
+                tabindex="-1"
+              >
+                <EnglishFlag />
+                <div class="flex flex-col">
+                  <span class="font-medium">English</span>
+                  <span class="text-xs text-gray-600 dark:text-gray-400">Inglés</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Social Links -->
-      <div class="flex justify-center space-x-4">
+      <div class="mobile-social-links">
         <a
           href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223"
-          class="p-2.5 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 bg-white/70 dark:bg-gray-800/70 border dark:border-gray-700 rounded-full backdrop-blur-sm transition-all hover:scale-110 transform shadow-md dark:shadow-gray-900/40"
+          class="mobile-social-link"
           aria-label="LinkedIn"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <svg
             class="w-5 h-5"
             fill="currentColor"
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
             <path
               d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
@@ -180,13 +253,16 @@ const isHomePage = pathname === homeUrl;
         </a>
         <a
           href="https://www.github.com/ignaaaam"
-          class="p-2.5 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 bg-white/70 dark:bg-gray-800/70 border dark:border-gray-700 rounded-full backdrop-blur-sm transition-all hover:scale-110 transform shadow-md dark:shadow-gray-900/40"
+          class="mobile-social-link"
           aria-label="GitHub"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <svg
             class="w-5 h-5"
             fill="currentColor"
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
             <path
               d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
@@ -195,7 +271,7 @@ const isHomePage = pathname === homeUrl;
         </a>
         <a
           href="mailto:ignacioamat@ignathedev.com"
-          class="p-2.5 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 bg-white/70 dark:bg-gray-800/70 border dark:border-gray-700 rounded-full backdrop-blur-sm transition-all hover:scale-110 transform shadow-md dark:shadow-gray-900/40"
+          class="mobile-social-link"
           aria-label="Email"
         >
           <svg
@@ -203,6 +279,7 @@ const isHomePage = pathname === homeUrl;
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
             <path
               stroke-linecap="round"
@@ -218,6 +295,76 @@ const isHomePage = pathname === homeUrl;
 </div>
 
 <script>
+  // Mobile Language Dropdown
+  class MobileLanguageDropdown {
+    constructor() {
+      this.button = null;
+      this.menu = null;
+      this.arrow = null;
+      this.isOpen = false;
+      this.init();
+    }
+
+    init() {
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", () => this.setup());
+      } else {
+        this.setup();
+      }
+    }
+
+    setup() {
+      this.button = document.getElementById("mobile-language-button");
+      this.menu = document.getElementById("mobile-language-menu");
+      this.arrow = document.getElementById("mobile-language-arrow");
+
+      if (!this.button || !this.menu) return;
+
+      this.button.addEventListener("click", (e) => this.toggleDropdown(e));
+      document.addEventListener("click", (e) => this.handleOutsideClick(e));
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && this.isOpen) {
+          this.closeDropdown(true);
+        }
+      });
+    }
+
+    toggleDropdown(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (this.isOpen) {
+        this.closeDropdown();
+      } else {
+        this.openDropdown();
+      }
+    }
+
+    openDropdown() {
+      this.isOpen = true;
+      this.menu.classList.remove("mobile-language-menu-hidden");
+      this.menu.classList.add("mobile-language-menu-visible");
+      this.arrow?.classList.add("rotate-180");
+      this.button?.setAttribute("aria-expanded", "true");
+    }
+
+    closeDropdown(returnFocus = false) {
+      this.isOpen = false;
+      this.menu.classList.add("mobile-language-menu-hidden");
+      this.menu.classList.remove("mobile-language-menu-visible");
+      this.arrow?.classList.remove("rotate-180");
+      this.button?.setAttribute("aria-expanded", "false");
+      if (returnFocus) this.button?.focus();
+    }
+
+    handleOutsideClick(e) {
+      if (!this.button?.contains(e.target) && !this.menu?.contains(e.target)) {
+        this.closeDropdown();
+      }
+    }
+  }
+
+  // Mobile Navigation
   function initMobileNav() {
     const menuButton = document.getElementById("mobile-menu-button");
     const closeButton = document.getElementById("mobile-menu-close");
@@ -232,31 +379,22 @@ const isHomePage = pathname === homeUrl;
     let scrollPosition = 0;
 
     function openMenu() {
-      // Save current scroll position
       scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-
-      // Prevent background scroll on mobile (iOS compatible)
       document.body.style.position = "fixed";
       document.body.style.top = `-${scrollPosition}px`;
       document.body.style.width = "100%";
       document.body.style.overflow = "hidden";
 
-      menu.classList.remove(
-        "opacity-0",
-        "pointer-events-none",
-        "translate-y-full",
-      );
-      menu.classList.add("opacity-100");
+      menu.classList.remove("mobile-menu-hidden");
+      menu.classList.add("mobile-menu-visible");
       menuButton.setAttribute("aria-expanded", "true");
 
-      // Animate hamburger to X
       if (line1 && line2 && line3) {
         line1.style.transform = "rotate(45deg) translate(6px, 6px)";
         line2.style.opacity = "0";
         line3.style.transform = "rotate(-45deg) translate(6px, -6px)";
       }
 
-      // Animate nav links with stagger
       navLinks.forEach((link, index) => {
         setTimeout(() => {
           (link as HTMLElement).style.opacity = "1";
@@ -266,83 +404,679 @@ const isHomePage = pathname === homeUrl;
     }
 
     function closeMenu() {
-      // Restore background scroll
       document.body.style.position = "";
       document.body.style.top = "";
       document.body.style.width = "";
       document.body.style.overflow = "";
-
-      // Restore scroll position
       window.scrollTo(0, scrollPosition);
 
-      menu.classList.add(
-        "opacity-0",
-        "pointer-events-none",
-        "translate-y-full",
-      );
-      menu.classList.remove("opacity-100");
+      menu.classList.add("mobile-menu-hidden");
+      menu.classList.remove("mobile-menu-visible");
       menuButton.setAttribute("aria-expanded", "false");
 
-      // Animate X back to hamburger
       if (line1 && line2 && line3) {
         line1.style.transform = "none";
         line2.style.opacity = "1";
         line3.style.transform = "none";
       }
 
-      // Reset nav links
       navLinks.forEach((link) => {
         (link as HTMLElement).style.opacity = "0";
         (link as HTMLElement).style.transform = "translateY(20px)";
       });
     }
 
-    // Initialize nav links styles
     navLinks.forEach((link) => {
       (link as HTMLElement).style.opacity = "0";
       (link as HTMLElement).style.transform = "translateY(20px)";
-      (link as HTMLElement).style.transition =
-        "opacity 0.3s ease, transform 0.3s ease";
+      (link as HTMLElement).style.transition = "opacity 0.3s ease, transform 0.3s ease";
     });
 
     menuButton.addEventListener("click", openMenu);
     closeButton?.addEventListener("click", closeMenu);
 
-    // Close menu when clicking nav links
     navLinks.forEach((link) => {
       link.addEventListener("click", closeMenu);
     });
 
-    // Handle escape key
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && menu.classList.contains("opacity-100")) {
+      if (e.key === "Escape" && menu.classList.contains("mobile-menu-visible")) {
         closeMenu();
       }
     });
   }
 
-  // Initialize on page load
-  document.addEventListener("DOMContentLoaded", initMobileNav);
+  // Initialize everything
+  document.addEventListener("DOMContentLoaded", () => {
+    initMobileNav();
+    new MobileLanguageDropdown();
+  });
 
-  // Re-initialize on view transitions
-  document.addEventListener("astro:page-load", initMobileNav);
+  document.addEventListener("astro:page-load", () => {
+    initMobileNav();
+    new MobileLanguageDropdown();
+  });
 </script>
 
 <style>
-  /* Ensure maximum z-index */
-  #mobile-menu {
+  /* Mobile Menu Overlay */
+  .mobile-menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 0.5s ease-in-out,
+      transform 0.5s ease-in-out;
+    transform: translateY(100%);
     z-index: 99999 !important;
   }
 
-  /* Custom hamburger animation */
+  :global(.dark) .mobile-menu-overlay {
+    background: rgb(17, 24, 39);
+  }
+
+  .mobile-menu-overlay.mobile-menu-visible {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+  .mobile-menu-overlay.mobile-menu-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(100%);
+  }
+
+  .mobile-menu-background {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: white;
+  }
+
+  :global(.dark) .mobile-menu-background {
+    background: rgb(17, 24, 39);
+  }
+
+  .mobile-menu-gradient {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 50%, rgba(139, 92, 246, 0.1) 100%);
+  }
+
+  :global(.dark) .mobile-menu-gradient {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, transparent 50%, rgba(139, 92, 246, 0.2) 100%);
+  }
+
+  .mobile-menu-content {
+    position: relative;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 1.5rem;
+    z-index: 10;
+    background: inherit;
+  }
+
+  /* Close Button */
+  .mobile-menu-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(55, 65, 81);
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.75rem;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.15s ease;
+    cursor: pointer;
+    z-index: 20;
+  }
+
+  :global(.dark) .mobile-menu-close {
+    color: rgb(209, 213, 219);
+    background: rgba(31, 41, 55, 0.8);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .mobile-menu-close:hover {
+    background: rgb(239, 68, 68);
+    color: white;
+    border-color: rgb(239, 68, 68);
+    transform: scale(1.05);
+  }
+
+  :global(.dark) .mobile-menu-close:hover {
+    background: rgb(220, 38, 38);
+    border-color: rgb(220, 38, 38);
+  }
+
+  .mobile-menu-close:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3);
+  }
+
+  /* Profile Section */
+  .mobile-profile-section {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .mobile-profile-image {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 9999px;
+    margin: 0 auto 0.75rem;
+    box-shadow:
+      0 20px 25px -5px rgba(59, 130, 246, 0.3),
+      0 10px 10px -5px rgba(59, 130, 246, 0.2);
+    border: 4px solid rgba(59, 130, 246, 0.3);
+  }
+
+  :global(.dark) .mobile-profile-image {
+    box-shadow:
+      0 20px 25px -5px rgba(59, 130, 246, 0.4),
+      0 10px 10px -5px rgba(59, 130, 246, 0.3);
+    border-color: rgba(96, 165, 250, 0.4);
+  }
+
+  .mobile-profile-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: rgb(17, 24, 39);
+    margin-bottom: 0.25rem;
+  }
+
+  :global(.dark) .mobile-profile-name {
+    color: white;
+  }
+
+  .mobile-profile-title {
+    font-size: 0.875rem;
+    color: rgb(75, 85, 99);
+  }
+
+  :global(.dark) .mobile-profile-title {
+    color: rgb(209, 213, 219);
+  }
+
+  /* Navigation Links */
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .mobile-nav-link {
+    display: block;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: rgb(31, 41, 55);
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.75rem;
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.15s ease,
+      box-shadow 0.2s ease;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  :global(.dark) .mobile-nav-link {
+    color: rgb(243, 244, 246);
+    background: rgba(31, 41, 55, 0.6);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-nav-link:hover {
+    color: rgb(37, 99, 235);
+    background: rgba(239, 246, 255, 0.9);
+    border-color: rgba(59, 130, 246, 0.2);
+    transform: scale(1.02);
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+  }
+
+  :global(.dark) .mobile-nav-link:hover {
+    color: rgb(96, 165, 250);
+    background: rgba(55, 65, 81, 0.8);
+    border-color: rgba(96, 165, 250, 0.3);
+    box-shadow: 0 4px 6px -1px rgba(96, 165, 250, 0.2);
+  }
+
+  .mobile-nav-link:active {
+    transform: scale(0.98);
+  }
+
+  /* Action Buttons */
+  .mobile-action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .mobile-button-primary {
+    display: block;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(135deg, rgb(59, 130, 246) 0%, rgb(37, 99, 235) 100%);
+    border-radius: 0.75rem;
+    box-shadow:
+      0 10px 15px -3px rgba(59, 130, 246, 0.3),
+      0 4px 6px -2px rgba(59, 130, 246, 0.2);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.2s ease,
+      background 0.2s ease;
+  }
+
+  :global(.dark) .mobile-button-primary {
+    background: linear-gradient(135deg, rgb(59, 130, 246) 0%, rgb(37, 99, 235) 100%);
+    box-shadow:
+      0 10px 15px -3px rgba(59, 130, 246, 0.4),
+      0 4px 6px -2px rgba(59, 130, 246, 0.3);
+  }
+
+  .mobile-button-primary:hover {
+    transform: scale(1.02);
+    box-shadow:
+      0 20px 25px -5px rgba(59, 130, 246, 0.4),
+      0 10px 10px -5px rgba(59, 130, 246, 0.3);
+    background: linear-gradient(135deg, rgb(37, 99, 235) 0%, rgb(29, 78, 216) 100%);
+  }
+
+  .mobile-button-primary:active {
+    transform: scale(0.98);
+  }
+
+  .mobile-button-secondary {
+    display: block;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: rgb(37, 99, 235);
+    background: rgba(239, 246, 255, 0.9);
+    border: 1.5px solid rgba(59, 130, 246, 0.2);
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition:
+      transform 0.15s ease,
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  :global(.dark) .mobile-button-secondary {
+    color: rgb(96, 165, 250);
+    background: rgba(31, 41, 55, 0.6);
+    border-color: rgba(96, 165, 250, 0.3);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-button-secondary:hover {
+    transform: scale(1.02);
+    background: rgba(219, 234, 254, 0.95);
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+  }
+
+  :global(.dark) .mobile-button-secondary:hover {
+    background: rgba(55, 65, 81, 0.8);
+    border-color: rgba(96, 165, 250, 0.4);
+    box-shadow: 0 4px 6px -1px rgba(96, 165, 250, 0.2);
+  }
+
+  .mobile-button-secondary:active {
+    transform: scale(0.98);
+  }
+
+  /* Controls Section */
+  .mobile-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .mobile-control-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.625rem 0.875rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgb(31, 41, 55);
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.15s ease,
+      box-shadow 0.2s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* Ensure icon visibility in light mode */
+  .mobile-control-button svg {
+    opacity: 0.95;
+  }
+
+  /* Dark theme: solid dark background, clear light border, white icons/text (reference design) */
+  :global(.dark) .mobile-control-button {
+    color: rgb(243, 244, 246);
+    background: rgba(31, 41, 55, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+  }
+
+  :global(.dark) .mobile-control-button svg {
+    opacity: 1;
+  }
+
+  .mobile-control-button:hover {
+    background: rgba(255, 255, 255, 1);
+    color: rgb(37, 99, 235);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    transform: translateY(-1px);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.12),
+      0 0 0 1px rgba(59, 130, 246, 0.15);
+  }
+
+  .mobile-control-button:hover svg {
+    opacity: 1;
+  }
+
+  :global(.dark) .mobile-control-button:hover {
+    background: rgba(55, 65, 81, 0.98);
+    color: rgb(96, 165, 250);
+    border: 1px solid rgba(96, 165, 250, 0.45);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(96, 165, 250, 0.25);
+  }
+
+  .mobile-control-button:active {
+    transform: translateY(0);
+  }
+
+  .mobile-control-button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    border: 1px solid rgb(59, 130, 246);
+  }
+
+  :global(.dark) .mobile-control-button:focus-visible {
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.4);
+    border: 1px solid rgb(96, 165, 250);
+  }
+
+  .mobile-language-button {
+    padding: 0.625rem 1rem;
+  }
+
+  /* Language Dropdown Menu */
+  .mobile-language-selector {
+    position: relative;
+  }
+
+  .mobile-language-menu {
+    position: absolute;
+    bottom: calc(100% + 0.5rem);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12rem;
+    background: white;
+    border: 1.5px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.75rem;
+    box-shadow:
+      0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(10px) scale(0.95);
+    transition:
+      opacity 0.2s ease,
+      visibility 0.2s ease,
+      transform 0.2s ease;
+    z-index: 50;
+  }
+
+  :global(.dark) .mobile-language-menu {
+    background: rgb(31, 41, 55);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow:
+      0 10px 15px -3px rgba(0, 0, 0, 0.3),
+      0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-language-menu.mobile-language-menu-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+
+  .mobile-language-menu.mobile-language-menu-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(10px) scale(0.95);
+  }
+
+  .mobile-language-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    color: rgb(55, 65, 81);
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease;
+    cursor: pointer;
+  }
+
+  :global(.dark) .mobile-language-option {
+    color: rgb(209, 213, 219);
+  }
+
+  .mobile-language-option:hover {
+    background: rgba(243, 244, 246, 0.9);
+    color: rgb(17, 24, 39);
+  }
+
+  :global(.dark) .mobile-language-option:hover {
+    background: rgba(55, 65, 81, 0.8);
+    color: white;
+  }
+
+  .mobile-language-option:first-child {
+    border-radius: 0.75rem 0.75rem 0 0;
+  }
+
+  .mobile-language-option:last-child {
+    border-radius: 0 0 0.75rem 0.75rem;
+  }
+
+  /* Social Links */
+  .mobile-social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .mobile-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: rgb(75, 85, 99);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 9999px;
+    backdrop-filter: blur(8px);
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.15s ease,
+      box-shadow 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  :global(.dark) .mobile-social-link {
+    color: rgb(209, 213, 219);
+    background: rgba(31, 41, 55, 0.7);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  }
+
+  .mobile-social-link:hover {
+    color: rgb(37, 99, 235);
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(59, 130, 246, 0.2);
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px -2px rgba(59, 130, 246, 0.3);
+  }
+
+  :global(.dark) .mobile-social-link:hover {
+    color: rgb(96, 165, 250);
+    background: rgba(55, 65, 81, 0.9);
+    border-color: rgba(96, 165, 250, 0.3);
+    box-shadow: 0 8px 12px -2px rgba(96, 165, 250, 0.3);
+  }
+
+  .mobile-social-link:active {
+    transform: scale(1.05);
+  }
+
+  /* Hamburger Button */
+  .mobile-hamburger-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    min-width: 40px;
+    padding: 0.5rem;
+    color: rgb(55, 65, 81);
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.5rem;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.15s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  @media (max-width: 640px) {
+    .mobile-hamburger-button {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.625rem;
+    }
+  }
+
+  :global(.dark) .mobile-hamburger-button {
+    color: rgb(209, 213, 219);
+    background: rgba(31, 41, 55, 0.6);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .mobile-hamburger-button:hover {
+    background: rgba(243, 244, 246, 0.9);
+    color: rgb(37, 99, 235);
+    border-color: rgba(59, 130, 246, 0.2);
+  }
+
+  :global(.dark) .mobile-hamburger-button:hover {
+    background: rgba(55, 65, 81, 0.8);
+    color: rgb(96, 165, 250);
+    border-color: rgba(96, 165, 250, 0.3);
+  }
+
+  .mobile-hamburger-button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    border-color: rgb(59, 130, 246);
+  }
+
+  :global(.dark) .mobile-hamburger-button:focus-visible {
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.4);
+    border-color: rgb(96, 165, 250);
+  }
+
+  /* Hamburger animation */
   #hamburger-line-1,
   #hamburger-line-2,
   #hamburger-line-3 {
     transform-origin: center;
   }
 
-  /* Prevent scrolling when menu is open */
-  body.menu-open {
-    overflow: hidden !important;
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-menu-overlay,
+    .mobile-nav-link,
+    .mobile-control-button,
+    .mobile-language-menu,
+    .mobile-social-link {
+      transition: none !important;
+    }
+
+    .mobile-nav-link {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+  /* Tablet adjustments */
+  @media (min-width: 640px) and (max-width: 1024px) {
+    .mobile-menu-content {
+      padding: 4rem 3rem;
+    }
+
+    .mobile-action-buttons {
+      gap: 1rem;
+    }
+
+    .mobile-controls {
+      gap: 1rem;
+    }
   }
 </style>

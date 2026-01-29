@@ -333,7 +333,12 @@ const isBlogPage = currentPath.includes("/blog");
 <html lang={lang}>
   <head>
     <!-- Google tag (gtag.js) -->
-    <script type="text/partytown" defer src="https://www.googletagmanager.com/gtag/js?id=G-VZQ07QHFLN" is:inline></script>
+    <script
+      type="text/partytown"
+      defer
+      src="https://www.googletagmanager.com/gtag/js?id=G-VZQ07QHFLN"
+      is:inline
+    ></script>
     <script type="text/partytown" is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -1053,12 +1058,12 @@ const isBlogPage = currentPath.includes("/blog");
     z-index: 1;
   }
 
-  /* Responsive text sizing for smaller devices */
+  /* Responsive text sizing for smaller devices (solo contenido main, no el header) */
   @media (max-width: 640px) {
-    h1 {
+    main h1 {
       font-size: 1.75rem !important;
     }
-    h2 {
+    main h2 {
       font-size: 1.25rem !important;
     }
     .hero-section {

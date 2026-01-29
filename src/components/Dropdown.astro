@@ -12,35 +12,34 @@ const { class: className = "" } = Astro.props;
   <button
     id="language-dropdown-button"
     type="button"
-    class="inline-flex items-center justify-center px-3 py-2 sm:px-4 sm:py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-all duration-200 border border-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 min-w-[44px] min-h-[44px]"
+    class="header-button header-button-secondary text-gray-900 dark:text-gray-100"
     aria-expanded="false"
     aria-haspopup="true"
     aria-label="Select language"
   >
-    <!-- Current Language Display -->
     <div class="flex items-center gap-2">
       {lang === "es" ? <SpanishFlag /> : <EnglishFlag />}
-      <span class="hidden sm:inline">
+      <span class="hidden sm:inline text-sm font-medium">
         {lang === "es" ? "Español" : "English"}
       </span>
+      <!-- Dropdown Arrow -->
+      <svg
+        id="language-dropdown-arrow"
+        class="w-4 h-4 transition-transform duration-200 flex-shrink-0"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 9l-7 7-7-7"
+        ></path>
+      </svg>
     </div>
-    
-    <!-- Dropdown Arrow -->
-    <svg
-      class="w-4 h-4 ml-2 transition-transform duration-200"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M19 9l-7 7-7-7"
-      ></path>
-    </svg>
   </button>
 
   <!-- Dropdown Menu -->
@@ -51,7 +50,10 @@ const { class: className = "" } = Astro.props;
     aria-orientation="vertical"
     aria-labelledby="language-dropdown-button"
   >
-    <div class="py-1" role="none">
+    <div
+      class="py-1"
+      role="none"
+    >
       <!-- Spanish Option -->
       <a
         href="/"
@@ -66,7 +68,7 @@ const { class: className = "" } = Astro.props;
           <span class="text-xs text-gray-600 dark:text-gray-400">Spanish</span>
         </div>
       </a>
-      
+
       <!-- English Option -->
       <a
         href="/en"
@@ -85,6 +87,30 @@ const { class: className = "" } = Astro.props;
   </div>
 </div>
 
+<style>
+  /* Garantizar botón de idioma en dark mode como en la imagen: fondo oscuro, borde claro, texto/iconos blancos */
+  :global(.dark) #language-dropdown-button {
+    background-color: rgba(31, 41, 55, 0.95);
+    color: rgb(243, 244, 246);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+      0 1px 3px 0 rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+
+  :global(.dark) #language-dropdown-button span,
+  :global(.dark) #language-dropdown-button svg {
+    color: inherit;
+    opacity: 1;
+  }
+
+  :global(.dark) #language-dropdown-button:hover {
+    background-color: rgba(55, 65, 81, 0.98);
+    color: rgb(96, 165, 250);
+    border: 1px solid rgba(96, 165, 250, 0.45);
+  }
+</style>
+
 <script>
   class LanguageDropdown {
     constructor() {
@@ -93,38 +119,38 @@ const { class: className = "" } = Astro.props;
       this.arrow = null;
       this.isOpen = false;
       this.isInitialized = false;
-      
+
       this.init();
     }
 
     init() {
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => this.setup());
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", () => this.setup());
       } else {
         this.setup();
       }
     }
 
     setup() {
-      this.button = document.getElementById('language-dropdown-button');
-      this.menu = document.getElementById('language-dropdown-menu');
-      this.arrow = this.button?.querySelector('svg');
+      this.button = document.getElementById("language-dropdown-button");
+      this.menu = document.getElementById("language-dropdown-menu");
+      this.arrow = document.getElementById("language-dropdown-arrow");
 
       if (!this.button || !this.menu) {
-        console.warn('Language dropdown elements not found');
+        console.warn("Language dropdown elements not found");
         return;
       }
 
       // Add event listeners
-      this.button.addEventListener('click', (e) => this.toggleDropdown(e));
-      this.button.addEventListener('keydown', (e) => this.handleKeydown(e));
-      
+      this.button.addEventListener("click", (e) => this.toggleDropdown(e));
+      this.button.addEventListener("keydown", (e) => this.handleKeydown(e));
+
       // Close dropdown when clicking outside
-      document.addEventListener('click', (e) => this.handleOutsideClick(e));
-      
+      document.addEventListener("click", (e) => this.handleOutsideClick(e));
+
       // Close dropdown on escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && this.isOpen) {
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && this.isOpen) {
           this.closeDropdown(true); // Return focus when closing via keyboard
         }
       });
@@ -135,7 +161,7 @@ const { class: className = "" } = Astro.props;
     toggleDropdown(e) {
       e.preventDefault();
       e.stopPropagation();
-      
+
       if (this.isOpen) {
         this.closeDropdown();
       } else {
@@ -145,11 +171,11 @@ const { class: className = "" } = Astro.props;
 
     openDropdown() {
       this.isOpen = true;
-      this.menu.classList.remove('opacity-0', 'invisible', 'scale-95');
-      this.menu.classList.add('opacity-100', 'visible', 'scale-100');
-      this.arrow?.classList.add('rotate-180');
-      this.button?.setAttribute('aria-expanded', 'true');
-      
+      this.menu.classList.remove("opacity-0", "invisible", "scale-95");
+      this.menu.classList.add("opacity-100", "visible", "scale-100");
+      this.arrow?.classList.add("rotate-180");
+      this.button?.setAttribute("aria-expanded", "true");
+
       // Focus first menu item
       const firstItem = this.menu.querySelector('[role="menuitem"]');
       if (firstItem) {
@@ -159,10 +185,10 @@ const { class: className = "" } = Astro.props;
 
     closeDropdown(returnFocus = false) {
       this.isOpen = false;
-      this.menu.classList.add('opacity-0', 'invisible', 'scale-95');
-      this.menu.classList.remove('opacity-100', 'visible', 'scale-100');
-      this.arrow?.classList.remove('rotate-180');
-      this.button?.setAttribute('aria-expanded', 'false');
+      this.menu.classList.add("opacity-0", "invisible", "scale-95");
+      this.menu.classList.remove("opacity-100", "visible", "scale-100");
+      this.arrow?.classList.remove("rotate-180");
+      this.button?.setAttribute("aria-expanded", "false");
 
       // Only return focus when closed via keyboard, not when clicking outside
       if (returnFocus) {
@@ -174,21 +200,21 @@ const { class: className = "" } = Astro.props;
       if (!this.isOpen) return;
 
       const menuItems = Array.from(this.menu.querySelectorAll('[role="menuitem"]'));
-      const currentIndex = menuItems.findIndex(item => item === document.activeElement);
+      const currentIndex = menuItems.findIndex((item) => item === document.activeElement);
 
       switch (e.key) {
-        case 'ArrowDown':
+        case "ArrowDown":
           e.preventDefault();
           const nextIndex = (currentIndex + 1) % menuItems.length;
           menuItems[nextIndex]?.focus();
           break;
-        case 'ArrowUp':
+        case "ArrowUp":
           e.preventDefault();
           const prevIndex = currentIndex <= 0 ? menuItems.length - 1 : currentIndex - 1;
           menuItems[prevIndex]?.focus();
           break;
-        case 'Enter':
-        case ' ':
+        case "Enter":
+        case " ":
           e.preventDefault();
           document.activeElement?.click();
           break;
@@ -206,7 +232,7 @@ const { class: className = "" } = Astro.props;
   const languageDropdown = new LanguageDropdown();
 
   // Re-initialize on Astro page transitions
-  document.addEventListener('astro:after-swap', () => {
+  document.addEventListener("astro:after-swap", () => {
     if (!languageDropdown.isInitialized) {
       languageDropdown.init();
     }

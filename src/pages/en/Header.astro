@@ -5,14 +5,12 @@ import MobileNav from "../../components/MobileNav.astro";
 const pathname = Astro.url.pathname;
 ---
 
-<header
-  class={`flex items-center justify-between w-full py-3 lg:py-4 mx-auto px-4 lg:px-8 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 sticky top-0 z-50 transition-all duration-300`}
->
+<header class={`flex items-center justify-between w-full py-3 lg:py-4 mx-auto px-4 lg:px-8 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 sticky top-0 z-50 transition-all duration-300`}>
   <!-- Logo with availability indicator -->
-  <div class="flex items-center gap-3">
+  <div class="flex items-center gap-2 sm:gap-3 min-w-0 overflow-hidden">
     <a
       href="/en"
-      class="flex items-center gap-3 group"
+      class="flex items-center gap-2 sm:gap-3 group min-w-0"
     >
       <div class="relative">
         <img
@@ -29,14 +27,12 @@ const pathname = Astro.url.pathname;
           <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-green-500 border-2 border-white dark:border-gray-900"></span>
         </span>
       </div>
-      <div class="hidden sm:block">
-        <h1 class="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-          Ignacio Amat
-        </h1>
-        <p class="text-xs text-gray-600 dark:text-gray-400 flex items-center gap-1">
-          <span class="text-green-600 dark:text-green-400 font-medium">Available</span>
-          <span class="text-gray-400">•</span>
-          Full Stack Developer
+      <div class="min-w-0 flex-shrink">
+        <h1 class="header-logo-name text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">Ignacio Amat</h1>
+        <p class="header-logo-subtitle text-gray-600 dark:text-gray-400 flex items-center gap-1 truncate leading-tight">
+          <span class="text-green-600 dark:text-green-400 shrink-0">Available</span>
+          <span class="text-gray-400 shrink-0">•</span>
+          <span class="truncate">Full Stack Developer</span>
         </p>
       </div>
     </a>
@@ -86,13 +82,14 @@ const pathname = Astro.url.pathname;
   </div>
 
   <!-- Controls -->
-  <div class="flex items-center gap-2">
+  <div class="flex items-center gap-3 sm:gap-4">
     <a
-      class="inline-flex bg-blue-600 text-white transition rounded-lg hover:bg-blue-700 px-3 py-1.5 text-sm font-medium"
+      class="header-button header-button-primary"
       href="/en/blog"
       rel="noopener noreferrer"
+      aria-label="Go to news blog"
     >
-      Blog
+      News
     </a>
     <ThemeToggle />
     <Dropdown class="hidden lg:flex" />
@@ -102,3 +99,207 @@ const pathname = Astro.url.pathname;
     />
   </div>
 </header>
+
+<style>
+  /* Logo text: same size on mobile and tablet; slightly larger on desktop */
+  .header-logo-name {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .header-logo-subtitle {
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  @media (min-width: 768px) {
+    .header-logo-name {
+      font-size: 1.125rem;
+    }
+  }
+
+  /* Unified header button styles */
+  .header-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    min-width: 40px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.15s ease,
+      box-shadow 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+
+  /* Mobile: larger touch targets */
+  @media (max-width: 640px) {
+    .header-button {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.625rem 0.875rem;
+    }
+  }
+
+  /* Primary button (News/Noticias) */
+  .header-button-primary {
+    background: linear-gradient(135deg, rgb(59, 130, 246) 0%, rgb(37, 99, 235) 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+  }
+
+  @media (min-width: 640px) {
+    .header-button-primary {
+      padding: 0.5rem 1.25rem;
+    }
+  }
+
+  .header-button-primary:hover {
+    background: linear-gradient(135deg, rgb(37, 99, 235) 0%, rgb(29, 78, 216) 100%);
+    box-shadow:
+      0 4px 6px -1px rgba(59, 130, 246, 0.3),
+      0 2px 4px -1px rgba(59, 130, 246, 0.2);
+    transform: translateY(-1px);
+  }
+
+  .header-button-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .header-button-primary:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 3px rgba(59, 130, 246, 0.3),
+      0 4px 6px -1px rgba(59, 130, 246, 0.3),
+      0 2px 4px -1px rgba(59, 130, 246, 0.2);
+  }
+
+  :global(.dark) .header-button-primary {
+    box-shadow:
+      0 1px 2px 0 rgba(0, 0, 0, 0.2),
+      0 0 0 1px rgba(59, 130, 246, 0.2);
+  }
+
+  :global(.dark) .header-button-primary:hover {
+    box-shadow:
+      0 4px 6px -1px rgba(59, 130, 246, 0.4),
+      0 2px 4px -1px rgba(59, 130, 246, 0.3);
+  }
+
+  /* Secondary/Icon buttons (ThemeToggle, Dropdown) */
+  .header-button-secondary,
+  .header-button-icon {
+    background-color: rgba(255, 255, 255, 0.6);
+    color: rgb(55, 65, 81);
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .header-button-icon {
+    padding: 0.5rem;
+  }
+
+  :global(.dark) .header-button-secondary,
+  :global(.dark) .header-button-icon {
+    background-color: rgba(31, 41, 55, 0.6);
+    color: rgb(209, 213, 219);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .header-button-secondary:hover,
+  .header-button-icon:hover {
+    background-color: rgba(243, 244, 246, 0.9);
+    color: rgb(37, 99, 235);
+    border-color: rgba(59, 130, 246, 0.2);
+    transform: translateY(-1px);
+  }
+
+  :global(.dark) .header-button-secondary:hover,
+  :global(.dark) .header-button-icon:hover {
+    background-color: rgba(55, 65, 81, 0.8);
+    color: rgb(96, 165, 250);
+    border-color: rgba(96, 165, 250, 0.3);
+  }
+
+  .header-button-secondary:active,
+  .header-button-icon:active {
+    transform: translateY(0);
+  }
+
+  .header-button-secondary:focus-visible,
+  .header-button-icon:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    border-color: rgb(59, 130, 246);
+  }
+
+  :global(.dark) .header-button-secondary:focus-visible,
+  :global(.dark) .header-button-icon:focus-visible {
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25);
+    border-color: rgb(96, 165, 250);
+  }
+
+  /* Icon button specific adjustments */
+  .header-button-icon {
+    min-width: 40px;
+    padding: 0.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .header-button-icon {
+      min-width: 44px;
+      padding: 0.625rem;
+    }
+  }
+
+  /* Secondary button with text */
+  .header-button-secondary {
+    padding: 0.5rem 0.875rem;
+  }
+
+  @media (min-width: 640px) {
+    .header-button-secondary {
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  /* Disable hover effects on touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    .header-button-primary:hover,
+    .header-button-secondary:hover,
+    .header-button-icon:hover {
+      transform: none;
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .header-button {
+      transition:
+        background-color 0.1s ease,
+        color 0.1s ease,
+        border-color 0.1s ease;
+    }
+
+    .header-button-primary:hover,
+    .header-button-secondary:hover,
+    .header-button-icon:hover {
+      transform: none;
+    }
+  }
+</style>
