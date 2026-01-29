@@ -1,109 +1,136 @@
 ---
-import { getLangFromUrl } from '../i18n/utils';
-import FAQSchema from './FAQSchema.astro';
+import { getLangFromUrl } from "../i18n/utils";
+import FAQSchema from "./FAQSchema.astro";
 
 const lang = getLangFromUrl(Astro.url);
-const isEnglish = lang === 'en';
+const isEnglish = lang === "en";
 
-const title = isEnglish 
-  ? "Frequently Asked Questions" 
-  : "Preguntas Frecuentes";
+const title = isEnglish ? "Frequently Asked Questions" : "Preguntas Frecuentes";
 
-const description = isEnglish
-  ? "Find answers to common questions about my services, process, and expertise."
-  : "Encuentra respuestas a preguntas comunes sobre mis servicios, proceso y experiencia.";
+const description = isEnglish ? "Find answers to common questions about my services, process, and expertise." : "Encuentra respuestas a preguntas comunes sobre mis servicios, proceso y experiencia.";
 
 const questionsEN = [
   {
     question: "What services do you offer as a Full Stack developer?",
-    answer: "I offer comprehensive web development services including custom website development, web application development, e-commerce solutions, API development and integration, front-end development with modern frameworks, back-end development with Laravel and PHP, database design and optimization, and ongoing maintenance and support for existing applications."
+    answer:
+      "I offer comprehensive web development services including custom website development, web application development, e-commerce solutions, API development and integration, front-end development with modern frameworks, back-end development with Laravel and PHP, database design and optimization, and ongoing maintenance and support for existing applications.",
   },
   {
     question: "What technologies and programming languages do you specialize in?",
-    answer: "I specialize in PHP and Laravel for back-end development, Vue.js, JavaScript, and TypeScript for front-end development. I'm also proficient with TailwindCSS, HTML5, CSS3, MySQL, RESTful APIs, Git, Docker, and AWS. I continuously stay updated with the latest technologies to provide modern and efficient solutions."
+    answer:
+      "I specialize in PHP and Laravel for back-end development, Vue.js, JavaScript, and TypeScript for front-end development. I'm also proficient with TailwindCSS, HTML5, CSS3, MySQL, RESTful APIs, Git, Docker, and AWS. I continuously stay updated with the latest technologies to provide modern and efficient solutions.",
   },
   {
     question: "How does your project process work?",
-    answer: "My development process typically includes: 1) Initial consultation to understand your requirements, 2) Proposal and planning phase, 3) Design and prototyping, 4) Development with regular progress updates, 5) Testing and quality assurance, 6) Deployment to production, and 7) Ongoing support and maintenance. I emphasize clear communication throughout each stage."
+    answer:
+      "My development process typically includes: 1) Initial consultation to understand your requirements, 2) Proposal and planning phase, 3) Design and prototyping, 4) Development with regular progress updates, 5) Testing and quality assurance, 6) Deployment to production, and 7) Ongoing support and maintenance. I emphasize clear communication throughout each stage.",
   },
   {
     question: "Do you work with clients outside of Spain?",
-    answer: "Yes, I work with clients worldwide. Thanks to modern collaboration tools, I can efficiently work remotely with clients from any location. I have experience working with international clients and can communicate fluently in both English and Spanish."
+    answer:
+      "Yes, I work with clients worldwide. Thanks to modern collaboration tools, I can efficiently work remotely with clients from any location. I have experience working with international clients and can communicate fluently in both English and Spanish.",
   },
   {
     question: "How do you handle project pricing?",
-    answer: "I offer flexible pricing options including fixed project rates and hourly rates depending on your needs. For fixed-price projects, I provide detailed quotes based on your requirements after an initial consultation. For ongoing work, I can work on an hourly or retainer basis. Transparency in pricing is important to me, and I ensure there are no hidden costs."
+    answer:
+      "I offer flexible pricing options including fixed project rates and hourly rates depending on your needs. For fixed-price projects, I provide detailed quotes based on your requirements after an initial consultation. For ongoing work, I can work on an hourly or retainer basis. Transparency in pricing is important to me, and I ensure there are no hidden costs.",
   },
   {
     question: "Do you provide maintenance and support after a project is completed?",
-    answer: "Absolutely! I offer ongoing maintenance and support services to ensure your website or application continues to run smoothly after launch. This includes regular updates, security patches, performance optimization, and addressing any issues that may arise. I can create a maintenance plan tailored to your specific needs."
-  }
+    answer:
+      "Absolutely! I offer ongoing maintenance and support services to ensure your website or application continues to run smoothly after launch. This includes regular updates, security patches, performance optimization, and addressing any issues that may arise. I can create a maintenance plan tailored to your specific needs.",
+  },
 ];
 
 const questionsES = [
   {
     question: "¿Qué servicios ofreces como desarrollador Full Stack?",
-    answer: "Ofrezco servicios completos de desarrollo web que incluyen desarrollo de sitios web a medida, desarrollo de aplicaciones web, soluciones de comercio electrónico, desarrollo e integración de APIs, desarrollo front-end con frameworks modernos, desarrollo back-end con Laravel y PHP, diseño y optimización de bases de datos, y mantenimiento y soporte continuo para aplicaciones existentes."
+    answer:
+      "Ofrezco servicios completos de desarrollo web que incluyen desarrollo de sitios web a medida, desarrollo de aplicaciones web, soluciones de comercio electrónico, desarrollo e integración de APIs, desarrollo front-end con frameworks modernos, desarrollo back-end con Laravel y PHP, diseño y optimización de bases de datos, y mantenimiento y soporte continuo para aplicaciones existentes.",
   },
   {
     question: "¿En qué tecnologías y lenguajes de programación te especializas?",
-    answer: "Me especializo en PHP y Laravel para desarrollo back-end, Vue.js, JavaScript y TypeScript para desarrollo front-end. También soy competente con TailwindCSS, HTML5, CSS3, MySQL, APIs RESTful, Git, Docker y AWS. Me mantengo continuamente actualizado con las últimas tecnologías para proporcionar soluciones modernas y eficientes."
+    answer:
+      "Me especializo en PHP y Laravel para desarrollo back-end, Vue.js, JavaScript y TypeScript para desarrollo front-end. También soy competente con TailwindCSS, HTML5, CSS3, MySQL, APIs RESTful, Git, Docker y AWS. Me mantengo continuamente actualizado con las últimas tecnologías para proporcionar soluciones modernas y eficientes.",
   },
   {
     question: "¿Cómo funciona tu proceso de proyecto?",
-    answer: "Mi proceso de desarrollo típicamente incluye: 1) Consulta inicial para entender tus requisitos, 2) Fase de propuesta y planificación, 3) Diseño y prototipado, 4) Desarrollo con actualizaciones regulares de progreso, 5) Pruebas y control de calidad, 6) Despliegue a producción, y 7) Soporte y mantenimiento continuo. Enfatizo la comunicación clara durante cada etapa."
+    answer:
+      "Mi proceso de desarrollo típicamente incluye: 1) Consulta inicial para entender tus requisitos, 2) Fase de propuesta y planificación, 3) Diseño y prototipado, 4) Desarrollo con actualizaciones regulares de progreso, 5) Pruebas y control de calidad, 6) Despliegue a producción, y 7) Soporte y mantenimiento continuo. Enfatizo la comunicación clara durante cada etapa.",
   },
   {
     question: "¿Trabajas con clientes fuera de España?",
-    answer: "Sí, trabajo con clientes de todo el mundo. Gracias a las herramientas modernas de colaboración, puedo trabajar eficientemente de forma remota con clientes de cualquier ubicación. Tengo experiencia trabajando con clientes internacionales y puedo comunicarme con fluidez tanto en inglés como en español."
+    answer:
+      "Sí, trabajo con clientes de todo el mundo. Gracias a las herramientas modernas de colaboración, puedo trabajar eficientemente de forma remota con clientes de cualquier ubicación. Tengo experiencia trabajando con clientes internacionales y puedo comunicarme con fluidez tanto en inglés como en español.",
   },
   {
     question: "¿Cómo manejas los precios de los proyectos?",
-    answer: "Ofrezco opciones de precios flexibles que incluyen tarifas fijas por proyecto y tarifas por hora según tus necesidades. Para proyectos de precio fijo, proporciono presupuestos detallados basados en tus requisitos después de una consulta inicial. Para trabajo continuo, puedo trabajar por hora o con una tarifa mensual. La transparencia en los precios es importante para mí, y me aseguro de que no haya costos ocultos."
+    answer:
+      "Ofrezco opciones de precios flexibles que incluyen tarifas fijas por proyecto y tarifas por hora según tus necesidades. Para proyectos de precio fijo, proporciono presupuestos detallados basados en tus requisitos después de una consulta inicial. Para trabajo continuo, puedo trabajar por hora o con una tarifa mensual. La transparencia en los precios es importante para mí, y me aseguro de que no haya costos ocultos.",
   },
   {
     question: "¿Proporcionas mantenimiento y soporte después de que se completa un proyecto?",
-    answer: "¡Absolutamente! Ofrezco servicios de mantenimiento y soporte continuos para asegurar que tu sitio web o aplicación siga funcionando sin problemas después del lanzamiento. Esto incluye actualizaciones regulares, parches de seguridad, optimización de rendimiento y solución de cualquier problema que pueda surgir. Puedo crear un plan de mantenimiento adaptado a tus necesidades específicas."
-  }
+    answer:
+      "¡Absolutamente! Ofrezco servicios de mantenimiento y soporte continuos para asegurar que tu sitio web o aplicación siga funcionando sin problemas después del lanzamiento. Esto incluye actualizaciones regulares, parches de seguridad, optimización de rendimiento y solución de cualquier problema que pueda surgir. Puedo crear un plan de mantenimiento adaptado a tus necesidades específicas.",
+  },
 ];
 
 const questions = isEnglish ? questionsEN : questionsES;
 
-const faqItems = questions.map(item => ({
+const faqItems = questions.map((item) => ({
   question: item.question,
-  answer: item.answer
+  answer: item.answer,
 }));
 ---
 
-<div class="py-16">
-  <div class="text-center mb-12">
-    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">{title}</h2>
-    <p class="text-lg text-gray-600 dark:text-gray-300">{description}</p>
-  </div>
-  
+<div>
   <FAQSchema items={faqItems} />
-  
+
   <div class="space-y-3 md:space-y-4 max-w-4xl mx-auto px-4 md:px-0">
-    {questions.map((item) => (
-      <div class="border border-gray-300 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-gray-800 shadow-sm">
-        <details class="group">
-          <summary class="flex items-center justify-between px-3 md:px-4 py-4 md:py-5 cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-            <h3 class="text-base md:text-lg font-medium text-gray-900 dark:text-white pr-2">{item.question}</h3>
-            <span class="relative ml-1.5 flex-shrink-0 w-5 h-5">
-              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 transition-opacity text-gray-700 dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100 transition-opacity text-gray-700 dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
-              </svg>
-            </span>
-          </summary>
-          <div class="px-3 md:px-4 py-4 md:py-5 border-t border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 transition-all duration-300 overflow-hidden">
-            <p class="text-gray-700 dark:text-gray-300 text-sm md:text-base leading-relaxed">{item.answer}</p>
-          </div>
-        </details>
-      </div>
-    ))}
+    {
+      questions.map((item) => (
+        <div class="border border-gray-300 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-gray-800 shadow-sm">
+          <details class="group">
+            <summary class="flex items-center justify-between px-3 md:px-4 py-4 md:py-5 cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+              <h3 class="text-base md:text-lg font-medium text-gray-900 dark:text-white pr-2">{item.question}</h3>
+              <span class="relative ml-1.5 flex-shrink-0 w-5 h-5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 transition-opacity text-gray-700 dark:text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100 transition-opacity text-gray-700 dark:text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M18 12H6"
+                  />
+                </svg>
+              </span>
+            </summary>
+            <div class="px-3 md:px-4 py-4 md:py-5 border-t border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 transition-all duration-300 overflow-hidden">
+              <p class="text-gray-700 dark:text-gray-300 text-sm md:text-base leading-relaxed">{item.answer}</p>
+            </div>
+          </details>
+        </div>
+      ))
+    }
   </div>
 </div>
 
@@ -111,17 +138,20 @@ const faqItems = questions.map(item => ({
   details summary::-webkit-details-marker {
     display: none;
   }
-  
+
   details summary {
     list-style: none;
   }
-  
+
   details > div {
     max-height: 0;
     opacity: 0;
-    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+    transition:
+      max-height 0.3s ease,
+      opacity 0.3s ease,
+      padding 0.3s ease;
   }
-  
+
   details[open] > div {
     max-height: 1000px;
     opacity: 1;
@@ -129,28 +159,29 @@ const faqItems = questions.map(item => ({
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const details = document.querySelectorAll('details');
-    
+  document.addEventListener("DOMContentLoaded", () => {
+    const details = document.querySelectorAll("details");
+
     details.forEach((detail) => {
-      detail.addEventListener('toggle', () => {
-        const content = detail.querySelector('div');
+      detail.addEventListener("toggle", () => {
+        const content = detail.querySelector("div");
         if (!content) return;
-        
+
         if (detail.open) {
-          content.style.maxHeight = content.scrollHeight + 'px';
-          content.style.opacity = '1';
+          content.style.maxHeight = content.scrollHeight + "px";
+          content.style.opacity = "1";
           setTimeout(() => {
-            content.style.maxHeight = 'none';
+            content.style.maxHeight = "none";
           }, 300);
         } else {
-          content.style.maxHeight = content.scrollHeight + 'px';
+          content.style.maxHeight = content.scrollHeight + "px";
           requestAnimationFrame(() => {
-            content.style.maxHeight = '0';
-            content.style.opacity = '0';
+            content.style.maxHeight = "0";
+            content.style.opacity = "0";
           });
         }
       });
     });
   });
-</script> 
+</script>
+
