@@ -5,15 +5,15 @@ import Footer from "../components/Footer.astro";
 import FooterEnglish from "../pages/en/Footer.astro";
 import "@fontsource-variable/onest";
 import "@fontsource-variable/overpass";
-import { getLangFromUrl } from '../i18n/utils';
-import { AstroSeo } from '@astrolib/seo';
-import SpeedInsights from '@vercel/speed-insights/astro';
+import { getLangFromUrl } from "../i18n/utils";
+import { AstroSeo } from "@astrolib/seo";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
   title: string;
   description: string;
   canonical?: string;
-  pageType?: 'website' | 'profile' | 'article';
+  pageType?: "website" | "profile" | "article";
   articleData?: {
     publishedTime?: string;
     modifiedTime?: string;
@@ -42,26 +42,19 @@ interface Props {
   };
 }
 
-const { 
-  title, 
-  description,
-  pageType = 'website',
-  articleData,
-} = Astro.props;
+const { title, description, pageType = "website", articleData } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const ogImage = "https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg";
 const url = "https://www.ignathedev.com/";
-const siteName = lang === 'es' 
-  ? "Ignacio Amat Urbina - Desarrollador Web Full Stack | Experto PHP & Laravel"
-  : "Ignacio Amat Urbina - Full Stack Web Developer | PHP & Laravel Expert";
+const siteName = lang === "es" ? "Ignacio Amat Urbina - Desarrollador Web Full Stack | Experto PHP & Laravel" : "Ignacio Amat Urbina - Full Stack Web Developer | PHP & Laravel Expert";
 
 // Professional profile data for SEO
 const professionalProfile = {
   name: "Ignacio Amat Urbina",
   givenName: "Ignacio",
   familyName: "Amat Urbina",
-  jobTitle: lang === 'es' ? "Desarrollador Web Full Stack" : "Full Stack Web Developer",
+  jobTitle: lang === "es" ? "Desarrollador Web Full Stack" : "Full Stack Web Developer",
   alternateName: ["Igna", "ignathedev"],
   email: "ignacioamat@ignathedev.com",
   telephone: "+34",
@@ -69,9 +62,9 @@ const professionalProfile = {
   nationality: "Spanish",
   address: {
     city: "Barcelona",
-    region: "Catalonia", 
+    region: "Catalonia",
     country: "Spain",
-    countryCode: "ES"
+    countryCode: "ES",
   },
   yearsOfExperience: 5,
   availableForHire: true,
@@ -82,278 +75,414 @@ const professionalProfile = {
     frameworks: ["Laravel", "Vue.js", "React", "Astro", "TailwindCSS", "Livewire", "Alpine.js"],
     databases: ["MySQL", "PostgreSQL", "MongoDB", "Redis"],
     tools: ["Git", "Docker", "Linux", "Nginx", "Apache", "AWS", "DigitalOcean"],
-    methodologies: ["Agile", "Scrum", "TDD", "CI/CD", "REST API Design"]
+    methodologies: ["Agile", "Scrum", "TDD", "CI/CD", "REST API Design"],
   },
-  certifications: [
-    "Laravel Certified Developer",
-    "Vue.js Developer"
-  ],
+  certifications: ["Laravel Certified Developer", "Vue.js Developer"],
   socialProfiles: {
     linkedin: "https://www.linkedin.com/in/ignacio-amat-urbina-789244223",
     github: "https://github.com/ignaaaam",
     behance: "https://www.behance.net/ignathedev",
     stackoverflow: "https://stackoverflow.com/users/13370846/ignacio-amat-urbina",
-    laracasts: "https://laracasts.com/@ignacio-amat-urbina"
-  }
+    laracasts: "https://laracasts.com/@ignacio-amat-urbina",
+  },
 };
 
-const pageTitle = title || "Ignacio Amat - Full Stack Developer";
-const metaTitle = `${pageTitle} | PHP & Laravel Expert`.substring(0, 60);
-const rawDescription = description || "Full Stack Web Developer specializing in PHP, Laravel, Vue.js, and modern web technologies. Available for remote projects worldwide.";
-const metaDescription = rawDescription.length > 155 ? 
-  rawDescription.substring(0, 152) + "..." : 
-  rawDescription;
+const pageTitle = title || (lang === "es" ? "Desarrollador Web Full Stack" : "Full Stack Web Developer");
+// Optimize title length: 50-60 characters for best SEO
+const titleSuffix = lang === "es" ? " | PHP Laravel Vue.js" : " | PHP Laravel Vue.js";
+const fullTitle = `${pageTitle}${titleSuffix}`;
+const metaTitle = fullTitle.length > 60 ? fullTitle.substring(0, 57) + "..." : fullTitle;
+
+const rawDescription =
+  description ||
+  (lang === "es"
+    ? "Desarrollador web full stack especializado en PHP, Laravel y Vue.js. Disponible para proyectos remotos e internacionales."
+    : "Full stack web developer specialized in PHP, Laravel, and Vue.js. Available for remote and international projects.");
+// Optimize description length: 150-160 characters for best SEO
+const metaDescription = rawDescription.length > 160 ? rawDescription.substring(0, 157) + "..." : rawDescription;
 
 // Add more specific meta information for better SEO
-const targetLocations = lang === 'es' 
-  ? [
-      // Major cities by population
-      "Madrid", "Barcelona", "Valencia", "Sevilla", "Zaragoza", 
-      "Málaga", "Murcia", "Palma", "Las Palmas", "Bilbao",
-      "Alicante", "Córdoba", "Valladolid", "Vigo", "Gijón",
-      "Hospitalet", "Vitoria", "La Coruña", "Granada", "Elche",
-      "Oviedo", "Terrassa", "Badalona", "Cartagena", "Sabadell",
-      // Regions
-      "Comunidad de Madrid", "Cataluña", "Andalucía", "País Vasco", 
-      "Comunidad Valenciana", "Galicia", "Castilla y León", "Islas Baleares",
-      "Canarias", "Asturias", "Murcia",
-      // General
-      "España", "Remoto", "Internacional"
-    ]
-  : [
-      // Major cities by population
-      "Madrid", "Barcelona", "Valencia", "Seville", "Zaragoza",
-      "Malaga", "Murcia", "Palma", "Las Palmas", "Bilbao",
-      "Alicante", "Cordoba", "Valladolid", "Vigo", "Gijon",
-      "Hospitalet", "Vitoria", "A Coruna", "Granada", "Elche",
-      "Oviedo", "Terrassa", "Badalona", "Cartagena", "Sabadell",
-      // Regions
-      "Community of Madrid", "Catalonia", "Andalusia", "Basque Country",
-      "Valencian Community", "Galicia", "Castile and León", "Balearic Islands",
-      "Canary Islands", "Asturias", "Murcia",
-      // General
-      "Spain", "Remote", "International"
-    ];
+const targetLocations =
+  lang === "es"
+    ? [
+        // Major cities by population
+        "Madrid",
+        "Barcelona",
+        "Valencia",
+        "Sevilla",
+        "Zaragoza",
+        "Málaga",
+        "Murcia",
+        "Palma",
+        "Las Palmas",
+        "Bilbao",
+        "Alicante",
+        "Córdoba",
+        "Valladolid",
+        "Vigo",
+        "Gijón",
+        "Hospitalet",
+        "Vitoria",
+        "La Coruña",
+        "Granada",
+        "Elche",
+        "Oviedo",
+        "Terrassa",
+        "Badalona",
+        "Cartagena",
+        "Sabadell",
+        // Regions
+        "Comunidad de Madrid",
+        "Cataluña",
+        "Andalucía",
+        "País Vasco",
+        "Comunidad Valenciana",
+        "Galicia",
+        "Castilla y León",
+        "Islas Baleares",
+        "Canarias",
+        "Asturias",
+        "Murcia",
+        // General
+        "España",
+        "Remoto",
+        "Internacional",
+      ]
+    : [
+        // Major cities by population
+        "Madrid",
+        "Barcelona",
+        "Valencia",
+        "Seville",
+        "Zaragoza",
+        "Malaga",
+        "Murcia",
+        "Palma",
+        "Las Palmas",
+        "Bilbao",
+        "Alicante",
+        "Cordoba",
+        "Valladolid",
+        "Vigo",
+        "Gijon",
+        "Hospitalet",
+        "Vitoria",
+        "A Coruna",
+        "Granada",
+        "Elche",
+        "Oviedo",
+        "Terrassa",
+        "Badalona",
+        "Cartagena",
+        "Sabadell",
+        // Regions
+        "Community of Madrid",
+        "Catalonia",
+        "Andalusia",
+        "Basque Country",
+        "Valencian Community",
+        "Galicia",
+        "Castile and León",
+        "Balearic Islands",
+        "Canary Islands",
+        "Asturias",
+        "Murcia",
+        // General
+        "Spain",
+        "Remote",
+        "International",
+      ];
 
-const technologies = lang === 'es'
-  ? {
-      frontend: ["Vue.js", "JavaScript", "TypeScript", "TailwindCSS", "HTML5", "CSS3", "Astro", "React"],
-      backend: ["PHP", "Laravel", "MySQL", "API REST", "Node.js", "Express", "MongoDB"],
-      tools: ["Git", "Docker", "AWS", "Linux", "Nginx", "Apache"]
-    }
-  : {
-      frontend: ["Vue.js", "JavaScript", "TypeScript", "TailwindCSS", "HTML5", "CSS3", "Astro", "React"],
-      backend: ["PHP", "Laravel", "MySQL", "REST API", "Node.js", "Express", "MongoDB"],
-      tools: ["Git", "Docker", "AWS", "Linux", "Nginx", "Apache"]
-    };
+const technologies =
+  lang === "es"
+    ? {
+        frontend: ["Vue.js", "JavaScript", "TypeScript", "TailwindCSS", "HTML5", "CSS3", "Astro", "React"],
+        backend: ["PHP", "Laravel", "MySQL", "API REST", "Node.js", "Express", "MongoDB"],
+        tools: ["Git", "Docker", "AWS", "Linux", "Nginx", "Apache"],
+      }
+    : {
+        frontend: ["Vue.js", "JavaScript", "TypeScript", "TailwindCSS", "HTML5", "CSS3", "Astro", "React"],
+        backend: ["PHP", "Laravel", "MySQL", "REST API", "Node.js", "Express", "MongoDB"],
+        tools: ["Git", "Docker", "AWS", "Linux", "Nginx", "Apache"],
+      };
 
 // Generate technology-based keywords
 const techKeywords = Object.entries(technologies).flatMap(([_, techs]) => {
-  return techs.flatMap(tech => {
-    const prefixes = lang === 'es'
-      ? [
-          `desarrollador ${tech}`,
-          `experto ${tech}`,
-          `programador ${tech}`,
-          `${tech} developer`
-        ]
-      : [
-          `${tech} developer`,
-          `${tech} expert`,
-          `${tech} programmer`,
-          `${tech} specialist`
-        ];
+  return techs.flatMap((tech) => {
+    const prefixes = lang === "es" ? [`desarrollador ${tech}`, `experto ${tech}`, `programador ${tech}`, `${tech} developer`] : [`${tech} developer`, `${tech} expert`, `${tech} programmer`, `${tech} specialist`];
     return prefixes;
   });
 });
 
 // Generate role-based keywords
-const roleKeywords = targetLocations.flatMap(location => {
-  const roles = lang === 'es'
-    ? [
-        "desarrollador frontend",
-        "desarrollador backend",
-        "desarrollador full stack",
-        "programador PHP",
-        "desarrollador Laravel",
-        "desarrollador Vue.js",
-        "experto en desarrollo web",
-        "programador JavaScript",
-        "desarrollador de aplicaciones web",
-        "desarrollador TypeScript"
-      ]
-    : [
-        "frontend developer",
-        "backend developer",
-        "full stack developer",
-        "PHP programmer",
-        "Laravel developer",
-        "Vue.js developer",
-        "web development expert",
-        "JavaScript programmer",
-        "web application developer",
-        "TypeScript developer"
-      ];
-  return roles.map(role => `${role} ${lang === 'es' ? 'en' : 'in'} ${location}`);
+const roleKeywords = targetLocations.flatMap((location) => {
+  const roles =
+    lang === "es"
+      ? [
+          "desarrollador frontend",
+          "desarrollador backend",
+          "desarrollador full stack",
+          "programador PHP",
+          "desarrollador Laravel",
+          "desarrollador Vue.js",
+          "experto en desarrollo web",
+          "programador JavaScript",
+          "desarrollador de aplicaciones web",
+          "desarrollador TypeScript",
+        ]
+      : ["frontend developer", "backend developer", "full stack developer", "PHP programmer", "Laravel developer", "Vue.js developer", "web development expert", "JavaScript programmer", "web application developer", "TypeScript developer"];
+  return roles.map((role) => `${role} ${lang === "es" ? "en" : "in"} ${location}`);
 });
 
-const metaKeywords = lang === 'es' 
-  ? [
-      // CV/Portfolio specific keywords
-      "curriculum desarrollador web",
-      "portfolio desarrollador full stack",
-      "contratar desarrollador PHP",
-      "contratar desarrollador Laravel",
-      "desarrollador web disponible",
-      "freelance disponible Barcelona",
-      // Generic keywords
-      "desarrollador web freelance",
-      "desarrollo web profesional",
-      "experto Laravel España",
-      "programador PHP freelance",
-      "desarrollo aplicaciones web",
-      "desarrollador full stack senior",
-      "experto Vue.js y Laravel",
-      "desarrollador JavaScript moderno",
-      "especialista TypeScript",
-      "desarrollador TailwindCSS",
-      // Specific tech combinations
-      "desarrollo Laravel y Vue.js",
-      "aplicaciones web PHP modernas",
-      "desarrollo full stack JavaScript",
-      "experto LAMP stack",
-      "desarrollo web Node.js y Express",
-      // Project types
-      "desarrollo e-commerce",
-      "aplicaciones web empresariales",
-      "desarrollo API REST",
-      "sitios web alto rendimiento",
-      "aplicaciones web escalables",
-      // Location and tech combinations
-      ...roleKeywords,
-      ...techKeywords,
-      // Remote specific
-      "desarrollo web remoto España",
-      "programador Laravel remoto",
-      "servicios desarrollo web online",
-      // Hiring keywords
-      "busco trabajo desarrollador web",
-      "programador PHP Barcelona",
-      "desarrollador Laravel disponible"
-    ].join(", ")
-  : [
-      // CV/Portfolio specific keywords  
-      "web developer resume",
-      "full stack developer portfolio",
-      "hire PHP developer",
-      "hire Laravel developer",
-      "web developer available for hire",
-      "freelance developer Barcelona Spain",
-      // Generic keywords
-      "freelance web developer",
-      "professional web development",
-      "Laravel expert Spain",
-      "freelance PHP developer",
-      "web application development",
-      "senior full stack developer",
-      "Vue.js and Laravel expert",
-      "modern JavaScript developer",
-      "TypeScript specialist",
-      "TailwindCSS developer",
-      // Specific tech combinations
-      "Laravel and Vue.js development",
-      "modern PHP applications",
-      "full stack JavaScript development",
-      "LAMP stack expert",
-      "Node.js and Express development",
-      // Project types
-      "e-commerce development",
-      "enterprise web applications",
-      "REST API development",
-      "high-performance websites",
-      "scalable web applications",
-      // Location and tech combinations
-      ...roleKeywords,
-      ...techKeywords,
-      // Remote specific
-      "remote web developer Spain",
-      "remote Laravel developer",
-      "online web development services",
-      // Hiring keywords
-      "looking for web developer job",
-      "PHP developer Barcelona",
-      "Laravel developer available"
-    ].join(", ");
+const metaKeywords =
+  lang === "es"
+    ? [
+        // CV/Portfolio specific keywords
+        "curriculum desarrollador web",
+        "portfolio desarrollador full stack",
+        "contratar desarrollador PHP",
+        "contratar desarrollador Laravel",
+        "desarrollador web disponible",
+        "freelance disponible Barcelona",
+        // Generic keywords
+        "desarrollador web freelance",
+        "desarrollo web profesional",
+        "experto Laravel España",
+        "programador PHP freelance",
+        "desarrollo aplicaciones web",
+        "desarrollador full stack senior",
+        "experto Vue.js y Laravel",
+        "desarrollador JavaScript moderno",
+        "especialista TypeScript",
+        "desarrollador TailwindCSS",
+        // Specific tech combinations
+        "desarrollo Laravel y Vue.js",
+        "aplicaciones web PHP modernas",
+        "desarrollo full stack JavaScript",
+        "experto LAMP stack",
+        "desarrollo web Node.js y Express",
+        // Project types
+        "desarrollo e-commerce",
+        "aplicaciones web empresariales",
+        "desarrollo API REST",
+        "sitios web alto rendimiento",
+        "aplicaciones web escalables",
+        // Location and tech combinations
+        ...roleKeywords,
+        ...techKeywords,
+        // Remote specific
+        "desarrollo web remoto España",
+        "programador Laravel remoto",
+        "servicios desarrollo web online",
+        // Hiring keywords
+        "busco trabajo desarrollador web",
+        "programador PHP Barcelona",
+        "desarrollador Laravel disponible",
+      ].join(", ")
+    : [
+        // CV/Portfolio specific keywords
+        "web developer resume",
+        "full stack developer portfolio",
+        "hire PHP developer",
+        "hire Laravel developer",
+        "web developer available for hire",
+        "freelance developer Barcelona Spain",
+        // Generic keywords
+        "freelance web developer",
+        "professional web development",
+        "Laravel expert Spain",
+        "freelance PHP developer",
+        "web application development",
+        "senior full stack developer",
+        "Vue.js and Laravel expert",
+        "modern JavaScript developer",
+        "TypeScript specialist",
+        "TailwindCSS developer",
+        // Specific tech combinations
+        "Laravel and Vue.js development",
+        "modern PHP applications",
+        "full stack JavaScript development",
+        "LAMP stack expert",
+        "Node.js and Express development",
+        // Project types
+        "e-commerce development",
+        "enterprise web applications",
+        "REST API development",
+        "high-performance websites",
+        "scalable web applications",
+        // Location and tech combinations
+        ...roleKeywords,
+        ...techKeywords,
+        // Remote specific
+        "remote web developer Spain",
+        "remote Laravel developer",
+        "online web development services",
+        // Hiring keywords
+        "looking for web developer job",
+        "PHP developer Barcelona",
+        "Laravel developer available",
+      ].join(", ");
 
 // Current page path for breadcrumbs
 const currentPath = Astro.url.pathname;
-const isHomePage = currentPath === '/' || currentPath === '/en' || currentPath === '/en/';
-const isBlogPage = currentPath.includes('/blog');
+const isHomePage = currentPath === "/" || currentPath === "/en" || currentPath === "/en/";
+const isBlogPage = currentPath.includes("/blog");
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
     <!-- Google tag (gtag.js) -->
-    <script type="text/partytown" defer src="https://www.googletagmanager.com/gtag/js?id=G-VZQ07QHFLN" is:inline>
-    </script>
+    <script type="text/partytown" defer src="https://www.googletagmanager.com/gtag/js?id=G-VZQ07QHFLN" is:inline></script>
     <script type="text/partytown" is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-VZQ07QHFLN');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-VZQ07QHFLN");
     </script>
     <!-- SEO Meta Tags with AstroSEO -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
     <!-- Direct meta tags instead of using additionalMetaTags -->
-    <meta name="description" content={metaDescription} />
-    <meta name="author" content="Ignacio Amat Urbina" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <meta name="theme-color" content="#0a0a0a" />
-    <meta name="keywords" content={metaKeywords} />
+    <meta
+      name="description"
+      content={metaDescription}
+    />
+    <meta
+      name="author"
+      content="Ignacio Amat Urbina"
+    />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <meta
+      name="theme-color"
+      content="#0a0a0a"
+    />
+    <!-- Optimized keywords: focus on primary terms (Google ignores long keyword lists) -->
+    <meta
+      name="keywords"
+      content={lang === "es"
+        ? "desarrollador web full stack, PHP Laravel, Vue.js, desarrollador Barcelona, freelance desarrollo web, contratar desarrollador PHP"
+        : "full stack web developer, PHP Laravel, Vue.js, developer Barcelona, freelance web development, hire PHP developer"}
+    />
 
     <!-- Professional/CV specific meta tags -->
-    <meta name="profession" content={professionalProfile.jobTitle} />
-    <meta name="experience" content={`${professionalProfile.yearsOfExperience}+ years`} />
-    <meta name="availability" content={professionalProfile.availableForHire ? (lang === 'es' ? 'Disponible para proyectos' : 'Available for hire') : (lang === 'es' ? 'No disponible' : 'Not available')} />
-    <meta name="skills" content={[...professionalProfile.skills.programming, ...professionalProfile.skills.frameworks].join(', ')} />
-    
+    <meta
+      name="profession"
+      content={professionalProfile.jobTitle}
+    />
+    <meta
+      name="experience"
+      content={`${professionalProfile.yearsOfExperience}+ years`}
+    />
+    <meta
+      name="availability"
+      content={professionalProfile.availableForHire ? (lang === "es" ? "Disponible para proyectos" : "Available for hire") : lang === "es" ? "No disponible" : "Not available"}
+    />
+    <meta
+      name="skills"
+      content={[...professionalProfile.skills.programming, ...professionalProfile.skills.frameworks].join(", ")}
+    />
+
     <!-- Dublin Core metadata for professional profiles -->
-    <meta name="DC.title" content={metaTitle} />
-    <meta name="DC.creator" content={professionalProfile.name} />
-    <meta name="DC.subject" content={lang === 'es' ? 'Desarrollo Web, Programación, PHP, Laravel' : 'Web Development, Programming, PHP, Laravel'} />
-    <meta name="DC.description" content={metaDescription} />
-    <meta name="DC.type" content="Portfolio" />
-    <meta name="DC.language" content={lang === 'es' ? 'es-ES' : 'en-US'} />
+    <meta
+      name="DC.title"
+      content={metaTitle}
+    />
+    <meta
+      name="DC.creator"
+      content={professionalProfile.name}
+    />
+    <meta
+      name="DC.subject"
+      content={lang === "es" ? "Desarrollo Web, Programación, PHP, Laravel" : "Web Development, Programming, PHP, Laravel"}
+    />
+    <meta
+      name="DC.description"
+      content={metaDescription}
+    />
+    <meta
+      name="DC.type"
+      content="Portfolio"
+    />
+    <meta
+      name="DC.language"
+      content={lang === "es" ? "es-ES" : "en-US"}
+    />
 
     <!-- Geographic SEO for local targeting - Barcelona coordinates -->
-    <meta name="geo.region" content="ES-CT" />
-    <meta name="geo.placename" content="Barcelona, Spain" />
-    <meta name="geo.position" content="41.3851;2.1734" />
-    <meta name="ICBM" content="41.3851, 2.1734" />
+    <meta
+      name="geo.region"
+      content="ES-CT"
+    />
+    <meta
+      name="geo.placename"
+      content="Barcelona, Spain"
+    />
+    <meta
+      name="geo.position"
+      content="41.3851;2.1734"
+    />
+    <meta
+      name="ICBM"
+      content="41.3851, 2.1734"
+    />
 
     <!-- Additional SEO meta tags -->
-    <meta name="rating" content="general" />
-    <meta name="distribution" content="global" />
-    <meta name="revisit-after" content="7 days" />
-    <meta http-equiv="content-language" content={lang === 'es' ? 'es-ES' : 'en-US'} />
-    
+    <meta
+      name="rating"
+      content="general"
+    />
+    <meta
+      name="distribution"
+      content="global"
+    />
+    <meta
+      name="revisit-after"
+      content="7 days"
+    />
+    <meta
+      http-equiv="content-language"
+      content={lang === "es" ? "es-ES" : "en-US"}
+    />
+
     <!-- Mobile optimization -->
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Ignacio Amat - Developer" />
-    
+    <meta
+      name="format-detection"
+      content="telephone=no"
+    />
+    <meta
+      name="mobile-web-app-capable"
+      content="yes"
+    />
+    <meta
+      name="apple-mobile-web-app-capable"
+      content="yes"
+    />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta
+      name="apple-mobile-web-app-title"
+      content="Ignacio Amat - Developer"
+    />
+
     <script is:inline>
-      function speedInsightsBeforeSend(data){
+      function speedInsightsBeforeSend(data) {
         return data;
       }
     </script>
     <SpeedInsights />
-    
+
     <AstroSeo
       title={metaTitle}
       description={metaDescription}
@@ -361,76 +490,108 @@ const isBlogPage = currentPath.includes('/blog');
       openGraph={{
         url: `https://www.ignathedev.com${Astro.url.pathname}`,
         title: metaTitle,
-        type: pageType === 'profile' ? 'profile' : pageType === 'article' ? 'article' : 'website',
+        type: pageType === "profile" ? "profile" : pageType === "article" ? "article" : "website",
         description: metaDescription,
-        images: [{
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: lang === 'es' ? 'Foto de perfil de Ignacio Amat Urbina - Desarrollador Web Full Stack' : 'Profile picture of Ignacio Amat Urbina - Full Stack Web Developer',
-          type: 'image/jpeg',
-        }],
+        images: [
+          {
+            url: ogImage,
+            width: 1200,
+            height: 630,
+            alt: lang === "es" ? "Foto de perfil de Ignacio Amat Urbina - Desarrollador Web Full Stack" : "Profile picture of Ignacio Amat Urbina - Full Stack Web Developer",
+            type: "image/jpeg",
+          },
+        ],
         site_name: siteName,
-        locale: lang === 'es' ? 'es_ES' : 'en_US',
+        locale: lang === "es" ? "es_ES" : "en_US",
       }}
       twitter={{
-        handle: '@ignathedev',
-        site: '@ignathedev',
-        cardType: 'summary_large_image',
+        handle: "@ignathedev",
+        site: "@ignathedev",
+        cardType: "summary_large_image",
       }}
     />
-    
-    <!-- Enhanced Open Graph for professional profiles -->
-    <meta property="og:locale:alternate" content={lang === 'es' ? 'en_US' : 'es_ES'} />
-    <meta property="profile:first_name" content={professionalProfile.givenName} />
-    <meta property="profile:last_name" content={professionalProfile.familyName} />
-    <meta property="profile:username" content="ignathedev" />
-    
-    <!-- LinkedIn specific meta tags -->
-    <meta name="linkedin:owner" content="Ignacio Amat Urbina" />
-    
-    <!-- Enhanced Twitter Cards -->
-    <meta name="twitter:label1" content={lang === 'es' ? "Profesión" : "Profession"} />
-    <meta name="twitter:data1" content={professionalProfile.jobTitle} />
-    <meta name="twitter:label2" content={lang === 'es' ? "Ubicación" : "Location"} />
-    <meta name="twitter:data2" content={`${professionalProfile.address.city}, ${professionalProfile.address.country}`} />
 
-    <script defer is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
+    <!-- Enhanced Open Graph for professional profiles -->
+    <meta
+      property="og:locale:alternate"
+      content={lang === "es" ? "en_US" : "es_ES"}
+    />
+    <meta
+      property="profile:first_name"
+      content={professionalProfile.givenName}
+    />
+    <meta
+      property="profile:last_name"
+      content={professionalProfile.familyName}
+    />
+    <meta
+      property="profile:username"
+      content="ignathedev"
+    />
+
+    <!-- LinkedIn specific meta tags -->
+    <meta
+      name="linkedin:owner"
+      content="Ignacio Amat Urbina"
+    />
+
+    <!-- Enhanced Twitter Cards -->
+    <meta
+      name="twitter:label1"
+      content={lang === "es" ? "Profesión" : "Profession"}
+    />
+    <meta
+      name="twitter:data1"
+      content={professionalProfile.jobTitle}
+    />
+    <meta
+      name="twitter:label2"
+      content={lang === "es" ? "Ubicación" : "Location"}
+    />
+    <meta
+      name="twitter:data2"
+      content={`${professionalProfile.address.city}, ${professionalProfile.address.country}`}
+    />
+
+    <script
+      defer
+      is:inline
+      src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"
+    ></script>
 
     <!-- Enhanced dark mode initialization script -->
     <script is:inline>
       function initializeTheme() {
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.add('dark');
+        if (localStorage.getItem("color-theme") === "dark" || (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+          document.documentElement.classList.add("dark");
         } else {
-          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.remove("dark");
         }
       }
-      
+
       // Initialize theme immediately
       initializeTheme();
-      
+
       // Re-initialize on page transitions
-      document.addEventListener('astro:after-swap', initializeTheme);
+      document.addEventListener("astro:after-swap", initializeTheme);
     </script>
 
+    <!-- Facebook Meta Tags -->
+    <!-- <meta property="og:url" content="https://www.ignathedev.com/"> -->
+    <!-- <meta property="og:type" content="website"> -->
+    <!-- <meta property="og:title" content={title}> -->
+    <!-- <meta property="og:description" content={description}> -->
+    <!-- <meta property="og:image" content="https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg"> -->
 
-  <!-- Facebook Meta Tags -->
-  <!-- <meta property="og:url" content="https://www.ignathedev.com/"> -->
-  <!-- <meta property="og:type" content="website"> -->
-  <!-- <meta property="og:title" content={title}> -->
-  <!-- <meta property="og:description" content={description}> -->
-  <!-- <meta property="og:image" content="https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg"> -->
+    <!-- Twitter Meta Tags -->
+    <!-- <meta name="twitter:card" content="summary_large_image"> -->
+    <!-- <meta property="twitter:domain" content="ignathedev.com"> -->
+    <!-- <meta property="twitter:url" content="https://www.ignathedev.com/"> -->
+    <!-- <meta name="twitter:title" content={title}> -->
+    <!-- <meta name="twitter:description" content={description}> -->
+    <!-- <meta name="twitter:image" content="https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg"> -->
 
-  <!-- Twitter Meta Tags -->
-  <!-- <meta name="twitter:card" content="summary_large_image"> -->
-  <!-- <meta property="twitter:domain" content="ignathedev.com"> -->
-  <!-- <meta property="twitter:url" content="https://www.ignathedev.com/"> -->
-  <!-- <meta name="twitter:title" content={title}> -->
-  <!-- <meta name="twitter:description" content={description}> -->
-  <!-- <meta name="twitter:image" content="https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg"> -->
-
-  <!-- Meta Tags Generated via https://www.opengraph.xyz -->
+    <!-- Meta Tags Generated via https://www.opengraph.xyz -->
     <!-- <meta property="og:site_name" content="Ignacio Amat Urbina - Desarrollador Web Full Stack & Laravel Expert"> -->
 
     <!-- Locale -->
@@ -441,320 +602,405 @@ const isBlogPage = currentPath.includes('/blog');
 
     <!-- Author -->
     <!-- <meta property="og:author" content="Ignacio Amat Urbina"> -->
-    
+
     <!-- Enhanced Schema.org structured data for Portfolio/CV -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "@id": "https://www.ignathedev.com/#website",
-          "url": "https://www.ignathedev.com",
-          "name": siteName,
-          "description": lang === 'es' ? "Portfolio y curriculum de Ignacio Amat Urbina - Desarrollador Web Full Stack especializado en PHP, Laravel y Vue.js" : "Portfolio and resume of Ignacio Amat Urbina - Full Stack Web Developer specialized in PHP, Laravel and Vue.js",
-          "inLanguage": ["es-ES", "en-US"],
-          "publisher": {
-            "@id": "https://www.ignathedev.com/#person"
-          },
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": {
-              "@type": "EntryPoint",
-              "urlTemplate": "https://www.ignathedev.com/search?q={search_term_string}"
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.ignathedev.com/#website",
+            url: "https://www.ignathedev.com",
+            name: siteName,
+            description:
+              lang === "es"
+                ? "Portfolio y curriculum de Ignacio Amat Urbina - Desarrollador Web Full Stack especializado en PHP, Laravel y Vue.js"
+                : "Portfolio and resume of Ignacio Amat Urbina - Full Stack Web Developer specialized in PHP, Laravel and Vue.js",
+            inLanguage: ["es-ES", "en-US"],
+            publisher: {
+              "@id": "https://www.ignathedev.com/#person",
             },
-            "query-input": "required name=search_term_string"
-          }
-        },
-        {
-          "@type": "ProfilePage",
-          "@id": `https://www.ignathedev.com${currentPath}#profilepage`,
-          "url": `https://www.ignathedev.com${currentPath}`,
-          "name": metaTitle,
-          "description": metaDescription,
-          "inLanguage": lang === 'es' ? 'es-ES' : 'en-US',
-          "isPartOf": {
-            "@id": "https://www.ignathedev.com/#website"
-          },
-          "about": {
-            "@id": "https://www.ignathedev.com/#person"
-          },
-          "mainEntity": {
-            "@id": "https://www.ignathedev.com/#person"
-          }
-        },
-        {
-          "@type": "Person",
-          "@id": "https://www.ignathedev.com/#person",
-          "name": professionalProfile.name,
-          "givenName": professionalProfile.givenName,
-          "familyName": professionalProfile.familyName,
-          "alternateName": professionalProfile.alternateName,
-          "jobTitle": professionalProfile.jobTitle,
-          "description": lang === 'es' 
-            ? `Desarrollador Web Full Stack con +${professionalProfile.yearsOfExperience} años de experiencia. Experto en PHP, Laravel y Vue.js. Disponible para proyectos remotos e internacionales.`
-            : `Full Stack Web Developer with +${professionalProfile.yearsOfExperience} years of experience. Expert in PHP, Laravel, and Vue.js. Available for remote and international projects.`,
-          "image": {
-            "@type": "ImageObject",
-            "url": ogImage,
-            "width": 1200,
-            "height": 630
-          },
-          "email": `mailto:${professionalProfile.email}`,
-          "url": "https://www.ignathedev.com",
-          "sameAs": Object.values(professionalProfile.socialProfiles),
-          "nationality": {
-            "@type": "Country",
-            "name": professionalProfile.nationality
-          },
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": professionalProfile.address.city,
-            "addressRegion": professionalProfile.address.region,
-            "addressCountry": professionalProfile.address.countryCode
-          },
-          "knowsLanguage": professionalProfile.languages.map(lang => ({
-            "@type": "Language",
-            "name": lang
-          })),
-          "knowsAbout": [
-            ...professionalProfile.skills.programming,
-            ...professionalProfile.skills.frameworks,
-            ...professionalProfile.skills.databases,
-            ...professionalProfile.skills.tools,
-            ...professionalProfile.skills.methodologies
-          ],
-          "hasCredential": professionalProfile.certifications.map(cert => ({
-            "@type": "EducationalOccupationalCredential",
-            "name": cert
-          })),
-          "hasOccupation": {
-            "@type": "Occupation",
-            "name": professionalProfile.jobTitle,
-            "occupationLocation": {
-              "@type": "City",
-              "name": professionalProfile.address.city
+            potentialAction: {
+              "@type": "SearchAction",
+              target: {
+                "@type": "EntryPoint",
+                urlTemplate: "https://www.ignathedev.com/search?q={search_term_string}",
+              },
+              "query-input": "required name=search_term_string",
             },
-            "skills": [
-              ...professionalProfile.skills.programming,
-              ...professionalProfile.skills.frameworks
-            ].join(", ")
           },
-          "seeks": {
-            "@type": "Demand",
-            "name": lang === 'es' ? "Proyectos de desarrollo web" : "Web development projects"
-          },
-          "worksFor": {
-            "@type": "Organization",
-            "name": lang === 'es' ? "Freelance / Disponible para contratación" : "Freelance / Available for hire"
-          },
-          "makesOffer": [
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": lang === 'es' ? "Desarrollo de aplicaciones web con Laravel" : "Laravel web application development",
-                "description": lang === 'es' ? "Desarrollo de aplicaciones web robustas y escalables con Laravel y PHP" : "Development of robust and scalable web applications with Laravel and PHP"
-              }
+          {
+            "@type": "ProfilePage",
+            "@id": `https://www.ignathedev.com${currentPath}#profilepage`,
+            url: `https://www.ignathedev.com${currentPath}`,
+            name: metaTitle,
+            description: metaDescription,
+            inLanguage: lang === "es" ? "es-ES" : "en-US",
+            isPartOf: {
+              "@id": "https://www.ignathedev.com/#website",
             },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": lang === 'es' ? "Desarrollo Frontend con Vue.js" : "Frontend development with Vue.js",
-                "description": lang === 'es' ? "Interfaces de usuario modernas y reactivas con Vue.js y TailwindCSS" : "Modern and reactive user interfaces with Vue.js and TailwindCSS"
-              }
+            about: {
+              "@id": "https://www.ignathedev.com/#person",
             },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": lang === 'es' ? "Desarrollo Full Stack" : "Full Stack Development",
-                "description": lang === 'es' ? "Soluciones web completas de principio a fin" : "Complete end-to-end web solutions"
-              }
-            }
-          ]
-        },
-        {
-          "@type": "ItemList",
-          "@id": "https://www.ignathedev.com/#skills",
-          "name": lang === 'es' ? "Habilidades Técnicas" : "Technical Skills",
-          "itemListElement": [
-            ...professionalProfile.skills.programming.map((skill, index) => ({
-              "@type": "ListItem",
-              "position": index + 1,
-              "item": {
-                "@type": "DefinedTerm",
-                "name": skill,
-                "description": `${skill} programming`
-              }
+            mainEntity: {
+              "@id": "https://www.ignathedev.com/#person",
+            },
+          },
+          {
+            "@type": "Person",
+            "@id": "https://www.ignathedev.com/#person",
+            name: professionalProfile.name,
+            givenName: professionalProfile.givenName,
+            familyName: professionalProfile.familyName,
+            alternateName: professionalProfile.alternateName,
+            jobTitle: professionalProfile.jobTitle,
+            description:
+              lang === "es"
+                ? `Desarrollador Web Full Stack con +${professionalProfile.yearsOfExperience} años de experiencia. Experto en PHP, Laravel y Vue.js. Disponible para proyectos remotos e internacionales.`
+                : `Full Stack Web Developer with +${professionalProfile.yearsOfExperience} years of experience. Expert in PHP, Laravel, and Vue.js. Available for remote and international projects.`,
+            image: {
+              "@type": "ImageObject",
+              url: ogImage,
+              width: 1200,
+              height: 630,
+            },
+            email: `mailto:${professionalProfile.email}`,
+            url: "https://www.ignathedev.com",
+            sameAs: Object.values(professionalProfile.socialProfiles),
+            nationality: {
+              "@type": "Country",
+              name: professionalProfile.nationality,
+            },
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: professionalProfile.address.city,
+              addressRegion: professionalProfile.address.region,
+              addressCountry: professionalProfile.address.countryCode,
+            },
+            knowsLanguage: professionalProfile.languages.map((lang) => ({
+              "@type": "Language",
+              name: lang,
             })),
-            ...professionalProfile.skills.frameworks.map((skill, index) => ({
-              "@type": "ListItem", 
-              "position": professionalProfile.skills.programming.length + index + 1,
-              "item": {
-                "@type": "DefinedTerm",
-                "name": skill,
-                "description": `${skill} framework/library`
-              }
-            }))
-          ]
-        }
-      ]
-    })} />
+            knowsAbout: [...professionalProfile.skills.programming, ...professionalProfile.skills.frameworks, ...professionalProfile.skills.databases, ...professionalProfile.skills.tools, ...professionalProfile.skills.methodologies],
+            hasCredential: professionalProfile.certifications.map((cert) => ({
+              "@type": "EducationalOccupationalCredential",
+              name: cert,
+            })),
+            hasOccupation: {
+              "@type": "Occupation",
+              name: professionalProfile.jobTitle,
+              occupationLocation: {
+                "@type": "City",
+                name: professionalProfile.address.city,
+              },
+              skills: [...professionalProfile.skills.programming, ...professionalProfile.skills.frameworks].join(", "),
+            },
+            seeks: {
+              "@type": "Demand",
+              name: lang === "es" ? "Proyectos de desarrollo web" : "Web development projects",
+            },
+            worksFor: {
+              "@type": "Organization",
+              name: lang === "es" ? "Freelance / Disponible para contratación" : "Freelance / Available for hire",
+            },
+            makesOffer: [
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: lang === "es" ? "Desarrollo de aplicaciones web con Laravel" : "Laravel web application development",
+                  description:
+                    lang === "es"
+                      ? "Desarrollo de aplicaciones web robustas y escalables con Laravel y PHP. APIs REST, integraciones y optimización de rendimiento."
+                      : "Development of robust and scalable web applications with Laravel and PHP. REST APIs, integrations, and performance optimization.",
+                  provider: {
+                    "@id": "https://www.ignathedev.com/#person",
+                  },
+                  areaServed: {
+                    "@type": "Country",
+                    name: "Worldwide",
+                  },
+                  availableChannel: {
+                    "@type": "ServiceChannel",
+                    serviceType: "Remote",
+                  },
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: lang === "es" ? "Desarrollo Frontend con Vue.js" : "Frontend development with Vue.js",
+                  description:
+                    lang === "es"
+                      ? "Interfaces de usuario modernas y reactivas con Vue.js y TailwindCSS. Diseño responsive y optimización de rendimiento."
+                      : "Modern and reactive user interfaces with Vue.js and TailwindCSS. Responsive design and performance optimization.",
+                  provider: {
+                    "@id": "https://www.ignathedev.com/#person",
+                  },
+                  areaServed: {
+                    "@type": "Country",
+                    name: "Worldwide",
+                  },
+                  availableChannel: {
+                    "@type": "ServiceChannel",
+                    serviceType: "Remote",
+                  },
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: lang === "es" ? "Desarrollo Full Stack" : "Full Stack Development",
+                  description: lang === "es" ? "Soluciones web completas de principio a fin. Desde el diseño hasta el despliegue y mantenimiento." : "Complete end-to-end web solutions. From design to deployment and maintenance.",
+                  provider: {
+                    "@id": "https://www.ignathedev.com/#person",
+                  },
+                  areaServed: {
+                    "@type": "Country",
+                    name: "Worldwide",
+                  },
+                  availableChannel: {
+                    "@type": "ServiceChannel",
+                    serviceType: "Remote",
+                  },
+                },
+              },
+            ],
+          },
+          {
+            "@type": "ItemList",
+            "@id": "https://www.ignathedev.com/#skills",
+            name: lang === "es" ? "Habilidades Técnicas" : "Technical Skills",
+            itemListElement: [
+              ...professionalProfile.skills.programming.map((skill, index) => ({
+                "@type": "ListItem",
+                position: index + 1,
+                item: {
+                  "@type": "DefinedTerm",
+                  name: skill,
+                  description: `${skill} programming`,
+                },
+              })),
+              ...professionalProfile.skills.frameworks.map((skill, index) => ({
+                "@type": "ListItem",
+                position: professionalProfile.skills.programming.length + index + 1,
+                item: {
+                  "@type": "DefinedTerm",
+                  name: skill,
+                  description: `${skill} framework/library`,
+                },
+              })),
+            ],
+          },
+        ],
+      })}
+    />
     <!-- Improved hreflang tags for international SEO -->
-    {(() => {
-      const basePath = currentPath.replace(/^\/en/, '').replace(/\/$/, '') || '/';
-      const esUrl = `https://www.ignathedev.com${basePath === '/' ? '' : basePath}`;
-      const enUrl = `https://www.ignathedev.com/en${basePath === '/' ? '' : basePath}`;
-      return null;
-    })()}
-    <link rel="alternate" hreflang="es" href={`https://www.ignathedev.com${currentPath.replace(/^\/en/, '').replace(/\/$/, '') || '/'}`} />
-    <link rel="alternate" hreflang="es-ES" href={`https://www.ignathedev.com${currentPath.replace(/^\/en/, '').replace(/\/$/, '') || '/'}`} />
-    <link rel="alternate" hreflang="en" href={`https://www.ignathedev.com/en${(currentPath.replace(/^\/en/, '').replace(/\/$/, '') || '')}`} />
-    <link rel="alternate" hreflang="en-US" href={`https://www.ignathedev.com/en${(currentPath.replace(/^\/en/, '').replace(/\/$/, '') || '')}`} />
-    <link rel="alternate" hreflang="en-GB" href={`https://www.ignathedev.com/en${(currentPath.replace(/^\/en/, '').replace(/\/$/, '') || '')}`} />
-    <link rel="alternate" hreflang="x-default" href={`https://www.ignathedev.com${currentPath.replace(/^\/en/, '').replace(/\/$/, '') || '/'}`} />
+    {
+      (() => {
+        const basePath = currentPath.replace(/^\/en/, "").replace(/\/$/, "") || "/";
+        const esUrl = `https://www.ignathedev.com${basePath === "/" ? "" : basePath}`;
+        const enUrl = `https://www.ignathedev.com/en${basePath === "/" ? "" : basePath}`;
+        return null;
+      })()
+    }
+    <link
+      rel="alternate"
+      hreflang="es"
+      href={`https://www.ignathedev.com${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || "/"}`}
+    />
+    <link
+      rel="alternate"
+      hreflang="es-ES"
+      href={`https://www.ignathedev.com${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || "/"}`}
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href={`https://www.ignathedev.com/en${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || ""}`}
+    />
+    <link
+      rel="alternate"
+      hreflang="en-US"
+      href={`https://www.ignathedev.com/en${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || ""}`}
+    />
+    <link
+      rel="alternate"
+      hreflang="en-GB"
+      href={`https://www.ignathedev.com/en${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || ""}`}
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={`https://www.ignathedev.com${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || "/"}`}
+    />
 
     <!-- Preload critical fonts -->
-    <link rel="preload" href="/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin />
+    <link
+      rel="preload"
+      href="/fonts/Inter-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Inter-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
 
     <!-- Favicon and app icons -->
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/manifest.json" />
+    <link
+      rel="icon"
+      href="/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/apple-touch-icon.png"
+    />
+    <link
+      rel="manifest"
+      href="/manifest.json"
+    />
 
     <!-- BreadcrumbList Schema for better navigation in search results -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": lang === 'es' ? "Inicio" : "Home",
-          "item": lang === 'es' ? "https://www.ignathedev.com" : "https://www.ignathedev.com/en"
-        },
-        ...(isBlogPage ? [{
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Blog",
-          "item": lang === 'es' ? "https://www.ignathedev.com/blog" : "https://www.ignathedev.com/en/blog"
-        }] : []),
-        ...(!isHomePage && !isBlogPage ? [{
-          "@type": "ListItem",
-          "position": 2,
-          "name": metaTitle,
-          "item": `https://www.ignathedev.com${currentPath}`
-        }] : [])
-      ]
-    })} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: lang === "es" ? "Inicio" : "Home",
+            item: lang === "es" ? "https://www.ignathedev.com" : "https://www.ignathedev.com/en",
+          },
+          ...(isBlogPage
+            ? [
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Blog",
+                  item: lang === "es" ? "https://www.ignathedev.com/blog" : "https://www.ignathedev.com/en/blog",
+                },
+              ]
+            : []),
+          ...(!isHomePage && !isBlogPage
+            ? [
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: metaTitle,
+                  item: `https://www.ignathedev.com${currentPath}`,
+                },
+              ]
+            : []),
+        ],
+      })}
+    />
 
     <!-- Professional Service Schema -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "@id": "https://www.ignathedev.com/#business",
-      "name": lang === 'es' ? "Ignacio Amat - Servicios de Desarrollo Web" : "Ignacio Amat - Web Development Services",
-      "image": ogImage,
-      "url": "https://www.ignathedev.com",
-      "description": lang === 'es' 
-        ? "Servicios profesionales de desarrollo web. Especializado en crear aplicaciones web y sitios web de alto rendimiento con PHP, Laravel y Vue.js. Disponible para trabajo remoto."
-        : "Professional web development services. Specialized in creating high-performance web applications and websites with PHP, Laravel, and Vue.js. Available for remote work.",
-      "priceRange": "$$",
-      "availableLanguage": ["es", "en"],
-      "serviceType": "Web Development",
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "Spain"
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "@id": "https://www.ignathedev.com/#business",
+        name: lang === "es" ? "Ignacio Amat - Servicios de Desarrollo Web" : "Ignacio Amat - Web Development Services",
+        image: ogImage,
+        url: "https://www.ignathedev.com",
+        description:
+          lang === "es"
+            ? "Servicios profesionales de desarrollo web. Especializado en crear aplicaciones web y sitios web de alto rendimiento con PHP, Laravel y Vue.js. Disponible para trabajo remoto."
+            : "Professional web development services. Specialized in creating high-performance web applications and websites with PHP, Laravel, and Vue.js. Available for remote work.",
+        priceRange: "$$",
+        availableLanguage: ["es", "en"],
+        serviceType: "Web Development",
+        areaServed: [
+          {
+            "@type": "Country",
+            name: "Spain",
+          },
+          {
+            "@type": "AdministrativeArea",
+            name: "European Union",
+          },
+          {
+            "@type": "Place",
+            name: "Worldwide (Remote)",
+          },
+        ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: lang === "es" ? "Servicios de Desarrollo Web" : "Web Development Services",
+          itemListElement: [
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: lang === "es" ? "Desarrollo Full Stack" : "Full Stack Development",
+                description: lang === "es" ? "Desarrollo completo de aplicaciones web desde el frontend hasta el backend" : "Complete web application development from frontend to backend",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: lang === "es" ? "Desarrollo Laravel" : "Laravel Development",
+                description: lang === "es" ? "Aplicaciones web robustas y escalables con el framework Laravel" : "Robust and scalable web applications with Laravel framework",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: lang === "es" ? "Desarrollo Vue.js" : "Vue.js Development",
+                description: lang === "es" ? "Interfaces de usuario modernas y reactivas con Vue.js" : "Modern and reactive user interfaces with Vue.js",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: lang === "es" ? "Consultoría Web" : "Web Consulting",
+                description: lang === "es" ? "Asesoramiento técnico para proyectos web y optimización de rendimiento" : "Technical advice for web projects and performance optimization",
+              },
+            },
+          ],
         },
-        {
-          "@type": "AdministrativeArea",
-          "name": "European Union"
-        },
-        {
-          "@type": "Place",
-          "name": "Worldwide (Remote)"
-        }
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": lang === 'es' ? "Servicios de Desarrollo Web" : "Web Development Services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": lang === 'es' ? "Desarrollo Full Stack" : "Full Stack Development",
-              "description": lang === 'es' 
-                ? "Desarrollo completo de aplicaciones web desde el frontend hasta el backend"
-                : "Complete web application development from frontend to backend"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": lang === 'es' ? "Desarrollo Laravel" : "Laravel Development",
-              "description": lang === 'es'
-                ? "Aplicaciones web robustas y escalables con el framework Laravel"
-                : "Robust and scalable web applications with Laravel framework"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": lang === 'es' ? "Desarrollo Vue.js" : "Vue.js Development",
-              "description": lang === 'es'
-                ? "Interfaces de usuario modernas y reactivas con Vue.js"
-                : "Modern and reactive user interfaces with Vue.js"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": lang === 'es' ? "Consultoría Web" : "Web Consulting",
-              "description": lang === 'es'
-                ? "Asesoramiento técnico para proyectos web y optimización de rendimiento"
-                : "Technical advice for web projects and performance optimization"
-            }
-          }
-        ]
-      },
-      "sameAs": Object.values(professionalProfile.socialProfiles)
-    })} />
+        sameAs: Object.values(professionalProfile.socialProfiles),
+      })}
+    />
   </head>
   <body class="bg-white dark:bg-gray-900">
     <div class="absolute top-0 z-[-2] h-screen w-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"></div>
 
     <div class="relative min-h-screen flex flex-col z-10">
-      {lang === 'es' ? (
-        <Header />
-      ) : (
-        <HeaderEnglish />
-      )}
-      
+      {lang === "es" ? <Header /> : <HeaderEnglish />}
+
       <main class="flex-1">
         <slot />
       </main>
 
-      {lang === 'es' ? (
-        <Footer />
-      ) : (
-        <FooterEnglish />
-      )}
+      {lang === "es" ? <Footer /> : <FooterEnglish />}
     </div>
   </body>
 </html>
 <style lang="scss">
-  @use 'webcoreui/styles' as *;
-  @include setup((
-      fontRegular: '/fonts/Inter-Regular.woff2',
-      fontBold: '/fonts/Inter-Bold.woff2'
-  ));
+  @use "webcoreui/styles" as *;
+  @include setup(
+    (
+      fontRegular: "/fonts/Inter-Regular.woff2",
+      fontBold: "/fonts/Inter-Bold.woff2",
+    )
+  );
 </style>
 <style is:global>
   :root {
@@ -790,7 +1036,7 @@ const isBlogPage = currentPath.includes('/blog');
     padding: 0.5rem; /* Add padding to prevent pills from being clipped on hover */
     width: 100%; /* Adjust width to account for padding */
   }
-  
+
   .social-pills-container::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
   }
