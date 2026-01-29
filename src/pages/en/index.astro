@@ -36,8 +36,8 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
 ---
 
 <Layout
-  title="Ignacio Amat Urbina - Full Stack Web Developer for Hire | PHP & Laravel Expert Barcelona"
-  description="Hire a full stack web developer with +5 years experience in PHP, Laravel, Vue.js. Portfolio, resume and projects showcase. Based in Barcelona, Spain - Available for remote work worldwide. Custom web applications & high-performance websites."
+  title="Full Stack Web Developer Barcelona | PHP Laravel Vue.js | Hire Ignacio"
+  description="Full stack web developer with +5 years experience. Specialized in PHP, Laravel, and Vue.js. Available for remote and international projects. Professional portfolio with featured projects and web development services."
 >
   <main>
     <SectionContainer class="hero-section -mt-6 pt-2 pb-32 md:pt-4 md:pb-32 lg:py-32 lg:pb-40 min-h-[92vh] md:min-h-[95vh] lg:min-h-screen flex flex-col justify-center relative">
@@ -48,31 +48,39 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
             href="https://www.ignacioamatweb.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-block transition-transform hover:scale-105 group"
+            class="inline-block transition-transform hover:scale-105 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2 rounded-md"
+            aria-label="View pricing and availability for projects"
           >
-            <Badge class="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800 transition-colors cursor-pointer relative overflow-hidden">
+            <Badge
+              class="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800 transition-colors cursor-pointer relative overflow-hidden focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
+            >
               <span class="relative z-10 flex items-center gap-2">
-                <span class="relative flex h-2 w-2">
+                <span
+                  class="relative flex h-2 w-2"
+                  aria-hidden="true"
+                >
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-green-600"></span>
                 </span>
-                Available for hire - View pricing
+                Available for hire — View pricing
               </span>
             </Badge>
           </a>
         </div>
 
         <!-- Main Heading with gradient animation -->
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight animate-fade-in">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight animate-fade-in text-wrap-balance">
           Hey, I'm <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent animate-gradient">Ignacio</span>
         </h1>
 
-        <h2 class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-4 font-medium leading-relaxed max-w-2xl mx-auto">
+        <h2 class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-4 font-medium leading-relaxed max-w-2xl mx-auto text-wrap-balance">
           <span class="font-semibold">+5 years of experience.</span>
           <span class="font-bold text-blue-600 dark:text-yellow-200">Full Stack Web Developer</span> from <span class="text-red-600 dark:text-red-200 font-bold">Barcelona, Spain.</span>
         </h2>
 
-        <p class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-8 font-medium leading-relaxed max-w-2xl mx-auto">Specialized in creating high-performance web apps and websites with modern technologies.</p>
+        <p class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-8 font-medium leading-relaxed max-w-2xl mx-auto text-wrap-balance">
+          Specialized in creating high-performance web apps and websites with modern technologies like PHP, Laravel, and Vue.js.
+        </p>
 
         <!-- Tech Stack Pills with hover effects -->
         <div class="flex flex-wrap justify-center gap-2 mb-8">
@@ -123,7 +131,7 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
           <a
             href="#services"
-            class="group px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-xl shadow-lg hover:from-indigo-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25 flex items-center justify-center gap-2"
+            class="group px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-xl shadow-lg hover:from-indigo-700 hover:to-purple-800 transition-[transform,box-shadow,background] duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
           >
             View my services
             <svg
@@ -131,6 +139,7 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path
                 stroke-linecap="round"
@@ -144,13 +153,15 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
             href="https://www.ignacioamatweb.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="group px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-green-600 to-emerald-700 rounded-xl shadow-lg hover:from-green-700 hover:to-emerald-800 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-green-500/25 flex items-center justify-center gap-2"
+            class="group px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-green-600 to-emerald-700 rounded-xl shadow-lg hover:from-green-700 hover:to-emerald-800 transition-[transform,box-shadow,background] duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-green-500/25 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
+            aria-label="View pricing and packages (opens in new tab)"
           >
             <svg
               class="w-5 h-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path
                 stroke-linecap="round"
@@ -165,6 +176,7 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path
                 stroke-linecap="round"
@@ -176,7 +188,7 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
           </a>
           <a
             href="#contact"
-            class="px-8 py-4 text-lg font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-800 transition-all duration-300 border-2 border-transparent hover:border-blue-300 dark:hover:border-blue-600"
+            class="px-8 py-4 text-lg font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-800 transition-[background-color,border-color] duration-300 border-2 border-transparent hover:border-blue-300 dark:hover:border-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
           >
             Contact me now
           </a>
