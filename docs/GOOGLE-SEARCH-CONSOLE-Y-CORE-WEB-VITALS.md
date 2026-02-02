@@ -54,14 +54,14 @@ Esta guía explica paso a paso qué hacer en **Google Search Console** y cómo r
 
 ### 6. Tareas recomendadas (resumen)
 
-| Acción                         | Dónde en Search Console      |
-|--------------------------------|-----------------------------|
-| Verificar propiedad            | Ajustes > Propiedad         |
-| Enviar sitemap                 | Sitemaps                    |
-| Ver páginas indexadas          | Pages / Índice > Páginas    |
-| Solicitar indexación de una URL| Inspección de URLs          |
-| Revisar hreflang               | Inspección de URLs          |
-| Revisar Core Web Vitals        | Experiencia                 |
+| Acción                          | Dónde en Search Console  |
+| ------------------------------- | ------------------------ |
+| Verificar propiedad             | Ajustes > Propiedad      |
+| Enviar sitemap                  | Sitemaps                 |
+| Ver páginas indexadas           | Pages / Índice > Páginas |
+| Solicitar indexación de una URL | Inspección de URLs       |
+| Revisar hreflang                | Inspección de URLs       |
+| Revisar Core Web Vitals         | Experiencia              |
 
 ---
 
@@ -95,11 +95,11 @@ PageSpeed Insights mide estas métricas en **móvil** y **escritorio** y las cla
 
 ### 4. Mejoras típicas según el problema
 
-| Problema | Acción recomendada |
-|----------|---------------------|
-| **LCP alto** | Optimizar imagen principal (tamaño, formato WebP, lazy load solo bajo el pliegue). Reducir JS/CSS bloqueantes. Usar preload para recursos críticos (ej. fuentes, imagen LCP). |
-| **INP/FID alto** | Reducir trabajo en el hilo principal: menos JS pesado al cargar, código dividido (code splitting), diferir scripts no críticos. |
-| **CLS alto** | Dar `width` y `height` a imágenes (o ratio). Reservar espacio para anuncios/embeds. Evitar insertar contenido arriba del pliegue después de cargar. Usar fuentes con `font-display: optional` o `swap` y reservar espacio si hace falta. |
+| Problema         | Acción recomendada                                                                                                                                                                                                                       |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **LCP alto**     | Optimizar imagen principal (tamaño, formato WebP, lazy load solo bajo el pliegue). Reducir JS/CSS bloqueantes. Usar preload para recursos críticos (ej. fuentes, imagen LCP).                                                            |
+| **INP/FID alto** | Reducir trabajo en el hilo principal: menos JS pesado al cargar, código dividido (code splitting), diferir scripts no críticos.                                                                                                          |
+| **CLS alto**     | Dar `width` y `height` a imágenes (o ratio). Reservar espacio para anuncios/embeds. Evitar insertar contenido arriba del pliegue después de cargar. Usar fuentes con `font-display: optional` o `swap` y reservar espacio si hace falta. |
 
 ### 5. Comprobar en móvil y escritorio
 

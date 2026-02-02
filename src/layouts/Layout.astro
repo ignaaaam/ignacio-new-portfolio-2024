@@ -13,6 +13,7 @@ interface Props {
   title: string;
   description: string;
   canonical?: string;
+  robots?: string;
   pageType?: "website" | "profile" | "article";
   articleData?: {
     publishedTime?: string;
@@ -42,7 +43,7 @@ interface Props {
   };
 }
 
-const { title, description, pageType = "website", articleData } = Astro.props;
+const { title, description, pageType = "website", articleData, openGraph: customOpenGraph, robots: customRobots } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const ogImage = "https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg";
@@ -87,17 +88,19 @@ const professionalProfile = {
   },
 };
 
-const pageTitle = title || (lang === "es" ? "Desarrollador Web Full Stack" : "Full Stack Web Developer");
-// Optimize title length: 50-60 characters for best SEO
-const titleSuffix = lang === "es" ? " | PHP Laravel Vue.js" : " | PHP Laravel Vue.js";
+const defaultTitle = lang === "es" ? "Desarrollador Web Full Stack" : "Full Stack Web Developer";
+const pageTitle = title || defaultTitle;
+// Only add suffix when using default title to avoid duplication; keep 50-60 chars for SERP
+const titleSuffix = !title || title === defaultTitle ? (lang === "es" ? " | PHP Laravel Vue.js" : " | PHP Laravel Vue.js") : "";
 const fullTitle = `${pageTitle}${titleSuffix}`;
 const metaTitle = fullTitle.length > 60 ? fullTitle.substring(0, 57) + "..." : fullTitle;
 
+// SEO-optimized descriptions: 150-160 chars, primary keyword, CTA
 const rawDescription =
   description ||
   (lang === "es"
-    ? "Desarrollador web full stack especializado en PHP, Laravel y Vue.js. Disponible para proyectos remotos e internacionales."
-    : "Full stack web developer specialized in PHP, Laravel, and Vue.js. Available for remote and international projects.");
+    ? "Desarrollador web full stack en Barcelona. Especializado en PHP, Laravel y Vue.js. +5 años de experiencia. Disponible para proyectos remotos. ¡Contacta ahora!"
+    : "Full stack web developer in Barcelona. Specialized in PHP, Laravel and Vue.js. +5 years experience. Available for remote projects. Contact now!");
 // Optimize description length: 150-160 characters for best SEO
 const metaDescription = rawDescription.length > 160 ? rawDescription.substring(0, 157) + "..." : rawDescription;
 
@@ -365,7 +368,7 @@ const isBlogPage = currentPath.includes("/blog");
     />
     <meta
       name="robots"
-      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      content={customRobots ?? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
     />
     <meta
       name="theme-color"
@@ -492,7 +495,7 @@ const isBlogPage = currentPath.includes("/blog");
       title={metaTitle}
       description={metaDescription}
       canonical={`https://www.ignathedev.com${Astro.url.pathname}`}
-      openGraph={{
+      openGraph={customOpenGraph ?? {
         url: `https://www.ignathedev.com${Astro.url.pathname}`,
         title: metaTitle,
         type: pageType === "profile" ? "profile" : pageType === "article" ? "article" : "website",
@@ -533,6 +536,24 @@ const isBlogPage = currentPath.includes("/blog");
       property="profile:username"
       content="ignathedev"
     />
+
+    <!-- Article-specific meta tags for blog posts -->
+    {articleData && pageType === "article" && (
+      <>
+        {articleData.publishedTime && (
+          <meta property="article:published_time" content={articleData.publishedTime} />
+        )}
+        {articleData.modifiedTime && (
+          <meta property="article:modified_time" content={articleData.modifiedTime} />
+        )}
+        {articleData.author && (
+          <meta property="article:author" content={articleData.author} />
+        )}
+        {articleData.tags?.map((tag) => (
+          <meta property="article:tag" content={tag} />
+        ))}
+      </>
+    )}
 
     <!-- LinkedIn specific meta tags -->
     <meta
@@ -804,45 +825,13 @@ const isBlogPage = currentPath.includes("/blog");
         ],
       })}
     />
-    <!-- Improved hreflang tags for international SEO -->
-    {
-      (() => {
-        const basePath = currentPath.replace(/^\/en/, "").replace(/\/$/, "") || "/";
-        const esUrl = `https://www.ignathedev.com${basePath === "/" ? "" : basePath}`;
-        const enUrl = `https://www.ignathedev.com/en${basePath === "/" ? "" : basePath}`;
-        return null;
-      })()
-    }
-    <link
-      rel="alternate"
-      hreflang="es"
-      href={`https://www.ignathedev.com${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || "/"}`}
-    />
-    <link
-      rel="alternate"
-      hreflang="es-ES"
-      href={`https://www.ignathedev.com${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || "/"}`}
-    />
-    <link
-      rel="alternate"
-      hreflang="en"
-      href={`https://www.ignathedev.com/en${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || ""}`}
-    />
-    <link
-      rel="alternate"
-      hreflang="en-US"
-      href={`https://www.ignathedev.com/en${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || ""}`}
-    />
-    <link
-      rel="alternate"
-      hreflang="en-GB"
-      href={`https://www.ignathedev.com/en${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || ""}`}
-    />
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href={`https://www.ignathedev.com${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || "/"}`}
-    />
+    <!-- hreflang for international SEO: es (default), en, x-default to es -->
+    <link rel="alternate" hreflang="es" href={`https://www.ignathedev.com${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || "/"}`} />
+    <link rel="alternate" hreflang="es-ES" href={`https://www.ignathedev.com${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || "/"}`} />
+    <link rel="alternate" hreflang="en" href={`https://www.ignathedev.com/en${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || ""}`} />
+    <link rel="alternate" hreflang="en-US" href={`https://www.ignathedev.com/en${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || ""}`} />
+    <link rel="alternate" hreflang="en-GB" href={`https://www.ignathedev.com/en${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || ""}`} />
+    <link rel="alternate" hreflang="x-default" href={`https://www.ignathedev.com${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || "/"}`} />
 
     <!-- Preload critical fonts -->
     <link

@@ -69,16 +69,24 @@ posts.forEach((post: Post) => {
 });
 
 const postsArray = Array.from(postsMap.values());
+const blogBaseUrl = "https://www.ignathedev.com";
+const blogUrl = `${blogBaseUrl}/en/blog`;
 ---
 
 
 <Layout
-    title="Web Development Blog - Ignacio Amat Urbina | PHP, Laravel, Vue.js Tutorials"
-    description="Technical blog by Ignacio Amat Urbina - Articles, tutorials and guides on web development, PHP, Laravel, Vue.js, JavaScript and modern technologies. Learn programming best practices.">
+    title="Web Development Blog | PHP, Laravel, Vue.js Tutorials | Ignacio Amat"
+    description="Articles and tutorials on web development, PHP, Laravel, Vue.js and JavaScript. Learn best practices from a full stack developer in Barcelona."
+    pageType="website">
     <main class="min-h-screen">
         <div class="max-w-6xl mx-auto px-6 py-12">
           <!-- Hero Section -->
           <div class="text-center mb-16">
+            <nav class="mb-6" aria-label="Breadcrumb">
+              <a href="/en" class="text-blue-600 dark:text-blue-400 hover:underline">Home</a>
+              <span class="mx-2 text-gray-500">/</span>
+              <span class="text-gray-600 dark:text-gray-400">Blog</span>
+            </nav>
             <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 text-sm font-medium mb-6">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
@@ -86,7 +94,7 @@ const postsArray = Array.from(postsMap.values());
               Technical Blog
             </span>
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                Latest <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Articles</span>
+                Web Development Blog — <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">PHP, Laravel and Vue.js Tutorials</span>
             </h1>
             <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
               Articles, tutorials and news about web development, PHP, Laravel, Vue.js and modern technologies.
@@ -160,6 +168,26 @@ const postsArray = Array.from(postsMap.values());
     </div>
     </main>
 </Layout>
+
+<!-- CollectionPage schema for blog listing SEO -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Web Development Blog - Ignacio Amat",
+  "description": "Articles and tutorials on web development, PHP, Laravel, Vue.js and JavaScript",
+  "url": blogUrl,
+  "inLanguage": "en-US",
+  "isPartOf": { "@id": "https://www.ignathedev.com/#website" },
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": postsArray.map((post, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "url": `${blogBaseUrl}${post.slug}`,
+      "name": post.frontmatter.title,
+    })),
+  },
+})} />
 
 <style>
     .tags-wrapper {

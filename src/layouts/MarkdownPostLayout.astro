@@ -3,6 +3,7 @@ const { frontmatter } = Astro.props;
 import ContactForm from "../components/ContactForm.astro";
 import Layout from "../layouts/Layout.astro";
 import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
+import { getLangFromUrl } from "../i18n/utils";
 
 import {
   FacebookShareButton,
@@ -21,27 +22,33 @@ const BUTTONS = [
   WhatsAppShareButton,
 ];
 
-/* Unused variable - commented out to fix TypeScript warning
-const metaTags = [
-  { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-  { name: 'generator', content: Astro.generator },
-  { name: 'theme-color', content: '#ffffff' },
-  { name: 'author', content: frontmatter.author },
-  { name: 'robots', content: 'index, follow, max-image-preview:large' },
-  { name: 'format-detection', content: 'telephone=no' },
-  { property: 'article:author', content: frontmatter.author },
-  { property: 'article:published_time', content: new Date(frontmatter.publish_date).toISOString() }
-];
-*/
-
-const ogImage = frontmatter.image.url;
+const lang = getLangFromUrl(Astro.url);
+const isEnglish = lang === "en";
+const ogImage = frontmatter.image?.url ? (frontmatter.image.url.startsWith("http") ? frontmatter.image.url : `https://www.ignathedev.com${frontmatter.image.url}`) : "https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg";
 const url = `https://www.ignathedev.com${Astro.url.pathname}`;
+const blogUrl = isEnglish ? "https://www.ignathedev.com/en/blog" : "https://www.ignathedev.com/blog";
+const homeUrl = isEnglish ? "https://www.ignathedev.com/en" : "https://www.ignathedev.com";
+const locale = isEnglish ? "en_US" : "es_ES";
+const inLanguage = isEnglish ? "en-US" : "es-ES";
 
+// Parse publish_date (format: DD/MM/YYYY)
+const parseDate = (dateStr: string) => {
+  const parts = dateStr.split("/");
+  return parts.length === 3 ? new Date(`${parts[2]}-${parts[1]}-${parts[0]}`).toISOString() : new Date().toISOString();
+};
+const publishedTime = parseDate(frontmatter.publish_date || "");
 ---
 
 <Layout
   title={frontmatter.title}
   description={frontmatter.description}
+  pageType="article"
+  articleData={{
+    publishedTime,
+    modifiedTime: publishedTime,
+    author: frontmatter.author || "Ignacio Amat Urbina",
+    tags: frontmatter.tags || [],
+  }}
   openGraph={{
     url: url,
     title: frontmatter.title,
@@ -51,19 +58,23 @@ const url = `https://www.ignathedev.com${Astro.url.pathname}`;
       url: ogImage,
       width: 1200,
       height: 630,
-      alt: frontmatter.image.alt,
-      type: 'image/jpeg',
+      alt: frontmatter.image?.alt || frontmatter.title,
+      type: "image/jpeg",
     }],
-    site_name: "Ignacio Amat - Full Stack Developer",
-    locale: 'es-ES'
+    site_name: isEnglish ? "Ignacio Amat - Full Stack Developer" : "Ignacio Amat - Desarrollador Full Stack",
+    locale,
   }}
   twitter={{
-    handle: '@ignathedev',
-    site: '@ignathedev',
-    cardType: 'summary_large_image',
+    handle: "@ignathedev",
+    site: "@ignathedev",
+    cardType: "summary_large_image",
   }}
 >
-  <BreadcrumbSchema items={[{ name: "Blog", item: "https://www.ignathedev.com/blog" }, { name: frontmatter.title, item: url }]} />
+  <BreadcrumbSchema
+    items={[{ name: "Blog", item: blogUrl }, { name: frontmatter.title, item: url }]}
+    homeUrl={homeUrl}
+    homeName={isEnglish ? "Home" : "Inicio"}
+  />
   
   <main class="flex flex-col items-center min-screen">
     <!--
@@ -93,7 +104,7 @@ const url = `https://www.ignathedev.com${Astro.url.pathname}`;
             <span class="font-medium">{frontmatter.author}</span>
           </div>
           <span>•</span>
-          <time datetime="2023-07-13">{frontmatter.publish_date}</time>
+          <time datetime={publishedTime}>{frontmatter.publish_date}</time>
         </div>
       </div>
       <div class="flex flex-wrap gap-2 py-5">
@@ -134,19 +145,20 @@ const url = `https://www.ignathedev.com${Astro.url.pathname}`;
         </slot>
       </div>
       <img
-        src={frontmatter.image.url}
-        alt="Featured Image"
+        src={frontmatter.image?.url}
+        alt={frontmatter.image?.alt || frontmatter.title}
         width="1250"
         height="600"
         class="aspect-video overflow-hidden rounded-lg object-fill mb-4"
+        loading="eager"
       />
-      <h2 class="text-center text-sm opacity-50 pb-8">
-        {frontmatter.image.alt}
-      </h2>
+      {frontmatter.image?.alt && (
+        <p class="text-center text-sm opacity-50 pb-8">{frontmatter.image.alt}</p>
+      )}
       <slot />
       <div class="text-center mb-12 mt-12">
-        <h2 class="text-2xl font-bold mb-4">¿Te gustaría contactarme?</h2>
-        <p class="text-gray-600 mb-6">Si tienes alguna pregunta o comentario sobre este artículo, no dudes en escribirme usando el formulario a continuación.</p>
+        <h2 class="text-2xl font-bold mb-4">{isEnglish ? "Would you like to contact me?" : "¿Te gustaría contactarme?"}</h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">{isEnglish ? "If you have any questions or comments about this article, feel free to reach out using the form below." : "Si tienes alguna pregunta o comentario sobre este artículo, no dudes en escribirme usando el formulario a continuación."}</p>
       </div>
       <ContactForm id="contact" />
     </article>
@@ -221,19 +233,13 @@ const url = `https://www.ignathedev.com${Astro.url.pathname}`;
   "@type": "BlogPosting",
   "headline": frontmatter.title,
   "description": frontmatter.description,
-  "image": `https://www.ignathedev.com${frontmatter.image.url}`,
-  "datePublished": (() => {
-    const parts = frontmatter.publish_date.split('/');
-    return new Date(`${parts[2]}-${parts[1]}-${parts[0]}`).toISOString();
-  })(),
-  "dateModified": (() => {
-    const parts = frontmatter.publish_date.split('/');
-    return new Date(`${parts[2]}-${parts[1]}-${parts[0]}`).toISOString();
-  })(),
+  "image": ogImage,
+  "datePublished": publishedTime,
+  "dateModified": publishedTime,
   "author": {
     "@type": "Person",
     "@id": "https://www.ignathedev.com/#person",
-    "name": frontmatter.author,
+    "name": frontmatter.author || "Ignacio Amat Urbina",
     "url": "https://www.ignathedev.com"
   },
   "publisher": {
@@ -247,11 +253,10 @@ const url = `https://www.ignathedev.com${Astro.url.pathname}`;
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": `https://www.ignathedev.com${Astro.url.pathname}`
+    "@id": url
   },
-  "keywords": frontmatter.tags.join(', '),
-  "articleSection": "Web Development",
-  "inLanguage": "es-ES",
-  "wordCount": 500,
+  "keywords": (frontmatter.tags || []).join(", "),
+  "articleSection": isEnglish ? "Web Development" : "Desarrollo Web",
+  "inLanguage": inLanguage,
   "isAccessibleForFree": true
 })}></script>
