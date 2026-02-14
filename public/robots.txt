@@ -4,20 +4,10 @@
 User-agent: *
 Allow: /
 
-# Prevent crawling of certain paths
+# Prevent crawling of private/backend paths
 Disallow: /api/
 Disallow: /admin/
 Disallow: /private/
-Disallow: /_astro/
-Disallow: /*?*
-
-# Allow important resources for indexing
-Allow: /img/
-Allow: /fonts/
-Allow: /img/optimized/
-
-# Crawl-delay for respectful crawling
-Crawl-delay: 1
 
 # Sitemaps - both language versions
 Sitemap: https://www.ignathedev.com/sitemap-index.xml
@@ -33,7 +23,6 @@ Crawl-delay: 0
 # Specific rules for Bing
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 1
 
 # Specific rules for LinkedIn bot (important for professional visibility)
 User-agent: LinkedInBot

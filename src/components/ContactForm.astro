@@ -6,12 +6,6 @@ const lang = getLangFromUrl(Astro.url);
 ---
 
 <div class="w-full max-w-4xl mx-auto relative">
-  <!-- iOS form styling prevention -->
-  <meta
-    name="format-detection"
-    content="telephone=no"
-  />
-
   <!-- Success Toast -->
   <Toast
     className="toast-success !max-w-sm"
@@ -40,9 +34,21 @@ const lang = getLangFromUrl(Astro.url);
     method="POST"
     action="/api/contact"
     id="contact-form"
+    data-lang={lang}
     class="contact-form-container"
     style="color-scheme: light dark;"
   >
+    <input type="hidden" name="lang" value={lang} />
+    <input type="hidden" name="form_started_at" id="form_started_at" value="" />
+    <input
+      type="text"
+      name="website"
+      tabindex="-1"
+      autocomplete="off"
+      class="honeypot-input"
+      aria-hidden="true"
+    />
+
     <!-- Decorative background elements -->
     <div
       class="form-background"
@@ -51,6 +57,15 @@ const lang = getLangFromUrl(Astro.url);
     </div>
 
     <div class="form-content">
+      <div class="form-intro">
+        <p class="form-intro-title">{lang === "es" ? "Cuéntame qué necesitas" : "Tell me what you need"}</p>
+        <p class="form-intro-description">
+          {lang === "es"
+            ? "Acepto proyectos freelance, soporte para agencias y ofertas para incorporarme a equipos remotos internacionales."
+            : "I accept freelance projects, agency support, and full-time/contract opportunities from international remote teams."}
+        </p>
+      </div>
+
       <div class="form-grid">
         <!-- Name Field -->
         <div class="form-field">
@@ -95,6 +110,22 @@ const lang = getLangFromUrl(Astro.url);
             />
           </div>
         </div>
+
+        <div class="form-field">
+          <label for="company" class="form-label">
+            {lang === "es" ? "Empresa (opcional)" : "Company (optional)"}
+          </label>
+          <div class="input-wrapper">
+            <input
+              type="text"
+              name="company"
+              id="company"
+              autocomplete="organization"
+              class="form-input"
+              placeholder={lang === "es" ? "Nombre de empresa" : "Company name"}
+            />
+          </div>
+        </div>
       </div>
 
       <!-- Project Type Field -->
@@ -116,7 +147,32 @@ const lang = getLangFromUrl(Astro.url);
             <option value="landing">Landing Page</option>
             <option value="ecommerce">E-commerce</option>
             <option value="web-app">{lang === "es" ? "Aplicación Web" : "Web Application"}</option>
-            <option value="other">{lang === "es" ? "Otro" : "Other"}</option>
+            <option value="contract">{lang === "es" ? "Contrato por horas o mensual" : "Monthly/Hourly Contract"}</option>
+            <option value="full-time-hire">{lang === "es" ? "Oferta para incorporarme a tu empresa" : "Full-time Hire Opportunity"}</option>
+            <option value="other">{lang === "es" ? "Otro / No estoy seguro" : "Other / Not sure yet"}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label
+          for="timeline"
+          class="form-label"
+        >
+          {lang === "es" ? "Plazo estimado" : "Estimated timeline"}
+        </label>
+        <div class="input-wrapper">
+          <select
+            id="timeline"
+            name="timeline"
+            required
+            class="form-select"
+          >
+            <option value="">{lang === "es" ? "Selecciona una opción…" : "Select an option…"}</option>
+            <option value="asap">{lang === "es" ? "Lo antes posible" : "ASAP"}</option>
+            <option value="2-4-weeks">{lang === "es" ? "2-4 semanas" : "2-4 weeks"}</option>
+            <option value="1-3-months">{lang === "es" ? "1-3 meses" : "1-3 months"}</option>
+            <option value="flexible">{lang === "es" ? "Flexible" : "Flexible"}</option>
           </select>
         </div>
       </div>
@@ -127,13 +183,12 @@ const lang = getLangFromUrl(Astro.url);
           for="budget"
           class="form-label"
         >
-          {lang === "es" ? "Presupuesto aproximado" : "Approximate budget"}
+          {lang === "es" ? "Presupuesto o rango salarial (opcional)" : "Budget or salary range (optional)"}
         </label>
         <div class="input-wrapper">
           <select
             id="budget"
             name="budget"
-            required
             class="form-select"
           >
             <option value="">{lang === "es" ? "Selecciona un rango…" : "Select a range…"}</option>
@@ -141,6 +196,9 @@ const lang = getLangFromUrl(Astro.url);
             <option value="1000-2500">1.000€ - 2.500€</option>
             <option value="2500-5000">2.500€ - 5.000€</option>
             <option value="5000+">{lang === "es" ? "Más de 5.000€" : "More than 5.000€"}</option>
+            <option value="salary-30-45k">{lang === "es" ? "30k€ - 45k€ bruto/año (si es empleo)" : "30k€ - 45k€ gross/year (hiring)"}</option>
+            <option value="salary-45-65k">{lang === "es" ? "45k€ - 65k€ bruto/año (si es empleo)" : "45k€ - 65k€ gross/year (hiring)"}</option>
+            <option value="salary-65k+">{lang === "es" ? "+65k€ bruto/año (si es empleo)" : "65k€+ gross/year (hiring)"}</option>
           </select>
         </div>
       </div>
@@ -173,6 +231,15 @@ const lang = getLangFromUrl(Astro.url);
           </div>
         </div>
       </div>
+
+      <label class="consent-row">
+        <input type="checkbox" name="consent" required />
+        <span>
+          {lang === "es"
+            ? "Acepto que uses estos datos para responder a mi solicitud."
+            : "I agree to the use of this data to reply to my request."}
+        </span>
+      </label>
 
       <!-- Submit Button -->
       <div class="form-actions">
@@ -266,6 +333,41 @@ const lang = getLangFromUrl(Astro.url);
     display: flex;
     flex-direction: column;
     gap: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .honeypot-input {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+
+  .form-intro {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .form-intro-title {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: rgb(17, 24, 39);
+  }
+
+  .form-intro-description {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgb(75, 85, 99);
+  }
+
+  :global(.dark) .form-intro-title {
+    color: rgb(243, 244, 246);
+  }
+
+  :global(.dark) .form-intro-description {
+    color: rgb(156, 163, 175);
   }
 
   .form-grid {
@@ -440,6 +542,22 @@ const lang = getLangFromUrl(Astro.url);
     display: flex;
     justify-content: center;
     margin-top: clamp(1.25rem, 3vw, 2rem);
+  }
+
+  .consent-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    font-size: 0.875rem;
+    color: rgb(75, 85, 99);
+  }
+
+  .consent-row input {
+    margin-top: 0.15rem;
+  }
+
+  :global(.dark) .consent-row {
+    color: rgb(156, 163, 175);
   }
 
   .submit-button {
@@ -718,8 +836,12 @@ const lang = getLangFromUrl(Astro.url);
 
   setDefaultTimeout(5000);
   const form = document.getElementById("contact-form");
+  const formLang = (form as HTMLFormElement | null)?.dataset.lang || "en";
   const submitButton = form?.querySelector(".submit-button");
-  const originalButtonText = submitButton?.querySelector(".button-text")?.textContent || "";
+  const startedAtInput = document.getElementById("form_started_at") as HTMLInputElement | null;
+  if (startedAtInput) {
+    startedAtInput.value = Date.now().toString();
+  }
 
   // Character counter for message
   const messageTextarea = document.getElementById("message");
@@ -741,15 +863,11 @@ const lang = getLangFromUrl(Astro.url);
     submitButton.setAttribute("aria-busy", "true");
 
     const formData = new FormData(e.target as HTMLFormElement);
-    console.log("Submitting form to /api/contact");
-
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         body: formData,
       });
-
-      console.log("Response status:", response.status);
 
       let result: { success: boolean; message?: string; error?: string; title?: string };
       try {
@@ -758,8 +876,6 @@ const lang = getLangFromUrl(Astro.url);
         console.error("Failed to parse JSON response:", jsonError);
         throw new Error("Invalid server response");
       }
-
-      console.log("Response result:", result);
 
       if (result.success) {
         toast({
@@ -779,11 +895,13 @@ const lang = getLangFromUrl(Astro.url);
         });
       }
     } catch (error) {
-      console.error("Form submission error:", error);
       toast({
         element: ".toast-error",
         title: "Error",
-        content: "Unable to process your request. Please try again later.",
+        content:
+          formLang === "es"
+            ? "No se pudo procesar tu solicitud. Inténtalo de nuevo más tarde."
+            : "Unable to process your request. Please try again later.",
         position: "bottom-full",
       });
     } finally {

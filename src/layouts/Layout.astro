@@ -43,11 +43,18 @@ interface Props {
   };
 }
 
-const { title, description, pageType = "website", articleData, openGraph: customOpenGraph, robots: customRobots } = Astro.props;
+const {
+  title,
+  description,
+  canonical,
+  pageType = "website",
+  articleData,
+  openGraph: customOpenGraph,
+  robots: customRobots,
+} = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const ogImage = "https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg";
-const url = "https://www.ignathedev.com/";
 const siteName = lang === "es" ? "Ignacio Amat Urbina - Desarrollador Web Full Stack | Experto PHP & Laravel" : "Ignacio Amat Urbina - Full Stack Web Developer | PHP & Laravel Expert";
 
 // Professional profile data for SEO
@@ -99,237 +106,20 @@ const metaTitle = fullTitle.length > 60 ? fullTitle.substring(0, 57) + "..." : f
 const rawDescription =
   description ||
   (lang === "es"
-    ? "Desarrollador web full stack en Barcelona. Especializado en PHP, Laravel y Vue.js. +5 años de experiencia. Disponible para proyectos remotos. ¡Contacta ahora!"
-    : "Full stack web developer in Barcelona. Specialized in PHP, Laravel and Vue.js. +5 years experience. Available for remote projects. Contact now!");
+    ? "Desarrollador web full stack especializado en PHP, Laravel y Vue.js. Disponible para proyectos remotos y contratación internacional."
+    : "Full stack web developer specialized in PHP, Laravel, and Vue.js. Available for remote projects and international hiring.");
 // Optimize description length: 150-160 characters for best SEO
 const metaDescription = rawDescription.length > 160 ? rawDescription.substring(0, 157) + "..." : rawDescription;
-
-// Add more specific meta information for better SEO
-const targetLocations =
-  lang === "es"
-    ? [
-        // Major cities by population
-        "Madrid",
-        "Barcelona",
-        "Valencia",
-        "Sevilla",
-        "Zaragoza",
-        "Málaga",
-        "Murcia",
-        "Palma",
-        "Las Palmas",
-        "Bilbao",
-        "Alicante",
-        "Córdoba",
-        "Valladolid",
-        "Vigo",
-        "Gijón",
-        "Hospitalet",
-        "Vitoria",
-        "La Coruña",
-        "Granada",
-        "Elche",
-        "Oviedo",
-        "Terrassa",
-        "Badalona",
-        "Cartagena",
-        "Sabadell",
-        // Regions
-        "Comunidad de Madrid",
-        "Cataluña",
-        "Andalucía",
-        "País Vasco",
-        "Comunidad Valenciana",
-        "Galicia",
-        "Castilla y León",
-        "Islas Baleares",
-        "Canarias",
-        "Asturias",
-        "Murcia",
-        // General
-        "España",
-        "Remoto",
-        "Internacional",
-      ]
-    : [
-        // Major cities by population
-        "Madrid",
-        "Barcelona",
-        "Valencia",
-        "Seville",
-        "Zaragoza",
-        "Malaga",
-        "Murcia",
-        "Palma",
-        "Las Palmas",
-        "Bilbao",
-        "Alicante",
-        "Cordoba",
-        "Valladolid",
-        "Vigo",
-        "Gijon",
-        "Hospitalet",
-        "Vitoria",
-        "A Coruna",
-        "Granada",
-        "Elche",
-        "Oviedo",
-        "Terrassa",
-        "Badalona",
-        "Cartagena",
-        "Sabadell",
-        // Regions
-        "Community of Madrid",
-        "Catalonia",
-        "Andalusia",
-        "Basque Country",
-        "Valencian Community",
-        "Galicia",
-        "Castile and León",
-        "Balearic Islands",
-        "Canary Islands",
-        "Asturias",
-        "Murcia",
-        // General
-        "Spain",
-        "Remote",
-        "International",
-      ];
-
-const technologies =
-  lang === "es"
-    ? {
-        frontend: ["Vue.js", "JavaScript", "TypeScript", "TailwindCSS", "HTML5", "CSS3", "Astro", "React"],
-        backend: ["PHP", "Laravel", "MySQL", "API REST", "Node.js", "Express", "MongoDB"],
-        tools: ["Git", "Docker", "AWS", "Linux", "Nginx", "Apache"],
-      }
-    : {
-        frontend: ["Vue.js", "JavaScript", "TypeScript", "TailwindCSS", "HTML5", "CSS3", "Astro", "React"],
-        backend: ["PHP", "Laravel", "MySQL", "REST API", "Node.js", "Express", "MongoDB"],
-        tools: ["Git", "Docker", "AWS", "Linux", "Nginx", "Apache"],
-      };
-
-// Generate technology-based keywords
-const techKeywords = Object.entries(technologies).flatMap(([_, techs]) => {
-  return techs.flatMap((tech) => {
-    const prefixes = lang === "es" ? [`desarrollador ${tech}`, `experto ${tech}`, `programador ${tech}`, `${tech} developer`] : [`${tech} developer`, `${tech} expert`, `${tech} programmer`, `${tech} specialist`];
-    return prefixes;
-  });
-});
-
-// Generate role-based keywords
-const roleKeywords = targetLocations.flatMap((location) => {
-  const roles =
-    lang === "es"
-      ? [
-          "desarrollador frontend",
-          "desarrollador backend",
-          "desarrollador full stack",
-          "programador PHP",
-          "desarrollador Laravel",
-          "desarrollador Vue.js",
-          "experto en desarrollo web",
-          "programador JavaScript",
-          "desarrollador de aplicaciones web",
-          "desarrollador TypeScript",
-        ]
-      : ["frontend developer", "backend developer", "full stack developer", "PHP programmer", "Laravel developer", "Vue.js developer", "web development expert", "JavaScript programmer", "web application developer", "TypeScript developer"];
-  return roles.map((role) => `${role} ${lang === "es" ? "en" : "in"} ${location}`);
-});
-
-const metaKeywords =
-  lang === "es"
-    ? [
-        // CV/Portfolio specific keywords
-        "curriculum desarrollador web",
-        "portfolio desarrollador full stack",
-        "contratar desarrollador PHP",
-        "contratar desarrollador Laravel",
-        "desarrollador web disponible",
-        "freelance disponible Barcelona",
-        // Generic keywords
-        "desarrollador web freelance",
-        "desarrollo web profesional",
-        "experto Laravel España",
-        "programador PHP freelance",
-        "desarrollo aplicaciones web",
-        "desarrollador full stack senior",
-        "experto Vue.js y Laravel",
-        "desarrollador JavaScript moderno",
-        "especialista TypeScript",
-        "desarrollador TailwindCSS",
-        // Specific tech combinations
-        "desarrollo Laravel y Vue.js",
-        "aplicaciones web PHP modernas",
-        "desarrollo full stack JavaScript",
-        "experto LAMP stack",
-        "desarrollo web Node.js y Express",
-        // Project types
-        "desarrollo e-commerce",
-        "aplicaciones web empresariales",
-        "desarrollo API REST",
-        "sitios web alto rendimiento",
-        "aplicaciones web escalables",
-        // Location and tech combinations
-        ...roleKeywords,
-        ...techKeywords,
-        // Remote specific
-        "desarrollo web remoto España",
-        "programador Laravel remoto",
-        "servicios desarrollo web online",
-        // Hiring keywords
-        "busco trabajo desarrollador web",
-        "programador PHP Barcelona",
-        "desarrollador Laravel disponible",
-      ].join(", ")
-    : [
-        // CV/Portfolio specific keywords
-        "web developer resume",
-        "full stack developer portfolio",
-        "hire PHP developer",
-        "hire Laravel developer",
-        "web developer available for hire",
-        "freelance developer Barcelona Spain",
-        // Generic keywords
-        "freelance web developer",
-        "professional web development",
-        "Laravel expert Spain",
-        "freelance PHP developer",
-        "web application development",
-        "senior full stack developer",
-        "Vue.js and Laravel expert",
-        "modern JavaScript developer",
-        "TypeScript specialist",
-        "TailwindCSS developer",
-        // Specific tech combinations
-        "Laravel and Vue.js development",
-        "modern PHP applications",
-        "full stack JavaScript development",
-        "LAMP stack expert",
-        "Node.js and Express development",
-        // Project types
-        "e-commerce development",
-        "enterprise web applications",
-        "REST API development",
-        "high-performance websites",
-        "scalable web applications",
-        // Location and tech combinations
-        ...roleKeywords,
-        ...techKeywords,
-        // Remote specific
-        "remote web developer Spain",
-        "remote Laravel developer",
-        "online web development services",
-        // Hiring keywords
-        "looking for web developer job",
-        "PHP developer Barcelona",
-        "Laravel developer available",
-      ].join(", ");
 
 // Current page path for breadcrumbs
 const currentPath = Astro.url.pathname;
 const isHomePage = currentPath === "/" || currentPath === "/en" || currentPath === "/en/";
 const isBlogPage = currentPath.includes("/blog");
+const canonicalUrl = canonical ?? `https://www.ignathedev.com${currentPath}`;
+const spanishPath = currentPath.replace(/^\/en/, "") || "/";
+const normalizedSpanishPath = spanishPath.endsWith("/") && spanishPath !== "/" ? spanishPath.slice(0, -1) : spanishPath;
+const spanishUrl = `https://www.ignathedev.com${normalizedSpanishPath || "/"}`;
+const englishUrl = normalizedSpanishPath === "/" ? "https://www.ignathedev.com/en" : `https://www.ignathedev.com/en${normalizedSpanishPath}`;
 ---
 
 <!doctype html>
@@ -374,110 +164,9 @@ const isBlogPage = currentPath.includes("/blog");
       name="theme-color"
       content="#0a0a0a"
     />
-    <!-- Optimized keywords: focus on primary terms (Google ignores long keyword lists) -->
-    <meta
-      name="keywords"
-      content={lang === "es"
-        ? "desarrollador web full stack, PHP Laravel, Vue.js, desarrollador Barcelona, freelance desarrollo web, contratar desarrollador PHP"
-        : "full stack web developer, PHP Laravel, Vue.js, developer Barcelona, freelance web development, hire PHP developer"}
-    />
-
-    <!-- Professional/CV specific meta tags -->
-    <meta
-      name="profession"
-      content={professionalProfile.jobTitle}
-    />
-    <meta
-      name="experience"
-      content={`${professionalProfile.yearsOfExperience}+ years`}
-    />
-    <meta
-      name="availability"
-      content={professionalProfile.availableForHire ? (lang === "es" ? "Disponible para proyectos" : "Available for hire") : lang === "es" ? "No disponible" : "Not available"}
-    />
-    <meta
-      name="skills"
-      content={[...professionalProfile.skills.programming, ...professionalProfile.skills.frameworks].join(", ")}
-    />
-
-    <!-- Dublin Core metadata for professional profiles -->
-    <meta
-      name="DC.title"
-      content={metaTitle}
-    />
-    <meta
-      name="DC.creator"
-      content={professionalProfile.name}
-    />
-    <meta
-      name="DC.subject"
-      content={lang === "es" ? "Desarrollo Web, Programación, PHP, Laravel" : "Web Development, Programming, PHP, Laravel"}
-    />
-    <meta
-      name="DC.description"
-      content={metaDescription}
-    />
-    <meta
-      name="DC.type"
-      content="Portfolio"
-    />
-    <meta
-      name="DC.language"
-      content={lang === "es" ? "es-ES" : "en-US"}
-    />
-
-    <!-- Geographic SEO for local targeting - Barcelona coordinates -->
-    <meta
-      name="geo.region"
-      content="ES-CT"
-    />
-    <meta
-      name="geo.placename"
-      content="Barcelona, Spain"
-    />
-    <meta
-      name="geo.position"
-      content="41.3851;2.1734"
-    />
-    <meta
-      name="ICBM"
-      content="41.3851, 2.1734"
-    />
-
-    <!-- Additional SEO meta tags -->
-    <meta
-      name="rating"
-      content="general"
-    />
-    <meta
-      name="distribution"
-      content="global"
-    />
-    <meta
-      name="revisit-after"
-      content="7 days"
-    />
-    <meta
-      http-equiv="content-language"
-      content={lang === "es" ? "es-ES" : "en-US"}
-    />
-
-    <!-- Mobile optimization -->
     <meta
       name="format-detection"
       content="telephone=no"
-    />
-    <meta
-      name="mobile-web-app-capable"
-      content="yes"
-    />
-    <meta
-      name="apple-mobile-web-app-capable"
-      content="yes"
-    />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
     />
     <meta
       name="apple-mobile-web-app-title"
@@ -494,9 +183,9 @@ const isBlogPage = currentPath.includes("/blog");
     <AstroSeo
       title={metaTitle}
       description={metaDescription}
-      canonical={`https://www.ignathedev.com${Astro.url.pathname}`}
+      canonical={canonicalUrl}
       openGraph={customOpenGraph ?? {
-        url: `https://www.ignathedev.com${Astro.url.pathname}`,
+        url: canonicalUrl,
         title: metaTitle,
         type: pageType === "profile" ? "profile" : pageType === "article" ? "article" : "website",
         description: metaDescription,
@@ -647,14 +336,6 @@ const isBlogPage = currentPath.includes("/blog");
             inLanguage: ["es-ES", "en-US"],
             publisher: {
               "@id": "https://www.ignathedev.com/#person",
-            },
-            potentialAction: {
-              "@type": "SearchAction",
-              target: {
-                "@type": "EntryPoint",
-                urlTemplate: "https://www.ignathedev.com/search?q={search_term_string}",
-              },
-              "query-input": "required name=search_term_string",
             },
           },
           {
@@ -825,13 +506,12 @@ const isBlogPage = currentPath.includes("/blog");
         ],
       })}
     />
-    <!-- hreflang for international SEO: es (default), en, x-default to es -->
-    <link rel="alternate" hreflang="es" href={`https://www.ignathedev.com${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || "/"}`} />
-    <link rel="alternate" hreflang="es-ES" href={`https://www.ignathedev.com${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || "/"}`} />
-    <link rel="alternate" hreflang="en" href={`https://www.ignathedev.com/en${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || ""}`} />
-    <link rel="alternate" hreflang="en-US" href={`https://www.ignathedev.com/en${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || ""}`} />
-    <link rel="alternate" hreflang="en-GB" href={`https://www.ignathedev.com/en${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || ""}`} />
-    <link rel="alternate" hreflang="x-default" href={`https://www.ignathedev.com${currentPath.replace(/^\/en/, "").replace(/\/$/, "") || "/"}`} />
+    <!-- hreflang for international SEO -->
+    <link rel="alternate" hreflang="es" href={spanishUrl} />
+    <link rel="alternate" hreflang="es-ES" href={spanishUrl} />
+    <link rel="alternate" hreflang="en" href={englishUrl} />
+    <link rel="alternate" hreflang="en-US" href={englishUrl} />
+    <link rel="alternate" hreflang="x-default" href={englishUrl} />
 
     <!-- Preload critical fonts -->
     <link
