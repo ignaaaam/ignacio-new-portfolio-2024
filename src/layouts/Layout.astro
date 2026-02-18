@@ -8,11 +8,21 @@ import "@fontsource-variable/overpass";
 import { getLangFromUrl } from "../i18n/utils";
 import { AstroSeo } from "@astrolib/seo";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title: string;
   description: string;
   canonical?: string;
+  alternateLangUrls?: {
+    es: string;
+    en: string;
+    xDefault?: string;
+  };
+  languageSwitcherPaths?: {
+    es: string;
+    en: string;
+  };
   robots?: string;
   pageType?: "website" | "profile" | "article";
   articleData?: {
@@ -47,6 +57,8 @@ const {
   title,
   description,
   canonical,
+  alternateLangUrls,
+  languageSwitcherPaths,
   pageType = "website",
   articleData,
   openGraph: customOpenGraph,
@@ -106,8 +118,8 @@ const metaTitle = fullTitle.length > 60 ? fullTitle.substring(0, 57) + "..." : f
 const rawDescription =
   description ||
   (lang === "es"
-    ? "Desarrollador web full stack especializado en PHP, Laravel y Vue.js. Disponible para proyectos remotos y contratación internacional."
-    : "Full stack web developer specialized in PHP, Laravel, and Vue.js. Available for remote projects and international hiring.");
+    ? "Desarrollador full stack con +5 años creando aplicaciones web para marcas como PlayStation y TikTok. Experto en PHP, Laravel y Vue.js. Disponible para contratación remota."
+    : "Full stack developer with 5+ years building web apps for brands like PlayStation and TikTok. Expert in PHP, Laravel, and Vue.js. Open to remote positions worldwide.");
 // Optimize description length: 150-160 characters for best SEO
 const metaDescription = rawDescription.length > 160 ? rawDescription.substring(0, 157) + "..." : rawDescription;
 
@@ -118,8 +130,15 @@ const isBlogPage = currentPath.includes("/blog");
 const canonicalUrl = canonical ?? `https://www.ignathedev.com${currentPath}`;
 const spanishPath = currentPath.replace(/^\/en/, "") || "/";
 const normalizedSpanishPath = spanishPath.endsWith("/") && spanishPath !== "/" ? spanishPath.slice(0, -1) : spanishPath;
-const spanishUrl = `https://www.ignathedev.com${normalizedSpanishPath || "/"}`;
-const englishUrl = normalizedSpanishPath === "/" ? "https://www.ignathedev.com/en" : `https://www.ignathedev.com/en${normalizedSpanishPath}`;
+const defaultSpanishUrl = `https://www.ignathedev.com${normalizedSpanishPath || "/"}`;
+const defaultEnglishUrl = normalizedSpanishPath === "/" ? "https://www.ignathedev.com/en" : `https://www.ignathedev.com/en${normalizedSpanishPath}`;
+const toAbsoluteUrl = (value: string) => new URL(value, "https://www.ignathedev.com").toString();
+const toPath = (value: string) => new URL(value, "https://www.ignathedev.com").pathname;
+const spanishUrl = toAbsoluteUrl(alternateLangUrls?.es ?? defaultSpanishUrl);
+const englishUrl = toAbsoluteUrl(alternateLangUrls?.en ?? defaultEnglishUrl);
+const xDefaultUrl = toAbsoluteUrl(alternateLangUrls?.xDefault ?? spanishUrl);
+const spanishSwitcherPath = languageSwitcherPaths?.es ?? toPath(spanishUrl);
+const englishSwitcherPath = languageSwitcherPaths?.en ?? toPath(englishUrl);
 ---
 
 <!doctype html>
@@ -140,6 +159,9 @@ const englishUrl = normalizedSpanishPath === "/" ? "https://www.ignathedev.com/e
       gtag("js", new Date());
       gtag("config", "G-VZQ07QHFLN");
     </script>
+    <!-- Enable client-side view transitions (SPA-mode navigation) -->
+    <ClientRouter />
+
     <!-- SEO Meta Tags with AstroSEO -->
     <meta charset="UTF-8" />
     <meta
@@ -147,11 +169,6 @@ const englishUrl = normalizedSpanishPath === "/" ? "https://www.ignathedev.com/e
       content="width=device-width, initial-scale=1.0"
     />
 
-    <!-- Direct meta tags instead of using additionalMetaTags -->
-    <meta
-      name="description"
-      content={metaDescription}
-    />
     <meta
       name="author"
       content="Ignacio Amat Urbina"
@@ -171,6 +188,14 @@ const englishUrl = normalizedSpanishPath === "/" ? "https://www.ignathedev.com/e
     <meta
       name="apple-mobile-web-app-title"
       content="Ignacio Amat - Developer"
+    />
+    <meta
+      name="geo.region"
+      content="ES-CT"
+    />
+    <meta
+      name="geo.placename"
+      content="Barcelona"
     />
 
     <script is:inline>
@@ -271,6 +296,7 @@ const englishUrl = normalizedSpanishPath === "/" ? "https://www.ignathedev.com/e
     <script
       defer
       is:inline
+      data-astro-rerun
       src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"
     ></script>
 
@@ -291,33 +317,6 @@ const englishUrl = normalizedSpanishPath === "/" ? "https://www.ignathedev.com/e
       document.addEventListener("astro:after-swap", initializeTheme);
     </script>
 
-    <!-- Facebook Meta Tags -->
-    <!-- <meta property="og:url" content="https://www.ignathedev.com/"> -->
-    <!-- <meta property="og:type" content="website"> -->
-    <!-- <meta property="og:title" content={title}> -->
-    <!-- <meta property="og:description" content={description}> -->
-    <!-- <meta property="og:image" content="https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg"> -->
-
-    <!-- Twitter Meta Tags -->
-    <!-- <meta name="twitter:card" content="summary_large_image"> -->
-    <!-- <meta property="twitter:domain" content="ignathedev.com"> -->
-    <!-- <meta property="twitter:url" content="https://www.ignathedev.com/"> -->
-    <!-- <meta name="twitter:title" content={title}> -->
-    <!-- <meta name="twitter:description" content={description}> -->
-    <!-- <meta name="twitter:image" content="https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg"> -->
-
-    <!-- Meta Tags Generated via https://www.opengraph.xyz -->
-    <!-- <meta property="og:site_name" content="Ignacio Amat Urbina - Desarrollador Web Full Stack & Laravel Expert"> -->
-
-    <!-- Locale -->
-    <!-- <meta property="og:locale" content="es_ES"> -->
-
-    <!-- Keywords -->
-    <!-- <meta name="keywords" content={t('keywords')}> -->
-
-    <!-- Author -->
-    <!-- <meta property="og:author" content="Ignacio Amat Urbina"> -->
-
     <!-- Enhanced Schema.org structured data for Portfolio/CV -->
     <script
       type="application/ld+json"
@@ -331,14 +330,14 @@ const englishUrl = normalizedSpanishPath === "/" ? "https://www.ignathedev.com/e
             name: siteName,
             description:
               lang === "es"
-                ? "Portfolio y curriculum de Ignacio Amat Urbina - Desarrollador Web Full Stack especializado en PHP, Laravel y Vue.js"
-                : "Portfolio and resume of Ignacio Amat Urbina - Full Stack Web Developer specialized in PHP, Laravel and Vue.js",
+                ? "Portfolio de Ignacio Amat Urbina - Desarrollador Web Full Stack con experiencia en PlayStation, TikTok, Glovo y más"
+                : "Portfolio of Ignacio Amat Urbina - Full Stack Web Developer with experience at PlayStation, TikTok, Glovo, and more",
             inLanguage: ["es-ES", "en-US"],
             publisher: {
               "@id": "https://www.ignathedev.com/#person",
             },
           },
-          {
+          ...(isHomePage ? [{
             "@type": "ProfilePage",
             "@id": `https://www.ignathedev.com${currentPath}#profilepage`,
             url: `https://www.ignathedev.com${currentPath}`,
@@ -354,7 +353,7 @@ const englishUrl = normalizedSpanishPath === "/" ? "https://www.ignathedev.com/e
             mainEntity: {
               "@id": "https://www.ignathedev.com/#person",
             },
-          },
+          }] : []),
           {
             "@type": "Person",
             "@id": "https://www.ignathedev.com/#person",
@@ -365,8 +364,8 @@ const englishUrl = normalizedSpanishPath === "/" ? "https://www.ignathedev.com/e
             jobTitle: professionalProfile.jobTitle,
             description:
               lang === "es"
-                ? `Desarrollador Web Full Stack con +${professionalProfile.yearsOfExperience} años de experiencia. Experto en PHP, Laravel y Vue.js. Disponible para proyectos remotos e internacionales.`
-                : `Full Stack Web Developer with +${professionalProfile.yearsOfExperience} years of experience. Expert in PHP, Laravel, and Vue.js. Available for remote and international projects.`,
+                ? `Desarrollador Web Full Stack con +${professionalProfile.yearsOfExperience} años de experiencia en marcas como PlayStation, TikTok y Glovo. Experto en PHP, Laravel y Vue.js. Disponible para contratación remota.`
+                : `Full Stack Web Developer with +${professionalProfile.yearsOfExperience} years building web apps for brands like PlayStation, TikTok, and Glovo. Expert in PHP, Laravel, and Vue.js. Open to remote positions worldwide.`,
             image: {
               "@type": "ImageObject",
               url: ogImage,
@@ -406,11 +405,11 @@ const englishUrl = normalizedSpanishPath === "/" ? "https://www.ignathedev.com/e
             },
             seeks: {
               "@type": "Demand",
-              name: lang === "es" ? "Proyectos de desarrollo web" : "Web development projects",
+              name: lang === "es" ? "Posiciones de desarrollo web en equipos remotos" : "Remote web development positions in engineering teams",
             },
             worksFor: {
               "@type": "Organization",
-              name: lang === "es" ? "Freelance / Disponible para contratación" : "Freelance / Available for hire",
+              name: lang === "es" ? "Disponible para contratación remota" : "Available for remote hire",
             },
             makesOffer: [
               {
@@ -507,11 +506,9 @@ const englishUrl = normalizedSpanishPath === "/" ? "https://www.ignathedev.com/e
       })}
     />
     <!-- hreflang for international SEO -->
-    <link rel="alternate" hreflang="es" href={spanishUrl} />
     <link rel="alternate" hreflang="es-ES" href={spanishUrl} />
-    <link rel="alternate" hreflang="en" href={englishUrl} />
     <link rel="alternate" hreflang="en-US" href={englishUrl} />
-    <link rel="alternate" hreflang="x-default" href={englishUrl} />
+    <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
 
     <!-- Preload critical fonts -->
     <link
@@ -532,18 +529,26 @@ const englishUrl = normalizedSpanishPath === "/" ? "https://www.ignathedev.com/e
     <!-- Favicon and app icons -->
     <link
       rel="icon"
+      type="image/x-icon"
       href="/favicon.ico"
     />
     <link
       rel="apple-touch-icon"
+      sizes="180x180"
       href="/apple-touch-icon.png"
     />
     <link
       rel="manifest"
       href="/manifest.json"
     />
+    <link
+      rel="sitemap"
+      type="application/xml"
+      href="/sitemap-index.xml"
+    />
 
-    <!-- BreadcrumbList Schema for better navigation in search results -->
+    <!-- BreadcrumbList Schema — skipped for articles (MarkdownPostLayout provides its own accurate one) -->
+    {pageType !== "article" && (
     <script
       type="application/ld+json"
       set:html={JSON.stringify({
@@ -579,21 +584,23 @@ const englishUrl = normalizedSpanishPath === "/" ? "https://www.ignathedev.com/e
         ],
       })}
     />
+    )}
 
-    <!-- Professional Service Schema -->
+    <!-- Professional Service Schema (homepage only) -->
+    {isHomePage && (
     <script
       type="application/ld+json"
       set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
         "@id": "https://www.ignathedev.com/#business",
-        name: lang === "es" ? "Ignacio Amat - Servicios de Desarrollo Web" : "Ignacio Amat - Web Development Services",
+        name: lang === "es" ? "Ignacio Amat - Desarrollador Web Full Stack" : "Ignacio Amat - Full Stack Web Developer",
         image: ogImage,
         url: "https://www.ignathedev.com",
         description:
           lang === "es"
-            ? "Servicios profesionales de desarrollo web. Especializado en crear aplicaciones web y sitios web de alto rendimiento con PHP, Laravel y Vue.js. Disponible para trabajo remoto."
-            : "Professional web development services. Specialized in creating high-performance web applications and websites with PHP, Laravel, and Vue.js. Available for remote work.",
+            ? "Desarrollador full stack con experiencia en marcas de primer nivel como PlayStation, TikTok y Glovo. Especializado en PHP, Laravel y Vue.js. Disponible para contratación remota."
+            : "Full stack developer with top-brand experience including PlayStation, TikTok, and Glovo. Specialized in PHP, Laravel, and Vue.js. Available for remote hire.",
         priceRange: "$$",
         availableLanguage: ["es", "en"],
         serviceType: "Web Development",
@@ -652,12 +659,13 @@ const englishUrl = normalizedSpanishPath === "/" ? "https://www.ignathedev.com/e
         sameAs: Object.values(professionalProfile.socialProfiles),
       })}
     />
+    )}
   </head>
   <body class="bg-white dark:bg-gray-900">
     <div class="absolute top-0 z-[-2] h-screen w-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"></div>
 
     <div class="relative min-h-screen flex flex-col z-10">
-      {lang === "es" ? <Header /> : <HeaderEnglish />}
+      {lang === "es" ? <Header spanishUrl={spanishSwitcherPath} englishUrl={englishSwitcherPath} /> : <HeaderEnglish spanishUrl={spanishSwitcherPath} englishUrl={englishSwitcherPath} />}
 
       <main class="flex-1">
         <slot />

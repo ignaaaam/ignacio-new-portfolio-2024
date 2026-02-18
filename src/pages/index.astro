@@ -35,53 +35,44 @@ import FAQSection from "../components/FAQSection.astro";
 ---
 
 <Layout
-  title="Desarrollador Web Full Stack Remoto Internacional | PHP Laravel Vue.js | Ignacio Amat"
-  description="Desarrollador web full stack con +5 años de experiencia en PHP, Laravel y Vue.js. Disponible para proyectos remotos y contratación internacional."
+  title="Ignacio Amat | Desarrollador Web Full Stack PHP y Laravel | Disponible para contratación remota"
+  description="Desarrollador full stack con +5 años creando aplicaciones web para marcas como PlayStation, TikTok y Glovo. Experto en PHP, Laravel y Vue.js. Disponible para equipos remotos."
 >
   <main>
-    <SectionContainer class="hero-section -mt-6 pt-2 pb-32 md:pt-4 md:pb-32 lg:py-32 lg:pb-40 min-h-[92vh] md:min-h-[95vh] lg:min-h-screen flex flex-col justify-center relative">
+    <SectionContainer class="hero-section -mt-6 py-12 md:py-16 lg:py-20 min-h-[92vh] md:min-h-[95vh] lg:min-h-screen flex flex-col justify-center relative">
       <div class="max-w-4xl mx-auto text-center">
         <!-- Availability Badge with pulse animation -->
-        <div class="flex items-center justify-center gap-3 mb-8 mt-4 md:mt-0">
-          <a
-            href="https://www.ignacioamatweb.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block transition-transform hover:scale-105 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2 rounded-md"
-            aria-label="Ver precios y disponibilidad para proyectos"
+        <div class="flex items-center justify-center gap-3 mb-5 mt-2 md:mt-0">
+          <Badge
+            class="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 relative overflow-hidden"
           >
-            <Badge
-              class="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800 transition-colors cursor-pointer relative overflow-hidden focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
-            >
-              <span class="relative z-10 flex items-center gap-2">
-                <span
-                  class="relative flex h-2 w-2"
-                  aria-hidden="true"
-                >
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-green-600"></span>
-                </span>
-                Disponible para proyectos — Ver precios
+            <span class="relative z-10 flex items-center gap-2">
+              <span
+                class="relative flex h-2 w-2"
+                aria-hidden="true"
+              >
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-600"></span>
               </span>
-            </Badge>
-          </a>
+              Abierto a nuevas oportunidades
+            </span>
+          </Badge>
         </div>
 
-        <!-- Main Heading: H1 with primary keyword for SEO, H2 for supporting info -->
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight animate-fade-in text-wrap-balance">
-          Hola, soy <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent animate-gradient">Ignacio</span> — Desarrollador Web Full Stack para empresas de todo el mundo
+          Soy <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent animate-gradient">Ignacio</span> — El desarrollador full stack que tu equipo necesita
         </h1>
 
         <p class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-4 font-medium leading-relaxed max-w-2xl mx-auto text-wrap-balance">
-          <span class="font-semibold">+5 años de experiencia.</span> Especializado en PHP, Laravel y Vue.js.
+          <span class="font-semibold">+5 años construyendo aplicaciones web</span> para marcas como PlayStation, Glovo y TikTok.
         </p>
 
-        <p class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-8 font-medium leading-relaxed max-w-2xl mx-auto text-wrap-balance">
-          Creo aplicaciones web y sitios web de alto rendimiento con tecnologías modernas. Trabajo en remoto con clientes internacionales y empresas que buscan contratar un desarrollador full stack.
+        <p class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-5 font-medium leading-relaxed max-w-2xl mx-auto text-wrap-balance">
+          Especializado en PHP, Laravel y Vue.js. Busco unirme a un equipo de desarrollo remoto donde pueda aportar código limpio, soluciones escalables y la mentalidad de alguien que ha entregado proyectos reales para empresas de alto nivel.
         </p>
 
         <!-- Tech Stack Pills with hover effects -->
-        <div class="flex flex-wrap justify-center gap-2 mb-8">
+        <div class="flex flex-wrap justify-center gap-2 mb-5">
           <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-default">
             <PHPIcon class="w-4 h-4" />
             PHP
@@ -106,18 +97,18 @@ import FAQSection from "../components/FAQSection.astro";
         </div>
 
         <!-- Stats Section for credibility -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 max-w-2xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 max-w-2xl mx-auto">
           <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-colors">
             <div class="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400">+5</div>
             <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Años Experiencia</div>
           </div>
           <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:border-green-300 dark:hover:border-green-600 transition-colors">
-            <div class="text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400">+30</div>
-            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Proyectos</div>
+            <div class="text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400">10+</div>
+            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Empresas</div>
           </div>
           <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 transition-colors">
-            <div class="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">100%</div>
-            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Satisfacción</div>
+            <div class="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">Top</div>
+            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Marcas</div>
           </div>
           <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-600 transition-colors">
             <div class="text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400">24h</div>
@@ -125,13 +116,13 @@ import FAQSection from "../components/FAQSection.astro";
           </div>
         </div>
 
-        <!-- Call to Action Buttons with improved styling -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
+        <!-- Call to Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
           <a
-            href="#services"
+            href="#experience"
             class="group px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-xl shadow-lg hover:from-indigo-700 hover:to-purple-800 transition-[transform,box-shadow,background] duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
           >
-            Ver mis servicios
+            Ver mi experiencia
             <svg
               class="w-5 h-5 group-hover:translate-x-1 transition-transform"
               fill="none"
@@ -147,53 +138,19 @@ import FAQSection from "../components/FAQSection.astro";
               ></path>
             </svg>
           </a>
-          <a
-            href="https://www.ignacioamatweb.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-green-600 to-emerald-700 rounded-xl shadow-lg hover:from-green-700 hover:to-emerald-800 transition-[transform,box-shadow,background] duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-green-500/25 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
-            aria-label="Ver precios y paquetes (se abre en nueva pestaña)"
-          >
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              ></path>
-            </svg>
-            Ver Precios y Paquetes
-            <svg
-              class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-              ></path>
-            </svg>
-          </a>
+          <div class="hero-cv-btn">
+            <CVDownloadButton isEnglish={false}>Descargar CV</CVDownloadButton>
+          </div>
           <a
             href="#contact"
             class="px-8 py-4 text-lg font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-800 transition-[background-color,border-color] duration-300 border-2 border-transparent hover:border-blue-300 dark:hover:border-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
           >
-            Contactar ahora
+            Contactar
           </a>
         </div>
 
         <!-- Social Links -->
-        <nav class="flex flex-wrap justify-center gap-3 mb-6">
+        <nav class="flex flex-wrap justify-center gap-3 mb-3">
           <SocialPill href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223">
             <LinkedinIcon class="size-5" />
             LinkedIn
@@ -218,7 +175,7 @@ import FAQSection from "../components/FAQSection.astro";
         </nav>
 
         <!-- Contact info -->
-        <div class="flex flex-col items-center justify-center gap-2 mb-12">
+        <div class="flex flex-col items-center justify-center gap-2 mb-6">
           <SocialPill
             href="#contact"
             class="min-w-[16rem] md:min-w-[18rem]"
@@ -240,8 +197,8 @@ import FAQSection from "../components/FAQSection.astro";
       class="pt-20 md:pt-28 pb-20 md:pb-28"
     >
       <div class="text-center mb-20">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">Mis Servicios</h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">Soluciones web a medida: desde páginas de aterrizaje optimizadas hasta aplicaciones complejas, enfocadas en rendimiento, usabilidad y resultados.</p>
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">Mi Expertise</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">Lo que aporto a tu equipo de desarrollo con experiencia real en producción.</p>
       </div>
 
       <!-- Main services grid -->
@@ -264,9 +221,9 @@ import FAQSection from "../components/FAQSection.astro";
               ></path>
             </svg>
           </div>
-          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Desarrollo Web Integral</h3>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Desarrollo Full Stack</h3>
           <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow">
-            Creo soluciones web completas y personalizadas, desde sitios web estáticos y landing pages hasta aplicaciones dinámicas complejas, adaptadas a tus objetivos.
+            Domino todo el stack: desde la arquitectura de base de datos y APIs REST con Laravel hasta interfaces reactivas con Vue.js. No necesitas explicarme cómo encajan las piezas — ya lo he hecho en producción.
           </p>
           <div class="flex flex-wrap gap-2">
             <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
@@ -306,9 +263,9 @@ import FAQSection from "../components/FAQSection.astro";
               ></path>
             </svg>
           </div>
-          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Back-End Robusto</h3>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Back-End Sólido</h3>
           <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow">
-            Construyo la lógica y la base de datos de tus aplicaciones web asegurando rendimiento, seguridad y escalabilidad. Experiencia en PHP y Laravel para APIs y sistemas complejos.
+            Código limpio, testeable y mantenible. Construyo back-ends con PHP y Laravel que escalan con tu negocio: migraciones, colas, caché, autenticación y APIs que otros desarrolladores disfrutan consumir.
           </p>
           <div class="flex flex-wrap gap-2">
             <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
@@ -342,9 +299,9 @@ import FAQSection from "../components/FAQSection.astro";
               ></path>
             </svg>
           </div>
-          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Interfaces Modernas</h3>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Front-End con Criterio</h3>
           <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow">
-            Desarrollo interfaces de usuario modernas, responsivas y atractivas que proporcionan una experiencia excepcional del usuario en todos los dispositivos y navegadores.
+            Interfaces que no solo se ven bien — funcionan bien. Vue.js, JavaScript moderno y TailwindCSS para crear experiencias de usuario rápidas, accesibles y consistentes en cualquier dispositivo.
           </p>
           <div class="flex flex-wrap gap-2">
             <span class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
@@ -377,10 +334,10 @@ import FAQSection from "../components/FAQSection.astro";
             href="#contact"
             class="px-8 py-4 text-lg font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-800 transition-all duration-300"
           >
-            Solicitar presupuesto
+            Contactar
           </a>
         </div>
-        <p class="text-gray-500 dark:text-gray-400 text-sm">Sin compromiso • Respuesta en 24-48h</p>
+        <p class="text-gray-500 dark:text-gray-400 text-sm">Disponible para incorporación inmediata</p>
       </div>
     </SectionContainer>
   </main>
@@ -397,95 +354,41 @@ import FAQSection from "../components/FAQSection.astro";
   </SectionContainer>
 
   <FullSectionContainer
-    id="landingPage"
-    class="relative py-20 bg-blue-600 dark:bg-blue-800"
+    id="brands"
+    class="relative py-20 bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-700 dark:from-indigo-800 dark:via-blue-800 dark:to-purple-900"
   >
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="mb-6 text-4xl lg:text-5xl font-bold text-white">¿Necesitas una página web profesional?</h2>
-      <div class="space-y-6 mb-12">
-        <h3 class="text-2xl lg:text-3xl font-medium text-blue-100 dark:text-blue-200">Desarrollo web personalizado para tu negocio</h3>
-        <div class="flex flex-wrap justify-center gap-6 text-lg">
-          <span class="flex items-center gap-2 text-white">
-            <svg
-              class="w-6 h-6 text-green-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M5 13l4 4L19 7"
-              ></path>
-            </svg>
-            Landing Pages
-          </span>
-          <span class="flex items-center gap-2 text-white">
-            <svg
-              class="w-6 h-6 text-green-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M5 13l4 4L19 7"
-              ></path>
-            </svg>
-            E-commerce
-          </span>
-          <span class="flex items-center gap-2 text-white">
-            <svg
-              class="w-6 h-6 text-green-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M5 13l4 4L19 7"
-              ></path>
-            </svg>
-            Aplicaciones Web
-          </span>
-        </div>
-        <p class="text-xl text-blue-100 dark:text-blue-200 max-w-2xl mx-auto">Diseño y desarrollo sitios web optimizados, rápidos y efectivos que ayudan a tu negocio a crecer online.</p>
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="mb-4 text-4xl lg:text-5xl font-bold text-white">Marcas que han confiado en mi trabajo</h2>
+      <p class="text-xl text-blue-100 dark:text-blue-200 max-w-3xl mx-auto mb-12">He desarrollado aplicaciones web, herramientas internas y sitios corporativos para algunas de las empresas más reconocidas de España.</p>
+
+      <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12">
+        <span class="text-white/90 text-lg md:text-xl font-semibold">PlayStation</span>
+        <span class="text-white/60">|</span>
+        <span class="text-white/90 text-lg md:text-xl font-semibold">TikTok</span>
+        <span class="text-white/60">|</span>
+        <span class="text-white/90 text-lg md:text-xl font-semibold">Glovo</span>
+        <span class="text-white/60">|</span>
+        <span class="text-white/90 text-lg md:text-xl font-semibold">LaCaixa</span>
+        <span class="text-white/60">|</span>
+        <span class="text-white/90 text-lg md:text-xl font-semibold">Bizum</span>
+        <span class="text-white/60">|</span>
+        <span class="text-white/90 text-lg md:text-xl font-semibold">Citroën</span>
+        <span class="text-white/60">|</span>
+        <span class="text-white/90 text-lg md:text-xl font-semibold">ElPozo</span>
+        <span class="text-white/60">|</span>
+        <span class="text-white/90 text-lg md:text-xl font-semibold">TacoBell</span>
+        <span class="text-white/60">|</span>
+        <span class="text-white/90 text-lg md:text-xl font-semibold">Ginos</span>
+        <span class="text-white/60">|</span>
+        <span class="text-white/90 text-lg md:text-xl font-semibold">Btravel</span>
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a
-          href="https://www.ignacioamatweb.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block px-8 py-4 text-lg font-bold text-blue-600 bg-white rounded-lg hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 shadow-xl flex items-center gap-2"
-        >
-          Ver Precios y Servicios
-          <svg
-            class="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-            ></path>
-          </svg>
-        </a>
-        <a
-          href="#contact"
-          class="inline-block px-8 py-4 text-lg font-semibold text-white bg-blue-700 hover:bg-blue-800 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
-        >
-          Contactar ahora
-        </a>
-      </div>
+      <a
+        href="#experience"
+        class="inline-block px-8 py-4 text-lg font-bold text-indigo-700 bg-white rounded-lg hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 shadow-xl"
+      >
+        Ver mi experiencia completa
+      </a>
     </div>
   </FullSectionContainer>
   <div class="w-full bg-gray-50 dark:bg-gray-900">
@@ -556,7 +459,7 @@ import FAQSection from "../components/FAQSection.astro";
     >
       <div class="text-center mb-16">
         <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">Preguntas Frecuentes</h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">Resuelvo las dudas más comunes sobre mis servicios de desarrollo web</p>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">Respuestas a las preguntas más comunes de empresas que quieren contratarme</p>
       </div>
       <FAQSection />
     </SectionContainer>
@@ -571,8 +474,8 @@ import FAQSection from "../components/FAQSection.astro";
         <MailIcon class="size-12" />
         Contacto
       </h2>
-      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">¿Tienes un proyecto en mente? Hablemos y hagámoslo realidad</p>
-      <p class="text-sm text-gray-500 dark:text-gray-400 mt-3">También puedes escribirme si buscas incorporar un desarrollador full stack en tu empresa.</p>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">¿Buscas un desarrollador full stack?</p>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mt-3">Hablemos sobre cómo puedo aportar valor a tu equipo.</p>
     </div>
     <ContactForm />
   </SectionContainer>
@@ -594,6 +497,22 @@ import FAQSection from "../components/FAQSection.astro";
     padding-left: 1rem;
     padding-right: 1rem;
     z-index: 1;
+  }
+
+  .hero-section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, rgba(249, 250, 251, 0.4));
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  :global(.dark) .hero-section::after {
+    background: linear-gradient(to bottom, transparent, rgba(17, 24, 39, 0.4));
   }
 
   /* Gradient text animation */
@@ -644,19 +563,6 @@ import FAQSection from "../components/FAQSection.astro";
 
     .hero-section {
       min-height: 70vh;
-      padding-bottom: 8rem;
-    }
-  }
-
-  @media (min-width: 641px) and (max-width: 1023px) {
-    .hero-section {
-      padding-bottom: 8rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .hero-section {
-      padding-bottom: 10rem;
     }
   }
 </style>
