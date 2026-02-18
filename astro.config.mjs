@@ -4,9 +4,7 @@ import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
 // import vercelStatic from "@astrojs/vercel/static";
 import react from "@astrojs/react";
-import db from "@astrojs/db";
-
-import webVitals from "@astrojs/web-vitals";
+import rehypeExternalLinks from "rehype-external-links";
 
 import tailwind from "@astrojs/tailwind";
 
@@ -19,12 +17,18 @@ export default defineConfig({
     css: {
       preprocessorOptions: {
           scss: {
-              api: 'modern-compiler'
+              api: 'modern-compiler',
+              loadPaths: ['.']
           }
       }
     }
   },
   site: 'https://www.ignathedev.com',
+  markdown: {
+    rehypePlugins: [
+      [rehypeExternalLinks, { target: "_blank", rel: ["noopener", "noreferrer"] }],
+    ],
+  },
   i18n: {
     defaultLocale: "es",
     locales: ["en", "es"],
@@ -67,7 +71,7 @@ export default defineConfig({
       }
       return item;
     },
-  }), react(), db(), webVitals(), tailwind()],
+  }), react(), tailwind()],
   adapter: vercel({
     webAnalytics: {
       enabled: true

@@ -1,15 +1,26 @@
 ---
-layout: ../../../layouts/MarkdownPostLayout.astro
 title: "Laravel Cloud: The Future of Web Hosting and Deployment"
-slug: "laravel-cloud-future-web-hosting"
-author: "Your Name"
-description: "Explore Laravel Cloud, the upcoming platform set to revolutionize web hosting and deployment with seamless integration, automation, and scalability, tailored for the Laravel ecosystem."
+description: Explore Laravel Cloud, the upcoming platform set to revolutionize
+  web hosting and deployment with seamless integration, automation, and
+  scalability, tailored for the Laravel ecosystem.
+author: Ignacio Amat
+publishDate: 2024-08-30
+slug: laravel-cloud-future-web-hosting
+locale: en
+translationKey: laravel-cloud-future-hosting
 image:
-    url: "/img/optimized/laravel-cloud-article.webp"
-    alt: "Laravel Cloud platform overview"
-publish_date: "30/08/2024"
-tags: ["Laravel", "Cloud", "Web Hosting", "Deployment", "Technology", "Innovation"]
+  url: /img/optimized/laravel-cloud-article.webp
+  alt: Laravel Cloud platform overview
+tags:
+  - Laravel
+  - Cloud
+  - Web Hosting
+  - Deployment
+  - Technology
+  - Innovation
+isDraft: false
 ---
+
 
 # Laravel Cloud: The Future of Web Hosting and Deployment
 

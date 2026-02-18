@@ -1,15 +1,25 @@
 ---
-layout: ../../../layouts/MarkdownPostLayout.astro
 title: "What's Coming in PHP 8.4: New Features and Improvements"
-slug: "php-8-4-new-features-improvements"
-author: "Ignacio Amat"
-description: "Explore the exciting new features and enhancements in PHP 8.4, including performance improvements, new syntax, and developer-friendly updates."
+description: Explore the exciting new features and enhancements in PHP 8.4,
+  including performance improvements, new syntax, and developer-friendly
+  updates.
+author: Ignacio Amat
+publishDate: 2024-08-24
+slug: php-8-4-new-features-improvements
+locale: en
+translationKey: php-84-features
 image:
-    url: "/img/optimized/php-84.webp"
-    alt: "PHP 8.4 logo with abstract code in the background."
-publish_date: "24/08/2024"
-tags: ["PHP", "PHP 8.4", "web development", "programming", "new features"]
+  url: /img/optimized/php-84.webp
+  alt: PHP 8.4 logo with abstract code in the background.
+tags:
+  - PHP
+  - PHP 8.4
+  - web development
+  - programming
+  - new features
+isDraft: false
 ---
+
 # What's Coming in PHP 8.4: New Features and Improvements
 
 PHP continues to evolve with each new release, and **PHP 8.4** is set to bring a host of new features, performance improvements, and syntax enhancements that will further empower developers. This article will guide you through the most anticipated updates in PHP 8.4 and how they can benefit your web development projects.

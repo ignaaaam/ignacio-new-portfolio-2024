@@ -1,15 +1,26 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "Descubre FilamentPHP: Un Potente Framework para Aplicaciones PHP"
-slug: "descubre-filamentphp-potente-framework-php"
-author: "Ignacio Amat"
-description: "Aprende todo sobre FilamentPHP, un framework moderno para crear aplicaciones PHP, sus características clave y cómo puede facilitar el desarrollo rápido y eficiente."
+description: Aprende todo sobre FilamentPHP, un framework moderno para crear
+  aplicaciones PHP, sus características clave y cómo puede facilitar el
+  desarrollo rápido y eficiente.
+author: Ignacio Amat
+publishDate: 2024-08-17
+slug: descubre-filamentphp-potente-framework-php
+locale: es
+translationKey: filamentphp-framework
 image:
-    url: "/img/optimized/filamentphp-compress.webp"
-    alt: "Interfaz de usuario moderna de FilamentPHP mostrando un panel de administración elegante."
-publish_date: "17/08/2024"
-tags: ["FilamentPHP", "framework PHP", "desarrollo web", "panel de administración", "Laravel"]
+  url: /img/optimized/filamentphp-compress.webp
+  alt: Interfaz de usuario moderna de FilamentPHP mostrando un panel de
+    administración elegante.
+tags:
+  - FilamentPHP
+  - framework PHP
+  - desarrollo web
+  - panel de administración
+  - Laravel
+isDraft: false
 ---
+
 # Descubre FilamentPHP: Un Potente Framework para Aplicaciones PHP
 
 En el dinámico mundo del desarrollo web, la eficiencia y la rapidez son clave. **FilamentPHP** se presenta como un framework revolucionario que ayuda a los desarrolladores a construir aplicaciones PHP de manera rápida y efectiva, sin sacrificar la calidad. Si eres un desarrollador de PHP, especialmente si trabajas con Laravel, este artículo es para ti.

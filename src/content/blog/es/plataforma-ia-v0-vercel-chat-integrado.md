@@ -1,15 +1,29 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
-title: "Revolucionando el Desarrollo Web: La Plataforma de IA V0 de Vercel con Función de Chat Integrada"
-slug: "plataforma-ia-v0-vercel-chat-integrado"
-author: "Ignacio Amat"
-description: "Descubre cómo la IA de V0 de Vercel, combinada con una potente función de chat, está transformando el desarrollo web al permitir la creación rápida de prototipos, automatizar tareas complejas de UI y permitir la colaboración y mejora de diseños en tiempo real."
+title: "Revolucionando el Desarrollo Web: La Plataforma de IA V0 de Vercel con
+  Función de Chat Integrada"
+description: Descubre cómo la IA de V0 de Vercel, combinada con una potente
+  función de chat, está transformando el desarrollo web al permitir la creación
+  rápida de prototipos, automatizar tareas complejas de UI y permitir la
+  colaboración y mejora de diseños en tiempo real.
+author: Ignacio Amat
+publishDate: 2024-08-30
+slug: plataforma-ia-v0-vercel-chat-integrado
+locale: es
+translationKey: vercel-v0-integrated-chat
 image:
-    url: "/img/optimized/article-vercel-optimized.webp"
-    alt: "La plataforma de IA V0 de Vercel con función de chat en acción"
-publish_date: "30/08/2024"
-tags: ["Vercel", "IA", "Desarrollo Web", "Tecnología", "Innovación", "ChatGPT", "V0"]
+  url: /img/optimized/article-vercel-optimized.webp
+  alt: La plataforma de IA V0 de Vercel con función de chat en acción
+tags:
+  - Vercel
+  - IA
+  - Desarrollo Web
+  - Tecnología
+  - Innovación
+  - ChatGPT
+  - V0
+isDraft: false
 ---
+
 
 # Revolucionando el Desarrollo Web: La Plataforma de IA V0 de Vercel con Función de Chat Integrada
 

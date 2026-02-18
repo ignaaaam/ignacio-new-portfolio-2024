@@ -1,15 +1,24 @@
 ---
-layout: ../../../layouts/MarkdownPostLayout.astro
 title: "Enhance Your Laravel Views: Top Blade UI Component Libraries"
-slug: "laravel-blade-ui-component-libraries"
-author: "Ignacio Amat"
-description: "Discover the top Laravel Blade UI component libraries that can help you create stunning and efficient front-end interfaces effortlessly."
+description: Discover the top Laravel Blade UI component libraries that can help
+  you create stunning and efficient front-end interfaces effortlessly.
+author: Ignacio Amat
+publishDate: 2024-08-28
+slug: laravel-blade-ui-component-libraries
+locale: en
+translationKey: blade-ui-libraries
 image:
-    url: "/img/optimized/components-background.png"
-    alt: "Laravel Blade UI component libraries overview"
-publish_date: "28/08/2024"
-tags: ["Laravel", "Blade", "UI components", "web development", "PHP"]
+  url: /img/optimized/components-background.png
+  alt: Laravel Blade UI component libraries overview
+tags:
+  - Laravel
+  - Blade
+  - UI components
+  - web development
+  - PHP
+isDraft: false
 ---
+
 
 # Enhance Your Laravel Views: The Best Blade UI Component Libraries
 

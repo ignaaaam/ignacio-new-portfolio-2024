@@ -1,15 +1,25 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "Novedades de PHP 8.4: Nuevas Características y Mejoras"
-slug: "php-8-4-nuevas-caracteristicas-mejoras"
-author: "Ignacio Amat"
-description: "Descubre las nuevas características y mejoras en PHP 8.4, incluyendo mejoras de rendimiento, nueva sintaxis y actualizaciones amigables para desarrolladores."
+description: Descubre las nuevas características y mejoras en PHP 8.4,
+  incluyendo mejoras de rendimiento, nueva sintaxis y actualizaciones amigables
+  para desarrolladores.
+author: Ignacio Amat
+publishDate: 2024-08-24
+slug: php-8-4-nuevas-caracteristicas-mejoras
+locale: es
+translationKey: php-84-features
 image:
-    url: "/img/optimized/php-84.webp"
-    alt: "Logotipo de PHP 8.4 con código abstracto en el fondo."
-publish_date: "24/08/2024"
-tags: ["PHP", "PHP 8.4", "desarrollo web", "programación", "nuevas características"]
+  url: /img/optimized/php-84.webp
+  alt: Logotipo de PHP 8.4 con código abstracto en el fondo.
+tags:
+  - PHP
+  - PHP 8.4
+  - desarrollo web
+  - programación
+  - nuevas características
+isDraft: false
 ---
+
 # Novedades de PHP 8.4: Nuevas Características y Mejoras
 
 PHP sigue evolucionando con cada nueva versión, y **PHP 8.4** está listo para traer una serie de nuevas características, mejoras de rendimiento y mejoras en la sintaxis que fortalecerán aún más a los desarrolladores. Este artículo te guiará a través de las actualizaciones más esperadas en PHP 8.4 y cómo pueden beneficiar a tus proyectos de desarrollo web.

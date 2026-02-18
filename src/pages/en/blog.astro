@@ -1,175 +1,309 @@
 ---
-import { getLangFromUrl } from "../../i18n/utils.ts";
 import Layout from "../../layouts/Layout.astro";
-import { desc, eq } from 'drizzle-orm';
-import { db, Posts, Tags, Images, PostImages, PostTags } from 'astro:db';
-
-const lang = getLangFromUrl(Astro.url);
+import { getPublishedBlogEntries, getBlogPostPath, getReadingTime, getTagColor } from "../../lib/blog";
 
 export const prerender = false;
 
-interface Post {
-  posts: {
-    id: number;
-    slug: string;
-    title: string;
-    description: string;
-    author: string;
-    publish_date: string;
-    locale: string;
+const posts = await getPublishedBlogEntries("en");
+const postsArray = posts.map((post) => {
+  const path = getBlogPostPath(post);
+  return {
+    id: post.id,
+    slug: path,
+    url: path,
+    frontmatter: {
+      title: post.data.title,
+      description: post.data.description,
+    },
+    tags: post.data.tags,
+    image: post.data.image,
+    publishDate: post.data.publishDate,
+    readingTime: getReadingTime(post.body ?? ""),
   };
-  tags: {
-    id: number;
-    name: string;
-  } | null;
-  images: {
-    id: number;
-    url: string;
-    alt: string;
-  } | null;
-}
-
-const posts = await db.select({
-  posts: Posts,
-  tags: Tags,
-  images: Images,
-})
-.from(Posts)
-.leftJoin(PostTags, eq(PostTags.postId, Posts.id))
-.leftJoin(Tags, eq(PostTags.tagId, Tags.id))
-.leftJoin(PostImages, eq(PostImages.postId, Posts.id))
-.leftJoin(Images, eq(PostImages.imageId, Images.id))
-.where(eq(Posts.locale, lang))
-.orderBy(desc(Posts.publish_date))
-.all();
-
-const postsMap = new Map();
-
-posts.forEach((post: Post) => {
-  if (!postsMap.has(post.posts.id)) {
-    postsMap.set(post.posts.id, {
-      id: post.posts.id,
-      slug: `/en/blog/${post.posts.slug}`,
-      url: `/en/blog/${post.posts.slug}`,
-      frontmatter: {
-        title: post.posts.title,
-        description: post.posts.description,
-      },
-      tags: [],
-      image: {
-        url: post.images?.url,
-        alt: post.images?.alt,
-      },
-    });
-  }
-  const postEntry = postsMap.get(post.posts.id);
-  if (post.tags?.name) {
-    postEntry.tags.push(post.tags.name);
-  }
 });
 
-const postsArray = Array.from(postsMap.values());
+const featuredPost = postsArray[0];
+const regularPosts = postsArray.slice(1);
+
+const allTags = [...new Set(postsArray.flatMap((p) => p.tags))].sort();
+const tagCounts = postsArray.reduce(
+  (acc, post) => {
+    post.tags.forEach((tag) => {
+      acc[tag] = (acc[tag] || 0) + 1;
+    });
+    return acc;
+  },
+  {} as Record<string, number>
+);
+
+// Sort by count desc, then alphabetically; split into primary (shown) and secondary (collapsed)
+const sortedTags = [...allTags].sort((a, b) => (tagCounts[b] || 0) - (tagCounts[a] || 0) || a.localeCompare(b));
+const primaryTags = sortedTags.filter((t) => (tagCounts[t] || 0) >= 2).slice(0, 10);
+const expandedTags = sortedTags.filter((t) => !primaryTags.includes(t));
+
 const blogBaseUrl = "https://www.ignathedev.com";
 const blogUrl = `${blogBaseUrl}/en/blog`;
 ---
 
-
 <Layout
-    title="Web Development Blog | PHP, Laravel, Vue.js Tutorials | Ignacio Amat"
-    description="Articles and tutorials on web development, PHP, Laravel, Vue.js and JavaScript. Learn best practices from a full stack developer in Barcelona."
-    pageType="website">
-    <main class="min-h-screen">
-        <div class="max-w-6xl mx-auto px-6 py-12">
-          <!-- Hero Section -->
-          <div class="text-center mb-16">
-            <nav class="mb-6" aria-label="Breadcrumb">
+  title="Web Development Blog | PHP, Laravel, Vue.js Tutorials | Ignacio Amat"
+  description="Articles and tutorials on web development, PHP, Laravel, Vue.js and JavaScript. Learn best practices from a full stack developer in Barcelona."
+  pageType="website"
+  alternateLangUrls={{ es: "https://www.ignathedev.com/blog", en: "https://www.ignathedev.com/en/blog" }}
+>
+  <main class="min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+      <!-- Hero Section -->
+      <div class="text-center mb-12">
+        <nav class="mb-6" aria-label="Breadcrumb">
+          <ol class="inline-flex items-center gap-2 text-sm">
+            <li>
               <a href="/en" class="text-blue-600 dark:text-blue-400 hover:underline">Home</a>
-              <span class="mx-2 text-gray-500">/</span>
-              <span class="text-gray-600 dark:text-gray-400">Blog</span>
-            </nav>
-            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 text-sm font-medium mb-6">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
+            </li>
+            <li aria-hidden="true">
+              <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
-              Technical Blog
-            </span>
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                Web Development Blog — <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">PHP, Laravel and Vue.js Tutorials</span>
-            </h1>
-            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-              Articles, tutorials and news about web development, PHP, Laravel, Vue.js and modern technologies.
-            </p>
-          </div>
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </li>
+            <li>
+              <span class="text-gray-500 dark:text-gray-400">Blog</span>
+            </li>
+          </ol>
+        </nav>
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 text-sm font-medium mb-5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
+          </svg>
+          Technical Blog
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          Web Development Blog — <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">PHP, Laravel & Vue.js</span>
+        </h1>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          Articles, tutorials and insights on modern web development for professionals.
+        </p>
+      </div>
+
+      <!-- Tag Filter -->
+      <div class="mb-10">
+        <!-- Mobile: single-row horizontal scroll. sm+: flex-wrap centered -->
+        <div id="tags-scroll-outer" class="overflow-x-auto -mx-4 sm:mx-0 sm:overflow-visible">
+          <div
+            class="flex gap-2 items-center px-4 sm:px-0 sm:flex-wrap sm:justify-center min-w-max sm:min-w-0"
+            role="group"
+            aria-label="Filter by category"
+          >
+            <button
+              id="filter-all"
+              class="filter-btn active-filter flex-shrink-0 px-4 py-2.5 sm:py-1.5 rounded-full text-sm font-semibold border transition-all duration-200 bg-blue-600 text-white border-blue-600 shadow-sm shadow-blue-500/20"
+              data-filter-tag=""
+            >
+              All <span class="ml-1.5 text-blue-200/80 font-normal text-xs">{postsArray.length}</span>
+            </button>
             {
-            postsArray.map((post) => {
-            const moreTagsCount = post.tags.length - 3;
-            return (
-            <article class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 flex flex-col">
-                <a href={post.slug} class="block overflow-hidden aspect-video">
-                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-                         width={400}
-                         height={225} 
-                         src={post.image.url} 
-                         alt={post.image.alt}
-                         loading="lazy" />
-                </a>
-                <div class="p-6 flex flex-col flex-grow">
-                   <!-- Tags -->
-                   <div class="flex flex-wrap gap-2 mb-4">
-                       {post.tags.slice(0, 3).map((tag: string) => (
-                       <span class="px-2.5 py-1 text-xs font-medium text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-900/50 rounded-full">
-                           {tag}
-                       </span>
-                       ))}
-                       {moreTagsCount > 0 && (
-                       <span class="px-2.5 py-1 text-xs font-medium text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 rounded-full">
-                           +{moreTagsCount}
-                       </span>
-                       )}
-                   </div>
-                   
-                   <!-- Title -->
-                   <a href={post.url} class="block mb-3">
-                       <h2 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
-                           {post.frontmatter.title}
-                       </h2>
-                   </a>
-                   
-                   <!-- Description -->
-                   <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed line-clamp-3 mb-4 flex-grow">
-                       {post.frontmatter.description}
-                   </p>
-                   
-                   <!-- Read More Link -->
-                   <a href={post.url}
-                       class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors group/link">
-                       Read article
-                       <svg class="w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                       </svg>
-                   </a>
-                </div>
-            </article>
-            );
-            })}
-        </ul>
-        
-        <!-- Empty State -->
-        {postsArray.length === 0 && (
-          <div class="text-center py-16">
-            <svg class="w-16 h-16 mx-auto text-gray-400 dark:text-gray-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
-            </svg>
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">No articles yet</h3>
-            <p class="text-gray-600 dark:text-gray-400">New content coming soon. Check back later!</p>
+              primaryTags.map((tag) => (
+                <button
+                  class="filter-btn flex-shrink-0 px-4 py-2.5 sm:py-1.5 rounded-full text-sm font-medium border transition-all duration-200 bg-transparent text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-600 hover:border-blue-400 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400"
+                  data-filter-tag={tag}
+                >
+                  {tag} <span class="ml-1.5 opacity-40 text-xs font-normal">{tagCounts[tag]}</span>
+                </button>
+              ))
+            }
+            {
+              expandedTags.length > 0 && (
+                <button
+                  id="toggle-more-tags"
+                  class="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2.5 sm:py-1.5 rounded-full text-sm font-medium border border-dashed transition-all duration-200 text-gray-400 dark:text-gray-500 border-gray-300 dark:border-gray-600 hover:border-blue-400 hover:text-blue-500 dark:hover:border-blue-500 dark:hover:text-blue-400"
+                  aria-expanded="false"
+                  aria-controls="more-tags-panel"
+                >
+                  +{expandedTags.length} topics
+                  <svg
+                    id="more-tags-chevron"
+                    class="w-3.5 h-3.5 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              )
+            }
           </div>
-        )}
+        </div>
+
+        {
+          expandedTags.length > 0 && (
+            <div
+              id="more-tags-panel"
+              class="overflow-hidden"
+              style="max-height: 0; opacity: 0; transition: max-height 0.35s ease, opacity 0.3s ease;"
+            >
+              <div class="flex flex-wrap gap-2 justify-center pt-3 mt-3 border-t border-gray-100 dark:border-gray-800">
+                {expandedTags.map((tag) => (
+                  <button
+                    class="filter-btn px-3.5 py-2 sm:py-1 rounded-full text-xs font-medium border transition-all duration-200 bg-transparent text-gray-500 dark:text-gray-400 border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400"
+                    data-filter-tag={tag}
+                  >
+                    {tag} <span class="ml-1 opacity-40 font-normal">{tagCounts[tag]}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )
+        }
+
+        <p class="text-center text-xs text-gray-400 dark:text-gray-500 mt-4 tracking-wide">
+          Showing <span id="post-count" class="font-semibold text-gray-600 dark:text-gray-300">{postsArray.length}</span> articles
+        </p>
+      </div>
+
+      <!-- Featured Post -->
+      {
+        featuredPost && (
+          <div id="featured-post" data-post-tags={featuredPost.tags.join(",")} class="mb-10">
+            <a
+              href={featuredPost.url}
+              class="group block bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600"
+            >
+              <div class="sm:grid sm:grid-cols-2 lg:grid-cols-[3fr_2fr]">
+                <div class="relative overflow-hidden h-56 sm:h-full min-h-[240px]">
+                  <img
+                    src={featuredPost.image.url}
+                    alt={featuredPost.image.alt}
+                    width={720}
+                    height={480}
+                    loading="eager"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent sm:bg-gradient-to-r" />
+                  <span class="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-semibold shadow">
+                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    Featured
+                  </span>
+                </div>
+                <div class="p-7 flex flex-col justify-between">
+                  <div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                      {featuredPost.tags.slice(0, 4).map((tag) => (
+                        <span class={`px-2.5 py-0.5 text-xs font-medium rounded-full border ${getTagColor(tag)}`}>{tag}</span>
+                      ))}
+                    </div>
+                    <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug mb-3">
+                      {featuredPost.frontmatter.title}
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3">
+                      {featuredPost.frontmatter.description}
+                    </p>
+                  </div>
+                  <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-100 dark:border-gray-700">
+                    <div class="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
+                      <time datetime={featuredPost.publishDate.toISOString()}>
+                        {new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric" }).format(featuredPost.publishDate)}
+                      </time>
+                      <span aria-hidden="true">·</span>
+                      <span>{featuredPost.readingTime} min read</span>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 dark:text-blue-400 group-hover:gap-2.5 transition-all">
+                      Read article
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        )
+      }
+
+      <!-- Regular Posts Grid -->
+      <div id="posts-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          regularPosts.map((post) => {
+            const formattedDate = new Intl.DateTimeFormat("en-US", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            }).format(post.publishDate);
+            return (
+              <article
+                data-post-tags={post.tags.join(",")}
+                class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 flex flex-col"
+              >
+                <a href={post.slug} class="block overflow-hidden h-44 sm:h-40 lg:h-44">
+                  <img
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    width={480}
+                    height={270}
+                    src={post.image.url}
+                    alt={post.image.alt}
+                    loading="lazy"
+                  />
+                </a>
+                <div class="p-5 flex flex-col flex-grow">
+                  <div class="flex flex-wrap gap-1.5 mb-3">
+                    {post.tags.slice(0, 2).map((tag) => (
+                      <span class={`px-2.5 py-0.5 text-xs font-medium rounded-full border ${getTagColor(tag)}`}>{tag}</span>
+                    ))}
+                    {post.tags.length > 2 && (
+                      <span class="px-2.5 py-0.5 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 rounded-full border border-gray-200 dark:border-gray-600">
+                        +{post.tags.length - 2}
+                      </span>
+                    )}
+                  </div>
+
+                  <a href={post.url} class="block mb-2 flex-grow">
+                    <h2 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug">
+                      {post.frontmatter.title}
+                    </h2>
+                  </a>
+
+                  <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed line-clamp-2 mb-4">
+                    {post.frontmatter.description}
+                  </p>
+
+                  <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100 dark:border-gray-700">
+                    <div class="flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
+                      <time datetime={post.publishDate.toISOString()}>{formattedDate}</time>
+                      <span aria-hidden="true">·</span>
+                      <span>{post.readingTime} min</span>
+                    </div>
+                    <a
+                      href={post.url}
+                      class="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors group/link"
+                    >
+                      Read
+                      <svg class="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="hidden text-center py-20">
+        <svg class="w-14 h-14 mx-auto text-gray-300 dark:text-gray-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-1">No articles in this category</h3>
+        <p class="text-gray-500 dark:text-gray-400 text-sm">Try a different tag or view all articles.</p>
+        <button id="clear-filter" class="mt-4 text-sm text-blue-600 dark:text-blue-400 hover:underline">View all articles</button>
+      </div>
     </div>
-    </main>
+  </main>
 </Layout>
 
-<!-- CollectionPage schema for blog listing SEO -->
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "CollectionPage",
@@ -189,10 +323,115 @@ const blogUrl = `${blogBaseUrl}/en/blog`;
   },
 })} />
 
-<style>
-    .tags-wrapper {
-        position: relative;
-        max-width: 100%;
-        overflow: hidden;
+<script>
+  function initBlogFilter() {
+    const filterAllBtn = document.getElementById("filter-all") as HTMLButtonElement | null;
+    if (!filterAllBtn) return; // not on the blog listing page
+
+    const filterBtns = document.querySelectorAll<HTMLButtonElement>("[data-filter-tag]");
+    const postsGrid = document.getElementById("posts-grid");
+    const featuredPost = document.getElementById("featured-post");
+    const emptyState = document.getElementById("empty-state");
+    const postCountEl = document.getElementById("post-count");
+    const clearFilterBtn = document.getElementById("clear-filter");
+
+    // More tags toggle
+    const toggleMoreTagsBtn = document.getElementById("toggle-more-tags") as HTMLButtonElement | null;
+    const moreTagsPanel = document.getElementById("more-tags-panel") as HTMLElement | null;
+    const moreTagsChevron = document.getElementById("more-tags-chevron") as HTMLElement | null;
+
+    // Reset panel state every time (handles view-transition re-inits)
+    if (moreTagsPanel) {
+      moreTagsPanel.style.maxHeight = "0";
+      moreTagsPanel.style.opacity = "0";
     }
+    if (toggleMoreTagsBtn) {
+      toggleMoreTagsBtn.setAttribute("aria-expanded", "false");
+      if (moreTagsChevron) moreTagsChevron.style.transform = "rotate(0deg)";
+    }
+
+    // Guard: add the click listener only ONCE per DOM instance to avoid duplicate toggles
+    if (toggleMoreTagsBtn && moreTagsPanel && !toggleMoreTagsBtn.dataset.toggleReady) {
+      toggleMoreTagsBtn.dataset.toggleReady = "true";
+      toggleMoreTagsBtn.addEventListener("click", () => {
+        const isExpanded = toggleMoreTagsBtn.getAttribute("aria-expanded") === "true";
+        const willExpand = !isExpanded;
+        toggleMoreTagsBtn.setAttribute("aria-expanded", String(willExpand));
+        if (willExpand) {
+          moreTagsPanel.style.maxHeight = moreTagsPanel.scrollHeight + "px";
+          moreTagsPanel.style.opacity = "1";
+          if (moreTagsChevron) moreTagsChevron.style.transform = "rotate(180deg)";
+        } else {
+          moreTagsPanel.style.maxHeight = "0";
+          moreTagsPanel.style.opacity = "0";
+          if (moreTagsChevron) moreTagsChevron.style.transform = "rotate(0deg)";
+        }
+      });
+    }
+
+    const allArticles = [
+      ...(featuredPost ? [featuredPost] : []),
+      ...(postsGrid ? Array.from(postsGrid.querySelectorAll<HTMLElement>("article")) : []),
+    ];
+
+    function applyFilter(tag: string) {
+      let visibleCount = 0;
+
+      allArticles.forEach((el) => {
+        const tags = (el.dataset.postTags || "").split(",");
+        const show = !tag || tags.includes(tag);
+        (el as HTMLElement).style.display = show ? "" : "none";
+        if (show) visibleCount++;
+      });
+
+      if (postCountEl) postCountEl.textContent = String(visibleCount);
+
+      filterBtns.forEach((btn) => {
+        const isActive = btn.dataset.filterTag === tag;
+        if (isActive && tag !== "") {
+          btn.classList.add("bg-blue-600", "text-white", "border-blue-600");
+          btn.classList.remove("bg-transparent", "text-gray-600", "dark:text-gray-300", "border-gray-200", "dark:border-gray-600", "text-gray-500", "dark:text-gray-400", "border-gray-700");
+        } else if (!isActive && tag !== "") {
+          btn.classList.remove("bg-blue-600", "text-white", "border-blue-600");
+          btn.classList.add("bg-transparent", "text-gray-600", "dark:text-gray-300", "border-gray-200", "dark:border-gray-600");
+        }
+      });
+
+      if (filterAllBtn) {
+        if (!tag) {
+          filterAllBtn.classList.add("bg-blue-600", "text-white", "border-blue-600");
+          filterAllBtn.classList.remove("bg-transparent", "text-gray-600", "dark:text-gray-300", "border-gray-200", "dark:border-gray-600");
+        } else {
+          filterAllBtn.classList.remove("bg-blue-600", "text-white", "border-blue-600");
+          filterAllBtn.classList.add("bg-transparent", "text-gray-600", "dark:text-gray-300", "border-gray-200", "dark:border-gray-600");
+        }
+      }
+
+      if (emptyState) {
+        emptyState.classList.toggle("hidden", visibleCount > 0);
+      }
+    }
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", () => applyFilter(btn.dataset.filterTag || ""));
+    });
+
+    clearFilterBtn?.addEventListener("click", () => applyFilter(""));
+  }
+
+  // Initial load (handles both SSR and prerendered)
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initBlogFilter, { once: true });
+  } else {
+    initBlogFilter();
+  }
+  // Re-initialize after every Astro view-transition navigation
+  document.addEventListener("astro:page-load", initBlogFilter);
+</script>
+
+<style>
+  /* Hide scrollbar on the tags chip row (mobile horizontal scroll) */
+  #tags-scroll-outer::-webkit-scrollbar {
+    display: none;
+  }
 </style>

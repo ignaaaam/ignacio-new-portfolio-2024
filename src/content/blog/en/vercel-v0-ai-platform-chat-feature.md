@@ -1,15 +1,29 @@
 ---
-layout: ../../../layouts/MarkdownPostLayout.astro
-title: "Revolutionizing Web Development: Vercel's V0 AI Platform with Integrated Chat Feature"
-slug: "vercel-v0-ai-platform-chat-feature"
-author: "Your Name"
-description: "Discover how Vercel's V0 AI, combined with a powerful new chat feature, is transforming web development by enabling rapid prototype creation, automating complex UI tasks, and allowing real-time collaboration and refinement of designs."
+title: "Revolutionizing Web Development: Vercel's V0 AI Platform with Integrated
+  Chat Feature"
+description: Discover how Vercel's V0 AI, combined with a powerful new chat
+  feature, is transforming web development by enabling rapid prototype creation,
+  automating complex UI tasks, and allowing real-time collaboration and
+  refinement of designs.
+author: Ignacio Amat
+publishDate: 2024-08-30
+slug: vercel-v0-ai-platform-chat-feature
+locale: en
+translationKey: vercel-v0-integrated-chat
 image:
-    url: "/img/optimized/article-vercel-optimized.webp"
-    alt: "Vercel's V0 AI platform with chat feature in action"
-publish_date: "30/08/2024"
-tags: ["Vercel", "AI", "Web Development", "Technology", "Innovation", "ChatGPT", "V0"]
+  url: /img/optimized/article-vercel-optimized.webp
+  alt: Vercel's V0 AI platform with chat feature in action
+tags:
+  - Vercel
+  - AI
+  - Web Development
+  - Technology
+  - Innovation
+  - ChatGPT
+  - V0
+isDraft: false
 ---
+
 
 # Revolutionizing Web Development: Vercel's V0 AI Platform with Integrated Chat Feature
 

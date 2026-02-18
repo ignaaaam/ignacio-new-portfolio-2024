@@ -1,15 +1,25 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: Bienvenido a mi blog de noticias sobre programación!
-slug: "bienvenido-a-mi-blog-de-noticias-sobre-programacion"
+description: ¡Esta es mi primera noticia de mi blog, bienvenidos front ends,
+  back ends y full stacks!
 author: Ignacio Amat
-description: "¡Esta es mi primera noticia de mi blog, bienvenidos front ends, back ends y full stacks!"
+publishDate: 2024-07-13
+slug: bienvenido-a-mi-blog-de-noticias-sobre-programacion
+locale: es
+translationKey: welcome-programming-blog
 image:
-    url: "https://docs.astro.build/default-og-image.png"
-    alt: "La palabra astro alrededor de planetas, la primera imagen usada en el blog"
-publish_date: "13/07/2024"
-tags: ["madewithastro", "blog", "programming", "frontend", "backend", "fullstack"]
+  url: https://docs.astro.build/default-og-image.png
+  alt: La palabra astro alrededor de planetas, la primera imagen usada en el blog
+tags:
+  - madewithastro
+  - blog
+  - programming
+  - frontend
+  - backend
+  - fullstack
+isDraft: false
 ---
+
 
 ### Introducción
 

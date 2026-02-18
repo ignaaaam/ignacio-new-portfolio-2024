@@ -1,15 +1,24 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "Entendiendo el Apagón Global de CrowdStrike: ¿Qué Salió Mal?"
-slug: "entendiendo-apagon-global-crowdstrike-que-salio-mal"
-author: "Ignacio Amat"
-description: "Un análisis del apagón global masivo de CrowdStrike, su impacto y lecciones aprendidas para profesionales de ciberseguridad."
+description: Un análisis del apagón global masivo de CrowdStrike, su impacto y
+  lecciones aprendidas para profesionales de ciberseguridad.
+author: Ignacio Amat
+publishDate: 2024-08-06
+slug: entendiendo-apagon-global-crowdstrike-que-salio-mal
+locale: es
+translationKey: crowdstrike-global-outage-analysis
 image:
-    url: "/img/optimized/crowdstrike-outage-compress.webp"
-    alt: "Una pantalla azul de la muerte (BSOD) en un monitor de computadora."
-publish_date: "06/08/2024"
-tags: ["CrowdStrike", "ciberseguridad", "actualización de software", "apagón global", "gestión de TI"]
+  url: /img/optimized/crowdstrike-outage-compress.webp
+  alt: Una pantalla azul de la muerte (BSOD) en un monitor de computadora.
+tags:
+  - CrowdStrike
+  - ciberseguridad
+  - actualización de software
+  - apagón global
+  - gestión de TI
+isDraft: false
 ---
+
 # Entendiendo el Apagón Global de CrowdStrike: ¿Qué Salió Mal?
 
 El 19 de julio de 2024, el mundo de la ciberseguridad se vio sacudido por un apagón masivo causado por una actualización defectuosa de software de CrowdStrike. Este incidente interrumpió las operaciones de millones de usuarios y destacó las vulnerabilidades en la forma en que se manejan las actualizaciones automáticas por parte de las firmas de ciberseguridad.

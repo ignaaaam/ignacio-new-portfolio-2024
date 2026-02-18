@@ -1,15 +1,28 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
-title: "Desarrollador Web Full Stack disponible para proyectos remotos"
-slug: "desarrollador-web-full-stack-disponible-para-proyectos-remotos"
+title: Desarrollador Web Full Stack disponible para proyectos remotos
+description: Contrata a Ignacio Amat, un desarrollador web full stack
+  experimentado de Barcelona, especializado en PHP, Laravel, stack TALL, stack
+  VILT, JavaScript, Vue.js y TailwindCSS. Disponible para nuevos clientes en
+  todo el mundo.
 author: Ignacio Amat
-description: "Contrata a Ignacio Amat, un desarrollador web full stack experimentado de Barcelona, especializado en PHP, Laravel, stack TALL, stack VILT, JavaScript, Vue.js y TailwindCSS. Disponible para nuevos clientes en todo el mundo."
+publishDate: 2024-07-17
+slug: desarrollador-web-full-stack-disponible-para-proyectos-remotos
+locale: es
+translationKey: full-stack-remote-projects
 image:
-    url: "/img/optimized/remote-work.webp"
-    alt: "El setup de desarrollo web con una laptop, monitor, teclado y ratón en un escritorio limpio y organizado."
-publish_date: "17/07/2024"
-tags: ["full stack web developer", "remote web developer", "PHP developer", "Laravel developer", "web development services", "TailwindCSS"]
+  url: /img/optimized/remote-work.webp
+  alt: El setup de desarrollo web con una laptop, monitor, teclado y ratón en un
+    escritorio limpio y organizado.
+tags:
+  - full stack web developer
+  - remote web developer
+  - PHP developer
+  - Laravel developer
+  - web development services
+  - TailwindCSS
+isDraft: false
 ---
+
 # Abierto a Nuevos Clientes en Todo el Mundo: Desarrollador Web Full Stack Experimentado
 
 ¡Hola a todos! Soy Ignacio Amat, un desarrollador web full stack de Barcelona, con más de 3 años de experiencia en desarrollo back end y front end. Estoy emocionado de anunciar que ahora estoy disponible para nuevos clientes en todo el mundo y listo para asumir nuevos proyectos de forma remota.

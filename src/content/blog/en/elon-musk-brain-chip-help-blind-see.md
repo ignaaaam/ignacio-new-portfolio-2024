@@ -1,15 +1,26 @@
 ---
-layout: ../../../layouts/MarkdownPostLayout.astro
-title: "Elon Musk's Brain Chip Gets Approval to Help Blind People See"  
-slug: "elon-musk-brain-chip-help-blind-see"  
-author: "Ignacio Amat"  
-description: "Elon Musk's Neuralink has received approval to develop brain chips aimed at helping blind individuals regain sight. Learn more about the revolutionary technology and its implications for the future of healthcare."  
-image:  
-    url: "/img/optimized/elonmusk-neuralink.webp"  
-    alt: "Representation of a brain chip, symbolizing Neuralink's vision to restore sight."  
-publish_date: "24/09/2024"
-tags: ["Elon Musk", "Neuralink", "Brain Chip", "Healthcare Technology", "Blindness"]  
+title: Elon Musk's Brain Chip Gets Approval to Help Blind People See
+description: Elon Musk's Neuralink has received approval to develop brain chips
+  aimed at helping blind individuals regain sight. Learn more about the
+  revolutionary technology and its implications for the future of healthcare.
+author: Ignacio Amat
+publishDate: 2024-09-24
+slug: elon-musk-brain-chip-help-blind-see
+locale: en
+translationKey: neuralink-vision-restoration
+image:
+  url: /img/optimized/elonmusk-neuralink.webp
+  alt: Representation of a brain chip, symbolizing Neuralink's vision to restore
+    sight.
+tags:
+  - Elon Musk
+  - Neuralink
+  - Brain Chip
+  - Healthcare Technology
+  - Blindness
+isDraft: false
 ---
+
 
 # Elon Musk's Brain Chip Gets Approval to Help Blind People See
 

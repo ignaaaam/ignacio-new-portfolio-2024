@@ -1,15 +1,24 @@
 ---
-layout: ../../../layouts/MarkdownPostLayout.astro
 title: "Understanding the CrowdStrike Global Outage: What Went Wrong?"
-slug: "understanding-crowdstrike-global-outage-what-went-wrong"
-author: "Ignacio Amat"
-description: "An analysis of the massive CrowdStrike global outage, its impact, and lessons learned for cybersecurity professionals."
+description: An analysis of the massive CrowdStrike global outage, its impact,
+  and lessons learned for cybersecurity professionals.
+author: Ignacio Amat
+publishDate: 2024-08-06
+slug: understanding-crowdstrike-global-outage-what-went-wrong
+locale: en
+translationKey: crowdstrike-global-outage-analysis
 image:
-    url: "/img/optimized/crowdstrike-outage-compress.webp"
-    alt: "A blue screen of death (BSOD) on a computer monitor."
-publish_date: "06/08/2024"
-tags: ["CrowdStrike", "cybersecurity", "software update", "global outage", "IT management"]
+  url: /img/optimized/crowdstrike-outage-compress.webp
+  alt: A blue screen of death (BSOD) on a computer monitor.
+tags:
+  - CrowdStrike
+  - cybersecurity
+  - software update
+  - global outage
+  - IT management
+isDraft: false
 ---
+
 # Understanding the CrowdStrike Global Outage: What Went Wrong?
 
 On July 19, 2024, the cybersecurity world was shaken by a massive outage caused by a faulty software update from CrowdStrike. This incident disrupted operations for millions of users and highlighted vulnerabilities in the way automatic updates are handled by cybersecurity firms.

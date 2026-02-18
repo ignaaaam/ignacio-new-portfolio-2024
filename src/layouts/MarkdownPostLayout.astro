@@ -1,9 +1,55 @@
 ---
-const { frontmatter } = Astro.props;
+interface MarkdownHeading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface MarkdownFrontmatter {
+  title?: string;
+  description?: string;
+  author?: string;
+  publishDate?: Date | string;
+  publish_date?: Date | string;
+  updatedDate?: Date | string;
+  tags?: string[];
+  image?: {
+    url?: string;
+    alt?: string;
+  };
+}
+
+interface Props {
+  frontmatter: MarkdownFrontmatter;
+  canonical?: string;
+  alternateUrls?: {
+    es: string;
+    en: string;
+  };
+  languageSwitcherPaths?: {
+    es: string;
+    en: string;
+  };
+  readingTime?: number;
+  headings?: MarkdownHeading[];
+  body?: string;
+}
+
+const {
+  frontmatter,
+  canonical: canonicalProp,
+  alternateUrls,
+  languageSwitcherPaths: languageSwitcherPathsProp,
+  readingTime,
+  headings = [],
+  body: rawBody,
+} = Astro.props as Props;
+
 import ContactForm from "../components/ContactForm.astro";
 import Layout from "../layouts/Layout.astro";
 import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
 import { getLangFromUrl } from "../i18n/utils";
+import { getTagColor } from "../lib/blog";
 
 import {
   FacebookShareButton,
@@ -24,43 +70,85 @@ const BUTTONS = [
 
 const lang = getLangFromUrl(Astro.url);
 const isEnglish = lang === "en";
-const ogImage = frontmatter.image?.url ? (frontmatter.image.url.startsWith("http") ? frontmatter.image.url : `https://www.ignathedev.com${frontmatter.image.url}`) : "https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg";
-const url = `https://www.ignathedev.com${Astro.url.pathname}`;
+const ogImage = frontmatter.image?.url
+  ? frontmatter.image.url.startsWith("http")
+    ? frontmatter.image.url
+    : `https://www.ignathedev.com${frontmatter.image.url}`
+  : "https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg";
+const ogImageType = ogImage.endsWith(".webp") ? "image/webp" : ogImage.endsWith(".png") ? "image/png" : "image/jpeg";
+const wordCount = rawBody ? rawBody.trim().split(/\s+/).filter(Boolean).length : undefined;
+const url = canonicalProp ?? `https://www.ignathedev.com${Astro.url.pathname}`;
 const blogUrl = isEnglish ? "https://www.ignathedev.com/en/blog" : "https://www.ignathedev.com/blog";
+const blogPath = isEnglish ? "/en/blog" : "/blog";
 const homeUrl = isEnglish ? "https://www.ignathedev.com/en" : "https://www.ignathedev.com";
 const locale = isEnglish ? "en_US" : "es_ES";
 const inLanguage = isEnglish ? "en-US" : "es-ES";
 
-// Parse publish_date (format: DD/MM/YYYY)
-const parseDate = (dateStr: string) => {
-  const parts = dateStr.split("/");
-  return parts.length === 3 ? new Date(`${parts[2]}-${parts[1]}-${parts[0]}`).toISOString() : new Date().toISOString();
+const parseDate = (dateValue?: Date | string) => {
+  if (dateValue instanceof Date && !Number.isNaN(dateValue.getTime())) return dateValue;
+  const rawDate = String(dateValue || "");
+  const parts = rawDate.split("/");
+  if (parts.length === 3) {
+    const parsed = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
+    if (!Number.isNaN(parsed.getTime())) return parsed;
+  }
+  const parsed = new Date(rawDate);
+  return Number.isNaN(parsed.getTime()) ? new Date() : parsed;
 };
-const publishedTime = parseDate(frontmatter.publish_date || "");
+
+const publishDate = parseDate(frontmatter.publishDate ?? frontmatter.publish_date);
+const publishedTime = publishDate.toISOString();
+const updatedDateValue = frontmatter.updatedDate ? parseDate(frontmatter.updatedDate) : publishDate;
+const modifiedTime = updatedDateValue.toISOString();
+
+const displayDate = new Intl.DateTimeFormat(isEnglish ? "en-US" : "es-ES", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+}).format(publishDate);
+
+const fallbackAlternateUrls = {
+  es: isEnglish ? `https://www.ignathedev.com${Astro.url.pathname.replace(/^\/en/, "")}` : url,
+  en: isEnglish ? url : `https://www.ignathedev.com/en${Astro.url.pathname === "/" ? "" : Astro.url.pathname}`,
+};
+const resolvedAlternateUrls = alternateUrls ?? fallbackAlternateUrls;
+const defaultLanguagePaths = {
+  es: new URL(resolvedAlternateUrls.es, "https://www.ignathedev.com").pathname,
+  en: new URL(resolvedAlternateUrls.en, "https://www.ignathedev.com").pathname,
+};
+const languageSwitcherPaths = languageSwitcherPathsProp ?? defaultLanguagePaths;
+
+const tocHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
+const hasToc = tocHeadings.length >= 3;
 ---
 
 <Layout
   title={frontmatter.title}
-  description={frontmatter.description}
+  description={frontmatter.description || ""}
+  canonical={url}
+  alternateLangUrls={resolvedAlternateUrls}
+  languageSwitcherPaths={languageSwitcherPaths}
   pageType="article"
   articleData={{
     publishedTime,
-    modifiedTime: publishedTime,
-    author: frontmatter.author || "Ignacio Amat Urbina",
+    modifiedTime,
+    author: frontmatter.author || "Ignacio Amat",
     tags: frontmatter.tags || [],
   }}
   openGraph={{
     url: url,
     title: frontmatter.title,
     type: "article",
-    description: frontmatter.description,
-    images: [{
-      url: ogImage,
-      width: 1200,
-      height: 630,
-      alt: frontmatter.image?.alt || frontmatter.title,
-      type: "image/jpeg",
-    }],
+    description: frontmatter.description || "",
+    images: [
+      {
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: frontmatter.image?.alt || frontmatter.title,
+        type: ogImageType,
+      },
+    ],
     site_name: isEnglish ? "Ignacio Amat - Full Stack Developer" : "Ignacio Amat - Desarrollador Full Stack",
     locale,
   }}
@@ -70,177 +158,461 @@ const publishedTime = parseDate(frontmatter.publish_date || "");
     cardType: "summary_large_image",
   }}
 >
+  <!-- Accurate breadcrumb for articles; Layout.astro skips its own when pageType="article" -->
   <BreadcrumbSchema
     items={[{ name: "Blog", item: blogUrl }, { name: frontmatter.title, item: url }]}
     homeUrl={homeUrl}
     homeName={isEnglish ? "Home" : "Inicio"}
   />
-  
-  <main class="flex flex-col items-center min-screen">
-    <!--
-// v0 by Vercel.
-// https://v0.dev/t/fUIoAq9FjJn
--->
 
-    <article class="prose prose-gray max-w-3xl mx-auto dark:prose-invert py-12">
-      <div class="space-y-4 not-prose">
-        <h1 class="text-3xl lg:text-5xl font-extrabold tracking-tight">
-          {frontmatter.title}
-        </h1>
-        <div class="flex items-center gap-4 text-muted-foreground">
-          <div class="flex items-center gap-2">
-            <span
-              class="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8 border"
-            >
-              <img
-                class="aspect-square h-full w-full"
-                src="/img/optimized/profile_picture.webp"
-                width="32"
-                height="32"
-                loading="lazy"
-                alt="Author profile picture"
-              />
-            </span>
-            <span class="font-medium">{frontmatter.author}</span>
-          </div>
-          <span>•</span>
-          <time datetime={publishedTime}>{frontmatter.publish_date}</time>
-        </div>
-      </div>
-      <div class="flex flex-wrap gap-2 py-5">
-        {
-          frontmatter.tags.map((tag: string) => (
-            <div
-              class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground"
-              data-v0-t="badge"
-            >
-              {tag}
+  <!-- Reading progress bar -->
+  <div
+    id="reading-progress"
+    class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-blue-500 to-purple-500 z-50 transition-all duration-100 ease-out"
+    style="width: 0%"
+    role="progressbar"
+    aria-label={isEnglish ? "Reading progress" : "Progreso de lectura"}
+    aria-valuenow={0}
+    aria-valuemin={0}
+    aria-valuemax={100}
+  ></div>
+
+  <main>
+    <div class="max-w-[72rem] mx-auto px-4 sm:px-6 py-10 sm:py-14">
+      <div class={hasToc ? "lg:grid lg:grid-cols-[1fr_264px] lg:gap-14 xl:gap-16 items-start" : ""}>
+        <!-- Article column -->
+        <div class="min-w-0">
+          <!-- Back link -->
+          <a
+            href={blogPath}
+            class="inline-flex items-center gap-2 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-8 group"
+          >
+            <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+            </svg>
+            {isEnglish ? "Back to Blog" : "Volver al Blog"}
+          </a>
+
+          <!-- Title & meta -->
+          <div class="mb-6">
+            <h1 class="text-3xl sm:text-4xl lg:text-[2.6rem] font-extrabold tracking-tight text-gray-900 dark:text-white leading-tight mb-5">
+              {frontmatter.title}
+            </h1>
+            <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500 dark:text-gray-400">
+              <div class="flex items-center gap-2.5">
+                <img
+                  src="/img/optimized/profile_picture.webp"
+                  width="36"
+                  height="36"
+                  loading="lazy"
+                  alt="Ignacio Amat"
+                  class="rounded-full w-9 h-9 object-cover border-2 border-white dark:border-gray-700 shadow-sm"
+                />
+                <span class="font-semibold text-gray-700 dark:text-gray-300">{frontmatter.author || "Ignacio Amat"}</span>
+              </div>
+              <span aria-hidden="true" class="text-gray-300 dark:text-gray-600">|</span>
+              <time datetime={publishedTime} class="flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                {displayDate}
+              </time>
+              {
+                readingTime && (
+                  <>
+                    <span aria-hidden="true" class="text-gray-300 dark:text-gray-600">|</span>
+                    <span class="flex items-center gap-1.5">
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                      {isEnglish ? `${readingTime} min read` : `${readingTime} min de lectura`}
+                    </span>
+                  </>
+                )
+              }
             </div>
-          ))
+          </div>
+
+          <!-- Tags -->
+          {
+            frontmatter.tags && frontmatter.tags.length > 0 && (
+              <div class="flex flex-wrap gap-2 mb-5">
+                {frontmatter.tags.map((tag) => (
+                  <span class={`px-3 py-0.5 text-xs font-semibold rounded-full border ${getTagColor(tag)}`}>{tag}</span>
+                ))}
+              </div>
+            )
+          }
+
+          <!-- Social share -->
+          <div class="mb-6">
+            <SocialShare buttons={BUTTONS} description={frontmatter.description} title={frontmatter.title} />
+            <slot name="astro-social-share-css">
+              <style is:global>
+                .astro-social-share {
+                  margin: 12px 0 0;
+                  height: 32px;
+                  display: inline-flex;
+                  gap: 6px;
+                  align-items: center;
+                }
+                .astro-social-share a {
+                  text-decoration: none;
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                  width: 32px;
+                  height: 32px;
+                  border-radius: 50%;
+                  background-color: #3b82f6;
+                  color: #fff;
+                  transition:
+                    background-color 0.2s,
+                    transform 0.15s;
+                }
+                .astro-social-share a:hover {
+                  background-color: #2563eb;
+                  transform: scale(1.12);
+                }
+                .astro-social-share svg {
+                  height: 15px;
+                  width: 15px;
+                  fill: #fff;
+                }
+              </style>
+            </slot>
+          </div>
+
+          <!-- Hero image -->
+          <div class="mb-8 rounded-xl overflow-hidden shadow-md">
+            <img
+              src={frontmatter.image?.url}
+              alt={frontmatter.image?.alt || frontmatter.title}
+              width="1250"
+              height="600"
+              class="w-full aspect-video object-cover"
+              loading="eager"
+            />
+            {
+              frontmatter.image?.alt && (
+                <p class="text-center text-xs text-gray-400 dark:text-gray-500 py-2 px-4 bg-gray-50 dark:bg-gray-800/60">
+                  {frontmatter.image.alt}
+                </p>
+              )
+            }
+          </div>
+
+          <!-- Mobile ToC (collapsible) -->
+          {
+            hasToc && (
+              <details class="lg:hidden mb-8 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden group/toc">
+                <summary class="flex items-center justify-between gap-2 px-5 py-3.5 bg-gray-50 dark:bg-gray-800/70 cursor-pointer select-none text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors list-none">
+                  <span class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h10M4 18h10"></path>
+                    </svg>
+                    {isEnglish ? "Table of Contents" : "Tabla de contenidos"}
+                  </span>
+                  <svg class="w-4 h-4 transition-transform group-open/toc:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </summary>
+                <nav class="px-5 py-4 bg-white dark:bg-gray-900/50">
+                  <ol class="space-y-1.5">
+                    {tocHeadings.map((h) => (
+                      <li class={h.depth === 3 ? "ml-4" : ""}>
+                        <a
+                          href={`#${h.slug}`}
+                          class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors leading-snug block py-0.5"
+                        >
+                          {h.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                </nav>
+              </details>
+            )
+          }
+
+          <!-- Article prose content -->
+          <article id="article-content" class="prose prose-gray dark:prose-invert max-w-none prose-lg prose-headings:scroll-mt-24 prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-img:rounded-lg prose-img:shadow-md">
+            <slot />
+          </article>
+
+          <!-- Visual divider + Contact CTA -->
+          <div class="mt-16 mb-10">
+            <div class="relative mb-10">
+              <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                <div class="w-full border-t border-gray-200 dark:border-gray-700"></div>
+              </div>
+              <div class="relative flex justify-center">
+                <span class="bg-white dark:bg-gray-900 px-5 text-gray-300 dark:text-gray-600">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                  </svg>
+                </span>
+              </div>
+            </div>
+
+            <div class="rounded-2xl bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-800 dark:via-gray-800 dark:to-gray-800/60 border border-blue-100 dark:border-gray-700 p-8 sm:p-10 text-center shadow-sm">
+              <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-blue-600 flex items-center justify-center shadow-md">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                </svg>
+              </div>
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                {isEnglish ? "Looking for a full stack developer?" : "¿Buscas un desarrollador full stack para tu equipo?"}
+              </h2>
+              <p class="text-gray-600 dark:text-gray-400 max-w-lg mx-auto leading-relaxed mb-6">
+                {
+                  isEnglish
+                    ? "Available for remote positions, contracts, and technical collaborations. Let's talk about how I can contribute to your team."
+                    : "Disponible para posiciones remotas, contratos y colaboraciones técnicas. Hablemos sobre cómo puedo aportar valor a tu equipo."
+                }
+              </p>
+              <a
+                href="#contact"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-colors shadow-sm"
+              >
+                {isEnglish ? "Get in touch" : "Contactar ahora"}
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <ContactForm id="contact" />
+        </div>
+
+        <!-- Desktop ToC sidebar (sticky) -->
+        {
+          hasToc && (
+            <aside class="hidden lg:block" aria-label={isEnglish ? "Table of contents" : "Tabla de contenidos"}>
+              <div class="sticky top-24">
+                <div class="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+                  <div class="px-4 py-3 bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h10M4 18h10"></path>
+                    </svg>
+                    <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                      {isEnglish ? "Table of Contents" : "Tabla de contenidos"}
+                    </span>
+                  </div>
+                  <nav class="p-4">
+                    <ol id="toc-list" class="space-y-1">
+                      {tocHeadings.map((h) => (
+                        <li class={h.depth === 3 ? "ml-3.5" : ""}>
+                          <a
+                            href={`#${h.slug}`}
+                            data-heading={h.slug}
+                            class="toc-link block text-sm text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 py-1 px-2 rounded-lg transition-all leading-snug hover:bg-blue-50 dark:hover:bg-blue-900/20"
+                          >
+                            {h.text}
+                          </a>
+                        </li>
+                      ))}
+                    </ol>
+                  </nav>
+                </div>
+
+                <!-- Related links -->
+                <div class="mt-4 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+                  <div class="px-4 py-3 bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                    <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                      {isEnglish ? "About the author" : "Sobre el autor"}
+                    </span>
+                  </div>
+                  <div class="p-4 text-center">
+                    <img
+                      src="/img/optimized/profile_picture.webp"
+                      width="56"
+                      height="56"
+                      alt="Ignacio Amat"
+                      class="rounded-full w-14 h-14 mx-auto mb-3 border-2 border-blue-100 dark:border-gray-700"
+                      loading="lazy"
+                    />
+                    <p class="font-semibold text-sm text-gray-800 dark:text-gray-200 mb-0.5">Ignacio Amat</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">{isEnglish ? "Full Stack Developer" : "Desarrollador Full Stack"}</p>
+                    <a
+                      href={blogPath}
+                      class="text-xs text-blue-600 dark:text-blue-400 hover:underline"
+                    >
+                      {isEnglish ? "← Back to all articles" : "← Ver todos los artículos"}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          )
         }
       </div>
-      <div>
-        <SocialShare
-          buttons={BUTTONS}
-          description={frontmatter.description}
-          title={frontmatter.title}
-        />
-        <slot name="astro-social-share-css">
-          <style is:global>
-            .astro-social-share {
-              margin: 20px 0px;
-              height: 24px;
-              display: inline-flex;
-            }
-            .astro-social-share a {
-              text-decoration: none;
-              margin-right: 10px;
-              color: #fff;
-            }
-            .astro-social-share svg {
-              height: 24px;
-              fill: #fff;
-            }
-          </style>
-        </slot>
-      </div>
-      <img
-        src={frontmatter.image?.url}
-        alt={frontmatter.image?.alt || frontmatter.title}
-        width="1250"
-        height="600"
-        class="aspect-video overflow-hidden rounded-lg object-fill mb-4"
-        loading="eager"
-      />
-      {frontmatter.image?.alt && (
-        <p class="text-center text-sm opacity-50 pb-8">{frontmatter.image.alt}</p>
-      )}
-      <slot />
-      <div class="text-center mb-12 mt-12">
-        <h2 class="text-2xl font-bold mb-4">{isEnglish ? "Would you like to contact me?" : "¿Te gustaría contactarme?"}</h2>
-        <p class="text-gray-600 dark:text-gray-400 mb-6">{isEnglish ? "If you have any questions or comments about this article, feel free to reach out using the form below." : "Si tienes alguna pregunta o comentario sobre este artículo, no dudes en escribirme usando el formulario a continuación."}</p>
-      </div>
-      <ContactForm id="contact" />
-    </article>
+    </div>
   </main>
 </Layout>
 
 <style>
-  article p + h2 {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-top: 1.5em;
+  #article-content :global(h2),
+  #article-content :global(h3) {
+    scroll-margin-top: 6rem;
   }
 
-  article h2 + h1 {
-    font-size: 2em;
-    font-weight: bold;
-    margin-top: 1.5em;
-  }
-
-  article {
-    text-wrap: pretty;
-  }
-
-  article h3 {
-    font-weight: bold;
-    font-size: 1.5em;
-    margin-top: 1.5em;
-  }
-
-  article p {
-    margin: 10px 0;
-    line-height: 1.7;
-  }
-
-  article ul,
-  article ol {
-    list-style-type: circle;
-    margin: 10px 0 10px 20px;
-  }
-
-  article li h4 {
-    /* add soft light font */
-    font-weight: lighter;
+  #article-content :global(blockquote) {
+    border-left: 4px solid #d1d5db;
+    padding-left: 1rem;
+    color: #4b5563;
+    margin: 1.5rem 0;
     font-style: italic;
   }
 
-  article blockquote {
-    border-left: 4px solid #ddd;
-    padding-left: 15px;
-    color: #666;
-    margin: 20px 0;
-    font-style: italic;
-  }
-
-  article code {
-    background-color: #f5f5f5;
-    padding: 2px 4px;
+  #article-content :global(code):not(pre code) {
+    background-color: #f3f4f6;
+    padding: 2px 6px;
     border-radius: 4px;
+    font-size: 0.875em;
+    color: #1f2937;
     font-family: "Courier New", Courier, monospace;
   }
 
-  article pre {
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-radius: 4px;
+  #article-content :global(pre) {
+    background-color: #111827;
+    padding: 1.25rem;
+    border-radius: 0.75rem;
     overflow-x: auto;
+    border: 1px solid #1f2937;
+  }
+
+  #article-content :global(pre code) {
+    background: none;
+    padding: 0;
+    color: #e5e7eb;
+    font-size: 0.9em;
+  }
+
+  :global(.dark) #article-content :global(blockquote) {
+    border-left-color: #4b5563;
+    color: #9ca3af;
+  }
+
+  :global(.dark) #article-content :global(code):not(pre code) {
+    background-color: #1f2937;
+    color: #e5e7eb;
+  }
+
+  .toc-link.toc-active {
+    color: #3b82f6;
+    background-color: rgba(59, 130, 246, 0.08);
+    font-weight: 600;
+  }
+
+  :global(.dark) .toc-link.toc-active {
+    color: #60a5fa;
+    background-color: rgba(59, 130, 246, 0.15);
   }
 </style>
+
+<script>
+  // AbortController lets us cancel ALL listeners added in the previous init
+  // when the page re-initializes (view transitions), preventing duplicates.
+  let articleAbortController: AbortController | null = null;
+
+  function initArticle() {
+    const progressBar = document.getElementById("reading-progress") as HTMLElement | null;
+    const articleEl = document.getElementById("article-content");
+    if (!articleEl) return; // not on an article page
+
+    // Tear down listeners from the previous init before setting up new ones
+    articleAbortController?.abort();
+    articleAbortController = new AbortController();
+    const { signal } = articleAbortController;
+
+    const updateProgress = () => {
+      if (!progressBar) return;
+      const articleTop = articleEl.getBoundingClientRect().top + window.scrollY;
+      const articleHeight = articleEl.offsetHeight;
+      const scrolled = Math.max(0, window.scrollY - articleTop);
+      const progress = Math.min((scrolled / (articleHeight - window.innerHeight)) * 100, 100);
+      progressBar.style.width = `${Math.max(0, progress)}%`;
+      progressBar.setAttribute("aria-valuenow", String(Math.round(progress)));
+    };
+
+    // Reset progress on new page
+    if (progressBar) {
+      progressBar.style.width = "0%";
+      progressBar.setAttribute("aria-valuenow", "0");
+    }
+
+    window.addEventListener("scroll", updateProgress, { passive: true, signal });
+    updateProgress();
+
+    // ToC active section highlighting
+    const tocLinks = document.querySelectorAll<HTMLAnchorElement>(".toc-link");
+
+    if (tocLinks.length > 0) {
+      const headingEls = articleEl.querySelectorAll("h2, h3");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          let lastVisible: string | null = null;
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              lastVisible = entry.target.id;
+            }
+          });
+          if (lastVisible) {
+            tocLinks.forEach((link) => {
+              link.classList.toggle("toc-active", link.dataset.heading === lastVisible);
+            });
+          }
+        },
+        { rootMargin: "-10% 0px -70% 0px" }
+      );
+
+      headingEls.forEach((h) => observer.observe(h));
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener(
+        "click",
+        (e) => {
+          const href = (anchor as HTMLAnchorElement).getAttribute("href");
+          if (!href || href === "#") return;
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        },
+        { signal }
+      );
+    });
+  }
+
+  // Initial load (handles both SSR and prerendered)
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initArticle, { once: true });
+  } else {
+    initArticle();
+  }
+  // Re-initialize after every Astro view-transition navigation
+  document.addEventListener("astro:page-load", initArticle);
+</script>
 
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": frontmatter.title,
-  "description": frontmatter.description,
+  "description": frontmatter.description || "",
   "image": ogImage,
   "datePublished": publishedTime,
-  "dateModified": publishedTime,
+  "dateModified": modifiedTime,
   "author": {
     "@type": "Person",
     "@id": "https://www.ignathedev.com/#person",
-    "name": frontmatter.author || "Ignacio Amat Urbina",
-    "url": "https://www.ignathedev.com"
+    "name": frontmatter.author || "Ignacio Amat",
+    "url": "https://www.ignathedev.com",
   },
   "publisher": {
     "@type": "Person",
@@ -248,15 +620,17 @@ const publishedTime = parseDate(frontmatter.publish_date || "");
     "name": "Ignacio Amat Urbina",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.ignathedev.com/img/optimized/profile_picture.webp"
-    }
+      "url": "https://www.ignathedev.com/img/optimized/profile_picture.webp",
+    },
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": url
+    "@id": url,
   },
   "keywords": (frontmatter.tags || []).join(", "),
   "articleSection": isEnglish ? "Web Development" : "Desarrollo Web",
   "inLanguage": inLanguage,
-  "isAccessibleForFree": true
+  "isAccessibleForFree": true,
+  ...(readingTime ? { "timeRequired": `PT${readingTime}M` } : {}),
+  ...(wordCount ? { "wordCount": wordCount } : {}),
 })}></script>

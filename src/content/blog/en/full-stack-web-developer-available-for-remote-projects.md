@@ -1,15 +1,30 @@
 ---
-layout: ../../../layouts/MarkdownPostLayout.astro
 title: Full Stack Web Developer Available for Remote Projects
-slug: "full-stack-web-developer-available-for-remote-projects"
+description: Hire Ignacio Amat, an experienced full stack web developer from
+  Barcelona, specializing in PHP, Laravel, TALL stack, VILT stack, JavaScript,
+  Vue.js, and TailwindCSS. Available for new clients worldwide.
 author: Ignacio Amat
-description: "Hire Ignacio Amat, an experienced full stack web developer from Barcelona, specializing in PHP, Laravel, TALL stack, VILT stack, JavaScript, Vue.js, and TailwindCSS. Available for new clients worldwide."
+publishDate: 2024-07-17
+slug: full-stack-web-developer-available-for-remote-projects
+locale: en
+translationKey: full-stack-remote-projects
 image:
-    url: "/img/optimized/remote-work.webp"
-    alt: "Web Development setup featuring a laptop, monitor, keyboard, and mouse on a clean, organized desk."
-publish_date: "17/07/2024"
-tags: ["full stack web developer", "remote web developer", "PHP developer", "Laravel developer", "web development services", "Laravel app upgrades", "hire web developer", "Barcelona web developer", "TailwindCSS"]
+  url: /img/optimized/remote-work.webp
+  alt: Web Development setup featuring a laptop, monitor, keyboard, and mouse on a
+    clean, organized desk.
+tags:
+  - full stack web developer
+  - remote web developer
+  - PHP developer
+  - Laravel developer
+  - web development services
+  - Laravel app upgrades
+  - hire web developer
+  - Barcelona web developer
+  - TailwindCSS
+isDraft: false
 ---
+
 # Open for New Clients Worldwide: Experienced Full Stack Web Developer
 
 Hello everyone! I'm Ignacio Amat, a full stack web developer from Barcelona, with over 3+ years of experience in both back end and front end development. I'm excited to announce that I am now open to new clients worldwide and ready to take on new projects remotely. 

@@ -1,15 +1,27 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "Laravel Cloud: El Futuro del Hosting y Despliegue de Aplicaciones Web"
-slug: "laravel-cloud-futuro-hosting-despliegue"
-author: "Ignacio Amat"
-description: "Descubre Laravel Cloud, la nueva plataforma que transformará el hosting y despliegue de aplicaciones web con integración fluida, automatización y escalabilidad, especialmente diseñada para el ecosistema Laravel."
+description: Descubre Laravel Cloud, la nueva plataforma que transformará el
+  hosting y despliegue de aplicaciones web con integración fluida,
+  automatización y escalabilidad, especialmente diseñada para el ecosistema
+  Laravel.
+author: Ignacio Amat
+publishDate: 2024-08-30
+slug: laravel-cloud-futuro-hosting-despliegue
+locale: es
+translationKey: laravel-cloud-future-hosting
 image:
-    url: "/img/optimized/laravel-cloud-article.webp"
-    alt: "Vista general de la plataforma Laravel Cloud"
-publish_date: "30/08/2024"
-tags: ["Laravel", "Cloud", "Hosting Web", "Despliegue", "Tecnología", "Innovación"]
+  url: /img/optimized/laravel-cloud-article.webp
+  alt: Vista general de la plataforma Laravel Cloud
+tags:
+  - Laravel
+  - Cloud
+  - Hosting Web
+  - Despliegue
+  - Tecnología
+  - Innovación
+isDraft: false
 ---
+
 
 # Laravel Cloud: El Futuro del Hosting y Despliegue de Aplicaciones Web
 

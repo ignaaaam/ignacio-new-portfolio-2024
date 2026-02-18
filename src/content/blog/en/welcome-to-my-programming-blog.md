@@ -1,16 +1,25 @@
 ---
-layout: ../../../layouts/MarkdownPostLayout.astro
 title: Welcome to my programming blog!
-slug: "welcome-to-my-programming-blog"
+description: Dive into the world of programming and discover the latest
+  advancements in back-end, front-end, and full-stack development.
 author: Ignacio Amat
-description: "Dive into the world of programming and discover the latest advancements in back-end, front-end, and full-stack development."
+publishDate: 2024-07-13
+slug: welcome-to-my-programming-blog
+locale: en
+translationKey: welcome-programming-blog
 image:
-  url: "https://docs.astro.build/default-og-image.png"
-  alt: "The word astro around planets, the first image used in the blog"
-publish_date: "13/07/2024"
+  url: https://docs.astro.build/default-og-image.png
+  alt: The word astro around planets, the first image used in the blog
 tags:
-  ["madewithastro", "blog", "programming", "frontend", "backend", "fullstack"]
+  - madewithastro
+  - blog
+  - programming
+  - frontend
+  - backend
+  - fullstack
+isDraft: false
 ---
+
 
 ### Introduction
 

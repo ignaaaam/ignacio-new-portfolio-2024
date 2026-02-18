@@ -1,0 +1,32 @@
+---
+import { render } from "astro:content";
+import MarkdownPostLayout from "../../../layouts/MarkdownPostLayout.astro";
+import { getBlogPostPath, getLanguageSwitcherPaths, getPublishedBlogEntries, getReadingTime, type BlogEntry } from "../../../lib/blog";
+
+export const prerender = false;
+
+const slug = Astro.params.slug;
+const entries = await getPublishedBlogEntries("en");
+const entry = entries.find((item) => item.slug === slug) as BlogEntry | undefined;
+
+if (!entry) {
+  return Astro.rewrite("/404");
+}
+
+const { Content, headings } = await render(entry);
+const languageSwitcherPaths = await getLanguageSwitcherPaths(entry);
+const canonical = `https://www.ignathedev.com${getBlogPostPath(entry)}`;
+const readingTime = getReadingTime(entry.body ?? "");
+---
+
+<MarkdownPostLayout
+  frontmatter={entry.data}
+  canonical={canonical}
+  alternateUrls={languageSwitcherPaths}
+  languageSwitcherPaths={languageSwitcherPaths}
+  readingTime={readingTime}
+  headings={headings}
+  body={entry.body}
+>
+  <Content />
+</MarkdownPostLayout>

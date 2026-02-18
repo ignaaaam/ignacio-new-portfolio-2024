@@ -1,15 +1,25 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "Mejora Tus Vistas en Laravel: Las Mejores Bibliotecas de Componentes Blade UI"
-slug: "bibliotecas-componentes-blade-ui-laravel"
-author: "Ignacio Amat"
-description: "Descubre las mejores bibliotecas de componentes Blade UI en Laravel que te ayudarán a crear interfaces front-end impresionantes y eficientes con facilidad."
+description: Descubre las mejores bibliotecas de componentes Blade UI en Laravel
+  que te ayudarán a crear interfaces front-end impresionantes y eficientes con
+  facilidad.
+author: Ignacio Amat
+publishDate: 2024-08-28
+slug: bibliotecas-componentes-blade-ui-laravel
+locale: es
+translationKey: blade-ui-libraries
 image:
-    url: "/img/optimized/components-background.png"
-    alt: "Descripción general de las bibliotecas de componentes Blade UI en Laravel"
-publish_date: "28/08/2024"
-tags: ["Laravel", "Blade", "Componentes UI", "Desarrollo web", "PHP"]
+  url: /img/optimized/components-background.png
+  alt: Descripción general de las bibliotecas de componentes Blade UI en Laravel
+tags:
+  - Laravel
+  - Blade
+  - Componentes UI
+  - Desarrollo web
+  - PHP
+isDraft: false
 ---
+
 
 # Mejora Tus Vistas en Laravel: Las Mejores Bibliotecas de Componentes Blade UI
 

@@ -1,15 +1,28 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro  
-title: "El Chip Cerebral de Elon Musk Obtiene Aprobación para Ayudar a las Personas Ciegas a Ver"  
-slug: "elon-musk-chip-cerebral-ayuda-ciegos-ver"  
-author: "Ignacio Amat"  
-description: "Neuralink, la empresa de chips cerebrales de Elon Musk, ha recibido aprobación para desarrollar implantes destinados a restaurar la visión en personas ciegas. Descubre cómo esta tecnología revolucionaria puede cambiar el futuro de la salud."  
-image:  
-    url: "/img/optimized/elonmusk-neuralink.webp"  
-    alt: "Representación de un chip cerebral, simbolizando la visión de Neuralink de restaurar la vista."  
-publish_date: "24/09/2024"
-tags: ["Elon Musk", "Neuralink", "Chip Cerebral", "Tecnología Sanitaria", "Ceguera"]
+title: El Chip Cerebral de Elon Musk Obtiene Aprobación para Ayudar a las
+  Personas Ciegas a Ver
+description: Neuralink, la empresa de chips cerebrales de Elon Musk, ha recibido
+  aprobación para desarrollar implantes destinados a restaurar la visión en
+  personas ciegas. Descubre cómo esta tecnología revolucionaria puede cambiar el
+  futuro de la salud.
+author: Ignacio Amat
+publishDate: 2024-09-24
+slug: elon-musk-chip-cerebral-ayuda-ciegos-ver
+locale: es
+translationKey: neuralink-vision-restoration
+image:
+  url: /img/optimized/elonmusk-neuralink.webp
+  alt: Representación de un chip cerebral, simbolizando la visión de Neuralink de
+    restaurar la vista.
+tags:
+  - Elon Musk
+  - Neuralink
+  - Chip Cerebral
+  - Tecnología Sanitaria
+  - Ceguera
+isDraft: false
 ---
+
 
 # El Chip Cerebral de Elon Musk Obtiene Aprobación para Ayudar a las Personas Ciegas a Ver
 
