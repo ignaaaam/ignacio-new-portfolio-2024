@@ -2,6 +2,11 @@
 import Dropdown from "./Dropdown.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import MobileNav from "./MobileNav.astro";
+interface Props {
+  spanishUrl?: string;
+  englishUrl?: string;
+}
+const { spanishUrl = "/", englishUrl = "/en" } = Astro.props as Props;
 const pathname = Astro.url.pathname;
 ---
 
@@ -87,13 +92,13 @@ const pathname = Astro.url.pathname;
       class="header-button header-button-primary"
       href="/blog"
       rel="noopener noreferrer"
-      aria-label="Ir al blog de noticias"
+      aria-label="Ir al blog"
     >
-      Noticias
+      Blog
     </a>
     <ThemeToggle />
-    <Dropdown class="hidden lg:flex" />
-    <MobileNav pathname={pathname} />
+    <Dropdown class="hidden lg:flex" spanishUrl={spanishUrl} englishUrl={englishUrl} />
+    <MobileNav pathname={pathname} spanishUrl={spanishUrl} englishUrl={englishUrl} />
   </div>
 </header>
 

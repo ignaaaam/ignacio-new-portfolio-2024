@@ -24,10 +24,6 @@ const lang = getLangFromUrl(Astro.url);
     position="bottom-full"
     theme="alert"
   >
-    <Icon
-      type="x"
-      slot="icon"
-    />
   </Toast>
 
   <form
@@ -58,11 +54,11 @@ const lang = getLangFromUrl(Astro.url);
 
     <div class="form-content">
       <div class="form-intro">
-        <p class="form-intro-title">{lang === "es" ? "Cuéntame qué necesitas" : "Tell me what you need"}</p>
+        <p class="form-intro-title">{lang === "es" ? "Cuéntame sobre tu equipo" : "Tell me about your team"}</p>
         <p class="form-intro-description">
           {lang === "es"
-            ? "Acepto proyectos freelance, soporte para agencias y ofertas para incorporarme a equipos remotos internacionales."
-            : "I accept freelance projects, agency support, and full-time/contract opportunities from international remote teams."}
+            ? "Estoy abierto a posiciones full-time remotas, contratos a largo plazo y colaboraciones con equipos de desarrollo internacionales."
+            : "I'm open to full-time remote positions, long-term contracts, and collaborations with international development teams."}
         </p>
       </div>
 
@@ -134,7 +130,7 @@ const lang = getLangFromUrl(Astro.url);
           for="project_type"
           class="form-label"
         >
-          {lang === "es" ? "Tipo de proyecto" : "Project type"}
+          {lang === "es" ? "Tipo de oportunidad" : "Opportunity type"}
         </label>
         <div class="input-wrapper">
           <select
@@ -144,12 +140,11 @@ const lang = getLangFromUrl(Astro.url);
             class="form-select"
           >
             <option value="">{lang === "es" ? "Selecciona una opción…" : "Select an option…"}</option>
-            <option value="landing">Landing Page</option>
-            <option value="ecommerce">E-commerce</option>
-            <option value="web-app">{lang === "es" ? "Aplicación Web" : "Web Application"}</option>
-            <option value="contract">{lang === "es" ? "Contrato por horas o mensual" : "Monthly/Hourly Contract"}</option>
-            <option value="full-time-hire">{lang === "es" ? "Oferta para incorporarme a tu empresa" : "Full-time Hire Opportunity"}</option>
-            <option value="other">{lang === "es" ? "Otro / No estoy seguro" : "Other / Not sure yet"}</option>
+            <option value="full-time">{lang === "es" ? "Posición full-time remota" : "Full-time remote position"}</option>
+            <option value="long-term-contract">{lang === "es" ? "Contrato a largo plazo" : "Long-term contract"}</option>
+            <option value="team-augmentation">{lang === "es" ? "Refuerzo de equipo (team augmentation)" : "Team augmentation"}</option>
+            <option value="consultation">{lang === "es" ? "Consultoría técnica" : "Technical consultation"}</option>
+            <option value="other">{lang === "es" ? "Otro" : "Other"}</option>
           </select>
         </div>
       </div>
@@ -159,7 +154,7 @@ const lang = getLangFromUrl(Astro.url);
           for="timeline"
           class="form-label"
         >
-          {lang === "es" ? "Plazo estimado" : "Estimated timeline"}
+          {lang === "es" ? "Fecha de incorporación estimada" : "Expected start date"}
         </label>
         <div class="input-wrapper">
           <select
@@ -169,9 +164,9 @@ const lang = getLangFromUrl(Astro.url);
             class="form-select"
           >
             <option value="">{lang === "es" ? "Selecciona una opción…" : "Select an option…"}</option>
-            <option value="asap">{lang === "es" ? "Lo antes posible" : "ASAP"}</option>
-            <option value="2-4-weeks">{lang === "es" ? "2-4 semanas" : "2-4 weeks"}</option>
-            <option value="1-3-months">{lang === "es" ? "1-3 meses" : "1-3 months"}</option>
+            <option value="immediately">{lang === "es" ? "Inmediata" : "Immediately"}</option>
+            <option value="2-4-weeks">{lang === "es" ? "En 2-4 semanas" : "Within 2-4 weeks"}</option>
+            <option value="1-3-months">{lang === "es" ? "En 1-3 meses" : "Within 1-3 months"}</option>
             <option value="flexible">{lang === "es" ? "Flexible" : "Flexible"}</option>
           </select>
         </div>
@@ -183,7 +178,7 @@ const lang = getLangFromUrl(Astro.url);
           for="budget"
           class="form-label"
         >
-          {lang === "es" ? "Presupuesto o rango salarial (opcional)" : "Budget or salary range (optional)"}
+          {lang === "es" ? "Rango salarial (opcional)" : "Salary range (optional)"}
         </label>
         <div class="input-wrapper">
           <select
@@ -192,13 +187,10 @@ const lang = getLangFromUrl(Astro.url);
             class="form-select"
           >
             <option value="">{lang === "es" ? "Selecciona un rango…" : "Select a range…"}</option>
-            <option value="500-1000">500€ - 1.000€</option>
-            <option value="1000-2500">1.000€ - 2.500€</option>
-            <option value="2500-5000">2.500€ - 5.000€</option>
-            <option value="5000+">{lang === "es" ? "Más de 5.000€" : "More than 5.000€"}</option>
-            <option value="salary-30-45k">{lang === "es" ? "30k€ - 45k€ bruto/año (si es empleo)" : "30k€ - 45k€ gross/year (hiring)"}</option>
-            <option value="salary-45-65k">{lang === "es" ? "45k€ - 65k€ bruto/año (si es empleo)" : "45k€ - 65k€ gross/year (hiring)"}</option>
-            <option value="salary-65k+">{lang === "es" ? "+65k€ bruto/año (si es empleo)" : "65k€+ gross/year (hiring)"}</option>
+            <option value="salary-30-45k">{lang === "es" ? "30k€ - 45k€ bruto/año" : "30k€ - 45k€ gross/year"}</option>
+            <option value="salary-45-65k">{lang === "es" ? "45k€ - 65k€ bruto/año" : "45k€ - 65k€ gross/year"}</option>
+            <option value="salary-65k+">{lang === "es" ? "+65k€ bruto/año" : "65k€+ gross/year"}</option>
+            <option value="prefer-not">{lang === "es" ? "Prefiero no indicarlo" : "Prefer not to say"}</option>
           </select>
         </div>
       </div>
@@ -835,79 +827,164 @@ const lang = getLangFromUrl(Astro.url);
   import { toast, setDefaultTimeout } from "webcoreui";
 
   setDefaultTimeout(5000);
-  const form = document.getElementById("contact-form");
-  const formLang = (form as HTMLFormElement | null)?.dataset.lang || "en";
-  const submitButton = form?.querySelector(".submit-button");
-  const startedAtInput = document.getElementById("form_started_at") as HTMLInputElement | null;
-  if (startedAtInput) {
-    startedAtInput.value = Date.now().toString();
+
+  type FormLang = "es" | "en";
+
+  const COPY = {
+    es: {
+      errorTitle: "Error",
+      sendFailed: "No se pudo enviar el mensaje.",
+      validationError: "Revisa los datos del formulario.",
+      validationReason: "Hay campos obligatorios vacíos o con formato incorrecto.",
+      invalidName: "El nombre debe tener al menos 2 caracteres.",
+      invalidEmail: "Introduce un email válido.",
+      invalidMessage: "El mensaje debe tener entre 10 y 500 caracteres.",
+      networkReason: "Error de red o del servidor.",
+      statusReason: "Respuesta del servidor:",
+    },
+    en: {
+      errorTitle: "Error",
+      sendFailed: "Failed to send message.",
+      validationError: "Please review the form fields.",
+      validationReason: "Some required fields are missing or invalid.",
+      invalidName: "Name must have at least 2 characters.",
+      invalidEmail: "Please enter a valid email.",
+      invalidMessage: "Message must be between 10 and 500 characters.",
+      networkReason: "Network or server error.",
+      statusReason: "Server response:",
+    },
+  } as const;
+
+  const getLang = (value: string | undefined): FormLang => (value === "es" ? "es" : "en");
+  const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const showErrorToast = (lang: FormLang, errorText: string, reasonText?: string, title?: string) => {
+    const content = reasonText ? `${errorText} ${reasonText}` : errorText;
+    toast({
+      element: ".toast-error",
+      title: title || COPY[lang].errorTitle,
+      content,
+      position: "bottom-full",
+    });
+  };
+
+  const initContactForm = () => {
+    const form = document.getElementById("contact-form") as HTMLFormElement | null;
+    if (!form || form.dataset.contactInitialized === "true") return;
+    form.dataset.contactInitialized = "true";
+
+    const formLang = getLang(form.dataset.lang);
+    const copy = COPY[formLang];
+    const submitButton = form.querySelector(".submit-button") as HTMLButtonElement | null;
+    const startedAtInput = form.querySelector("#form_started_at") as HTMLInputElement | null;
+    const messageTextarea = form.querySelector("#message") as HTMLTextAreaElement | null;
+    const charCount = form.querySelector("#charCount") as HTMLSpanElement | null;
+
+    const syncCharCounter = () => {
+      if (!charCount || !messageTextarea) return;
+      charCount.textContent = messageTextarea.value.length.toString();
+    };
+
+    if (startedAtInput) {
+      startedAtInput.value = Date.now().toString();
+    }
+    syncCharCounter();
+    messageTextarea?.addEventListener("input", syncCharCounter);
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const currentForm = e.currentTarget as HTMLFormElement;
+      if (!currentForm.checkValidity()) {
+        showErrorToast(formLang, copy.validationError, copy.validationReason, copy.errorTitle);
+        currentForm.reportValidity();
+        return;
+      }
+
+      const nameInput = currentForm.querySelector("#name") as HTMLInputElement | null;
+      const emailInput = currentForm.querySelector("#email") as HTMLInputElement | null;
+      const messageInput = currentForm.querySelector("#message") as HTMLTextAreaElement | null;
+      const messageLength = messageInput?.value.trim().length ?? 0;
+
+      if ((nameInput?.value.trim().length ?? 0) < 2) {
+        showErrorToast(formLang, copy.validationError, copy.invalidName, copy.errorTitle);
+        nameInput?.focus();
+        return;
+      }
+
+      if (!isValidEmail(emailInput?.value.trim() || "")) {
+        showErrorToast(formLang, copy.validationError, copy.invalidEmail, copy.errorTitle);
+        emailInput?.focus();
+        return;
+      }
+
+      if (messageLength < 10 || messageLength > 500) {
+        showErrorToast(formLang, copy.validationError, copy.invalidMessage, copy.errorTitle);
+        messageInput?.focus();
+        return;
+      }
+
+      if (!submitButton) return;
+      submitButton.setAttribute("disabled", "true");
+      submitButton.setAttribute("aria-busy", "true");
+
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          body: new FormData(currentForm),
+        });
+
+        let result: {
+          success: boolean;
+          message?: string;
+          error?: string;
+          reason?: string;
+          title?: string;
+        } | null = null;
+
+        try {
+          result = await response.json();
+        } catch (jsonError) {
+          console.error("Failed to parse JSON response:", jsonError);
+        }
+
+        if (response.ok && result?.success) {
+          toast({
+            element: ".toast-success",
+            title: result.title,
+            content: result.message,
+            position: "bottom-full",
+          });
+          currentForm.reset();
+          syncCharCounter();
+          if (startedAtInput) startedAtInput.value = Date.now().toString();
+          return;
+        }
+
+        const fallbackReason = response.ok ? undefined : `${copy.statusReason} ${response.status}`;
+        showErrorToast(
+          formLang,
+          result?.error || copy.sendFailed,
+          result?.reason || fallbackReason,
+          result?.title || copy.errorTitle
+        );
+      } catch (error) {
+        const reason = error instanceof Error && error.message ? error.message : copy.networkReason;
+        showErrorToast(formLang, copy.sendFailed, `${copy.networkReason} ${reason}`, copy.errorTitle);
+      } finally {
+        submitButton.removeAttribute("disabled");
+        submitButton.removeAttribute("aria-busy");
+      }
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initContactForm, { once: true });
+  } else {
+    initContactForm();
   }
 
-  // Character counter for message
-  const messageTextarea = document.getElementById("message");
-  const charCount = document.getElementById("charCount");
-
-  messageTextarea?.addEventListener("input", () => {
-    if (charCount) {
-      charCount.textContent = (messageTextarea as HTMLTextAreaElement).value.length.toString();
-    }
-  });
-
-  form?.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    if (!submitButton) return;
-
-    // Set loading state
-    submitButton.setAttribute("disabled", "true");
-    submitButton.setAttribute("aria-busy", "true");
-
-    const formData = new FormData(e.target as HTMLFormElement);
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        body: formData,
-      });
-
-      let result: { success: boolean; message?: string; error?: string; title?: string };
-      try {
-        result = await response.json();
-      } catch (jsonError) {
-        console.error("Failed to parse JSON response:", jsonError);
-        throw new Error("Invalid server response");
-      }
-
-      if (result.success) {
-        toast({
-          element: ".toast-success",
-          title: result.title,
-          content: result.message,
-          position: "bottom-full",
-        });
-        (e.target as HTMLFormElement).reset();
-        if (charCount) charCount.textContent = "0";
-      } else {
-        toast({
-          element: ".toast-error",
-          title: result.title || "Error",
-          content: result.error || "Failed to send message",
-          position: "bottom-full",
-        });
-      }
-    } catch (error) {
-      toast({
-        element: ".toast-error",
-        title: "Error",
-        content:
-          formLang === "es"
-            ? "No se pudo procesar tu solicitud. Inténtalo de nuevo más tarde."
-            : "Unable to process your request. Please try again later.",
-        position: "bottom-full",
-      });
-    } finally {
-      // Reset button state
-      submitButton.removeAttribute("disabled");
-      submitButton.removeAttribute("aria-busy");
-    }
-  });
+  // Keep form behavior stable when Astro client-side page transitions are enabled.
+  document.addEventListener("astro:page-load", initContactForm);
+  document.addEventListener("astro:after-swap", initContactForm);
 </script>

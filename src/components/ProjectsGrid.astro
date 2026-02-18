@@ -343,10 +343,16 @@ const projects = PROJECTS.map(project => ({
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  function initProjectsFilter() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projects = document.querySelectorAll('.featured-project, .project-card');
-    
+    if (!filterBtns.length) return;
+
+    // Guard: prevent duplicate listeners if initProjectsFilter is called more than once per page load
+    const firstBtn = filterBtns[0] as HTMLElement;
+    if (firstBtn.dataset.filterReady === "true") return;
+    firstBtn.dataset.filterReady = "true";
+
     // Make all projects visible initially
     projects.forEach(project => {
       project.classList.add('show');
@@ -376,7 +382,16 @@ const projects = PROJECTS.map(project => ({
         });
       });
     });
-  });
+  }
+
+  // Run on initial load (handles DOMContentLoaded + already-loaded states)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProjectsFilter, { once: true });
+  } else {
+    initProjectsFilter();
+  }
+  // Re-run after Astro view-transition navigation
+  document.addEventListener('astro:page-load', initProjectsFilter);
 </script>
 
 <style>

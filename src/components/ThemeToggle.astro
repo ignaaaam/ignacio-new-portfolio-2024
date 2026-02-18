@@ -55,7 +55,15 @@
 </div>
 
 <script>
+  type ThemeMode = "dark" | "light";
+
   class ThemeToggle {
+    button: HTMLButtonElement | null;
+    lightIcon: SVGSVGElement | null;
+    darkIcon: SVGSVGElement | null;
+    overlay: HTMLDivElement | null;
+    isInitialized: boolean;
+
     constructor() {
       this.button = null;
       this.lightIcon = null;
@@ -66,25 +74,29 @@
       this.init();
     }
 
-    init() {
+    init(): void {
       // Wait for DOM to be ready
       if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", () => this.setup());
+        document.addEventListener("DOMContentLoaded", () => this.setup(), { once: true });
       } else {
         this.setup();
       }
     }
 
-    setup() {
-      this.button = document.getElementById("theme-toggle");
-      this.lightIcon = document.getElementById("theme-toggle-light-icon");
-      this.darkIcon = document.getElementById("theme-toggle-dark-icon");
-      this.overlay = document.getElementById("theme-transition-overlay");
+    setup(): void {
+      this.button = document.getElementById("theme-toggle") as HTMLButtonElement | null;
+      this.lightIcon = document.querySelector<SVGSVGElement>("#theme-toggle-light-icon");
+      this.darkIcon = document.querySelector<SVGSVGElement>("#theme-toggle-dark-icon");
+      this.overlay = document.getElementById("theme-transition-overlay") as HTMLDivElement | null;
 
       if (!this.button || !this.lightIcon || !this.darkIcon || !this.overlay) {
-        console.warn("Theme toggle elements not found");
         return;
       }
+      if (this.button.dataset.themeInitialized === "true") {
+        this.isInitialized = true;
+        return;
+      }
+      this.button.dataset.themeInitialized = "true";
 
       // Set initial theme
       this.setTheme(this.getCurrentTheme());
@@ -98,9 +110,9 @@
       this.isInitialized = true;
     }
 
-    getCurrentTheme() {
+    getCurrentTheme(): ThemeMode {
       const savedTheme = localStorage.getItem("color-theme");
-      if (savedTheme) {
+      if (savedTheme === "dark" || savedTheme === "light") {
         return savedTheme;
       }
 
@@ -108,7 +120,7 @@
       return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     }
 
-    setTheme(theme, withAnimation = false) {
+    setTheme(theme: ThemeMode, withAnimation = false): void {
       const isDark = theme === "dark";
 
       if (withAnimation) {
@@ -129,7 +141,8 @@
       this.updateIcons(isDark);
     }
 
-    updateIcons(isDark) {
+    updateIcons(isDark: boolean): void {
+      if (!this.lightIcon || !this.darkIcon) return;
       if (isDark) {
         this.lightIcon.classList.remove("hidden");
         this.darkIcon.classList.add("hidden");
@@ -139,16 +152,16 @@
       }
     }
 
-    toggleTheme() {
+    toggleTheme(): void {
       const currentTheme = this.getCurrentTheme();
-      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      const newTheme: ThemeMode = currentTheme === "dark" ? "light" : "dark";
       this.setTheme(newTheme, true);
     }
 
-    watchSystemTheme() {
+    watchSystemTheme(): void {
       const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-      mediaQuery.addEventListener("change", (e) => {
+      mediaQuery.addEventListener("change", (e: MediaQueryListEvent) => {
         // Only update if user hasn't set a preference
         if (!localStorage.getItem("color-theme")) {
           this.setTheme(e.matches ? "dark" : "light");
@@ -156,7 +169,8 @@
       });
     }
 
-    animateThemeChange(isDark) {
+    animateThemeChange(isDark: boolean): void {
+      if (!this.overlay) return;
       // Add CSS transition to html element for smooth theme change
       document.documentElement.style.transition = "background-color 0.6s ease, color 0.6s ease";
 
@@ -219,8 +233,6 @@
 
   // Re-initialize on Astro page transitions
   document.addEventListener("astro:after-swap", () => {
-    if (!themeToggle.isInitialized) {
-      themeToggle.init();
-    }
+    themeToggle.init();
   });
 </script>

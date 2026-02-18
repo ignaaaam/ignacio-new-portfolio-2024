@@ -1,14 +1,15 @@
 ---
 import SpanishFlag from "./icons/SpanishFlag.astro";
 import EnglishFlag from "./icons/EnglishFlag.astro";
-import { getLangFromUrl } from "../i18n/utils";
 
 export interface Props {
   isEnglish?: boolean;
   pathname: string;
+  spanishUrl?: string;
+  englishUrl?: string;
 }
 
-const { isEnglish = false, pathname } = Astro.props;
+const { isEnglish = false, pathname, spanishUrl = "/", englishUrl = "/en" } = Astro.props;
 const lang = isEnglish ? "en" : "es";
 
 const homeUrl = isEnglish ? "/en" : "/";
@@ -29,7 +30,7 @@ const navItems = isEnglish
     ];
 
 const homeLabel = isEnglish ? "Home" : "Inicio";
-const blogLabel = isEnglish ? "News" : "Noticias";
+const blogLabel = "Blog";
 const contactLabel = isEnglish ? "Contact" : "Contacto";
 const isHomePage = pathname === homeUrl;
 ---
@@ -199,7 +200,7 @@ const isHomePage = pathname === homeUrl;
             >
               <!-- Spanish Option -->
               <a
-                href="/"
+                href={spanishUrl}
                 data-astro-reload
                 class="mobile-language-option"
                 role="menuitem"
@@ -214,7 +215,7 @@ const isHomePage = pathname === homeUrl;
 
               <!-- English Option -->
               <a
-                href="/en"
+                href={englishUrl}
                 data-astro-reload
                 class="mobile-language-option"
                 role="menuitem"
@@ -297,39 +298,62 @@ const isHomePage = pathname === homeUrl;
 <script>
   // Mobile Language Dropdown
   class MobileLanguageDropdown {
+    button: HTMLButtonElement | null;
+    menu: HTMLElement | null;
+    arrow: SVGSVGElement | null;
+    isOpen: boolean;
+    cleanupFns: Array<() => void>;
+
     constructor() {
       this.button = null;
       this.menu = null;
       this.arrow = null;
       this.isOpen = false;
+      this.cleanupFns = [];
       this.init();
     }
 
-    init() {
+    init(): void {
       if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", () => this.setup());
+        document.addEventListener("DOMContentLoaded", () => this.setup(), { once: true });
       } else {
         this.setup();
       }
     }
 
-    setup() {
-      this.button = document.getElementById("mobile-language-button");
+    destroy(): void {
+      this.cleanupFns.forEach((cleanup) => cleanup());
+      this.cleanupFns = [];
+      this.isOpen = false;
+    }
+
+    setup(): void {
+      this.destroy();
+
+      this.button = document.getElementById("mobile-language-button") as HTMLButtonElement | null;
       this.menu = document.getElementById("mobile-language-menu");
-      this.arrow = document.getElementById("mobile-language-arrow");
+      this.arrow = document.querySelector<SVGSVGElement>("#mobile-language-arrow");
 
       if (!this.button || !this.menu) return;
 
-      this.button.addEventListener("click", (e) => this.toggleDropdown(e));
-      document.addEventListener("click", (e) => this.handleOutsideClick(e));
-      document.addEventListener("keydown", (e) => {
+      const onButtonClick = (e: MouseEvent) => this.toggleDropdown(e);
+      const onDocClick = (e: MouseEvent) => this.handleOutsideClick(e);
+      const onDocKeydown = (e: KeyboardEvent) => {
         if (e.key === "Escape" && this.isOpen) {
           this.closeDropdown(true);
         }
-      });
+      };
+
+      this.button.addEventListener("click", onButtonClick);
+      document.addEventListener("click", onDocClick);
+      document.addEventListener("keydown", onDocKeydown);
+
+      this.cleanupFns.push(() => this.button?.removeEventListener("click", onButtonClick));
+      this.cleanupFns.push(() => document.removeEventListener("click", onDocClick));
+      this.cleanupFns.push(() => document.removeEventListener("keydown", onDocKeydown));
     }
 
-    toggleDropdown(e) {
+    toggleDropdown(e: MouseEvent): void {
       e.preventDefault();
       e.stopPropagation();
 
@@ -340,7 +364,8 @@ const isHomePage = pathname === homeUrl;
       }
     }
 
-    openDropdown() {
+    openDropdown(): void {
+      if (!this.menu) return;
       this.isOpen = true;
       this.menu.classList.remove("mobile-language-menu-hidden");
       this.menu.classList.add("mobile-language-menu-visible");
@@ -348,7 +373,8 @@ const isHomePage = pathname === homeUrl;
       this.button?.setAttribute("aria-expanded", "true");
     }
 
-    closeDropdown(returnFocus = false) {
+    closeDropdown(returnFocus = false): void {
+      if (!this.menu) return;
       this.isOpen = false;
       this.menu.classList.add("mobile-language-menu-hidden");
       this.menu.classList.remove("mobile-language-menu-visible");
@@ -357,8 +383,10 @@ const isHomePage = pathname === homeUrl;
       if (returnFocus) this.button?.focus();
     }
 
-    handleOutsideClick(e) {
-      if (!this.button?.contains(e.target) && !this.menu?.contains(e.target)) {
+    handleOutsideClick(e: MouseEvent): void {
+      const target = e.target;
+      if (!(target instanceof Node)) return;
+      if (!this.button?.contains(target) && !this.menu?.contains(target)) {
         this.closeDropdown();
       }
     }
@@ -366,15 +394,17 @@ const isHomePage = pathname === homeUrl;
 
   // Mobile Navigation
   function initMobileNav() {
-    const menuButton = document.getElementById("mobile-menu-button");
-    const closeButton = document.getElementById("mobile-menu-close");
+    const menuButton = document.getElementById("mobile-menu-button") as HTMLButtonElement | null;
+    const closeButton = document.getElementById("mobile-menu-close") as HTMLButtonElement | null;
     const menu = document.getElementById("mobile-menu");
-    const line1 = document.getElementById("hamburger-line-1");
-    const line2 = document.getElementById("hamburger-line-2");
-    const line3 = document.getElementById("hamburger-line-3");
-    const navLinks = document.querySelectorAll(".mobile-nav-link");
+    const line1 = document.getElementById("hamburger-line-1") as HTMLElement | null;
+    const line2 = document.getElementById("hamburger-line-2") as HTMLElement | null;
+    const line3 = document.getElementById("hamburger-line-3") as HTMLElement | null;
+    const navLinks = document.querySelectorAll<HTMLElement>(".mobile-nav-link");
 
     if (!menuButton || !menu) return;
+    if (menuButton.dataset.navInitialized === "true") return;
+    menuButton.dataset.navInitialized = "true";
 
     let scrollPosition = 0;
 
@@ -395,10 +425,10 @@ const isHomePage = pathname === homeUrl;
         line3.style.transform = "rotate(-45deg) translate(6px, -6px)";
       }
 
-      navLinks.forEach((link, index) => {
-        setTimeout(() => {
-          (link as HTMLElement).style.opacity = "1";
-          (link as HTMLElement).style.transform = "translateY(0)";
+    navLinks.forEach((link, index) => {
+      setTimeout(() => {
+          link.style.opacity = "1";
+          link.style.transform = "translateY(0)";
         }, index * 100);
       });
     }
@@ -421,15 +451,15 @@ const isHomePage = pathname === homeUrl;
       }
 
       navLinks.forEach((link) => {
-        (link as HTMLElement).style.opacity = "0";
-        (link as HTMLElement).style.transform = "translateY(20px)";
+        link.style.opacity = "0";
+        link.style.transform = "translateY(20px)";
       });
     }
 
     navLinks.forEach((link) => {
-      (link as HTMLElement).style.opacity = "0";
-      (link as HTMLElement).style.transform = "translateY(20px)";
-      (link as HTMLElement).style.transition = "opacity 0.3s ease, transform 0.3s ease";
+      link.style.opacity = "0";
+      link.style.transform = "translateY(20px)";
+      link.style.transition = "opacity 0.3s ease, transform 0.3s ease";
     });
 
     menuButton.addEventListener("click", openMenu);
