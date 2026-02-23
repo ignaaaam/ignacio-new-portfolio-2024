@@ -1,0 +1,48 @@
+---
+import { getAdjacentPosts, getBlogPostPath, type BlogEntry } from "../lib/blog";
+
+interface Props {
+  entry: BlogEntry;
+  isEnglish: boolean;
+}
+
+const { entry, isEnglish } = Astro.props;
+const { prev, next } = await getAdjacentPosts(entry);
+---
+
+{(prev || next) && (
+  <nav class="mt-10 grid gap-4 sm:grid-cols-2" aria-label={isEnglish ? "Post navigation" : "Navegación de artículos"}>
+    {prev ? (
+      <a
+        href={getBlogPostPath(prev)}
+        class="group flex items-start gap-3 p-4 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-colors"
+      >
+        <svg class="w-5 h-5 mt-0.5 text-gray-400 group-hover:text-blue-500 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <div class="min-w-0">
+          <span class="text-xs text-gray-500 dark:text-gray-400">{isEnglish ? "Previous" : "Anterior"}</span>
+          <p class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug mt-0.5">
+            {prev.data.title}
+          </p>
+        </div>
+      </a>
+    ) : <div />}
+    {next ? (
+      <a
+        href={getBlogPostPath(next)}
+        class="group flex items-start gap-3 p-4 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-colors text-right sm:col-start-2"
+      >
+        <div class="min-w-0 flex-1">
+          <span class="text-xs text-gray-500 dark:text-gray-400">{isEnglish ? "Next" : "Siguiente"}</span>
+          <p class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug mt-0.5">
+            {next.data.title}
+          </p>
+        </div>
+        <svg class="w-5 h-5 mt-0.5 text-gray-400 group-hover:text-blue-500 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    ) : <div />}
+  </nav>
+)}

@@ -34,6 +34,10 @@ export function getTagColor(tag: string): string {
     Blog: "bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300 border-rose-200 dark:border-rose-800",
     Productividad: "bg-lime-100 text-lime-700 dark:bg-lime-900/40 dark:text-lime-300 border-lime-200 dark:border-lime-800",
     Productivity: "bg-lime-100 text-lime-700 dark:bg-lime-900/40 dark:text-lime-300 border-lime-200 dark:border-lime-800",
+    TailwindCSS: "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/40 dark:text-cyan-300 border-cyan-200 dark:border-cyan-800",
+    CSS: "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 border-blue-200 dark:border-blue-800",
+    "Migración": "bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300 border-amber-200 dark:border-amber-800",
+    Migration: "bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300 border-amber-200 dark:border-amber-800",
   };
   return (
     colors[tag] ??
@@ -73,6 +77,32 @@ export async function getTranslationMap(): Promise<Map<string, TranslationPair>>
 export async function getTranslatedEntry(entry: BlogEntry, targetLocale: BlogLocale): Promise<BlogEntry | null> {
   const map = await getTranslationMap();
   return map.get(entry.data.translationKey)?.[targetLocale] ?? null;
+}
+
+export async function getRelatedPosts(entry: BlogEntry, limit = 3): Promise<BlogEntry[]> {
+  const allPosts = await getPublishedBlogEntries(entry.data.locale);
+  const currentTags = entry.data.tags ?? [];
+  if (currentTags.length === 0) return [];
+
+  const scored = allPosts
+    .filter((p) => p.slug !== entry.slug)
+    .map((p) => {
+      const shared = (p.data.tags ?? []).filter((t) => currentTags.includes(t)).length;
+      return { entry: p, shared };
+    })
+    .filter((s) => s.shared > 0)
+    .sort((a, b) => b.shared - a.shared || b.entry.data.publishDate.getTime() - a.entry.data.publishDate.getTime());
+
+  return scored.slice(0, limit).map((s) => s.entry);
+}
+
+export async function getAdjacentPosts(entry: BlogEntry): Promise<{ prev: BlogEntry | null; next: BlogEntry | null }> {
+  const allPosts = await getPublishedBlogEntries(entry.data.locale);
+  const index = allPosts.findIndex((p) => p.slug === entry.slug);
+  return {
+    prev: index < allPosts.length - 1 ? allPosts[index + 1] : null,
+    next: index > 0 ? allPosts[index - 1] : null,
+  };
 }
 
 export async function getLanguageSwitcherPaths(entry: BlogEntry): Promise<{ es: string; en: string }> {

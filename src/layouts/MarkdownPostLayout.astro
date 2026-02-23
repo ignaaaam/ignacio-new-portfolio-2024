@@ -33,6 +33,7 @@ interface Props {
   readingTime?: number;
   headings?: MarkdownHeading[];
   body?: string;
+  entry?: BlogEntry;
 }
 
 const {
@@ -43,13 +44,16 @@ const {
   readingTime,
   headings = [],
   body: rawBody,
+  entry,
 } = Astro.props as Props;
 
 import ContactForm from "../components/ContactForm.astro";
+import RelatedPosts from "../components/RelatedPosts.astro";
+import PostNavigation from "../components/PostNavigation.astro";
 import Layout from "../layouts/Layout.astro";
 import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
 import { getLangFromUrl } from "../i18n/utils";
-import { getTagColor } from "../lib/blog";
+import { getTagColor, type BlogEntry } from "../lib/blog";
 
 import {
   FacebookShareButton,
@@ -238,7 +242,7 @@ const hasToc = tocHeadings.length >= 3;
             frontmatter.tags && frontmatter.tags.length > 0 && (
               <div class="flex flex-wrap gap-2 mb-5">
                 {frontmatter.tags.map((tag) => (
-                  <span class={`px-3 py-0.5 text-xs font-semibold rounded-full border ${getTagColor(tag)}`}>{tag}</span>
+                  <a href={`${blogPath}?tag=${encodeURIComponent(tag)}`} class={`px-3 py-0.5 text-xs font-semibold rounded-full border hover:opacity-80 transition-opacity ${getTagColor(tag)}`}>{tag}</a>
                 ))}
               </div>
             )
@@ -339,6 +343,10 @@ const hasToc = tocHeadings.length >= 3;
           <article id="article-content" class="prose prose-gray dark:prose-invert max-w-none prose-lg prose-headings:scroll-mt-24 prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-img:rounded-lg prose-img:shadow-md">
             <slot />
           </article>
+
+          <!-- Related posts & navigation -->
+          {entry && <RelatedPosts entry={entry} isEnglish={isEnglish} />}
+          {entry && <PostNavigation entry={entry} isEnglish={isEnglish} />}
 
           <!-- Visual divider + Contact CTA -->
           <div class="mt-16 mb-10">

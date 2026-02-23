@@ -15,7 +15,6 @@ import CodeIcon from "../../components/icons/CodeIcon.astro";
 import LearningIcon from "../../components/icons/LearningIcon.astro";
 import CertificationIcon from "../../components/icons/CertificationIcon.astro";
 import CVDownloadButton from "../../components/CVDownloadButton.astro";
-import ScrollIndicator from "../../components/ScrollIndicator.astro";
 import FAQSection from "../../components/FAQSection.astro";
 
 import PHPIcon from "../../components/icons/PHPIcon.astro";
@@ -36,14 +35,14 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
 ---
 
 <Layout
-  title="Ignacio Amat | Full Stack PHP & Laravel Developer | Available for Remote Hire"
-  description="Full stack developer with 5+ years building web applications for brands like PlayStation, TikTok, and Glovo. Expert in PHP, Laravel, and Vue.js. Open to remote positions worldwide."
+  title="Ignacio Amat | Remote Full Stack PHP Laravel Developer"
+  description="Full stack developer with 5+ years building scalable web applications with PHP, Laravel, Vue.js, and Astro. Available for remote teams and product projects."
 >
   <main>
-    <SectionContainer class="hero-section -mt-6 py-12 md:py-16 lg:py-20 min-h-[92vh] md:min-h-[95vh] lg:min-h-screen flex flex-col justify-center relative">
-      <div class="max-w-4xl mx-auto text-center">
+    <SectionContainer class="hero-section -mt-4 py-10 md:py-14 lg:py-16 md:min-h-[calc(100svh-4.5rem)] flex flex-col justify-center relative">
+      <div class="max-w-4xl mx-auto text-center hero-content">
         <!-- Availability Badge with pulse animation -->
-        <div class="flex items-center justify-center gap-3 mb-5 mt-2 md:mt-0">
+        <div class="flex items-center justify-center gap-3 mb-4 mt-1 md:mt-0">
           <Badge
             class="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 relative overflow-hidden"
           >
@@ -60,20 +59,20 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
           </Badge>
         </div>
 
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight animate-fade-in text-wrap-balance">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-5 leading-tight animate-fade-in text-wrap-balance">
           I'm <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent animate-gradient">Ignacio</span> — The full stack developer your team needs
         </h1>
 
-        <p class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-4 font-medium leading-relaxed max-w-2xl mx-auto text-wrap-balance">
-          <span class="font-semibold">5+ years building web apps</span> for brands like PlayStation, Glovo, and TikTok.
+        <p class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-3 font-medium leading-relaxed max-w-2xl mx-auto text-wrap-balance">
+          <span class="font-semibold">5+ years building business web applications</span> with a strong focus on performance, maintainability, and growth.
         </p>
 
-        <p class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-5 font-medium leading-relaxed max-w-2xl mx-auto text-wrap-balance">
-          Specialized in PHP, Laravel, and Vue.js. Looking to join a remote development team where I can bring clean code, scalable solutions, and the mindset of someone who has shipped real projects for top-tier companies.
+        <p class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-4 font-medium leading-relaxed max-w-2xl mx-auto text-wrap-balance">
+          Specialized in PHP, Laravel, Vue.js, and Astro. I help remote teams ship product with clean code, scalable architecture, and a consistent quality-first workflow.
         </p>
 
         <!-- Tech Stack Pills with hover effects -->
-        <div class="flex flex-wrap justify-center gap-2 mb-5">
+        <div class="flex flex-wrap justify-center gap-2 mb-4">
           <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-default">
             <PHPIcon class="w-4 h-4" />
             PHP
@@ -98,32 +97,32 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
         </div>
 
         <!-- Stats Section for credibility -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 max-w-2xl mx-auto">
-          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-colors">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-5 max-w-2xl mx-auto">
+          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-3 md:p-4 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-colors">
             <div class="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400">+5</div>
             <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Years Experience</div>
           </div>
-          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:border-green-300 dark:hover:border-green-600 transition-colors">
+          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-3 md:p-4 border border-gray-200 dark:border-gray-700 hover:border-green-300 dark:hover:border-green-600 transition-colors">
             <div class="text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400">10+</div>
             <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Companies</div>
           </div>
-          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 transition-colors">
-            <div class="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">Top</div>
-            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Brands</div>
+          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-3 md:p-4 border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 transition-colors">
+            <div class="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">E2E</div>
+            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">End-to-End Delivery</div>
           </div>
-          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-600 transition-colors">
+          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-3 md:p-4 border border-gray-200 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-600 transition-colors">
             <div class="text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400">24h</div>
             <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Response Time</div>
           </div>
         </div>
 
         <!-- Call to Action Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+        <div class="hero-cta flex flex-wrap gap-3 md:gap-4 justify-center items-stretch mb-4">
           <a
             href="#experience"
-            class="group px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-xl shadow-lg hover:from-indigo-700 hover:to-purple-800 transition-[transform,box-shadow,background] duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
+            class="group w-full sm:w-auto min-w-[16rem] sm:min-w-[13.5rem] px-6 py-4 text-base md:text-lg font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-xl shadow-lg hover:from-indigo-700 hover:to-purple-800 transition-[transform,box-shadow,background] duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
           >
-            View my experience
+            View experience
             <svg
               class="w-5 h-5 group-hover:translate-x-1 transition-transform"
               fill="none"
@@ -139,19 +138,24 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
               ></path>
             </svg>
           </a>
-          <div class="hero-cv-btn">
-            <CVDownloadButton isEnglish={true}>Download CV</CVDownloadButton>
+          <div class="hero-cv-btn w-full sm:w-auto">
+            <CVDownloadButton
+              isEnglish={true}
+              variant="cta"
+            >
+              Download CV
+            </CVDownloadButton>
           </div>
           <a
             href="#contact"
-            class="px-8 py-4 text-lg font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-800 transition-[background-color,border-color] duration-300 border-2 border-transparent hover:border-blue-300 dark:hover:border-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+            class="w-full sm:w-auto min-w-[16rem] sm:min-w-[13.5rem] px-6 py-4 text-base md:text-lg font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-800 transition-[background-color,border-color] duration-300 border-2 border-transparent hover:border-blue-300 dark:hover:border-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
           >
-            Contact me
+            Contact now
           </a>
         </div>
 
         <!-- Social Links -->
-        <nav class="flex flex-wrap justify-center gap-3 mb-3">
+        <nav class="hero-social-links flex flex-wrap justify-center gap-2 md:gap-3 mb-2 max-w-3xl mx-auto">
           <SocialPill href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223">
             <LinkedinIcon class="size-5" />
             LinkedIn
@@ -172,14 +176,13 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
             <LaracastsIcon class="size-5" />
             Laracasts
           </SocialPill>
-          <CVDownloadButton isEnglish={true}>Download CV</CVDownloadButton>
         </nav>
 
         <!-- Contact info -->
-        <div class="flex flex-col items-center justify-center gap-2 mb-6">
+        <div class="flex flex-col items-center justify-center gap-2 mb-4">
           <SocialPill
             href="#contact"
-            class="min-w-[16rem] md:min-w-[18rem]"
+            class="min-w-[14rem] md:min-w-[17rem]"
           >
             <MailIcon class="size-4 md:size-6" />
             ignacioamat@ignathedev.com
@@ -187,8 +190,6 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
           <span class="text-xs text-gray-500 dark:text-gray-400 italic">Contact me by email</span>
         </div>
 
-        <!-- Scroll indicator -->
-        <ScrollIndicator class="!bottom-2 md:!bottom-16 lg:!bottom-24" />
       </div>
     </SectionContainer>
 
@@ -401,29 +402,16 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
       class="relative py-20 bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-700 dark:from-indigo-800 dark:via-blue-800 dark:to-purple-900"
     >
       <div class="max-w-5xl mx-auto text-center">
-        <h2 class="mb-4 text-4xl lg:text-5xl font-bold text-white">Brands that trusted my work</h2>
-        <p class="text-xl text-blue-100 dark:text-blue-200 max-w-3xl mx-auto mb-12">I've built web applications, internal tools, and corporate sites for some of Spain's most recognized companies.</p>
+        <h2 class="mb-4 text-4xl lg:text-5xl font-bold text-white">Experience in real products and demanding teams</h2>
+        <p class="text-xl text-blue-100 dark:text-blue-200 max-w-3xl mx-auto mb-10">I've worked on high-traffic products, internal platforms, and digital experiences focused on performance, stability, and long-term growth.</p>
 
-        <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12">
-          <span class="text-white/90 text-lg md:text-xl font-semibold">PlayStation</span>
-          <span class="text-white/60">|</span>
-          <span class="text-white/90 text-lg md:text-xl font-semibold">TikTok</span>
-          <span class="text-white/60">|</span>
-          <span class="text-white/90 text-lg md:text-xl font-semibold">Glovo</span>
-          <span class="text-white/60">|</span>
-          <span class="text-white/90 text-lg md:text-xl font-semibold">LaCaixa</span>
-          <span class="text-white/60">|</span>
-          <span class="text-white/90 text-lg md:text-xl font-semibold">Bizum</span>
-          <span class="text-white/60">|</span>
-          <span class="text-white/90 text-lg md:text-xl font-semibold">Citroën</span>
-          <span class="text-white/60">|</span>
-          <span class="text-white/90 text-lg md:text-xl font-semibold">ElPozo</span>
-          <span class="text-white/60">|</span>
-          <span class="text-white/90 text-lg md:text-xl font-semibold">TacoBell</span>
-          <span class="text-white/60">|</span>
-          <span class="text-white/90 text-lg md:text-xl font-semibold">Ginos</span>
-          <span class="text-white/60">|</span>
-          <span class="text-white/90 text-lg md:text-xl font-semibold">Btravel</span>
+        <div class="flex flex-wrap justify-center gap-3 mb-10">
+          <span class="px-4 py-2 rounded-full bg-white/15 text-white text-sm md:text-base font-semibold border border-white/20">B2B SaaS</span>
+          <span class="px-4 py-2 rounded-full bg-white/15 text-white text-sm md:text-base font-semibold border border-white/20">E-commerce</span>
+          <span class="px-4 py-2 rounded-full bg-white/15 text-white text-sm md:text-base font-semibold border border-white/20">Internal platforms</span>
+          <span class="px-4 py-2 rounded-full bg-white/15 text-white text-sm md:text-base font-semibold border border-white/20">Corporate websites</span>
+          <span class="px-4 py-2 rounded-full bg-white/15 text-white text-sm md:text-base font-semibold border border-white/20">Process automation</span>
+          <span class="px-4 py-2 rounded-full bg-white/15 text-white text-sm md:text-base font-semibold border border-white/20">Performance optimization</span>
         </div>
 
         <a
@@ -523,12 +511,27 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
 <style>
   main {
     color: inherit;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 1.6;
   }
 
   .hero-section {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-cta a {
+    min-height: 3.5rem;
   }
 
   .hero-section::after {
@@ -713,12 +716,6 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
     }
   }
 
-  /* Make the CV button stand out even more with a scale effect */
-  .cv-button-wrapper {
-    display: inline-block;
-    transform: scale(1.05);
-  }
-
   .blob-white {
     background: white;
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
@@ -755,5 +752,20 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
   }
   .split-parent [style*="opacity: 1"] {
     visibility: visible;
+  }
+
+  @media (max-width: 640px) {
+    main {
+      font-size: 14px;
+    }
+
+    .hero-section {
+      min-height: auto;
+      padding-bottom: 3rem;
+    }
+
+    .hero-section::after {
+      display: none;
+    }
   }
 </style>

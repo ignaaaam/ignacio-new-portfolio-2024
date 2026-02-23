@@ -15,7 +15,6 @@ import CodeIcon from "../components/icons/CodeIcon.astro";
 import LearningIcon from "../components/icons/LearningIcon.astro";
 import CertificationIcon from "../components/icons/CertificationIcon.astro";
 import CVDownloadButton from "../components/CVDownloadButton.astro";
-import ScrollIndicator from "../components/ScrollIndicator.astro";
 
 import PHPIcon from "../components/icons/PHPIcon.astro";
 import LaravelIcon from "../components/icons/LaravelIcon.astro";
@@ -35,14 +34,14 @@ import FAQSection from "../components/FAQSection.astro";
 ---
 
 <Layout
-  title="Ignacio Amat | Desarrollador Web Full Stack PHP y Laravel | Disponible para contratación remota"
-  description="Desarrollador full stack con +5 años creando aplicaciones web para marcas como PlayStation, TikTok y Glovo. Experto en PHP, Laravel y Vue.js. Disponible para equipos remotos."
+  title="Ignacio Amat | Desarrollador Full Stack PHP Laravel remoto"
+  description="Desarrollador full stack con +5 años creando aplicaciones web escalables con PHP, Laravel, Vue.js y Astro. Disponible para equipos remotos y proyectos de producto."
 >
   <main>
-    <SectionContainer class="hero-section -mt-6 py-12 md:py-16 lg:py-20 min-h-[92vh] md:min-h-[95vh] lg:min-h-screen flex flex-col justify-center relative">
-      <div class="max-w-4xl mx-auto text-center">
+    <SectionContainer class="hero-section -mt-4 py-10 md:py-14 lg:py-16 md:min-h-[calc(100svh-4.5rem)] flex flex-col justify-center relative">
+      <div class="max-w-4xl mx-auto text-center hero-content">
         <!-- Availability Badge with pulse animation -->
-        <div class="flex items-center justify-center gap-3 mb-5 mt-2 md:mt-0">
+        <div class="flex items-center justify-center gap-3 mb-4 mt-1 md:mt-0">
           <Badge
             class="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 relative overflow-hidden"
           >
@@ -59,20 +58,20 @@ import FAQSection from "../components/FAQSection.astro";
           </Badge>
         </div>
 
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight animate-fade-in text-wrap-balance">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-5 leading-tight animate-fade-in text-wrap-balance">
           Soy <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent animate-gradient">Ignacio</span> — El desarrollador full stack que tu equipo necesita
         </h1>
 
-        <p class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-4 font-medium leading-relaxed max-w-2xl mx-auto text-wrap-balance">
-          <span class="font-semibold">+5 años construyendo aplicaciones web</span> para marcas como PlayStation, Glovo y TikTok.
+        <p class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-3 font-medium leading-relaxed max-w-2xl mx-auto text-wrap-balance">
+          <span class="font-semibold">+5 años desarrollando aplicaciones web de negocio</span> con foco en rendimiento, mantenibilidad y crecimiento.
         </p>
 
-        <p class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-5 font-medium leading-relaxed max-w-2xl mx-auto text-wrap-balance">
-          Especializado en PHP, Laravel y Vue.js. Busco unirme a un equipo de desarrollo remoto donde pueda aportar código limpio, soluciones escalables y la mentalidad de alguien que ha entregado proyectos reales para empresas de alto nivel.
+        <p class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-4 font-medium leading-relaxed max-w-2xl mx-auto text-wrap-balance">
+          Especializado en PHP, Laravel, Vue.js y Astro. Ayudo a equipos remotos a entregar producto con código limpio, arquitectura escalable y un enfoque fuerte en calidad técnica.
         </p>
 
         <!-- Tech Stack Pills with hover effects -->
-        <div class="flex flex-wrap justify-center gap-2 mb-5">
+        <div class="flex flex-wrap justify-center gap-2 mb-4">
           <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-default">
             <PHPIcon class="w-4 h-4" />
             PHP
@@ -97,32 +96,32 @@ import FAQSection from "../components/FAQSection.astro";
         </div>
 
         <!-- Stats Section for credibility -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 max-w-2xl mx-auto">
-          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-colors">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-5 max-w-2xl mx-auto">
+          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-3 md:p-4 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-colors">
             <div class="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400">+5</div>
             <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Años Experiencia</div>
           </div>
-          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:border-green-300 dark:hover:border-green-600 transition-colors">
+          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-3 md:p-4 border border-gray-200 dark:border-gray-700 hover:border-green-300 dark:hover:border-green-600 transition-colors">
             <div class="text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400">10+</div>
             <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Empresas</div>
           </div>
-          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 transition-colors">
-            <div class="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">Top</div>
-            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Marcas</div>
+          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-3 md:p-4 border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 transition-colors">
+            <div class="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">E2E</div>
+            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Entrega Full Stack</div>
           </div>
-          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-600 transition-colors">
+          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-3 md:p-4 border border-gray-200 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-600 transition-colors">
             <div class="text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400">24h</div>
             <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Respuesta</div>
           </div>
         </div>
 
         <!-- Call to Action Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+        <div class="hero-cta flex flex-wrap gap-3 md:gap-4 justify-center items-stretch mb-4">
           <a
             href="#experience"
-            class="group px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-xl shadow-lg hover:from-indigo-700 hover:to-purple-800 transition-[transform,box-shadow,background] duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
+            class="group w-full sm:w-auto min-w-[16rem] sm:min-w-[13.5rem] px-6 py-4 text-base md:text-lg font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-xl shadow-lg hover:from-indigo-700 hover:to-purple-800 transition-[transform,box-shadow,background] duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
           >
-            Ver mi experiencia
+            Ver experiencia
             <svg
               class="w-5 h-5 group-hover:translate-x-1 transition-transform"
               fill="none"
@@ -138,19 +137,24 @@ import FAQSection from "../components/FAQSection.astro";
               ></path>
             </svg>
           </a>
-          <div class="hero-cv-btn">
-            <CVDownloadButton isEnglish={false}>Descargar CV</CVDownloadButton>
+          <div class="hero-cv-btn w-full sm:w-auto">
+            <CVDownloadButton
+              isEnglish={false}
+              variant="cta"
+            >
+              Descargar CV
+            </CVDownloadButton>
           </div>
           <a
             href="#contact"
-            class="px-8 py-4 text-lg font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-800 transition-[background-color,border-color] duration-300 border-2 border-transparent hover:border-blue-300 dark:hover:border-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+            class="w-full sm:w-auto min-w-[16rem] sm:min-w-[13.5rem] px-6 py-4 text-base md:text-lg font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-800 transition-[background-color,border-color] duration-300 border-2 border-transparent hover:border-blue-300 dark:hover:border-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
           >
-            Contactar
+            Contactar ahora
           </a>
         </div>
 
         <!-- Social Links -->
-        <nav class="flex flex-wrap justify-center gap-3 mb-3">
+        <nav class="hero-social-links flex flex-wrap justify-center gap-2 md:gap-3 mb-2 max-w-3xl mx-auto">
           <SocialPill href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223">
             <LinkedinIcon class="size-5" />
             LinkedIn
@@ -171,14 +175,13 @@ import FAQSection from "../components/FAQSection.astro";
             <LaracastsIcon class="size-5" />
             Laracasts
           </SocialPill>
-          <CVDownloadButton isEnglish={false}>Descargar CV</CVDownloadButton>
         </nav>
 
         <!-- Contact info -->
-        <div class="flex flex-col items-center justify-center gap-2 mb-6">
+        <div class="flex flex-col items-center justify-center gap-2 mb-4">
           <SocialPill
             href="#contact"
-            class="min-w-[16rem] md:min-w-[18rem]"
+            class="min-w-[14rem] md:min-w-[17rem]"
           >
             <MailIcon class="size-4 md:size-6" />
             ignacioamat@ignathedev.com
@@ -186,8 +189,6 @@ import FAQSection from "../components/FAQSection.astro";
           <span class="text-xs text-gray-500 dark:text-gray-400 italic">Contáctame por email</span>
         </div>
 
-        <!-- Scroll indicator -->
-        <ScrollIndicator class="!bottom-8 md:!bottom-8 lg:!bottom-12" />
       </div>
     </SectionContainer>
 
@@ -358,29 +359,16 @@ import FAQSection from "../components/FAQSection.astro";
     class="relative py-20 bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-700 dark:from-indigo-800 dark:via-blue-800 dark:to-purple-900"
   >
     <div class="max-w-5xl mx-auto text-center">
-      <h2 class="mb-4 text-4xl lg:text-5xl font-bold text-white">Marcas que han confiado en mi trabajo</h2>
-      <p class="text-xl text-blue-100 dark:text-blue-200 max-w-3xl mx-auto mb-12">He desarrollado aplicaciones web, herramientas internas y sitios corporativos para algunas de las empresas más reconocidas de España.</p>
+      <h2 class="mb-4 text-4xl lg:text-5xl font-bold text-white">Experiencia en productos reales y equipos exigentes</h2>
+      <p class="text-xl text-blue-100 dark:text-blue-200 max-w-3xl mx-auto mb-10">He trabajado en proyectos con alto volumen de usuarios, plataformas internas y producto digital con foco en rendimiento, estabilidad y crecimiento.</p>
 
-      <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12">
-        <span class="text-white/90 text-lg md:text-xl font-semibold">PlayStation</span>
-        <span class="text-white/60">|</span>
-        <span class="text-white/90 text-lg md:text-xl font-semibold">TikTok</span>
-        <span class="text-white/60">|</span>
-        <span class="text-white/90 text-lg md:text-xl font-semibold">Glovo</span>
-        <span class="text-white/60">|</span>
-        <span class="text-white/90 text-lg md:text-xl font-semibold">LaCaixa</span>
-        <span class="text-white/60">|</span>
-        <span class="text-white/90 text-lg md:text-xl font-semibold">Bizum</span>
-        <span class="text-white/60">|</span>
-        <span class="text-white/90 text-lg md:text-xl font-semibold">Citroën</span>
-        <span class="text-white/60">|</span>
-        <span class="text-white/90 text-lg md:text-xl font-semibold">ElPozo</span>
-        <span class="text-white/60">|</span>
-        <span class="text-white/90 text-lg md:text-xl font-semibold">TacoBell</span>
-        <span class="text-white/60">|</span>
-        <span class="text-white/90 text-lg md:text-xl font-semibold">Ginos</span>
-        <span class="text-white/60">|</span>
-        <span class="text-white/90 text-lg md:text-xl font-semibold">Btravel</span>
+      <div class="flex flex-wrap justify-center gap-3 mb-10">
+        <span class="px-4 py-2 rounded-full bg-white/15 text-white text-sm md:text-base font-semibold border border-white/20">SaaS B2B</span>
+        <span class="px-4 py-2 rounded-full bg-white/15 text-white text-sm md:text-base font-semibold border border-white/20">E-commerce</span>
+        <span class="px-4 py-2 rounded-full bg-white/15 text-white text-sm md:text-base font-semibold border border-white/20">Plataformas internas</span>
+        <span class="px-4 py-2 rounded-full bg-white/15 text-white text-sm md:text-base font-semibold border border-white/20">Sitios corporativos</span>
+        <span class="px-4 py-2 rounded-full bg-white/15 text-white text-sm md:text-base font-semibold border border-white/20">Automatización de procesos</span>
+        <span class="px-4 py-2 rounded-full bg-white/15 text-white text-sm md:text-base font-semibold border border-white/20">Optimización de rendimiento</span>
       </div>
 
       <a
@@ -490,13 +478,21 @@ import FAQSection from "../components/FAQSection.astro";
 
   .hero-section {
     position: relative;
-    min-height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding-left: 1rem;
     padding-right: 1rem;
     z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-cta a {
+    min-height: 3.5rem;
   }
 
   .hero-section::after {
@@ -562,7 +558,12 @@ import FAQSection from "../components/FAQSection.astro";
     }
 
     .hero-section {
-      min-height: 70vh;
+      min-height: auto;
+      padding-bottom: 3rem;
+    }
+
+    .hero-section::after {
+      display: none;
     }
   }
 </style>
