@@ -1,0 +1,203 @@
+---
+import PHPIcon from "./icons/PHPIcon.astro";
+import LaravelIcon from "./icons/LaravelIcon.astro";
+import VueIcon from "./icons/VueIcon.astro";
+import JavascriptIcon from "./icons/JavascriptIcon.astro";
+import TailwindIcon from "./icons/TailwindIcon.astro";
+import AstroIcon from "./icons/AstroIcon.astro";
+import ReactIcon from "./icons/ReactIcon.astro";
+import AlpineIcon from "./icons/AlpineIcon.astro";
+import HTMLIcon from "./icons/HTMLIcon.astro";
+import CSSIcon from "./icons/CSSIcon.astro";
+import SassIcon from "./icons/SassIcon.astro";
+
+interface Props {
+  isEnglish?: boolean;
+}
+const { isEnglish = false } = Astro.props;
+
+const label = isEnglish ? "Technologies I work with" : "Tecnologías con las que trabajo";
+---
+
+<div class="tech-marquee-wrapper py-6 overflow-hidden relative" aria-label={label}>
+  <!-- Fade masks on edges via CSS mask -->
+  <div class="marquee-track flex items-center gap-8 w-max" aria-hidden="false">
+
+    <!-- ─── Set 1 ─── -->
+    <div class="tech-pill">
+      <PHPIcon class="w-6 h-6 text-blue-700 dark:text-blue-400 flex-shrink-0" />
+      <span>PHP</span>
+    </div>
+    <div class="tech-pill">
+      <LaravelIcon class="w-6 h-6 text-red-600 dark:text-red-400 flex-shrink-0" />
+      <span>Laravel</span>
+    </div>
+    <div class="tech-pill">
+      <VueIcon class="w-6 h-6 text-green-600 dark:text-green-400 flex-shrink-0" />
+      <span>Vue.js</span>
+    </div>
+    <div class="tech-pill">
+      <JavascriptIcon class="w-6 h-6 text-yellow-500 dark:text-yellow-400 flex-shrink-0" />
+      <span>JavaScript</span>
+    </div>
+    <div class="tech-pill">
+      <TailwindIcon class="w-6 h-6 text-sky-500 dark:text-sky-400 flex-shrink-0" />
+      <span>TailwindCSS</span>
+    </div>
+    <div class="tech-pill">
+      <AstroIcon class="w-6 h-6 text-orange-500 dark:text-orange-400 flex-shrink-0" />
+      <span>Astro</span>
+    </div>
+    <!-- Separador visual -->
+    <span class="text-gray-300 dark:text-gray-600 select-none text-lg font-light" aria-hidden="true">·</span>
+    <div class="tech-pill">
+      <ReactIcon class="w-6 h-6 text-cyan-500 dark:text-cyan-400 flex-shrink-0" />
+      <span>React</span>
+    </div>
+    <div class="tech-pill">
+      <AlpineIcon class="w-6 h-6 text-blue-500 dark:text-blue-300 flex-shrink-0" />
+      <span>Alpine.js</span>
+    </div>
+    <div class="tech-pill">
+      <HTMLIcon class="w-6 h-6 text-orange-500 dark:text-orange-400 flex-shrink-0" />
+      <span>HTML</span>
+    </div>
+    <div class="tech-pill">
+      <CSSIcon class="w-6 h-6 text-blue-500 dark:text-blue-400 flex-shrink-0" />
+      <span>CSS</span>
+    </div>
+    <div class="tech-pill">
+      <SassIcon class="w-6 h-6 text-pink-500 dark:text-pink-400 flex-shrink-0" />
+      <span>Sass</span>
+    </div>
+    <!-- MySQL con SVG inline -->
+    <div class="tech-pill">
+      <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 3C7.58 3 4 4.34 4 6v12c0 1.66 3.58 3 8 3s8-1.34 8-3V6c0-1.66-3.58-3-8-3zm0 2c3.87 0 6 .9 6 1s-2.13 1-6 1-6-.9-6-1 2.13-1 6-1zm6 13c0 .1-2.13 1-6 1s-6-.9-6-1v-2.23C7.61 16.5 9.72 17 12 17s4.39-.5 6-1.23V18zm0-4c0 .1-2.13 1-6 1s-6-.9-6-1v-2.23C7.61 12.5 9.72 13 12 13s4.39-.5 6-1.23V14zm0-4c0 .1-2.13 1-6 1s-6-.9-6-1V8.77C7.61 9.5 9.72 10 12 10s4.39-.5 6-1.23V10z"/>
+      </svg>
+      <span>MySQL</span>
+    </div>
+    <span class="text-gray-300 dark:text-gray-600 select-none text-lg font-light" aria-hidden="true">·</span>
+
+    <!-- ─── Set 2 (duplicado para loop infinito) ─── -->
+    <div class="tech-pill" aria-hidden="true">
+      <PHPIcon class="w-6 h-6 text-blue-700 dark:text-blue-400 flex-shrink-0" />
+      <span>PHP</span>
+    </div>
+    <div class="tech-pill" aria-hidden="true">
+      <LaravelIcon class="w-6 h-6 text-red-600 dark:text-red-400 flex-shrink-0" />
+      <span>Laravel</span>
+    </div>
+    <div class="tech-pill" aria-hidden="true">
+      <VueIcon class="w-6 h-6 text-green-600 dark:text-green-400 flex-shrink-0" />
+      <span>Vue.js</span>
+    </div>
+    <div class="tech-pill" aria-hidden="true">
+      <JavascriptIcon class="w-6 h-6 text-yellow-500 dark:text-yellow-400 flex-shrink-0" />
+      <span>JavaScript</span>
+    </div>
+    <div class="tech-pill" aria-hidden="true">
+      <TailwindIcon class="w-6 h-6 text-sky-500 dark:text-sky-400 flex-shrink-0" />
+      <span>TailwindCSS</span>
+    </div>
+    <div class="tech-pill" aria-hidden="true">
+      <AstroIcon class="w-6 h-6 text-orange-500 dark:text-orange-400 flex-shrink-0" />
+      <span>Astro</span>
+    </div>
+    <span class="text-gray-300 dark:text-gray-600 select-none text-lg font-light" aria-hidden="true">·</span>
+    <div class="tech-pill" aria-hidden="true">
+      <ReactIcon class="w-6 h-6 text-cyan-500 dark:text-cyan-400 flex-shrink-0" />
+      <span>React</span>
+    </div>
+    <div class="tech-pill" aria-hidden="true">
+      <AlpineIcon class="w-6 h-6 text-blue-500 dark:text-blue-300 flex-shrink-0" />
+      <span>Alpine.js</span>
+    </div>
+    <div class="tech-pill" aria-hidden="true">
+      <HTMLIcon class="w-6 h-6 text-orange-500 dark:text-orange-400 flex-shrink-0" />
+      <span>HTML</span>
+    </div>
+    <div class="tech-pill" aria-hidden="true">
+      <CSSIcon class="w-6 h-6 text-blue-500 dark:text-blue-400 flex-shrink-0" />
+      <span>CSS</span>
+    </div>
+    <div class="tech-pill" aria-hidden="true">
+      <SassIcon class="w-6 h-6 text-pink-500 dark:text-pink-400 flex-shrink-0" />
+      <span>Sass</span>
+    </div>
+    <div class="tech-pill" aria-hidden="true">
+      <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 3C7.58 3 4 4.34 4 6v12c0 1.66 3.58 3 8 3s8-1.34 8-3V6c0-1.66-3.58-3-8-3zm0 2c3.87 0 6 .9 6 1s-2.13 1-6 1-6-.9-6-1 2.13-1 6-1zm6 13c0 .1-2.13 1-6 1s-6-.9-6-1v-2.23C7.61 16.5 9.72 17 12 17s4.39-.5 6-1.23V18zm0-4c0 .1-2.13 1-6 1s-6-.9-6-1v-2.23C7.61 12.5 9.72 13 12 13s4.39-.5 6-1.23V14zm0-4c0 .1-2.13 1-6 1s-6-.9-6-1V8.77C7.61 9.5 9.72 10 12 10s4.39-.5 6-1.23V10z"/>
+      </svg>
+      <span>MySQL</span>
+    </div>
+    <span class="text-gray-300 dark:text-gray-600 select-none text-lg font-light" aria-hidden="true">·</span>
+
+  </div>
+</div>
+
+<style>
+  /* ── Contenedor: fade edges con CSS mask ── */
+  .tech-marquee-wrapper {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%
+    );
+  }
+
+  /* ── Iconos: gris con opacidad (funciona incluso con fills hardcodeados) ── */
+  .tech-pill :global(svg) {
+    filter: grayscale(1) opacity(0.5);
+  }
+
+  /* ── Track: animación infinita ── */
+  .marquee-track {
+    animation: marquee-scroll 22s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* ── Item sin contenedor ── */
+  .tech-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    white-space: nowrap;
+    color: #6b7280; /* gray-500 */
+    cursor: default;
+  }
+
+  :global(.dark) .tech-pill {
+    color: #9ca3af; /* gray-400 */
+  }
+
+  /* ── Respeta preferencias de movimiento reducido ── */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+</style>

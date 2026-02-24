@@ -8,18 +8,18 @@ import GithubIcon from "../../components/icons/GithubIcon.astro";
 import BriefCaseIcon from "../../components/icons/BriefCaseIcon.astro";
 import MailIcon from "../../components/icons/MailIcon.astro";
 import BehanceIcon from "../../components/icons/BehanceIcon.astro";
-import SocialPill from "../../components/SocialPill.astro";
 import StackOverflowIcon from "../../components/icons/StackOverflowIcon.astro";
-import LaracastsIcon from "../../components/icons/LaracastsIcon.astro";
 import CodeIcon from "../../components/icons/CodeIcon.astro";
 import LearningIcon from "../../components/icons/LearningIcon.astro";
 import CertificationIcon from "../../components/icons/CertificationIcon.astro";
 import CVDownloadButton from "../../components/CVDownloadButton.astro";
+import TechMarquee from "../../components/TechMarquee.astro";
 import FAQSection from "../../components/FAQSection.astro";
 
 import PHPIcon from "../../components/icons/PHPIcon.astro";
 import LaravelIcon from "../../components/icons/LaravelIcon.astro";
 import VueIcon from "../../components/icons/VueIcon.astro";
+import AstroIcon from "../../components/icons/AstroIcon.astro";
 import JavascriptIcon from "../../components/icons/JavascriptIcon.astro";
 import TailwindIcon from "../../components/icons/TailwindIcon.astro";
 import ThunderIcon from "../../components/icons/ThunderIcon.astro";
@@ -35,22 +35,18 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
 ---
 
 <Layout
-  title="Ignacio Amat | Remote Full Stack PHP Laravel Developer"
-  description="Full stack developer with 5+ years building scalable web applications with PHP, Laravel, Vue.js, and Astro. Available for remote teams and product projects."
+  title="Ignacio Amat | Remote PHP Laravel Full Stack Developer"
+  description="Remote full stack PHP & Laravel developer. 5+ years building scalable web apps with Vue.js and MySQL. Clean code, solid architecture. Available now."
+  pageType="profile"
 >
   <main>
-    <SectionContainer class="hero-section -mt-4 py-10 md:py-14 lg:py-16 md:min-h-[calc(100svh-4.5rem)] flex flex-col justify-center relative">
-      <div class="max-w-4xl mx-auto text-center hero-content">
-        <!-- Availability Badge with pulse animation -->
-        <div class="flex items-center justify-center gap-3 mb-4 mt-1 md:mt-0">
-          <Badge
-            class="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 relative overflow-hidden"
-          >
+    <SectionContainer class="hero-section py-10 md:py-16 lg:py-20 md:min-h-[calc(100svh-4.5rem)] flex flex-col justify-center relative">
+      <div class="max-w-3xl mx-auto text-center hero-content">
+        <!-- Availability Badge -->
+        <div class="flex items-center justify-center mb-4 md:mb-5">
+          <Badge class="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300">
             <span class="relative z-10 flex items-center gap-2">
-              <span
-                class="relative flex h-2 w-2"
-                aria-hidden="true"
-              >
+              <span class="relative flex h-2 w-2" aria-hidden="true">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-green-600"></span>
               </span>
@@ -59,148 +55,109 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
           </Badge>
         </div>
 
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-5 leading-tight animate-fade-in text-wrap-balance">
-          I'm <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent animate-gradient">Ignacio</span> — The full stack developer your team needs
+        <!-- H1 with SEO keywords on second line -->
+        <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-2 md:mb-3 leading-tight animate-fade-in">
+          Hi, I'm <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent animate-gradient">Ignacio</span>
+          <span class="block text-2xl md:text-4xl lg:text-5xl mt-1 font-bold text-gray-700 dark:text-gray-200">
+            Full Stack Developer · PHP · Laravel · Vue.js
+          </span>
         </h1>
 
-        <p class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-3 font-medium leading-relaxed max-w-2xl mx-auto text-wrap-balance">
-          <span class="font-semibold">5+ years building business web applications</span> with a strong focus on performance, maintainability, and growth.
+        <!-- Single impactful description -->
+        <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-5 md:mb-6 leading-relaxed max-w-2xl mx-auto">
+          5+ years building web applications with PHP, Laravel and Vue.js for remote teams.
+          I ship clean code, scalable architecture, and real product.
         </p>
 
-        <p class="text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-4 font-medium leading-relaxed max-w-2xl mx-auto text-wrap-balance">
-          Specialized in PHP, Laravel, Vue.js, and Astro. I help remote teams ship product with clean code, scalable architecture, and a consistent quality-first workflow.
-        </p>
-
-        <!-- Tech Stack Pills with hover effects -->
-        <div class="flex flex-wrap justify-center gap-2 mb-4">
-          <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-default">
-            <PHPIcon class="w-4 h-4" />
-            PHP
-          </span>
-          <span class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-default">
-            <LaravelIcon class="w-4 h-4" />
-            Laravel
-          </span>
-          <span class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-default">
-            <VueIcon class="w-4 h-4" />
-            Vue.js
-          </span>
-          <span class="bg-yellow-50 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-default">
-            <JavascriptIcon class="w-4 h-4" />
-            JavaScript
-            <ThunderIcon class="w-3 h-3 text-yellow-500" />
-          </span>
-          <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-default">
-            <TailwindIcon class="w-4 h-4" />
-            TailwindCSS
-          </span>
+        <!-- Inline stats strip -->
+        <div class="flex flex-wrap justify-center items-center gap-x-3 gap-y-1 text-sm text-gray-500 dark:text-gray-400 mb-6 md:mb-7">
+          <span class="font-semibold text-gray-800 dark:text-gray-200">5+ years experience</span>
+          <span aria-hidden="true" class="text-gray-300 dark:text-gray-600">·</span>
+          <span class="font-semibold text-gray-800 dark:text-gray-200">10+ companies</span>
+          <span aria-hidden="true" class="text-gray-300 dark:text-gray-600">·</span>
+          <span class="font-semibold text-gray-800 dark:text-gray-200">End-to-End Delivery</span>
+          <span aria-hidden="true" class="text-gray-300 dark:text-gray-600">·</span>
+          <span class="font-semibold text-gray-800 dark:text-gray-200">24h response</span>
         </div>
 
-        <!-- Stats Section for credibility -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-5 max-w-2xl mx-auto">
-          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-3 md:p-4 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-colors">
-            <div class="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400">+5</div>
-            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Years Experience</div>
-          </div>
-          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-3 md:p-4 border border-gray-200 dark:border-gray-700 hover:border-green-300 dark:hover:border-green-600 transition-colors">
-            <div class="text-2xl md:text-3xl font-bold text-green-600 dark:text-green-400">10+</div>
-            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Companies</div>
-          </div>
-          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-3 md:p-4 border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 transition-colors">
-            <div class="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">E2E</div>
-            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">End-to-End Delivery</div>
-          </div>
-          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-3 md:p-4 border border-gray-200 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-600 transition-colors">
-            <div class="text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400">24h</div>
-            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Response Time</div>
-          </div>
-        </div>
-
-        <!-- Call to Action Buttons -->
-        <div class="hero-cta flex flex-wrap gap-3 md:gap-4 justify-center items-stretch mb-4">
+        <!-- 2 CTAs: Contact (primary) + CV (secondary) -->
+        <div class="hero-cta flex flex-col sm:flex-row gap-3 justify-center items-center mb-6 md:mb-7">
           <a
-            href="#experience"
-            class="group w-full sm:w-auto min-w-[16rem] sm:min-w-[13.5rem] px-6 py-4 text-base md:text-lg font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-xl shadow-lg hover:from-indigo-700 hover:to-purple-800 transition-[transform,box-shadow,background] duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
+            href="#contact"
+            class="group w-full sm:w-auto px-8 py-3.5 md:py-4 text-base md:text-lg font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-xl shadow-lg hover:from-indigo-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
           >
-            View experience
+            Let's talk
             <svg
-              class="w-5 h-5 group-hover:translate-x-1 transition-transform"
+              class="w-4 h-4 group-hover:translate-x-1 transition-transform"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
               aria-hidden="true"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              ></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
             </svg>
           </a>
           <div class="hero-cv-btn w-full sm:w-auto">
-            <CVDownloadButton
-              isEnglish={true}
-              variant="cta"
-            >
+            <CVDownloadButton isEnglish={true} variant="cta">
               Download CV
             </CVDownloadButton>
           </div>
+        </div>
+
+        <!-- Compact social icon links (no labels) -->
+        <nav aria-label="Social profiles" class="flex items-center justify-center gap-3">
           <a
-            href="#contact"
-            class="w-full sm:w-auto min-w-[16rem] sm:min-w-[13.5rem] px-6 py-4 text-base md:text-lg font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-800 transition-[background-color,border-color] duration-300 border-2 border-transparent hover:border-blue-300 dark:hover:border-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+            href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-200 hover:shadow-sm"
           >
-            Contact now
+            <LinkedinIcon class="size-4" />
           </a>
-        </div>
-
-        <!-- Social Links -->
-        <nav class="hero-social-links flex flex-wrap justify-center gap-2 md:gap-3 mb-2 max-w-3xl mx-auto">
-          <SocialPill href="https://www.linkedin.com/in/ignacio-amat-urbina-789244223">
-            <LinkedinIcon class="size-5" />
-            LinkedIn
-          </SocialPill>
-          <SocialPill href="https://www.github.com/ignaaaam">
-            <GithubIcon class="size-5" />
-            GitHub
-          </SocialPill>
-          <SocialPill href="https://www.behance.net/ignathedev">
-            <BehanceIcon class="size-5" />
-            Behance
-          </SocialPill>
-          <SocialPill href="https://stackoverflow.com/users/13370846/ignacio-amat-urbina">
-            <StackOverflowIcon class="size-5" />
-            Stack Overflow
-          </SocialPill>
-          <SocialPill href="https://laracasts.com/@ignacio-amat-urbina">
-            <LaracastsIcon class="size-5" />
-            Laracasts
-          </SocialPill>
-        </nav>
-
-        <!-- Contact info -->
-        <div class="flex flex-col items-center justify-center gap-2 mb-4">
-          <SocialPill
-            href="#contact"
-            class="min-w-[14rem] md:min-w-[17rem]"
+          <a
+            href="https://www.github.com/ignaaaam"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-200 hover:shadow-sm"
           >
-            <MailIcon class="size-4 md:size-6" />
-            ignacioamat@ignathedev.com
-          </SocialPill>
-          <span class="text-xs text-gray-500 dark:text-gray-400 italic">Contact me by email</span>
-        </div>
+            <GithubIcon class="size-4" />
+          </a>
+          <a
+            href="https://www.behance.net/ignathedev"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Behance"
+            class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-300 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-200 hover:shadow-sm"
+          >
+            <BehanceIcon class="size-4" />
+          </a>
+          <a
+            href="https://stackoverflow.com/users/13370846/ignacio-amat-urbina"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Stack Overflow"
+            class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 hover:border-orange-300 dark:hover:border-orange-600 transition-all duration-200 hover:shadow-sm"
+          >
+            <StackOverflowIcon class="size-4" />
+          </a>
+        </nav>
 
       </div>
     </SectionContainer>
 
-    <!-- Services section with improved design -->
+    <!-- Tech marquee between hero and services -->
+    <TechMarquee isEnglish={true} />
+
+    <!-- Services section -->
     <SectionContainer
       id="services"
-      class="py-20 md:py-28"
+      class="pt-12 md:pt-16 pb-20 md:pb-28"
     >
-      <div class="text-center mb-20">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">My Expertise</h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">What I bring to your development team with real production experience.</p>
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">My Web Development Services</h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">What I bring to your engineering team with real PHP, Laravel and Vue.js production experience.</p>
       </div>
 
       <!-- Service Cards -->
@@ -226,9 +183,22 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
           <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Full Stack Development</h3>
           <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow">I own the full stack: from database architecture and REST APIs with Laravel to reactive interfaces with Vue.js. You don't need to explain how the pieces fit — I've done it in production.</p>
           <div class="flex flex-wrap gap-2">
-            <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium">PHP</span>
-            <span class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium">Laravel</span>
-            <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium">Astro</span>
+            <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              <PHPIcon class="w-4 h-4" />
+              PHP
+            </span>
+            <span class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              <LaravelIcon class="w-4 h-4" />
+              Laravel
+            </span>
+            <span class="bg-sky-50 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              <AstroIcon class="w-4 h-4" />
+              Astro
+            </span>
+            <span class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              <VueIcon class="w-4 h-4" />
+              Vue.js
+            </span>
           </div>
         </div>
 
@@ -250,14 +220,21 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
               ></path>
             </svg>
           </div>
-          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Solid Back-End</h3>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">PHP & Laravel Back-End</h3>
           <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow">
             Clean, testable, maintainable code. I build back-ends with PHP and Laravel that scale with your business: migrations, queues, caching, authentication, and APIs that other developers enjoy consuming.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium">PHP</span>
-            <span class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium">Laravel</span>
-            <span class="bg-cyan-50 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 px-3 py-1 rounded-lg text-sm font-medium">MySQL</span>
+            <span class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              <PHPIcon class="w-4 h-4" />
+              PHP
+            </span>
+            <span class="bg-red-50 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
+              <LaravelIcon class="w-4 h-4" />
+              Laravel
+            </span>
+            <span class="bg-cyan-50 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1"> MySQL </span>
+            <span class="bg-purple-50 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1"> API REST </span>
           </div>
         </div>
 
@@ -279,7 +256,7 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
               ></path>
             </svg>
           </div>
-          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Thoughtful Front-End</h3>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Vue.js Front-End Development</h3>
           <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow">Interfaces that don't just look good — they work well. Vue.js, modern JavaScript, and TailwindCSS for fast, accessible, and consistent user experiences on any device.</p>
           <div class="flex flex-wrap gap-2">
             <span class="bg-green-50 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1">
@@ -299,90 +276,17 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
         </div>
       </div>
 
-      <!-- Why Choose Me Section -->
-      <div class="text-center mb-16">
-        <h3 class="text-3xl font-bold mb-12 text-gray-900 dark:text-white">Why Choose Me?</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="text-center">
-            <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/50 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-10 w-10 text-blue-600 dark:text-blue-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                ></path>
-              </svg>
-            </div>
-            <h4 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Quality Code</h4>
-            <p class="text-gray-600 dark:text-gray-300 leading-relaxed max-w-sm mx-auto">Clean, maintainable, and tested code following industry best practices.</p>
-          </div>
-          <div class="text-center">
-            <div class="w-16 h-16 bg-green-100 dark:bg-green-900/50 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-10 w-10 text-green-600 dark:text-green-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                ></path>
-              </svg>
-            </div>
-            <h4 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Performance</h4>
-            <p class="text-gray-600 dark:text-gray-300 leading-relaxed max-w-sm mx-auto">Fast websites and applications, optimized for speed and a better user experience.</p>
-          </div>
-          <div class="text-center">
-            <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900/50 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-10 w-10 text-purple-600 dark:text-purple-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                ></path>
-              </svg>
-            </div>
-            <h4 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Innovation</h4>
-            <p class="text-gray-600 dark:text-gray-300 leading-relaxed max-w-sm mx-auto">Using the latest technologies and frameworks to build scalable, secure, and future-proof solutions.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Call to Action -->
+      <!-- Subtle link to projects -->
       <div class="text-center">
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-          <a
-            href="#projects"
-            class="group relative px-10 py-5 text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl shadow-xl hover:from-blue-700 hover:to-indigo-800 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25"
-          >
-            View My Projects
-          </a>
-          <a
-            href="#contact"
-            class="group relative px-10 py-5 text-lg font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-700 rounded-2xl shadow-xl hover:from-indigo-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25"
-          >
-            Contact Me
-          </a>
-        </div>
-        <p class="text-gray-500 dark:text-gray-400 text-sm font-medium">Available for immediate start</p>
+        <a
+          href="#projects"
+          class="inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 group"
+        >
+          View projects
+          <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
       </div>
     </SectionContainer>
 
@@ -530,10 +434,6 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
     z-index: 1;
   }
 
-  .hero-cta a {
-    min-height: 3.5rem;
-  }
-
   .hero-section::after {
     content: "";
     position: absolute;
@@ -591,169 +491,6 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
     transform: translateY(-8px);
   }
 
-  .astro-a {
-    position: absolute;
-    top: -32px;
-    left: 50%;
-    transform: translatex(-50%);
-    width: 220px;
-    height: auto;
-    z-index: -1;
-  }
-
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
-  }
-  .instructions {
-    margin-bottom: 2rem;
-    border: 1px solid rgba(var(--accent-light), 25%);
-    background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
-    padding: 1.5rem;
-    border-radius: 8px;
-  }
-  .instructions code {
-    font-size: 0.8em;
-    font-weight: bold;
-    background: rgba(var(--accent-light), 12%);
-    color: rgb(var(--accent-light));
-    border-radius: 4px;
-    padding: 0.3em 0.4em;
-  }
-  .instructions strong {
-    color: rgb(var(--accent-light));
-  }
-  .link-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 2rem;
-    padding: 0;
-  }
-
-  #landingPageTitle {
-    background: linear-gradient(90deg, rgba(36, 5, 3, 0.705) 0%, rgba(255, 40, 25, 0.829) 50%, rgba(36, 5, 3, 0.705) 100%);
-    line-height: normal;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  @keyframes pulse-white {
-    0% {
-      transform: scale(0.95);
-      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
-    }
-
-    70% {
-      transform: scale(1);
-      box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
-    }
-
-    100% {
-      transform: scale(0.95);
-      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-    }
-  }
-
-  @keyframes pulse-cv {
-    0% {
-      box-shadow: 0 0 0 0 rgba(255, 220, 100, 0.7);
-    }
-
-    70% {
-      box-shadow: 0 0 0 8px rgba(255, 220, 100, 0);
-    }
-
-    100% {
-      box-shadow: 0 0 0 0 rgba(255, 220, 100, 0);
-    }
-  }
-
-  .cv-button-wrapper a {
-    background: linear-gradient(135deg, #ffdc64, #ff9a3d) !important;
-    border: 2px solid rgba(255, 220, 100, 0.6) !important;
-    font-weight: 600 !important;
-    color: #000 !important;
-    animation: pulse-cv 2.5s infinite;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-  }
-
-  .cv-button-wrapper a:hover {
-    transform: translateY(-3px);
-    background: linear-gradient(135deg, #ffea94, #ffb06d) !important;
-    box-shadow: 0 7px 14px rgba(255, 220, 100, 0.3);
-  }
-
-  .cv-button-wrapper a::before {
-    content: "";
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    z-index: -1;
-    background: linear-gradient(90deg, #ffdc64, #ff9a3d, #ffdc64);
-    background-size: 200% 100%;
-    animation: gradientMove 3s linear infinite;
-    opacity: 0.7;
-    border-radius: 9999px;
-  }
-
-  @keyframes gradientMove {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
-  .blob-white {
-    background: white;
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
-    animation: pulse-white 2s infinite;
-  }
-
-  .text-brush {
-    background-image: linear-gradient(180deg, #fff06b, #fff06b);
-    background-repeat: no-repeat;
-    background-position: 10px bottom;
-    background-size: 100% 10px;
-    text-decoration: none;
-  }
-
-  /* Add text glow effect for better visibility on mobile */
-  .text-glow {
-    text-shadow:
-      0 0 10px rgba(255, 240, 107, 0.7),
-      0 0 20px rgba(255, 240, 107, 0.4);
-    position: relative;
-    z-index: 1;
-  }
-
-  @media (max-width: 640px) {
-    .text-glow {
-      text-shadow:
-        0 0 15px rgba(255, 240, 107, 0.8),
-        0 0 25px rgba(255, 240, 107, 0.5);
-    }
-  }
-
-  .split-parent [style*="opacity: 0"] {
-    visibility: hidden;
-  }
-  .split-parent [style*="opacity: 1"] {
-    visibility: visible;
-  }
-
   @media (max-width: 640px) {
     main {
       font-size: 14px;
@@ -761,7 +498,6 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
 
     .hero-section {
       min-height: auto;
-      padding-bottom: 3rem;
     }
 
     .hero-section::after {

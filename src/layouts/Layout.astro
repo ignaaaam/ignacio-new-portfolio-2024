@@ -506,7 +506,9 @@ const englishSwitcherPath = languageSwitcherPaths?.en ?? toPath(englishUrl);
       })}
     />
     <!-- hreflang for international SEO -->
+    <link rel="alternate" hreflang="es" href={spanishUrl} />
     <link rel="alternate" hreflang="es-ES" href={spanishUrl} />
+    <link rel="alternate" hreflang="en" href={englishUrl} />
     <link rel="alternate" hreflang="en-US" href={englishUrl} />
     <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
 
