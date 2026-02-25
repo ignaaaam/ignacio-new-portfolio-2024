@@ -54,11 +54,11 @@ const lang = getLangFromUrl(Astro.url);
 
     <div class="form-content">
       <div class="form-intro">
-        <p class="form-intro-title">{lang === "es" ? "Cuéntame sobre tu equipo" : "Tell me about your team"}</p>
+        <p class="form-intro-title">{lang === "es" ? "Cuéntame sobre la posición o el proyecto" : "Tell me about the position or project"}</p>
         <p class="form-intro-description">
           {lang === "es"
-            ? "Estoy abierto a posiciones full-time remotas, contratos a largo plazo y colaboraciones con equipos de desarrollo internacionales."
-            : "I'm open to full-time remote positions, long-term contracts, and collaborations with international development teams."}
+            ? "Dime el tipo de posición, el stack que usa tu equipo y si tienes una fecha de incorporación en mente. Respondo en menos de 24 horas."
+            : "Tell me the type of position, your team's stack, and if you have a start date in mind. I respond within 24 hours."}
         </p>
       </div>
 
@@ -212,7 +212,7 @@ const lang = getLangFromUrl(Astro.url);
             minlength="10"
             maxlength="500"
             class="form-textarea"
-            placeholder={lang === "es" ? "Cuéntame sobre tu proyecto…" : "Tell me about your project…"}
+            placeholder={lang === "es" ? "Ej: Buscamos un Laravel developer senior para unirse a nuestro equipo de producto. Trabajamos en remoto con sprints de 2 semanas…" : "E.g.: We're looking for a senior Laravel developer to join our product team. We work fully remote with 2-week sprints…"}
           ></textarea>
           <div
             class="char-counter"
