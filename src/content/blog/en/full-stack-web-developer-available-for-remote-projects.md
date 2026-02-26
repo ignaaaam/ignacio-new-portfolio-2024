@@ -1,8 +1,6 @@
 ---
-title: Full Stack Web Developer Available for Remote Projects
-description: Hire Ignacio Amat, an experienced full stack web developer from
-  Barcelona, specializing in PHP, Laravel, TALL stack, VILT stack, JavaScript,
-  Vue.js, and TailwindCSS. Available for new clients worldwide.
+title: Full Stack Web Developer Available for Remote Projects — Based in Spain
+description: Hire Ignacio Amat, a full stack developer with 5+ years in PHP, Laravel and Vue.js. Based in Barcelona, Spain. Available for companies worldwide and remote contracts.
 author: Ignacio Amat
 publishDate: 2024-07-17
 slug: full-stack-web-developer-available-for-remote-projects

@@ -67,7 +67,7 @@ const {
 
 const lang = getLangFromUrl(Astro.url);
 const ogImage = "https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg";
-const siteName = lang === "es" ? "Ignacio Amat Urbina - Desarrollador Web Full Stack | Experto PHP & Laravel" : "Ignacio Amat Urbina - Full Stack Web Developer | PHP & Laravel Expert";
+const siteName = lang === "es" ? "Ignacio Amat - Desarrollador Web PHP Laravel | Freelance España" : "Ignacio Amat - Full Stack Web Developer | PHP & Laravel | Spain";
 
 // Professional profile data for SEO
 const professionalProfile = {
@@ -118,8 +118,8 @@ const metaTitle = fullTitle.length > 60 ? fullTitle.substring(0, 57) + "..." : f
 const rawDescription =
   description ||
   (lang === "es"
-    ? "Desarrollador full stack con +5 años creando aplicaciones web para marcas como PlayStation y TikTok. Experto en PHP, Laravel y Vue.js. Disponible para contratación remota."
-    : "Full stack developer with 5+ years building web apps for brands like PlayStation and TikTok. Expert in PHP, Laravel, and Vue.js. Open to remote positions worldwide.");
+    ? "Desarrollador web freelance en España. +5 años con PHP, Laravel y Vue.js para PlayStation, TikTok y Glovo. Proyectos para empresas de toda España. Disponible ahora."
+    : "Freelance web developer based in Spain. 5+ years with PHP, Laravel and Vue.js for PlayStation, TikTok, and Glovo. Available for companies worldwide. Contact now.");
 // Optimize description length: 150-160 characters for best SEO
 const metaDescription = rawDescription.length > 160 ? rawDescription.substring(0, 157) + "..." : rawDescription;
 
@@ -191,11 +191,19 @@ const englishSwitcherPath = languageSwitcherPaths?.en ?? toPath(englishUrl);
     />
     <meta
       name="geo.region"
-      content="ES-CT"
+      content="ES"
     />
     <meta
       name="geo.placename"
-      content="Barcelona"
+      content="España"
+    />
+    <meta
+      name="geo.position"
+      content="40.4168;-3.7038"
+    />
+    <meta
+      name="ICBM"
+      content="40.4168, -3.7038"
     />
 
     <script is:inline>
@@ -364,8 +372,8 @@ const englishSwitcherPath = languageSwitcherPaths?.en ?? toPath(englishUrl);
             jobTitle: professionalProfile.jobTitle,
             description:
               lang === "es"
-                ? `Desarrollador Web Full Stack con +${professionalProfile.yearsOfExperience} años de experiencia en marcas como PlayStation, TikTok y Glovo. Experto en PHP, Laravel y Vue.js. Disponible para contratación remota.`
-                : `Full Stack Web Developer with +${professionalProfile.yearsOfExperience} years building web apps for brands like PlayStation, TikTok, and Glovo. Expert in PHP, Laravel, and Vue.js. Open to remote positions worldwide.`,
+                ? `Desarrollador web freelance en España con +${professionalProfile.yearsOfExperience} años. Proyectos para PlayStation, TikTok, Glovo, LaCaixa. Especializado en PHP, Laravel y Vue.js. Disponible para empresas de toda España y trabajo remoto.`
+                : `Freelance full stack web developer based in Spain with +${professionalProfile.yearsOfExperience} years. Projects for PlayStation, TikTok, Glovo. Expert in PHP, Laravel, and Vue.js. Available for companies in Spain and remote worldwide.`,
             image: {
               "@type": "ImageObject",
               url: ogImage,
@@ -610,6 +618,38 @@ const englishSwitcherPath = languageSwitcherPaths?.en ?? toPath(englishUrl);
           {
             "@type": "Country",
             name: "Spain",
+          },
+          {
+            "@type": "City",
+            name: "Barcelona",
+          },
+          {
+            "@type": "City",
+            name: "Madrid",
+          },
+          {
+            "@type": "City",
+            name: "Valencia",
+          },
+          {
+            "@type": "City",
+            name: "Sevilla",
+          },
+          {
+            "@type": "City",
+            name: "Bilbao",
+          },
+          {
+            "@type": "City",
+            name: "Zaragoza",
+          },
+          {
+            "@type": "City",
+            name: "Málaga",
+          },
+          {
+            "@type": "City",
+            name: "Alicante",
           },
           {
             "@type": "AdministrativeArea",

@@ -1,9 +1,6 @@
 ---
-title: Desarrollador Web Full Stack disponible para proyectos remotos
-description: Contrata a Ignacio Amat, un desarrollador web full stack
-  experimentado de Barcelona, especializado en PHP, Laravel, stack TALL, stack
-  VILT, JavaScript, Vue.js y TailwindCSS. Disponible para nuevos clientes en
-  todo el mundo.
+title: Desarrollador Web Full Stack disponible para proyectos en España y remoto
+description: Contrata a Ignacio Amat, desarrollador web full stack con +5 años de experiencia en PHP, Laravel y Vue.js. Disponible para empresas de toda España y proyectos remotos internacionales.
 author: Ignacio Amat
 publishDate: 2024-07-17
 slug: desarrollador-web-full-stack-disponible-para-proyectos-remotos
@@ -11,54 +8,65 @@ locale: es
 translationKey: full-stack-remote-projects
 image:
   url: /img/optimized/remote-work.webp
-  alt: El setup de desarrollo web con una laptop, monitor, teclado y ratón en un
-    escritorio limpio y organizado.
+  alt: El setup de desarrollo web con una laptop, monitor, teclado y ratón en un escritorio limpio y organizado.
 tags:
   - full stack web developer
-  - remote web developer
+  - desarrollador web España
   - PHP developer
   - Laravel developer
   - web development services
-  - TailwindCSS
+  - freelance España
 isDraft: false
 ---
 
-# Abierto a Nuevos Clientes en Todo el Mundo: Desarrollador Web Full Stack Experimentado
+# Desarrollador Web Full Stack disponible para empresas en España y proyectos remotos
 
-¡Hola a todos! Soy Ignacio Amat, un desarrollador web full stack de Barcelona, con más de 3 años de experiencia en desarrollo back end y front end. Estoy emocionado de anunciar que ahora estoy disponible para nuevos clientes en todo el mundo y listo para asumir nuevos proyectos de forma remota.
+Soy Ignacio Amat, desarrollador web full stack de Barcelona con **más de 5 años de experiencia** en PHP, Laravel y Vue.js. Trabajo con empresas y startups de toda España —Madrid, Barcelona, Valencia, Sevilla, Bilbao y más— y con clientes internacionales en remoto.
 
-## Mi Experiencia
+He desarrollado proyectos reales para marcas como **PlayStation, TikTok, Glovo, LaCaixa y Bizum**. No solo tengo las habilidades técnicas — tengo el contexto de haber trabajado en producción a escala.
 
-### Desarrollo Back End
-Mi mayor habilidad es en desarrollo back end, específicamente con PHP y el framework Laravel. Puedo ayudarte a construir aplicaciones robustas, escalables y eficientes desde cero o mejorar tus aplicaciones Laravel existentes. Ya sea un sitio web simple o una aplicación web compleja, tengo la experiencia para ofrecer soluciones de alta calidad.
+## Qué puedo hacer por tu empresa
 
-### Desarrollo Front End
-En el front end, soy competente en JavaScript y Vue.js, y utilizo TailwindCSS para crear interfaces de usuario adaptables y responisve adaptables a todo tipo de páginas web y web apps. También tengo experiencia con el stack TALL (Tailwind, AlpineJS, Laravel, Livewire) y el stack VILT (Vue, Inertia, Laravel, Tailwind), lo que me permite desarrollar aplicaciones web modernas, dinámicas e interactivas.
+### Aplicaciones web a medida con PHP y Laravel
+Construyo back-ends robustos y escalables: APIs REST, sistemas de autenticación, paneles de administración, integraciones con servicios de terceros (Stripe, Mailchimp, APIs externas), colas de trabajo y más. Si tienes una aplicación Laravel existente que necesita mejoras o una idea que quieres construir desde cero, puedo ayudarte.
 
-### Desarrollo Web Rápido y Eficiente
-Para un desarrollo web rápido, optimizado y eficiente, aprovecho el framework Astro para crear sitios web y landings de alto rendimiento. Además, si prefieres una solución basada en CMS, puedo construir y personalizar sitios web utilizando WordPress.
+### Interfaces modernas con Vue.js y TailwindCSS
+Creo frontends reactivos y rápidos con Vue.js, Inertia.js y TailwindCSS. También trabajo con el stack TALL (Tailwind + AlpineJS + Laravel + Livewire) y sitios de alto rendimiento con Astro cuando el SEO y la velocidad son prioritarios.
 
-## Servicios Ofrecidos
+### Desarrollo Full Stack completo
+Domino todo el stack: desde el diseño de la base de datos hasta la interfaz de usuario. No necesitas coordinar a un equipo de personas — puedo entregarle un producto funcional de principio a fin.
 
-- **Desarrollo de Nuevos Sitios Web**: Ya sea que necesites un nuevo sitio web desde cero o una aplicación web compleja, puedo ofrecer una solución adaptada a tus necesidades.
-- **Actualizaciones y Rediseños de Sitios Web**: Si tu sitio web existente necesita un nuevo aspecto o nuevas funciones, puedo ayudarte con rediseños y actualizaciones.
-- **Corrección de Errores y Resolución de Problemas**: ¿Tienes problemas con tu sitio web? Puedo diagnosticar y corregir rápidamente errores y fallos.
-- **Actualizaciones de Aplicaciones Laravel**: Si tu aplicación Laravel necesita una actualización o nuevas funciones, tengo la experiencia para mejorar tu aplicación de manera efectiva.
+## Servicios que ofrezco
 
-## ¿Por Qué Elegirme?
+- **Desarrollo de nuevas aplicaciones web**: Desde MVP hasta producto escalable con arquitectura pensada para el futuro.
+- **Mejoras y refactorización de proyectos existentes**: Si tienes deuda técnica o una aplicación que necesita modernizarse, puedo ayudarte.
+- **Integraciones y APIs**: Conectar tu aplicación con servicios externos, pasarelas de pago, CRMs o cualquier API de terceros.
+- **Optimización de rendimiento**: Mejora de tiempos de carga, optimización de consultas SQL y cachés que marcan la diferencia.
+- **Corrección de bugs y soporte técnico**: Diagnóstico y resolución rápida de problemas en producción.
 
-- **Experiencia**: Con más de 3 años de experiencia profesional, tengo un historial comprobado de entregar soluciones web de alta calidad.
-- **Listo para Trabajo Remoto**: Estoy equipado para trabajar de forma remota y colaborar con clientes de cualquier parte del mundo.
-- **Enfoque en el Cliente**: Prioritizo entender tus necesidades y ofrecer soluciones que superen tus expectativas.
-- **Versatilidad**: Desde el back end hasta el front end, tengo las habilidades para manejar todos los aspectos del desarrollo web.
+## ¿Por qué contratar un desarrollador freelance en lugar de una agencia?
+
+Con una agencia, tu proyecto pasa por múltiples manos y a menudo la persona que firma el contrato no es quien escribe el código. Conmigo, tienes **comunicación directa con quien hace el trabajo**, tiempos de respuesta más rápidos y mayor transparencia en cada etapa del proyecto.
+
+Además, al trabajar en remoto puedo atender a empresas de toda España sin los costes y fricciones de la presencialidad. Si alguna vez necesitas una reunión presencial, me desplazo sin problema.
+
+## ¿Dónde trabajo?
+
+Principalmente en remoto, lo que me permite trabajar con empresas de **Madrid, Barcelona, Valencia, Sevilla, Bilbao, Zaragoza, Málaga, Alicante** y cualquier otra ciudad de España o del extranjero. Mi horario es el español (CET/CEST) y respondo en menos de 24 horas laborables.
+
+## Tecnologías principales
+
+- **Backend**: PHP 8.x, Laravel 10/11, MySQL, PostgreSQL, Redis
+- **Frontend**: Vue.js 3, JavaScript (ES6+), TailwindCSS, Inertia.js, Alpine.js
+- **Rendimiento y SEO**: Astro, Livewire
+- **DevOps básico**: Git, Linux, Docker, despliegues en Forge/Vapor/VPS
 
 ---
 
-<div class="py-8">
-  <p class="mb-6">Gracias por considerarme para tus necesidades de desarrollo web. ¡Estoy emocionado por la posibilidad de trabajar juntos y crear algo increíble!</p>
+Si tienes un proyecto en mente o buscas reforzar tu equipo de desarrollo, **[contáctame directamente](/es/#contact)** y hablamos sin compromiso.
 
-  <p>Saludos! 🙌✌️</p>
-</div>
+Saludos,
+**Ignacio Amat** — Desarrollador Web Full Stack
 
 <style>
     article {
