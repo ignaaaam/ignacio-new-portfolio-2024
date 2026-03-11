@@ -30,6 +30,7 @@ import Projects from "../components/Projects.astro";
 import ContactForm from "../components/ContactForm.astro";
 import SkillsCloud from "../components/SkillsCloud.astro";
 import FAQSection from "../components/FAQSection.astro";
+import FreelanceCTA from "../components/FreelanceCTA.astro";
 ---
 
 <Layout
@@ -141,6 +142,17 @@ import FAQSection from "../components/FAQSection.astro";
             <StackOverflowIcon class="size-4" />
           </a>
         </nav>
+
+        <!-- Nota sutil para visitantes que buscan construir su web -->
+        <p class="mt-5 text-xs text-gray-400 dark:text-gray-500">
+          ¿Buscas que alguien te construya la web de tu negocio, no un desarrollador para tu equipo?
+          <a
+            href="https://www.ignacioamatweb.com/?utm_source=portfolio&utm_medium=referral&utm_campaign=hero"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 underline underline-offset-2 transition-colors duration-200"
+          >Ver servicios web para empresas →</a>
+        </p>
 
       </div>
     </SectionContainer>
@@ -390,6 +402,7 @@ import FAQSection from "../components/FAQSection.astro";
       <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">Una selección de mis proyectos más relevantes y exitosos</p>
     </div>
     <Projects />
+    <FreelanceCTA lang="es" campaign="projects" />
   </SectionContainer>
 
   <!-- FAQ Section -->

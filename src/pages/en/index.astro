@@ -32,6 +32,7 @@ import Studies from "./Studies.astro";
 import Projects from "./Projects.astro";
 import ContactForm from "../../components/ContactForm.astro";
 import SkillsCloud from "../../components/SkillsCloud.astro";
+import FreelanceCTA from "../../components/FreelanceCTA.astro";
 ---
 
 <Layout
@@ -143,6 +144,17 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
             <StackOverflowIcon class="size-4" />
           </a>
         </nav>
+
+        <!-- Subtle note for visitors looking to have a website built -->
+        <p class="mt-5 text-xs text-gray-400 dark:text-gray-500">
+          Looking for a website built for your business, not a developer to hire?
+          <a
+            href="https://www.ignacioamatweb.com/?utm_source=portfolio&utm_medium=referral&utm_campaign=hero"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 underline underline-offset-2 transition-colors duration-200"
+          >See web development services →</a>
+        </p>
 
       </div>
     </SectionContainer>
@@ -384,6 +396,7 @@ import SkillsCloud from "../../components/SkillsCloud.astro";
         <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">A selection of my most relevant and successful projects</p>
       </div>
       <Projects />
+      <FreelanceCTA lang="en" campaign="projects" />
     </SectionContainer>
 
     <!-- FAQ Section -->
