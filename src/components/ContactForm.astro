@@ -144,8 +144,38 @@ const lang = getLangFromUrl(Astro.url);
             <option value="long-term-contract">{lang === "es" ? "Contrato a largo plazo" : "Long-term contract"}</option>
             <option value="team-augmentation">{lang === "es" ? "Refuerzo de equipo (team augmentation)" : "Team augmentation"}</option>
             <option value="consultation">{lang === "es" ? "Consultoría técnica" : "Technical consultation"}</option>
+            <option value="build-website">{lang === "es" ? "Necesito que me construyan una web" : "I need a website built"}</option>
             <option value="other">{lang === "es" ? "Otro" : "Other"}</option>
           </select>
+        </div>
+      </div>
+
+      <!-- Inline routing banner shown when "build-website" is selected -->
+      <div id="build-website-banner" class="build-website-banner hidden" role="note" aria-live="polite">
+        <div class="flex items-start gap-3">
+          <svg class="w-4 h-4 text-indigo-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              {lang === "es"
+                ? "Para proyectos de construcción de webs tengo un proceso dedicado con servicios, precios y ejemplos."
+                : "For website building projects, I have a dedicated service with pricing, examples, and a focused process."}
+            </p>
+            <div class="flex flex-wrap items-center gap-3 mt-2">
+              <a
+                href={`https://www.ignacioamatweb.com/?utm_source=portfolio&utm_medium=referral&utm_campaign=contact-form`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-200"
+              >
+                {lang === "es" ? "Ver servicio dedicado →" : "Go to dedicated service →"}
+              </a>
+              <span class="text-xs text-gray-400 dark:text-gray-500">
+                {lang === "es" ? "o continúa aquí si lo prefieres" : "or continue here if you prefer"}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -333,6 +363,22 @@ const lang = getLangFromUrl(Astro.url);
     width: 1px;
     height: 1px;
     opacity: 0;
+  }
+
+  .build-website-banner {
+    padding: 0.875rem 1rem;
+    background-color: rgba(238, 242, 255, 0.8);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 0.625rem;
+  }
+
+  :global(.dark) .build-website-banner {
+    background-color: rgba(49, 46, 129, 0.15);
+    border-color: rgba(99, 102, 241, 0.25);
+  }
+
+  .build-website-banner.hidden {
+    display: none;
   }
 
   .form-intro {
@@ -884,6 +930,19 @@ const lang = getLangFromUrl(Astro.url);
       if (!charCount || !messageTextarea) return;
       charCount.textContent = messageTextarea.value.length.toString();
     };
+
+    // Show/hide "build-website" routing banner
+    const projectTypeSelect = form.querySelector("#project_type") as HTMLSelectElement | null;
+    const buildWebsiteBanner = form.querySelector("#build-website-banner") as HTMLDivElement | null;
+    if (projectTypeSelect && buildWebsiteBanner) {
+      projectTypeSelect.addEventListener("change", () => {
+        if (projectTypeSelect.value === "build-website") {
+          buildWebsiteBanner.classList.remove("hidden");
+        } else {
+          buildWebsiteBanner.classList.add("hidden");
+        }
+      });
+    }
 
     if (startedAtInput) {
       startedAtInput.value = Date.now().toString();
