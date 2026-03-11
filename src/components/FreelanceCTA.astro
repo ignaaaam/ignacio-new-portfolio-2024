@@ -1,0 +1,54 @@
+---
+interface Props {
+  lang?: "es" | "en";
+  campaign?: string;
+}
+
+const { lang = "es", campaign = "projects" } = Astro.props;
+
+const href = `https://www.ignacioamatweb.com/?utm_source=portfolio&utm_medium=referral&utm_campaign=${campaign}`;
+
+const copy = {
+  es: {
+    eyebrow: "¿Necesitas una web para tu negocio?",
+    body: "Si buscas a alguien que construya la web de tu empresa —una landing, tienda online o aplicación web— tengo un servicio dedicado para eso.",
+    cta: "Ver servicios de desarrollo web",
+  },
+  en: {
+    eyebrow: "Need a website built for your business?",
+    body: "If you're looking for someone to build a website or web application for your company — a landing page, corporate site, or web app — I have a dedicated service for that.",
+    cta: "See web development services",
+  },
+};
+
+const c = copy[lang];
+---
+
+<div class="freelance-cta-block mt-12 mb-2">
+  <div class="max-w-2xl mx-auto px-4">
+    <div class="border border-dashed border-gray-300 dark:border-gray-600 rounded-xl px-6 py-5 bg-gray-50/60 dark:bg-gray-800/40 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+      <div class="flex-1 min-w-0">
+        <p class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">{c.eyebrow}</p>
+        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{c.body}</p>
+      </div>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex-shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-200 group whitespace-nowrap"
+        aria-label={lang === "es" ? "Ver servicios de desarrollo web para empresas" : "See web development services for businesses"}
+      >
+        {c.cta}
+        <svg
+          class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>

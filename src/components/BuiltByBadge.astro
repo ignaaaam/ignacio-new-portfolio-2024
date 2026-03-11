@@ -1,0 +1,83 @@
+---
+/**
+ * BuiltByBadge — subtle footer attribution for client websites.
+ *
+ * Usage in Astro projects:
+ *   import BuiltByBadge from "@/components/BuiltByBadge.astro";
+ *   <BuiltByBadge lang="es" />
+ *   <BuiltByBadge lang="en" style="pill" />
+ *
+ * Plain HTML snippet for non-Astro projects — see docs/built-by-badge.md
+ *
+ * UTM: utm_source=client-site&utm_medium=badge&utm_campaign=built-by
+ */
+
+interface Props {
+  /** Display language for the badge text */
+  lang?: "es" | "en";
+  /**
+   * Visual variant:
+   * - "minimal" (default) — text + icon, transparent background, inherits colour
+   * - "pill" — rounded pill with a faint border, works on any background
+   */
+  style?: "minimal" | "pill";
+  /** Optional extra Tailwind classes on the anchor element */
+  class?: string;
+}
+
+const {
+  lang = "es",
+  style = "minimal",
+  class: className = "",
+} = Astro.props;
+
+const href =
+  "https://www.ignacioamatweb.com/?utm_source=client-site&utm_medium=badge&utm_campaign=built-by";
+
+const label = {
+  es: "Diseñado y desarrollado por Ignacio Amat",
+  en: "Designed and developed by Ignacio Amat",
+};
+
+const ariaLabel = {
+  es: "Sitio web diseñado y desarrollado por Ignacio Amat – ignacioamatweb.com",
+  en: "Website designed and developed by Ignacio Amat – ignacioamatweb.com",
+};
+
+const baseClasses =
+  "inline-flex items-center gap-1.5 text-[11px] leading-none font-medium tracking-wide no-underline transition-opacity duration-150 group";
+
+const variantClasses = {
+  minimal:
+    "opacity-40 hover:opacity-70 text-current",
+  pill:
+    "opacity-60 hover:opacity-90 text-current px-2.5 py-1.5 rounded-full border border-current/20 bg-current/5",
+};
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={ariaLabel[lang]}
+  class={`${baseClasses} ${variantClasses[style]} ${className}`}
+>
+  <!-- Code brackets icon -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="12"
+    height="12"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+    class="flex-shrink-0"
+  >
+    <polyline points="16 18 22 12 16 6"></polyline>
+    <polyline points="8 6 2 12 8 18"></polyline>
+  </svg>
+  {label[lang]}
+</a>
