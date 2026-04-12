@@ -53,7 +53,17 @@ interface Props {
   };
 }
 
-const { title, description, canonical, alternateLangUrls, languageSwitcherPaths, pageType = "website", articleData, openGraph: customOpenGraph, robots: customRobots } = Astro.props;
+const {
+  title,
+  description,
+  canonical,
+  alternateLangUrls,
+  languageSwitcherPaths,
+  pageType = "website",
+  articleData,
+  openGraph: customOpenGraph,
+  robots: customRobots,
+} = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const ogImage = "https://www.ignathedev.com/img/profile_picture_og-upscaled.jpg";
@@ -136,17 +146,18 @@ const englishSwitcherPath = languageSwitcherPaths?.en ?? toPath(englishUrl);
   <head>
     <!-- Google tag (gtag.js) -->
     <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-3ZDBF6HWZX"
+      type="text/partytown"
+      defer
+      src="https://www.googletagmanager.com/gtag/js?id=G-VZQ07QHFLN"
+      is:inline
     ></script>
-    <script>
+    <script type="text/partytown" is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
-      gtag("config", "G-3ZDBF6HWZX");
+      gtag("config", "G-VZQ07QHFLN");
     </script>
     <!-- Enable client-side view transitions (SPA-mode navigation) -->
     <ClientRouter />
@@ -249,36 +260,22 @@ const englishSwitcherPath = languageSwitcherPaths?.en ?? toPath(englishUrl);
     />
 
     <!-- Article-specific meta tags for blog posts -->
-    {
-      articleData && pageType === "article" && (
-        <>
-          {articleData.publishedTime && (
-            <meta
-              property="article:published_time"
-              content={articleData.publishedTime}
-            />
-          )}
-          {articleData.modifiedTime && (
-            <meta
-              property="article:modified_time"
-              content={articleData.modifiedTime}
-            />
-          )}
-          {articleData.author && (
-            <meta
-              property="article:author"
-              content={articleData.author}
-            />
-          )}
-          {articleData.tags?.map((tag) => (
-            <meta
-              property="article:tag"
-              content={tag}
-            />
-          ))}
-        </>
-      )
-    }
+    {articleData && pageType === "article" && (
+      <>
+        {articleData.publishedTime && (
+          <meta property="article:published_time" content={articleData.publishedTime} />
+        )}
+        {articleData.modifiedTime && (
+          <meta property="article:modified_time" content={articleData.modifiedTime} />
+        )}
+        {articleData.author && (
+          <meta property="article:author" content={articleData.author} />
+        )}
+        {articleData.tags?.map((tag) => (
+          <meta property="article:tag" content={tag} />
+        ))}
+      </>
+    )}
 
     <!-- LinkedIn specific meta tags -->
     <meta
@@ -348,27 +345,23 @@ const englishSwitcherPath = languageSwitcherPaths?.en ?? toPath(englishUrl);
               "@id": "https://www.ignathedev.com/#person",
             },
           },
-          ...(isHomePage
-            ? [
-                {
-                  "@type": "ProfilePage",
-                  "@id": `https://www.ignathedev.com${currentPath}#profilepage`,
-                  url: `https://www.ignathedev.com${currentPath}`,
-                  name: metaTitle,
-                  description: metaDescription,
-                  inLanguage: lang === "es" ? "es-ES" : "en-US",
-                  isPartOf: {
-                    "@id": "https://www.ignathedev.com/#website",
-                  },
-                  about: {
-                    "@id": "https://www.ignathedev.com/#person",
-                  },
-                  mainEntity: {
-                    "@id": "https://www.ignathedev.com/#person",
-                  },
-                },
-              ]
-            : []),
+          ...(isHomePage ? [{
+            "@type": "ProfilePage",
+            "@id": `https://www.ignathedev.com${currentPath}#profilepage`,
+            url: `https://www.ignathedev.com${currentPath}`,
+            name: metaTitle,
+            description: metaDescription,
+            inLanguage: lang === "es" ? "es-ES" : "en-US",
+            isPartOf: {
+              "@id": "https://www.ignathedev.com/#website",
+            },
+            about: {
+              "@id": "https://www.ignathedev.com/#person",
+            },
+            mainEntity: {
+              "@id": "https://www.ignathedev.com/#person",
+            },
+          }] : []),
           {
             "@type": "Person",
             "@id": "https://www.ignathedev.com/#person",
@@ -521,31 +514,11 @@ const englishSwitcherPath = languageSwitcherPaths?.en ?? toPath(englishUrl);
       })}
     />
     <!-- hreflang for international SEO -->
-    <link
-      rel="alternate"
-      hreflang="es"
-      href={spanishUrl}
-    />
-    <link
-      rel="alternate"
-      hreflang="es-ES"
-      href={spanishUrl}
-    />
-    <link
-      rel="alternate"
-      hreflang="en"
-      href={englishUrl}
-    />
-    <link
-      rel="alternate"
-      hreflang="en-US"
-      href={englishUrl}
-    />
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href={xDefaultUrl}
-    />
+    <link rel="alternate" hreflang="es" href={spanishUrl} />
+    <link rel="alternate" hreflang="es-ES" href={spanishUrl} />
+    <link rel="alternate" hreflang="en" href={englishUrl} />
+    <link rel="alternate" hreflang="en-US" href={englishUrl} />
+    <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
 
     <!-- Preload critical fonts -->
     <link
@@ -585,172 +558,156 @@ const englishSwitcherPath = languageSwitcherPaths?.en ?? toPath(englishUrl);
     />
 
     <!-- BreadcrumbList Schema — skipped for articles (MarkdownPostLayout provides its own accurate one) -->
-    {
-      pageType !== "article" && (
-        <script
-          type="application/ld+json"
-          set:html={JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: lang === "es" ? "Inicio" : "Home",
-                item: lang === "es" ? "https://www.ignathedev.com" : "https://www.ignathedev.com/en",
-              },
-              ...(isBlogPage
-                ? [
-                    {
-                      "@type": "ListItem",
-                      position: 2,
-                      name: "Blog",
-                      item: lang === "es" ? "https://www.ignathedev.com/blog" : "https://www.ignathedev.com/en/blog",
-                    },
-                  ]
-                : []),
-              ...(!isHomePage && !isBlogPage
-                ? [
-                    {
-                      "@type": "ListItem",
-                      position: 2,
-                      name: metaTitle,
-                      item: `https://www.ignathedev.com${currentPath}`,
-                    },
-                  ]
-                : []),
-            ],
-          })}
-        />
-      )
-    }
+    {pageType !== "article" && (
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: lang === "es" ? "Inicio" : "Home",
+            item: lang === "es" ? "https://www.ignathedev.com" : "https://www.ignathedev.com/en",
+          },
+          ...(isBlogPage
+            ? [
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Blog",
+                  item: lang === "es" ? "https://www.ignathedev.com/blog" : "https://www.ignathedev.com/en/blog",
+                },
+              ]
+            : []),
+          ...(!isHomePage && !isBlogPage
+            ? [
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: metaTitle,
+                  item: `https://www.ignathedev.com${currentPath}`,
+                },
+              ]
+            : []),
+        ],
+      })}
+    />
+    )}
 
     <!-- Professional Service Schema (homepage only) -->
-    {
-      isHomePage && (
-        <script
-          type="application/ld+json"
-          set:html={JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ProfessionalService",
-            "@id": "https://www.ignathedev.com/#business",
-            name: lang === "es" ? "Ignacio Amat - Desarrollador Web Full Stack" : "Ignacio Amat - Full Stack Web Developer",
-            image: ogImage,
-            url: "https://www.ignathedev.com",
-            description:
-              lang === "es"
-                ? "Desarrollador full stack con experiencia en marcas de primer nivel como PlayStation, TikTok y Glovo. Especializado en PHP, Laravel y Vue.js. Disponible para contratación remota."
-                : "Full stack developer with top-brand experience including PlayStation, TikTok, and Glovo. Specialized in PHP, Laravel, and Vue.js. Available for remote hire.",
-            priceRange: "$$",
-            availableLanguage: ["es", "en"],
-            serviceType: "Web Development",
-            areaServed: [
-              {
-                "@type": "Country",
-                name: "Spain",
+    {isHomePage && (
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "@id": "https://www.ignathedev.com/#business",
+        name: lang === "es" ? "Ignacio Amat - Desarrollador Web Full Stack" : "Ignacio Amat - Full Stack Web Developer",
+        image: ogImage,
+        url: "https://www.ignathedev.com",
+        description:
+          lang === "es"
+            ? "Desarrollador full stack con experiencia en marcas de primer nivel como PlayStation, TikTok y Glovo. Especializado en PHP, Laravel y Vue.js. Disponible para contratación remota."
+            : "Full stack developer with top-brand experience including PlayStation, TikTok, and Glovo. Specialized in PHP, Laravel, and Vue.js. Available for remote hire.",
+        priceRange: "$$",
+        availableLanguage: ["es", "en"],
+        serviceType: "Web Development",
+        areaServed: [
+          {
+            "@type": "Country",
+            name: "Spain",
+          },
+          {
+            "@type": "City",
+            name: "Barcelona",
+          },
+          {
+            "@type": "City",
+            name: "Madrid",
+          },
+          {
+            "@type": "City",
+            name: "Valencia",
+          },
+          {
+            "@type": "City",
+            name: "Sevilla",
+          },
+          {
+            "@type": "City",
+            name: "Bilbao",
+          },
+          {
+            "@type": "City",
+            name: "Zaragoza",
+          },
+          {
+            "@type": "City",
+            name: "Málaga",
+          },
+          {
+            "@type": "City",
+            name: "Alicante",
+          },
+          {
+            "@type": "AdministrativeArea",
+            name: "European Union",
+          },
+          {
+            "@type": "Place",
+            name: "Worldwide (Remote)",
+          },
+        ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: lang === "es" ? "Servicios de Desarrollo Web" : "Web Development Services",
+          itemListElement: [
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: lang === "es" ? "Desarrollo Full Stack" : "Full Stack Development",
+                description: lang === "es" ? "Desarrollo completo de aplicaciones web desde el frontend hasta el backend" : "Complete web application development from frontend to backend",
               },
-              {
-                "@type": "City",
-                name: "Barcelona",
-              },
-              {
-                "@type": "City",
-                name: "Madrid",
-              },
-              {
-                "@type": "City",
-                name: "Valencia",
-              },
-              {
-                "@type": "City",
-                name: "Sevilla",
-              },
-              {
-                "@type": "City",
-                name: "Bilbao",
-              },
-              {
-                "@type": "City",
-                name: "Zaragoza",
-              },
-              {
-                "@type": "City",
-                name: "Málaga",
-              },
-              {
-                "@type": "City",
-                name: "Alicante",
-              },
-              {
-                "@type": "AdministrativeArea",
-                name: "European Union",
-              },
-              {
-                "@type": "Place",
-                name: "Worldwide (Remote)",
-              },
-            ],
-            hasOfferCatalog: {
-              "@type": "OfferCatalog",
-              name: lang === "es" ? "Servicios de Desarrollo Web" : "Web Development Services",
-              itemListElement: [
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: lang === "es" ? "Desarrollo Full Stack" : "Full Stack Development",
-                    description: lang === "es" ? "Desarrollo completo de aplicaciones web desde el frontend hasta el backend" : "Complete web application development from frontend to backend",
-                  },
-                },
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: lang === "es" ? "Desarrollo Laravel" : "Laravel Development",
-                    description: lang === "es" ? "Aplicaciones web robustas y escalables con el framework Laravel" : "Robust and scalable web applications with Laravel framework",
-                  },
-                },
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: lang === "es" ? "Desarrollo Vue.js" : "Vue.js Development",
-                    description: lang === "es" ? "Interfaces de usuario modernas y reactivas con Vue.js" : "Modern and reactive user interfaces with Vue.js",
-                  },
-                },
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: lang === "es" ? "Consultoría Web" : "Web Consulting",
-                    description: lang === "es" ? "Asesoramiento técnico para proyectos web y optimización de rendimiento" : "Technical advice for web projects and performance optimization",
-                  },
-                },
-              ],
             },
-            sameAs: Object.values(professionalProfile.socialProfiles),
-          })}
-        />
-      )
-    }
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: lang === "es" ? "Desarrollo Laravel" : "Laravel Development",
+                description: lang === "es" ? "Aplicaciones web robustas y escalables con el framework Laravel" : "Robust and scalable web applications with Laravel framework",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: lang === "es" ? "Desarrollo Vue.js" : "Vue.js Development",
+                description: lang === "es" ? "Interfaces de usuario modernas y reactivas con Vue.js" : "Modern and reactive user interfaces with Vue.js",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: lang === "es" ? "Consultoría Web" : "Web Consulting",
+                description: lang === "es" ? "Asesoramiento técnico para proyectos web y optimización de rendimiento" : "Technical advice for web projects and performance optimization",
+              },
+            },
+          ],
+        },
+        sameAs: Object.values(professionalProfile.socialProfiles),
+      })}
+    />
+    )}
   </head>
   <body class="bg-white dark:bg-gray-900">
     <div class="absolute top-0 z-[-2] h-screen w-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"></div>
 
     <div class="relative min-h-screen flex flex-col z-10">
-      {
-        lang === "es" ? (
-          <Header
-            spanishUrl={spanishSwitcherPath}
-            englishUrl={englishSwitcherPath}
-          />
-        ) : (
-          <HeaderEnglish
-            spanishUrl={spanishSwitcherPath}
-            englishUrl={englishSwitcherPath}
-          />
-        )
-      }
+      {lang === "es" ? <Header spanishUrl={spanishSwitcherPath} englishUrl={englishSwitcherPath} /> : <HeaderEnglish spanishUrl={spanishSwitcherPath} englishUrl={englishSwitcherPath} />}
 
       <main class="flex-1">
         <slot />
