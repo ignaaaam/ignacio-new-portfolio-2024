@@ -21,11 +21,11 @@ isDraft: false
 ---
 
 
-### Introducción
+## Introducción
 
 Bienvenidos lectores a su nuevo blog enfocado en programación y tecnología. Este blog cubrirá desarrollo back-end, front-end y full-stack, con un enfoque en PHP, Laravel, frameworks front-end y noticias de diseño/tecnología. Mantenerse al día con el panorama tecnológico en constante evolución es crucial, así que actualizaré con noticias de...
 
-### Tendencias en el Desarrollo Back-End
+## Tendencias en el Desarrollo Back-End
 
 - Explorando los últimos avances en PHP y el framework Laravel
   - #### PHP 8.2 y más allá: Nuevas características y mejoras
@@ -34,7 +34,7 @@ Bienvenidos lectores a su nuevo blog enfocado en programación y tecnología. Es
 - Serverless apps y su impacto en el desarrollo back-end
 - Avances en el diseño e integración de APIs
 
-### Tendencias en el Desarrollo Front-End
+## Tendencias en el Desarrollo Front-End
 
 - Examinando el crecimiento de los frameworks front-end
   - #### React.js: El campeón reinante
@@ -43,14 +43,14 @@ Bienvenidos lectores a su nuevo blog enfocado en programación y tecnología. Es
 - Innovaciones en CSS y HTML
 - El auge de los CMS sin cabeza y sus beneficios
 
-### Tendencias en el Desarrollo Full-Stack
+## Tendencias en el Desarrollo Full-Stack
 
 - La creciente demanda de desarrolladores full-stack
 - Astro, el nuevo framework de la web
 - Cerrando la brecha entre el front-end y el back-end
 - Aprovechando el poder de JavaScript
 
-### Noticias de Diseño y Tecnología
+## Noticias de Diseño y Tecnología
 
 - Tendencias emergentes en diseño y su impacto en la experiencia del usuario
 - Avances en la accesibilidad web y el diseño inclusivo
