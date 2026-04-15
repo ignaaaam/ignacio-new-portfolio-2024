@@ -108,15 +108,17 @@ const professionalProfile = {
 };
 
 const defaultTitle = lang === "es" ? "Desarrollador Web Full Stack" : "Full Stack Web Developer";
-const pageTitle = title || defaultTitle;
+const normalizedTitle = typeof title === "string" ? title.trim() : "";
+const pageTitle = normalizedTitle || defaultTitle;
 // Only add suffix when using default title to avoid duplication; keep 50-60 chars for SERP
-const titleSuffix = !title || title === defaultTitle ? (lang === "es" ? " | PHP Laravel Vue.js" : " | PHP Laravel Vue.js") : "";
+const titleSuffix = !normalizedTitle || normalizedTitle === defaultTitle ? (lang === "es" ? " | PHP Laravel Vue.js" : " | PHP Laravel Vue.js") : "";
 const fullTitle = `${pageTitle}${titleSuffix}`;
 const metaTitle = fullTitle.length > 60 ? fullTitle.substring(0, 57) + "..." : fullTitle;
 
 // SEO-optimized descriptions: 150-160 chars, primary keyword, CTA
+const normalizedDescription = typeof description === "string" ? description.trim() : "";
 const rawDescription =
-  description ||
+  normalizedDescription ||
   (lang === "es"
     ? "Desarrollador web freelance en España. +5 años con PHP, Laravel y Vue.js para PlayStation, TikTok y Glovo. Proyectos para empresas de toda España. Disponible ahora."
     : "Freelance web developer based in Spain. 5+ years with PHP, Laravel and Vue.js for PlayStation, TikTok, and Glovo. Available for companies worldwide. Contact now.");
@@ -164,6 +166,7 @@ const englishSwitcherPath = languageSwitcherPaths?.en ?? toPath(englishUrl);
 
     <!-- SEO Meta Tags with AstroSEO -->
     <meta charset="UTF-8" />
+    <title>{metaTitle}</title>
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0"

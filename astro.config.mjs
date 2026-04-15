@@ -17,7 +17,9 @@ export default defineConfig({
     css: {
       preprocessorOptions: {
           scss: {
-              api: 'modern-compiler',
+              // `modern-compiler` requires Sass embedded native binary.
+              // Use `modern` to avoid runtime failures when embedded isn't available.
+              api: 'modern',
               loadPaths: ['.']
           }
       }

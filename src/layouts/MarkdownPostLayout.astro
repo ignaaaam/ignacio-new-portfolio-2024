@@ -124,11 +124,25 @@ const languageSwitcherPaths = languageSwitcherPathsProp ?? defaultLanguagePaths;
 
 const tocHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 const hasToc = tocHeadings.length >= 3;
+const articleDescription =
+  frontmatter.description?.trim() ||
+  rawBody
+    ?.replace(/```[\s\S]*?```/g, " ")
+    ?.replace(/`[^`]*`/g, " ")
+    ?.replace(/!\[[^\]]*\]\([^)]+\)/g, " ")
+    ?.replace(/\[[^\]]*\]\([^)]+\)/g, " ")
+    ?.replace(/[>#*_~-]/g, " ")
+    ?.replace(/\s+/g, " ")
+    ?.trim()
+    ?.slice(0, 155) ||
+  (isEnglish
+    ? "Web development article by Ignacio Amat with practical tips and production-ready examples."
+    : "Articulo de desarrollo web de Ignacio Amat con consejos practicos y ejemplos listos para produccion.");
 ---
 
 <Layout
   title={frontmatter.title}
-  description={frontmatter.description || ""}
+  description={articleDescription}
   canonical={url}
   alternateLangUrls={resolvedAlternateUrls}
   languageSwitcherPaths={languageSwitcherPaths}
@@ -143,7 +157,7 @@ const hasToc = tocHeadings.length >= 3;
     url: url,
     title: frontmatter.title,
     type: "article",
-    description: frontmatter.description || "",
+    description: articleDescription,
     images: [
       {
         url: ogImage,
@@ -612,7 +626,7 @@ const hasToc = tocHeadings.length >= 3;
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": frontmatter.title,
-  "description": frontmatter.description || "",
+  "description": articleDescription,
   "image": ogImage,
   "datePublished": publishedTime,
   "dateModified": modifiedTime,
