@@ -61,7 +61,12 @@ export default defineConfig({
     changefreq: 'weekly',
     priority: 0.7,
     lastmod: new Date(),
-    filter: (page) => !page.includes('/api/') && !page.includes('/admin/'),
+    filter: (page) => {
+      if (page.includes('/api/') || page.includes('/admin/')) return false;
+      // Exclude redirect-only English section URLs (non-canonical, 301 → /en/#anchor)
+      const redirectOnly = ['/en/Certification', '/en/Footer', '/en/Projects', '/en/Studies'];
+      return !redirectOnly.some((p) => page.includes(p));
+    },
     serialize: (item) => {
       // Boost priority for important pages
       if (item.url === 'https://www.ignathedev.com/' || item.url === 'https://www.ignathedev.com/en/') {
